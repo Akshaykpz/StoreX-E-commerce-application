@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../utils/theme/textstyle.dart';
-import '../Homepage/items.dart';
-import '../Homepage/chip_list.dart';
+import 'items.dart';
+import 'chip_list.dart';
 
 class FavoritesPage extends StatefulWidget {
   @override
@@ -23,7 +23,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
   }
 
   void startImageChangeTimer() {
-    _imageChangeTimer = Timer.periodic(const Duration(seconds: 3), (timer) {
+    _imageChangeTimer = Timer.periodic(const Duration(seconds: 2), (timer) {
       setState(() {
         currentIndex = (currentIndex + 1) % camera.length;
       });

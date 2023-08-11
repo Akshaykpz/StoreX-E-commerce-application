@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:giltezy_2ndproject/widgets/Account/account.dart';
-import 'package:giltezy_2ndproject/widgets/Cart/cart.dart';
-import 'package:giltezy_2ndproject/widgets/Home/mainhome.dart';
+import 'package:giltezy_2ndproject/widgets/Categories/account.dart';
+import 'package:giltezy_2ndproject/widgets/Cart/cart_view.dart';
+import 'package:giltezy_2ndproject/widgets/Accounts/mainhome.dart';
 
-import '../Favorates/Favorates.dart';
+import 'ads_mobile.dart';
 import 'bottombar.dart';
 
 class MyHomePage extends StatefulWidget {

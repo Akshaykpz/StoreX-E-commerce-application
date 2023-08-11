@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:giltezy_2ndproject/service/sign_out.dart';
+import 'package:giltezy_2ndproject/widgets/Accounts/AllSettings/edit_profile.dart';
+import 'package:giltezy_2ndproject/widgets/Accounts/AllSettings/orders.dart';
+import 'package:giltezy_2ndproject/widgets/Accounts/AllSettings/shipping_address.dart';
+import 'package:giltezy_2ndproject/widgets/Accounts/AllSettings/wish_list.dart';
 
-import 'package:giltezy_2ndproject/widgets/Home/buttons.dart';
+import 'package:giltezy_2ndproject/widgets/Accounts/buttons.dart';
 
 class Homes extends StatelessWidget {
   @override
@@ -99,21 +104,42 @@ class Homes extends StatelessWidget {
                   borderRadius: BorderRadius.circular(16.0),
                 ),
               ),
-              MyNewButton(onPressedCallback: () {}, buttontext: 'Edit Profile'),
               MyNewButton(
-                onPressedCallback: () {},
+                  onPressedCallback: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => EditProfile(),
+                        ));
+                  },
+                  buttontext: 'Edit Profile'),
+              MyNewButton(
+                onPressedCallback: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => WishList()));
+                },
                 buttontext: 'Wishlist',
               ),
               MyNewButton(
-                onPressedCallback: () {},
+                onPressedCallback: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Orders()));
+                },
                 buttontext: 'Orders',
               ),
               MyNewButton(
-                onPressedCallback: () {},
+                onPressedCallback: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ShippingAddress()));
+                },
                 buttontext: 'Shipping Address',
               ),
               MyNewButton(
-                onPressedCallback: () {},
+                onPressedCallback: () {
+                  showSignOutDialog(context);
+                },
                 buttontext: 'Logout',
               )
             ],

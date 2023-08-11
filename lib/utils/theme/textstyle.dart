@@ -9,7 +9,8 @@ const TextStyle khheading = TextStyle(
 const TextStyle kvrheading = TextStyle(
   color: Colors.black,
   fontSize: 25,
-  fontWeight: FontWeight.w400,
+  fontStyle: FontStyle.italic,
+  fontWeight: FontWeight.w700,
 );
 const TextStyle kstext = TextStyle(
   fontSize: 22,
@@ -46,7 +47,7 @@ Container kwscontiner = Container(
   ),
 );
 const List<String> camera = [
-  'assets/images/image_-_2023-06-02T162012.132.webp',
+  'assets/images/martin-engel-44zXCbDd2WQ-unsplash.jpg',
   'assets/images/samsung-galaxy-s21-smartphones.jpg',
   'assets/images/v585-aew-28-devicemockup.jpg'
 ];
