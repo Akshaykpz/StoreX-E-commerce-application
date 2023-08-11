@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "66421642132",
+    "project_id": "giltezy",
+    "storage_bucket": "giltezy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:66421642132:android:d4c03b483253b874e23581",
+        "android_client_info": {
+          "package_name": "com.example.giltezy_2ndproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "66421642132-el2ivbvt56gvk53ou0bolnkrritdtbma.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.giltezy_2ndproject",
+            "certificate_hash": "97bd0da2c4a0bde37448250c6b52c52ae2bbd49b"
+          }
+        },
+        {
+          "client_id": "66421642132-pc9qulm5u7ntdijv7u0v6suul5j3jnbc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgEvBj7A2r0ZfOWSMSRBwVNfN4S_zL-ds"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "66421642132-pc9qulm5u7ntdijv7u0v6suul5j3jnbc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
