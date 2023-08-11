@@ -1,14 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:giltezy_2ndproject/widgets/Cart/cart_viewitems.dart';
 
 class Cart extends StatelessWidget {
+  const Cart({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.transparent,
-        body: Container(
-          color: Colors.amber,
-          height: 30,
-          child: Row(children: [Image.asset('')]),
-        ));
+    return const Column(
+      children: [
+        CartItemsviews(
+            descriptions: 'hahha',
+            imagePath: 'assets/images/reallogo.png',
+            price: '200'),
+        SizedBox(
+          height: 10,
+        ),
+        CartItemsviews(
+            descriptions: 'hahha',
+            imagePath: 'assets/images/reallogo.png',
+            price: '200'),
+        SizedBox(
+          height: 10,
+        ),
+        CartItemsviews(
+            descriptions: 'hahha',
+            imagePath: 'assets/images/reallogo.png',
+            price: '200'),
+        SizedBox(
+          height: 10,
+        ),
+        CartItemsviews(
+            descriptions: 'hahha',
+            imagePath: 'assets/images/reallogo.png',
+            price: '200'),
+        SizedBox(
+          height: 10,
+        ),
+      ],
+    );
   }
 }
