@@ -7,20 +7,20 @@ import '../../utils/theme/textstyle.dart';
 import 'items.dart';
 import 'chip_list.dart';
 
-class FavoritesPage extends StatefulWidget {
+class HomePage extends StatefulWidget {
   @override
-  State<FavoritesPage> createState() => _FavoritesPageState();
+  State<HomePage> createState() => _FavoritesPageState();
 }
 
-class _FavoritesPageState extends State<FavoritesPage> {
+class _FavoritesPageState extends State<HomePage> {
   int currentIndex = 0;
   late Timer _imageChangeTimer;
 
-  @override
-  void initState() {
-    super.initState();
-    startImageChangeTimer();
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   startImageChangeTimer();
+  // }
 
   void startImageChangeTimer() {
     _imageChangeTimer = Timer.periodic(const Duration(seconds: 2), (timer) {
@@ -30,16 +30,16 @@ class _FavoritesPageState extends State<FavoritesPage> {
     });
   }
 
-  @override
-  void dispose() {
-    _imageChangeTimer.cancel(); // Cancel the timer in the dispose() method
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   _imageChangeTimer.cancel(); // Cancel the timer in the dispose() method
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.transparent,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animated_button/flutter_animated_button.dart';
 import 'package:giltezy_2ndproject/utils/theme/textstyle.dart';
 import 'package:giltezy_2ndproject/widgets/Homepage/chip.dart';
-import 'package:giltezy_2ndproject/widgets/ItemView/quantity_cart.dart';
-import 'package:giltezy_2ndproject/widgets/ItemView/slider_view.dart';
+import 'package:giltezy_2ndproject/widgets/Homepage/ItemView/quantity_cart.dart';
+import 'package:giltezy_2ndproject/widgets/Homepage/ItemView/slider_view.dart';
 
 import 'cart_button.dart';
 

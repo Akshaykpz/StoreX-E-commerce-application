@@ -57,3 +57,5 @@ const TextStyle kblacktext = TextStyle(
   fontFamily: 'Roboto',
   fontWeight: FontWeight.w500,
 );
+TextStyle kcdtext =
+    TextStyle(fontSize: 12, color: Colors.white, fontWeight: FontWeight.bold);

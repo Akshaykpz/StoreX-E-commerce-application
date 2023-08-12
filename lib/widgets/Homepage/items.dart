@@ -1,6 +1,7 @@
+// import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
-
-import 'package:giltezy_2ndproject/widgets/ItemView/item_view.dart';
+import 'package:giltezy_2ndproject/utils/theme/textstyle.dart';
+import 'package:giltezy_2ndproject/widgets/Homepage/ItemView/item_view.dart';
 
 class SecondGrid extends StatefulWidget {
   @override
@@ -11,8 +12,18 @@ class _SecondGridState extends State<SecondGrid> {
   List<String> yourImagesList = [
     'assets/images/787-removebg-preview.png',
     'assets/images/65720-removebg-preview.png',
-    'assets/images/logo.jpg',
+    'assets/images/65720-removebg-preview.png',
+    'assets/images/787-removebg-preview.png',
+    'assets/images/787-removebg-preview.png',
+    'assets/images/65720-removebg-preview.png',
   ];
+
+  List<Color> rowColors = [
+    Colors.blue.shade200,
+    Colors.green.shade200,
+    Colors.orange.shade200,
+    Colors.red.shade200,
+  ]; // Define row colors
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +33,13 @@ class _SecondGridState extends State<SecondGrid> {
         crossAxisSpacing: 1.0,
         mainAxisSpacing: 1.0,
       ),
-      itemCount: yourImagesList.length * 2,
+      itemCount: yourImagesList.length,
       itemBuilder: (context, index) {
+        final rowColor =
+            rowColors[index % rowColors.length]; // Get the row color
+
         return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2),
+          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
           child: GestureDetector(
             onTap: () {
               Navigator.push(
@@ -35,7 +49,7 @@ class _SecondGridState extends State<SecondGrid> {
                   ));
             },
             child: Card(
-              color: Colors.black,
+              color: rowColor, // Set the row color as the background color
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(7)),
               ),
@@ -46,38 +60,38 @@ class _SecondGridState extends State<SecondGrid> {
                 children: [
                   Stack(
                     children: [
-                      (index % 2 == 0
-                          ? Image.asset(
-                              yourImagesList[0],
-                              height: 120,
-                              fit: BoxFit.fitWidth,
-                            )
-                          : Image.asset(
-                              yourImagesList[1],
-                            )),
-                      Align(
-                          alignment: Alignment.bottomRight,
-                          child: Container(
-                            child: IconButton(
-                                onPressed: () {},
-                                icon: Icon(
-                                  Icons.favorite,
-                                  color: Colors.red[500],
-                                )),
-                          ))
+                      Image.asset(
+                        yourImagesList[index],
+                        height: 150,
+                        fit: BoxFit.fitWidth,
+                      ),
+                      Positioned(
+                        top: 0,
+                        right: 3,
+                        bottom: 190,
+                        child: Container(
+                          child: IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.favorite,
+                              color: Colors.red[500],
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
-                  const Row(
+                  Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Text(
                         'SAMSUNG -M 32',
-                        style: TextStyle(fontSize: 12, color: Colors.lightBlue),
+                        style: kcdtext,
                       ),
-                      Text(
+                      const Text(
                         '\₹${2000}',
-                        style: TextStyle(fontSize: 19, color: Colors.teal),
+                        style: kxbutton,
                       ),
                     ],
                   ),

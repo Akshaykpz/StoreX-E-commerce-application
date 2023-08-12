@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:giltezy_2ndproject/widgets/Accounts/AllSettings/orders.dart';
+import 'package:giltezy_2ndproject/widgets/Accounts/Order/order_status.dart';
 import 'package:pushable_button/pushable_button.dart';
 
 class CartButton extends StatelessWidget {
@@ -19,7 +21,13 @@ class CartButton extends StatelessWidget {
           blurRadius: 7,
           offset: Offset(0, 1),
         ),
-        onPressed: () => print('Button Pressed!'),
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => MyOrder(),
+              ));
+        },
       ),
     );
   }

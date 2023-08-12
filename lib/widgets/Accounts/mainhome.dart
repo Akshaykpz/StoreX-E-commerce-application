@@ -4,10 +4,11 @@ import 'package:giltezy_2ndproject/widgets/Accounts/AllSettings/edit_profile.dar
 import 'package:giltezy_2ndproject/widgets/Accounts/AllSettings/orders.dart';
 import 'package:giltezy_2ndproject/widgets/Accounts/AllSettings/shipping_address.dart';
 import 'package:giltezy_2ndproject/widgets/Accounts/AllSettings/wish_list.dart';
+import 'package:giltezy_2ndproject/widgets/Accounts/Order/order_status.dart';
 
 import 'package:giltezy_2ndproject/widgets/Accounts/buttons.dart';
 
-class Homes extends StatelessWidget {
+class Accounts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -123,7 +124,7 @@ class Homes extends StatelessWidget {
               MyNewButton(
                 onPressedCallback: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Orders()));
+                      MaterialPageRoute(builder: (context) => MyOrder()));
                 },
                 buttontext: 'Orders',
               ),

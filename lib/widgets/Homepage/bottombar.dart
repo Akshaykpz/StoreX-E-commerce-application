@@ -14,7 +14,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Divider(thickness: 1, color: Colors.white),
+        Divider(thickness: 1, color: Colors.black),
         Container(
             height: 70,
             color: Colors.transparent,

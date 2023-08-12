@@ -13,7 +13,7 @@ class _HomePageState extends State<HomePageviews> {
   @override
   Widget build(BuildContext context) {
     final pages = List.generate(
-        6,
+        4,
         (index) => Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
@@ -21,9 +21,10 @@ class _HomePageState extends State<HomePageviews> {
               ),
               margin: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
               child: Container(
+                child: Image.asset(sliderimages[index]),
                 height: 300,
               ),
-            ));
+            )).toList();
 
     return Scaffold(
       backgroundColor: Colors.white,

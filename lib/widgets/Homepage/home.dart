@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/widgets/Categories/account.dart';
 import 'package:giltezy_2ndproject/widgets/Cart/cart_view.dart';
 import 'package:giltezy_2ndproject/widgets/Accounts/mainhome.dart';
+import 'package:giltezy_2ndproject/widgets/Homepage/ItemView/serach.dart';
 
 import 'ads_mobile.dart';
 import 'bottombar.dart';
@@ -18,7 +19,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          backgroundColor: Colors.grey[300],
+          backgroundColor: Colors.white,
           bottomNavigationBar: CustomBottomNavigationBar(
             selectedIndex: _selectedIndex,
             onTabChange: (index) {
@@ -35,12 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Expanded(
                     child: IndexedStack(
                       index: _selectedIndex,
-                      children: [
-                        FavoritesPage(),
-                        Cart(),
-                        AccountPage(),
-                        Homes()
-                      ],
+                      children: [HomePage(), Cart(), Category(), Accounts()],
                     ),
                   ),
                 ],
