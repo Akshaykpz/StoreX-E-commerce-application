@@ -1,3 +1,4 @@
+import 'package:auth_buttons/auth_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:giltezy_2ndproject/service/forgot_password.dart';
@@ -11,6 +12,7 @@ import 'package:giltezy_2ndproject/widgets/Login/background_image.dart';
 import 'package:giltezy_2ndproject/widgets/Login/buttons.dart';
 import 'package:giltezy_2ndproject/widgets/Login/textfiled.dart';
 
+import '../../service/google_auth.dart';
 import '../../service/login_user.dart';
 import '../signin/sigin_page.dart';
 
@@ -77,13 +79,14 @@ class _MyLoginState extends State<MyLogin> {
                               password: password);
                         }),
                     k20box,
-                    // GoogleAuthButton(
-                    //   isLoading: false,
-                    //   onPressed: () {
-                    //     handleGoogleSignIn(context);
-                    //   },
-                    //   style: AuthButtonStyle(),
-                    // ),
+                    GoogleAuthButton(
+                      isLoading: false,
+                      onPressed: () {
+                        handleGoogleSignIn(context);
+                      },
+                      style: AuthButtonStyle(
+                          buttonColor: Colors.white, elevation: 2),
+                    ),
                   ],
                 ),
                 Positioned(

@@ -1,15 +1,14 @@
-// import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/utils/theme/textstyle.dart';
 import 'package:giltezy_2ndproject/widgets/Homepage/ItemView/item_view.dart';
 import 'package:like_button/like_button.dart';
 
-class SecondGrid extends StatefulWidget {
+class CategoryItems extends StatefulWidget {
   @override
   _SecondGridState createState() => _SecondGridState();
 }
 
-class _SecondGridState extends State<SecondGrid> {
+class _SecondGridState extends State<CategoryItems> {
   List<String> yourImagesList = [
     'assets/images/787-removebg-preview.png',
     'assets/images/65720-removebg-preview.png',
@@ -17,6 +16,8 @@ class _SecondGridState extends State<SecondGrid> {
     'assets/images/787-removebg-preview.png',
     'assets/images/787-removebg-preview.png',
     'assets/images/65720-removebg-preview.png',
+    'assets/images/65720-removebg-preview.png',
+    'assets/images/787-removebg-preview.png',
   ];
 
   List<Color> rowColors = [

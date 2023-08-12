@@ -19,7 +19,7 @@ Future<void> handleLogin(
             color: AppUtils.gkwhite,
           ));
         });
-    // Perform the sign-in with email and password
+
     await FirebaseAuth.instance
         .signInWithEmailAndPassword(
           email: email,
@@ -31,9 +31,6 @@ Future<void> handleLogin(
                 builder: (context) => MyHomePage(),
               ),
             ));
-
-    // Sign-in successful, navigate to the home page
-    ;
   } on FirebaseAuthException catch (e) {
     if (e.code == 'user-not-found') {
       log('No user record found for that email.');

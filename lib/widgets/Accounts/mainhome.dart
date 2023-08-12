@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/service/sign_out.dart';
-import 'package:giltezy_2ndproject/widgets/Accounts/AllSettings/edit_profile.dart';
+
 import 'package:giltezy_2ndproject/widgets/Accounts/AllSettings/orders.dart';
-import 'package:giltezy_2ndproject/widgets/Accounts/AllSettings/shipping_address.dart';
+import 'package:giltezy_2ndproject/widgets/Accounts/ShippingAddress/shipping_address.dart';
 import 'package:giltezy_2ndproject/widgets/Accounts/AllSettings/wish_list.dart';
 import 'package:giltezy_2ndproject/widgets/Accounts/Order/order_status.dart';
 
 import 'package:giltezy_2ndproject/widgets/Accounts/buttons.dart';
+
+import 'Editprofile/edit_data.dart';
 
 class Accounts extends StatelessWidget {
   @override
@@ -110,7 +112,7 @@ class Accounts extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => EditProfile(),
+                          builder: (context) => EditProfiles(),
                         ));
                   },
                   buttontext: 'Edit Profile'),

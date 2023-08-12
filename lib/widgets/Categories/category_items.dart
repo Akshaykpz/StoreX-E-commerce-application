@@ -1,36 +1,7 @@
-// import 'package:flutter/material.dart';
-// import 'package:giltezy_2ndproject/widgets/Homepage/chip.dart'; // Import other necessary dependencies
-
-// class ItemsGrid extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return const SingleChildScrollView(
-//       padding: EdgeInsets.all(12),
-//       scrollDirection: Axis.horizontal,
-//       child: Row(
-//         children: [
-//           Chipadd(
-//             borderColor: Colors.red,
-//             label: 'Apple',
-//             image: 'assets/images/Apple-Logo.png',
-//           ),
-//           Chipadd(
-//             label: 'Xiomi',
-//             image: 'assets/images/Xiaomi-logo.jpg',
-//           ),
-//           Chipadd(
-//             label: 'Oneplus',
-//             image: 'assets/images/OnePlus-logo.jpg',
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
 import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/widgets/Homepage/chip.dart'; // Import other necessary dependencies
 
-class ItemsGrid extends StatelessWidget {
+class CategoryItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const SingleChildScrollView(

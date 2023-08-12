@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/widgets/Categories/account.dart';
 import 'package:giltezy_2ndproject/widgets/Cart/cart_view.dart';
 import 'package:giltezy_2ndproject/widgets/Accounts/mainhome.dart';
+import 'package:giltezy_2ndproject/widgets/Categories/catgory_items.dart';
 import 'package:giltezy_2ndproject/widgets/Homepage/ItemView/serach.dart';
 
 import 'ads_mobile.dart';
@@ -36,7 +37,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   Expanded(
                     child: IndexedStack(
                       index: _selectedIndex,
-                      children: [HomePage(), Cart(), Category(), Accounts()],
+                      children: [
+                        HomePage(),
+                        Cart(),
+                        CategoryItems(),
+                        Accounts()
+                      ],
                     ),
                   ),
                 ],

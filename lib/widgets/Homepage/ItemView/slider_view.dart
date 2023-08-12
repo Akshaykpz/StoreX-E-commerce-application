@@ -21,6 +21,7 @@ class _HomePageState extends State<HomePageviews> {
               ),
               margin: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
               child: Container(
+                color: Colors.black,
                 child: Image.asset(sliderimages[index]),
                 height: 300,
               ),

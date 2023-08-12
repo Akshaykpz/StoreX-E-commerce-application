@@ -19,7 +19,7 @@ final colors = const [
 ];
 const List<String> sliderimages = [
   'assets/images/Screenshot 2023-08-12 061206.png',
-  ' assets/images/Screenshot 2023-08-12 061246.png',
+  'assets/images/Screenshot 2023-08-12 061246.png',
   'assets/images/Screenshot 2023-08-12 061315.png',
   'assets/images/Screenshot 2023-08-12 061337.png'
 ];

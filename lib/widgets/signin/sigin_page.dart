@@ -1,7 +1,9 @@
+import 'package:auth_buttons/auth_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:giltezy_2ndproject/utils/theme/decoration.dart';
 
+import '../../service/google_auth.dart';
 import '../../service/signin_user.dart';
 import '../../utils/theme/icons.dart';
 import '../../utils/theme/textstyle.dart';
@@ -69,6 +71,15 @@ class _MySiginState extends State<MySigin> {
                       }
                     },
                     buttontext: 'Sign Up',
+                  ),
+                  k20box,
+                  GoogleAuthButton(
+                    isLoading: false,
+                    onPressed: () {
+                      handleGoogleSignIn(context);
+                    },
+                    style: AuthButtonStyle(
+                        buttonColor: Colors.white, elevation: 2),
                   ),
                 ],
               ),
