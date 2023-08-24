@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:giltezy_2ndproject/service/login_user.dart';
 import 'package:giltezy_2ndproject/service/sign_out.dart';
 import 'package:giltezy_2ndproject/widgets/Accounts/admin/admin_page.dart';
 
@@ -10,7 +11,20 @@ import 'package:giltezy_2ndproject/widgets/Accounts/buttons.dart';
 
 import 'editprofile/edit_data.dart';
 
-class Accounts extends StatelessWidget {
+// ignore: must_be_immutable
+class Accounts extends StatefulWidget {
+  Accounts({super.key});
+
+  @override
+  State<Accounts> createState() => _AccountsState();
+}
+
+class _AccountsState extends State<Accounts> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +36,7 @@ class Accounts extends StatelessWidget {
                   context); // Navigate back when the button is pressed
             },
           ),
-          title: Text(
+          title: const Text(
             'Account',
             style: TextStyle(color: Colors.black, fontStyle: FontStyle.italic),
           ),
@@ -95,13 +109,20 @@ class Accounts extends StatelessWidget {
                   ],
                 ),
               ),
-              MyNewButton(
-                onPressedCallback: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => AdminPage()));
-                },
-                buttontext: 'Admin',
-              ),
+              isLoggedIn && isAdmin
+                  ? MyNewButton(
+                      onPressedCallback: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => AdminPage()),
+                        );
+
+                        // Handle user login
+                        // For example, show an error message or navigate to a different page
+                      },
+                      buttontext: 'Admin',
+                    )
+                  : SizedBox(),
               MyNewButton(
                   onPressedCallback: () {
                     Navigator.push(

@@ -6,6 +6,9 @@ import 'package:giltezy_2ndproject/utils/theme/theme.dart';
 
 import '../widgets/Homepage/home.dart';
 
+bool isLoggedIn = false;
+bool isAdmin = false;
+
 Future<void> handleLogin(
     {required BuildContext context,
     required String email,
@@ -19,7 +22,13 @@ Future<void> handleLogin(
             color: AppUtils.gkwhite,
           ));
         });
-
+    if (email == 'admin@example.com' && password == '12345678') {
+      isLoggedIn = true;
+      isAdmin = true; // Admin credentials
+    } else {
+      isLoggedIn = true;
+      isAdmin = false; // Regular user
+    }
     await FirebaseAuth.instance
         .signInWithEmailAndPassword(
           email: email,
