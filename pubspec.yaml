@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_screenutil: ^5.8.4
   google_sign_in: ^6.1.4
+ 
   firebase_auth: ^4.7.2
   firebase_core: ^2.15.0
   auth_buttons: ^1.0.1+4
@@ -59,6 +60,7 @@ dependencies:
   flutter_animated_button: ^2.0.3
   timeline_tile: ^2.0.0
   like_button: ^2.0.5
+  image_picker: ^1.0.2
 
 dev_dependencies:
   flutter_test:

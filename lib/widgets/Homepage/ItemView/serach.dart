@@ -11,10 +11,11 @@ class Serach extends StatelessWidget {
           autofocus: true,
           // ...
           decoration: InputDecoration(
-            fillColor: Colors.grey[300],
+            prefixIcon: Icon(Icons.search),
+            fillColor: Colors.grey[320],
             filled: true,
 
-            hintText: '   Search  ...',
+            hintText: ' Search  ...',
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
                 borderSide: BorderSide.none),

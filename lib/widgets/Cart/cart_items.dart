@@ -1,4 +1,3 @@
-import 'package:cart_stepper/cart_stepper.dart';
 import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/widgets/Cart/counter_cart.dart';
 

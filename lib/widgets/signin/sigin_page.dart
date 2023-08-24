@@ -12,6 +12,8 @@ import '../Login/textfiled.dart';
 import 'background_image.dart';
 
 class MySigin extends StatefulWidget {
+  const MySigin({super.key});
+
   @override
   State<MySigin> createState() => _MySiginState();
 }
@@ -31,7 +33,7 @@ class _MySiginState extends State<MySigin> {
         backgroundColor: Colors.transparent,
         body: SafeArea(
           child: SingleChildScrollView(
-            child: Container(
+            child: SizedBox(
               // Wrap the Column with a Container
               height: 800.h,
               width: double.infinity,
@@ -78,7 +80,7 @@ class _MySiginState extends State<MySigin> {
                     onPressed: () {
                       handleGoogleSignIn(context);
                     },
-                    style: AuthButtonStyle(
+                    style: const AuthButtonStyle(
                         buttonColor: Colors.white, elevation: 2),
                   ),
                 ],

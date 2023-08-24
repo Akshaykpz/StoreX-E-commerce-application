@@ -1,12 +1,9 @@
-import 'package:cart_stepper/cart_stepper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_button/flutter_animated_button.dart';
 import 'package:giltezy_2ndproject/utils/theme/textstyle.dart';
 import 'package:giltezy_2ndproject/widgets/Homepage/chip.dart';
 import 'package:giltezy_2ndproject/widgets/Homepage/ItemView/quantity_cart.dart';
 import 'package:giltezy_2ndproject/widgets/Homepage/ItemView/slider_view.dart';
-
-import 'cart_button.dart';
 
 class ItemViews extends StatefulWidget {
   // final String id;
@@ -49,7 +46,7 @@ class _ItemViewsState extends State<ItemViews> {
             //     style: kvrheading,
             //   ),
             // ),
-            Positioned(
+            const Positioned(
               top: 20,
               left: 20,
               child: Text(
@@ -57,7 +54,7 @@ class _ItemViewsState extends State<ItemViews> {
                 style: kvrheading,
               ),
             ),
-            Positioned(
+            const Positioned(
               top: 80,
               left: 20,
               child: Text(
@@ -65,19 +62,19 @@ class _ItemViewsState extends State<ItemViews> {
                 style: kblacktext,
               ),
             ),
-            Positioned(
+            const Positioned(
                 top: 68,
                 left: 70,
                 child: Chipadd(
                   label: '4-GB',
                 )),
-            Positioned(
+            const Positioned(
                 top: 68,
                 left: 150,
                 child: Chipadd(
                   label: '6-GB',
                 )),
-            Positioned(
+            const Positioned(
                 top: 68,
                 left: 230,
                 child: Chipadd(
@@ -90,7 +87,7 @@ class _ItemViewsState extends State<ItemViews> {
               child: SizedBox(
                 width: MediaQuery.of(context).size.width -
                     40, // Adjust the width as needed
-                child: Text(
+                child: const Text(
                   'Lorem Ithe industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five  into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
                   style: TextStyle(
                     fontSize: 16, // Adjust the font size as needed

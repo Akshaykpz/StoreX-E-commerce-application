@@ -1,10 +1,7 @@
-import 'package:cart_stepper/cart_stepper.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/utils/theme/textstyle.dart';
 import 'package:giltezy_2ndproject/widgets/Cart/button.dart';
 import 'package:giltezy_2ndproject/widgets/Cart/cart_items.dart';
-import 'package:giltezy_2ndproject/widgets/Cart/counter_cart.dart';
 
 class Cart extends StatefulWidget {
   const Cart({super.key});

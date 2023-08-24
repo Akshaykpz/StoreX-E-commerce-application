@@ -10,7 +10,7 @@ class SignUpImage extends StatelessWidget {
       colorFilter:
           ColorFilter.mode(Colors.black.withOpacity(0.7), BlendMode.colorBurn),
       child: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage('assets/images/background.jpg'),
                 colorFilter: ColorFilter.mode(Colors.black12, BlendMode.darken),

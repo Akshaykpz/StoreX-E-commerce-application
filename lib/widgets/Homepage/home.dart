@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:giltezy_2ndproject/widgets/Categories/account.dart';
+import 'ads_mobile.dart';
+import 'bottombar.dart';
 import 'package:giltezy_2ndproject/widgets/Cart/cart_view.dart';
 import 'package:giltezy_2ndproject/widgets/Accounts/mainhome.dart';
 import 'package:giltezy_2ndproject/widgets/Categories/catgory_items.dart';
-import 'package:giltezy_2ndproject/widgets/Homepage/ItemView/serach.dart';
-
-import 'ads_mobile.dart';
-import 'bottombar.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -38,8 +35,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: IndexedStack(
                       index: _selectedIndex,
                       children: [
-                        HomePage(),
-                        Cart(),
+                        const HomePage(),
+                        const Cart(),
                         CategoryItems(),
                         Accounts()
                       ],

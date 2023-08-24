@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:giltezy_2ndproject/utils/theme/decoration.dart';
+
 import 'package:giltezy_2ndproject/utils/theme/textstyle.dart';
 
 class OrderText extends StatelessWidget {
@@ -9,13 +9,13 @@ class OrderText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       height: 90.0,
       width: 200.0,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
         color: Colors.teal,
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
             color: Colors.grey,
             blurRadius: 15.0, // soften the shadow

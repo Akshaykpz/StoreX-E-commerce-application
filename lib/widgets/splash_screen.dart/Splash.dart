@@ -28,7 +28,8 @@ class Splashscreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Container(
-                margin: EdgeInsets.symmetric(vertical: 30, horizontal: 40),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 30, horizontal: 40),
                 width: 150.w,
                 height: 50.h,
                 decoration: const BoxDecoration(
@@ -61,7 +62,7 @@ class Splashscreen extends StatelessWidget {
                       builder: (context) => MyLogin(),
                     ));
               },
-              child: Text('haii'))
+              child: const Text('haii'))
         ],
       ),
     );

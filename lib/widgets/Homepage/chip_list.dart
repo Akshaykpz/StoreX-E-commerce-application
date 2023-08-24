@@ -34,7 +34,7 @@ class ItemsGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const SingleChildScrollView(
-      padding: EdgeInsets.all(12),
+      padding: EdgeInsets.all(10),
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [

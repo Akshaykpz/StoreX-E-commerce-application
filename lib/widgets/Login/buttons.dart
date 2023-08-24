@@ -11,19 +11,19 @@ class MyButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: MediaQuery.of(context).size.width * 0.8,
       child: ElevatedButton(
         onPressed: onPressedCallback,
         style: ElevatedButton.styleFrom(
-          backgroundColor: Color.fromARGB(255, 77, 180, 228),
+          backgroundColor: const Color.fromARGB(255, 77, 180, 228),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(25),
           ),
           elevation: 15.0,
         ),
         child: Padding(
-          padding: EdgeInsets.all(13.0),
+          padding: const EdgeInsets.all(13.0),
           child: Text(
             buttontext,
             style: kstext,

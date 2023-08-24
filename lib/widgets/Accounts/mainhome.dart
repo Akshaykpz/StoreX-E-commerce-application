@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/service/sign_out.dart';
 
-import 'package:giltezy_2ndproject/widgets/Accounts/AllSettings/orders.dart';
 import 'package:giltezy_2ndproject/widgets/Accounts/ShippingAddress/shipping_address.dart';
 import 'package:giltezy_2ndproject/widgets/Accounts/AllSettings/wish_list.dart';
 import 'package:giltezy_2ndproject/widgets/Accounts/Order/order_status.dart';
@@ -36,6 +35,11 @@ class Accounts extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
+                margin: EdgeInsets.all(19.0),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(16.0),
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -54,18 +58,6 @@ class Accounts extends StatelessWidget {
                           ),
                           child: CircleAvatar(
                             backgroundColor: Colors.black,
-                            child: Align(
-                              alignment: Alignment.bottomRight,
-                              child: CircleAvatar(
-                                backgroundColor: Colors.white,
-                                radius: 12.0,
-                                child: Icon(
-                                  Icons.camera_alt,
-                                  size: 15.0,
-                                  color: Color(0xFF404040),
-                                ),
-                              ),
-                            ),
                             radius: 50.0,
                             backgroundImage:
                                 AssetImage('assets/images/reallogo.png'),
@@ -76,7 +68,7 @@ class Accounts extends StatelessWidget {
                     Center(
                       child: Container(
                         padding: EdgeInsets.only(top: 10.0),
-                        child: Text(
+                        child: const Text(
                           'AKSHAY KP',
                           style: TextStyle(
                             fontFamily: 'SF Pro',
@@ -89,8 +81,8 @@ class Accounts extends StatelessWidget {
                     Center(
                       child: Container(
                         height: 70,
-                        padding: EdgeInsets.only(top: 8.0),
-                        child: Text(
+                        padding: const EdgeInsets.only(top: 8.0),
+                        child: const Text(
                           '9072951662',
                           style: TextStyle(
                             fontFamily: 'SF Pro',
@@ -100,11 +92,6 @@ class Accounts extends StatelessWidget {
                       ),
                     ),
                   ],
-                ),
-                margin: EdgeInsets.all(19.0),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(16.0),
                 ),
               ),
               MyNewButton(

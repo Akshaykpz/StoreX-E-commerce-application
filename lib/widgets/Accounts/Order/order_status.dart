@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:giltezy_2ndproject/utils/theme/textstyle.dart';
+
 import 'package:giltezy_2ndproject/widgets/Accounts/Order/order_detiles.dart';
-import 'package:timeline_tile/timeline_tile.dart';
 
 class MyOrder extends StatelessWidget {
   const MyOrder({super.key});
@@ -10,7 +9,7 @@ class MyOrder extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(
+          title: const Text(
             'Order Details',
           ),
           centerTitle: true,
@@ -19,7 +18,7 @@ class MyOrder extends StatelessWidget {
           foregroundColor: Colors.black,
         ),
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 50),
+          padding: const EdgeInsets.symmetric(horizontal: 50),
           child: ListView(
             children: const [
               OrderDetiles(

@@ -17,7 +17,7 @@ import '../../service/login_user.dart';
 import '../signin/sigin_page.dart';
 
 class MyLogin extends StatefulWidget {
-  MyLogin({super.key});
+  const MyLogin({super.key});
 
   @override
   State<MyLogin> createState() => _MyLoginState();
@@ -63,7 +63,7 @@ class _MyLoginState extends State<MyLogin> {
                         children: [
                           MyButtons(
                               buttonText: 'Forgot Password',
-                              destinationRoute: ForgotPasswordScreen()),
+                              destinationRoute: const ForgotPasswordScreen()),
                         ],
                       ),
                     ),
@@ -84,7 +84,7 @@ class _MyLoginState extends State<MyLogin> {
                       onPressed: () {
                         handleGoogleSignIn(context);
                       },
-                      style: AuthButtonStyle(
+                      style: const AuthButtonStyle(
                           buttonColor: Colors.white, elevation: 2),
                     ),
                   ],
@@ -109,7 +109,7 @@ class _MyLoginState extends State<MyLogin> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => MySigin(),
+                                    builder: (context) => const MySigin(),
                                   ));
                             },
                             child: const Text(
