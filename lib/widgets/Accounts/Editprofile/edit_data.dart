@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:giltezy_2ndproject/service/profile_data.dart';
 
 import 'package:giltezy_2ndproject/utils/theme/textstyle.dart';
 import 'package:giltezy_2ndproject/widgets/Accounts/Editprofile/edit_profile.dart';
@@ -16,13 +17,45 @@ class EditProfiles extends StatefulWidget {
 
 class _EditProfilesState extends State<EditProfiles> {
   Uint8List? image;
+
   void selectimage() async {
     Uint8List img = await pickimage(ImageSource.gallery);
+    print('Selected image bytes: ${img.lengthInBytes}');
     setState(() {
       image = img;
     });
   }
-  
+
+  Future<void> upload() async {
+    if (image != null) {
+      try {
+        String imageUrl =
+            await StoreData().uploadImage('profileimage.jpg', image!);
+        await StoreData()
+            .savedata(imageUrl: imageUrl); // Make sure to use imageUrl
+
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('Image uploaded successfully'),
+        ));
+
+        setState(() {
+          image = null; // Clear the image after upload
+        });
+
+        Navigator.pop(context);
+      } catch (error) {
+        print('Error uploading image: $error');
+        // ignore: use_build_context_synchronously
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('Error uploading image'),
+        ));
+      }
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text('Please select an image first'),
+      ));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,30 +78,30 @@ class _EditProfilesState extends State<EditProfiles> {
           ),
           Stack(children: [
             SizedBox(
-              child: image != null
-                  ? CircleAvatar(
-                      radius: 70.0,
-                      backgroundImage: MemoryImage(image!),
-                    )
-                  : CircleAvatar(
-                      radius: 70.0,
-                      backgroundColor: Colors.white,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: const BorderRadius.all(Radius.circular(50.0)),
-                          border: Border.all(
-                            color: Colors.grey.shade300,
-                            width: 4.0,
-                          ),
-                        ),
-                        child: CircleAvatar(
+              child: CircleAvatar(
+                radius: 70.0,
+                backgroundColor: Colors.white,
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(66.0)),
+                    border: Border.all(
+                      color: Colors.grey.shade300,
+                      width: 4.0,
+                    ),
+                  ),
+                  child: image != null
+                      ? CircleAvatar(
+                          radius: 70.0,
+                          backgroundImage: MemoryImage(image!),
+                        )
+                      : CircleAvatar(
                           backgroundColor: Colors.black,
                           radius: 50.0,
                           backgroundImage:
                               AssetImage('assets/images/reallogo.png'),
                         ),
-                      ),
-                    ),
+                ),
+              ),
             ),
             Positioned(
               bottom: 20,
@@ -101,7 +134,10 @@ class _EditProfilesState extends State<EditProfiles> {
               height: 50,
               width: 200,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  upload();
+                  Navigator.pop(context);
+                },
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.white,
                   backgroundColor: Colors.teal, // Text color

@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/service/sign_out.dart';
+import 'package:giltezy_2ndproject/widgets/Accounts/admin/admin_page.dart';
 
-import 'package:giltezy_2ndproject/widgets/Accounts/ShippingAddress/shipping_address.dart';
-import 'package:giltezy_2ndproject/widgets/Accounts/AllSettings/wish_list.dart';
-import 'package:giltezy_2ndproject/widgets/Accounts/Order/order_status.dart';
+import 'package:giltezy_2ndproject/widgets/Accounts/shippingAddress/shipping_address.dart';
+import 'package:giltezy_2ndproject/widgets/Accounts/allSettings/wish_list.dart';
+import 'package:giltezy_2ndproject/widgets/Accounts/order/order_status.dart';
 
 import 'package:giltezy_2ndproject/widgets/Accounts/buttons.dart';
 
-import 'Editprofile/edit_data.dart';
+import 'editprofile/edit_data.dart';
 
 class Accounts extends StatelessWidget {
   @override
@@ -93,6 +94,13 @@ class Accounts extends StatelessWidget {
                     ),
                   ],
                 ),
+              ),
+              MyNewButton(
+                onPressedCallback: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => AdminPage()));
+                },
+                buttontext: 'Admin',
               ),
               MyNewButton(
                   onPressedCallback: () {
