@@ -1,10 +1,28 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 
 import 'package:giltezy_2ndproject/utils/theme/textstyle.dart';
 import 'package:giltezy_2ndproject/widgets/Accounts/Editprofile/edit_profile.dart';
+import 'package:giltezy_2ndproject/widgets/Accounts/Editprofile/image_picker.dart';
+import 'package:image_picker/image_picker.dart';
 
-class EditProfiles extends StatelessWidget {
+class EditProfiles extends StatefulWidget {
   const EditProfiles({super.key});
+
+  @override
+  State<EditProfiles> createState() => _EditProfilesState();
+}
+
+class _EditProfilesState extends State<EditProfiles> {
+  Uint8List? image;
+  void selectimage() async {
+    Uint8List img = await pickimage(ImageSource.gallery);
+    setState(() {
+      image = img;
+    });
+  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -27,24 +45,30 @@ class EditProfiles extends StatelessWidget {
           ),
           Stack(children: [
             SizedBox(
-              child: CircleAvatar(
-                radius: 70.0,
-                backgroundColor: Colors.white,
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(50.0)),
-                    border: Border.all(
-                      color: Colors.grey.shade300,
-                      width: 4.0,
+              child: image != null
+                  ? CircleAvatar(
+                      radius: 70.0,
+                      backgroundImage: MemoryImage(image!),
+                    )
+                  : CircleAvatar(
+                      radius: 70.0,
+                      backgroundColor: Colors.white,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: const BorderRadius.all(Radius.circular(50.0)),
+                          border: Border.all(
+                            color: Colors.grey.shade300,
+                            width: 4.0,
+                          ),
+                        ),
+                        child: CircleAvatar(
+                          backgroundColor: Colors.black,
+                          radius: 50.0,
+                          backgroundImage:
+                              AssetImage('assets/images/reallogo.png'),
+                        ),
+                      ),
                     ),
-                  ),
-                  child: CircleAvatar(
-                    backgroundColor: Colors.black,
-                    radius: 50.0,
-                    backgroundImage: AssetImage('assets/images/reallogo.png'),
-                  ),
-                ),
-              ),
             ),
             Positioned(
               bottom: 20,
@@ -52,7 +76,9 @@ class EditProfiles extends StatelessWidget {
               child: CircleAvatar(
                   backgroundColor: Colors.teal,
                   child: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        selectimage();
+                      },
                       icon: const Icon(
                         Icons.edit,
                         color: Colors.white,
