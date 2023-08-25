@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:giltezy_2ndproject/widgets/Homepage/home.dart';
 
 class AdminButtons extends StatelessWidget {
   final String text;
   final IconData? icon;
-  const AdminButtons({super.key, required this.text, this.icon});
+  final VoidCallback onPressedCallback;
+
+  const AdminButtons(
+      {super.key,
+      required this.text,
+      this.icon,
+      required this.onPressedCallback});
 
   @override
   Widget build(BuildContext context) {
@@ -12,11 +17,7 @@ class AdminButtons extends StatelessWidget {
       padding: const EdgeInsets.all(12.0),
       child: GestureDetector(
         onTap: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => MyHomePage(),
-              ));
+          onPressedCallback();
         },
         child: Container(
           child: Center(
