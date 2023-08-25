@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/widgets/Homepage/home.dart';
-import 'package:giltezy_2ndproject/widgets/Login/login_page.dart';
-import 'package:iconify_flutter/iconify_flutter.dart';
 
 class AdminButtons extends StatelessWidget {
   final String text;
