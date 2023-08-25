@@ -46,8 +46,8 @@ dependencies:
   babylonjs_viewer: ^1.2.1
   avatar_glow: ^2.0.2
   carousel_slider: ^4.2.1
-  sliding_up_panel: ^2.0.0+1
-  google_fonts: ^5.1.0
+  # sliding_up_panel: ^2.0.0+1
+  # google_fonts: ^5.1.0
  
   flutter_cache_manager: ^3.3.1
   badges: ^3.1.1

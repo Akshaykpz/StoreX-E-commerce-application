@@ -3,7 +3,10 @@ import 'package:giltezy_2ndproject/utils/theme/decoration.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomePageviews extends StatefulWidget {
+  const HomePageviews({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _HomePageState createState() => _HomePageState();
 }
 
@@ -19,11 +22,11 @@ class _HomePageState extends State<HomePageviews> {
                 borderRadius: BorderRadius.circular(16),
                 color: Colors.grey.shade300,
               ),
-              margin: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+              margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
               child: Container(
                 color: Colors.black,
-                child: Image.asset(sliderimages[index]),
                 height: 300,
+                child: Image.asset(sliderimages[index]),
               ),
             )).toList();
 
@@ -33,8 +36,8 @@ class _HomePageState extends State<HomePageviews> {
         actions: [
           IconButton(
               onPressed: () {},
-              icon: Padding(
-                padding: const EdgeInsets.only(right: 9),
+              icon: const Padding(
+                padding: EdgeInsets.only(right: 9),
                 child: Icon(
                   Icons.shopping_cart,
                   color: Colors.black,
@@ -49,8 +52,8 @@ class _HomePageState extends State<HomePageviews> {
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Container(
+            children: [
+              SizedBox(
                 height: 230,
                 child: PageView.builder(
                   controller: controller,
@@ -60,8 +63,8 @@ class _HomePageState extends State<HomePageviews> {
                   },
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 5, bottom: 7),
+              const Padding(
+                padding: EdgeInsets.only(top: 5, bottom: 7),
               ),
               SmoothPageIndicator(
                 controller: controller,

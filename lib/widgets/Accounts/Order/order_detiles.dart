@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:giltezy_2ndproject/widgets/Accounts/Order/order_text.dart';
+import 'package:giltezy_2ndproject/widgets/Accounts/order/order_text.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
 class OrderDetiles extends StatelessWidget {
   final bool isfrist;
   final bool islast;
   final bool ispast;
+  // ignore: prefer_typing_uninitialized_variables
   final texts;
   const OrderDetiles(
       {super.key,
@@ -19,7 +20,7 @@ class OrderDetiles extends StatelessWidget {
     return SizedBox(
       height: 220,
       child: TimelineTile(
-        beforeLineStyle: LineStyle(
+        beforeLineStyle: const LineStyle(
           color: Colors.teal,
         ),
         indicatorStyle: IndicatorStyle(

@@ -7,6 +7,7 @@ class CartItemsviews extends StatelessWidget {
   final String descriptions;
 
   const CartItemsviews({
+    super.key,
     required this.descriptions,
     required this.imagePath, // Change the parameter type here
     required this.price,
@@ -19,14 +20,14 @@ class CartItemsviews extends StatelessWidget {
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(7), // Rounded corners
-          side: BorderSide(
+          side: const BorderSide(
               color: Colors.black26, width: 2), // Border color and width
         ),
         elevation: 2.0,
         child: Row(
           children: [
             Container(
-              padding: EdgeInsets.all(5),
+              padding: const EdgeInsets.all(5),
               width: 90,
               height: 90,
               child: Image.asset(
@@ -42,15 +43,15 @@ class CartItemsviews extends StatelessWidget {
                   children: [
                     Text(
                       descriptions,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Text(
                       price,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w400,
                       ),
@@ -59,7 +60,7 @@ class CartItemsviews extends StatelessWidget {
                 ),
               ),
             ),
-            CounterCart()
+            const CounterCart()
           ],
         ),
       ),

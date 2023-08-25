@@ -31,6 +31,8 @@ import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/widgets/Homepage/chip.dart'; // Import other necessary dependencies
 
 class ItemsGrid extends StatelessWidget {
+  const ItemsGrid({super.key});
+
   @override
   Widget build(BuildContext context) {
     return const SingleChildScrollView(

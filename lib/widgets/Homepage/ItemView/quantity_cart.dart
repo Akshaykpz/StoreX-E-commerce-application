@@ -23,7 +23,7 @@ class _MyHomePageState extends State<QuantiyPage> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        Container(
+        SizedBox(
           height: 50,
           width: 130,
           child: Padding(

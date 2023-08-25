@@ -9,21 +9,21 @@ Future<void> showSignOutDialog(BuildContext context) async {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: Text('Sign Out'),
-        content: Text('Are you sure you want to sign out?'),
+        title: const Text('Sign Out'),
+        content: const Text('Are you sure you want to sign out?'),
         actions: <Widget>[
           TextButton(
             onPressed: () {
               Navigator.of(context).pop(); // Close the dialog
             },
-            child: Text('Cancel'),
+            child: const Text('Cancel'),
           ),
           TextButton(
             onPressed: () {
               Navigator.of(context).pop(); // Close the dialog
               _handleSignOut(context); // Call the sign-out function
             },
-            child: Text('Sign Out'),
+            child: const Text('Sign Out'),
           ),
         ],
       );
@@ -38,19 +38,20 @@ Future<void> _handleSignOut(BuildContext context) async {
       builder: (context) {
         return AlertDialog(
           backgroundColor: Colors.white, // Set background color
-          contentTextStyle: TextStyle(color: Colors.black), // Set text color
+          contentTextStyle:
+              const TextStyle(color: Colors.black), // Set text color
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              CircularProgressIndicator(
+              const CircularProgressIndicator(
                 color: Colors.black, // Set indicator color
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextButton(
                 onPressed: () {
                   Navigator.pop(context); // Close the dialog
                 },
-                child: Text('Reset'),
+                child: const Text('Reset'),
               ),
             ],
           ),
@@ -61,7 +62,7 @@ Future<void> _handleSignOut(BuildContext context) async {
     await FirebaseAuth.instance.signOut().then((value) {
       Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (context) => MyLogin()),
+        MaterialPageRoute(builder: (context) => const MyLogin()),
         (route) => false,
       );
     });

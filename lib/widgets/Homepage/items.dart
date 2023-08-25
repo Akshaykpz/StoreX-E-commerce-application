@@ -5,7 +5,10 @@ import 'package:giltezy_2ndproject/widgets/Homepage/ItemView/item_view.dart';
 import 'package:like_button/like_button.dart';
 
 class SecondGrid extends StatefulWidget {
+  const SecondGrid({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _SecondGridState createState() => _SecondGridState();
 }
 
@@ -29,7 +32,7 @@ class _SecondGridState extends State<SecondGrid> {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         crossAxisSpacing: 1.0,
         mainAxisSpacing: 1.0,
@@ -46,7 +49,7 @@ class _SecondGridState extends State<SecondGrid> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ItemViews(),
+                    builder: (context) => const ItemViews(),
                   ));
             },
             child: Card(
@@ -66,14 +69,12 @@ class _SecondGridState extends State<SecondGrid> {
                         height: 150,
                         fit: BoxFit.fitWidth,
                       ),
-                      Positioned(
+                      const Positioned(
                         top: 0,
                         right: 3,
                         bottom: 190,
-                        child: Container(
-                          child: LikeButton(
-                            size: 29,
-                          ),
+                        child: LikeButton(
+                          size: 29,
                         ),
                       ),
                     ],
@@ -87,7 +88,7 @@ class _SecondGridState extends State<SecondGrid> {
                         style: kcdtext,
                       ),
                       const Text(
-                        '\₹${2000}',
+                        '₹${2000}',
                         style: kxbutton,
                       ),
                     ],

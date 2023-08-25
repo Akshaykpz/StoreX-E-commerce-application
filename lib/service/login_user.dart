@@ -17,7 +17,7 @@ Future<void> handleLogin(
     showDialog(
         context: context,
         builder: (context) {
-          return Center(
+          return const Center(
               child: CircularProgressIndicator(
             color: AppUtils.gkwhite,
           ));
@@ -37,7 +37,7 @@ Future<void> handleLogin(
         .then((value) => Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => MyHomePage(),
+                builder: (context) => const MyHomePage(),
               ),
             ));
   } on FirebaseAuthException catch (e) {

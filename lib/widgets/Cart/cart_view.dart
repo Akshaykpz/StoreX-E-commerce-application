@@ -17,20 +17,20 @@ class _CartState extends State<Cart> {
       appBar: AppBar(
         foregroundColor: Colors.black,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_new_outlined),
+          icon: const Icon(Icons.arrow_back_ios_new_outlined),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
         elevation: 0,
         backgroundColor: Colors.white,
-        title: Text(
+        title: const Text(
           'My Cart',
           style: kvrheading,
         ),
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
+      body: const SingleChildScrollView(
         child: Column(
           children: [
             SizedBox(

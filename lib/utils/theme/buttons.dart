@@ -5,7 +5,8 @@ class MyButtons extends StatelessWidget {
   final String buttonText;
   final Widget destinationRoute;
 
-  MyButtons({required this.buttonText, required this.destinationRoute});
+  const MyButtons(
+      {super.key, required this.buttonText, required this.destinationRoute});
 
   @override
   Widget build(BuildContext context) {

@@ -1,8 +1,7 @@
 import 'dart:typed_data';
-
+import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/material.dart';
 
 final FirebaseStorage storage = FirebaseStorage.instance;
 final FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -20,8 +19,8 @@ class StoreData {
     try {
       await firestore.collection('userprofile').add({'imagelink': imageUrl});
     } catch (error) {
-      print('Error saving data: $error');
-      throw error;
+      log('error:$error');
+      rethrow;
     }
   }
 }

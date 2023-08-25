@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -27,12 +29,13 @@ Future<void> handleGoogleSignIn(BuildContext context) async {
     await FirebaseAuth.instance.signInWithCredential(credential);
 
     // Navigate to the home page after successful sign-in
+    // ignore: use_build_context_synchronously
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => MyHomePage()),
+      MaterialPageRoute(builder: (context) => const MyHomePage()),
     );
   } catch (e) {
     // Handle sign-in error
-    print('Error signing in with Google: $e');
+    log('Error signing in with Google: $e');
   }
 }

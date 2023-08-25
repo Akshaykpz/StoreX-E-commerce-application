@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
-Icon emailIcon = Icon(Icons.email);
+Icon emailIcon = const Icon(Icons.email);
 
-Icon PasswordIcon = Icon(Icons.lock);
+// ignore: non_constant_identifier_names
+Icon PasswordIcon = const Icon(Icons.lock);

@@ -13,7 +13,7 @@ import 'editprofile/edit_data.dart';
 
 // ignore: must_be_immutable
 class Accounts extends StatefulWidget {
-  Accounts({super.key});
+  const Accounts({super.key});
 
   @override
   State<Accounts> createState() => _AccountsState();
@@ -30,7 +30,7 @@ class _AccountsState extends State<Accounts> {
     return Scaffold(
         appBar: AppBar(
           leading: IconButton(
-            icon: Icon(Icons.arrow_back),
+            icon: const Icon(Icons.arrow_back),
             onPressed: () {
               Navigator.pop(
                   context); // Navigate back when the button is pressed
@@ -50,7 +50,7 @@ class _AccountsState extends State<Accounts> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                margin: EdgeInsets.all(19.0),
+                margin: const EdgeInsets.all(19.0),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(16.0),
@@ -65,13 +65,13 @@ class _AccountsState extends State<Accounts> {
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius:
-                                BorderRadius.all(Radius.circular(50.0)),
+                                const BorderRadius.all(Radius.circular(50.0)),
                             border: Border.all(
                               color: Colors.grey.shade300,
                               width: 4.0,
                             ),
                           ),
-                          child: CircleAvatar(
+                          child: const CircleAvatar(
                             backgroundColor: Colors.black,
                             radius: 50.0,
                             backgroundImage:
@@ -82,7 +82,7 @@ class _AccountsState extends State<Accounts> {
                     ),
                     Center(
                       child: Container(
-                        padding: EdgeInsets.only(top: 10.0),
+                        padding: const EdgeInsets.only(top: 10.0),
                         child: const Text(
                           'AKSHAY KP',
                           style: TextStyle(
@@ -114,7 +114,8 @@ class _AccountsState extends State<Accounts> {
                       onPressedCallback: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => AdminPage()),
+                          MaterialPageRoute(
+                              builder: (context) => const AdminPage()),
                         );
 
                         // Handle user login
@@ -122,27 +123,29 @@ class _AccountsState extends State<Accounts> {
                       },
                       buttontext: 'Admin',
                     )
-                  : SizedBox(),
+                  : const SizedBox(),
               MyNewButton(
                   onPressedCallback: () {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => EditProfiles(),
+                          builder: (context) => const EditProfiles(),
                         ));
                   },
                   buttontext: 'Edit Profile'),
               MyNewButton(
                 onPressedCallback: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => WishList()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const WishList()));
                 },
                 buttontext: 'Wishlist',
               ),
               MyNewButton(
                 onPressedCallback: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => MyOrder()));
+                      MaterialPageRoute(builder: (context) => const MyOrder()));
                 },
                 buttontext: 'Orders',
               ),
@@ -151,7 +154,7 @@ class _AccountsState extends State<Accounts> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => ShippingAddress()));
+                          builder: (context) => const ShippingAddress()));
                 },
                 buttontext: 'Shipping Address',
               ),

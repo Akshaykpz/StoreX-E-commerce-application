@@ -56,14 +56,14 @@ class _MyLoginState extends State<MyLogin> {
                       hinttext: 'password',
                       obcuretext: false,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 23),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 23),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           MyButtons(
                               buttonText: 'Forgot Password',
-                              destinationRoute: const ForgotPasswordScreen()),
+                              destinationRoute: ForgotPasswordScreen()),
                         ],
                       ),
                     ),

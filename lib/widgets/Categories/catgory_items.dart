@@ -6,7 +6,10 @@ import 'package:like_button/like_button.dart';
 import '../Homepage/chip_list.dart';
 
 class CategoryItems extends StatefulWidget {
+  const CategoryItems({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _SecondGridState createState() => _SecondGridState();
 }
 
@@ -33,10 +36,10 @@ class _SecondGridState extends State<CategoryItems> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        ItemsGrid(),
+        const ItemsGrid(),
         Expanded(
           child: GridView.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               crossAxisSpacing: 1.0,
               mainAxisSpacing: 1.0,
@@ -53,7 +56,7 @@ class _SecondGridState extends State<CategoryItems> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ItemViews(),
+                          builder: (context) => const ItemViews(),
                         ));
                   },
                   child: Card(
@@ -74,14 +77,12 @@ class _SecondGridState extends State<CategoryItems> {
                               height: 150,
                               fit: BoxFit.fitWidth,
                             ),
-                            Positioned(
+                            const Positioned(
                               top: 0,
                               right: 3,
                               bottom: 190,
-                              child: Container(
-                                child: LikeButton(
-                                  size: 29,
-                                ),
+                              child: LikeButton(
+                                size: 29,
                               ),
                             ),
                           ],
@@ -95,7 +96,7 @@ class _SecondGridState extends State<CategoryItems> {
                               style: kcdtext,
                             ),
                             const Text(
-                              '\₹${2000}',
+                              '₹${2000}',
                               style: kxbutton,
                             ),
                           ],

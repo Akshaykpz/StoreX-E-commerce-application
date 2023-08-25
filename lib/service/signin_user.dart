@@ -26,7 +26,7 @@ Future<void> handleSignUp({
     showDialog(
         context: context,
         builder: (context) {
-          return Center(
+          return const Center(
               child: CircularProgressIndicator(
             color: AppUtils.gkwhite,
           ));
@@ -38,7 +38,7 @@ Future<void> handleSignUp({
           (value) => Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => MyHomePage(),
+              builder: (context) => const MyHomePage(),
             ),
           ),
         );

@@ -1,3 +1,4 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:giltezy_2ndproject/utils/theme/theme.dart';
@@ -41,7 +42,7 @@ class Splashscreen extends StatelessWidget {
               Container(
                 width: 220.w,
                 height: 180.h,
-                margin: EdgeInsets.only(
+                margin: const EdgeInsets.only(
                   left: 85,
                   bottom: 70,
                 ),
@@ -59,7 +60,7 @@ class Splashscreen extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => MyLogin(),
+                      builder: (context) => const MyLogin(),
                     ));
               },
               child: const Text('haii'))

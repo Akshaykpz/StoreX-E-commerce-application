@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -62,8 +61,8 @@ class _FavoritesPageState extends State<HomePage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Serach(),
-          SizedBox(
+          const Serach(),
+          const SizedBox(
             height: 19,
           ),
           CarouselSlider(
@@ -109,12 +108,12 @@ class _FavoritesPageState extends State<HomePage> {
                 onPressed: () {
                   // Navigator.push(context, MaterialPageRoute(builder: (context) => ,))
                 },
-                child: Text('See All'),
+                child: const Text('See All'),
               ),
             ],
           ),
-          ItemsGrid(),
-          Expanded(child: SecondGrid())
+          const ItemsGrid(),
+          const Expanded(child: SecondGrid())
         ],
       ),
     );

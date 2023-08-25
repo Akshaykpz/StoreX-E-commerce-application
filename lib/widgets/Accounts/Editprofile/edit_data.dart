@@ -1,11 +1,12 @@
+import 'dart:developer';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/service/profile_data.dart';
 
 import 'package:giltezy_2ndproject/utils/theme/textstyle.dart';
-import 'package:giltezy_2ndproject/widgets/Accounts/Editprofile/edit_profile.dart';
-import 'package:giltezy_2ndproject/widgets/Accounts/Editprofile/image_picker.dart';
+import 'package:giltezy_2ndproject/widgets/Accounts/editprofile/edit_profile.dart';
+import 'package:giltezy_2ndproject/widgets/Accounts/editprofile/image_picker.dart';
 import 'package:image_picker/image_picker.dart';
 
 class EditProfiles extends StatefulWidget {
@@ -20,7 +21,7 @@ class _EditProfilesState extends State<EditProfiles> {
 
   void selectimage() async {
     Uint8List img = await pickimage(ImageSource.gallery);
-    print('Selected image bytes: ${img.lengthInBytes}');
+    log('Selected image bytes: ${img.lengthInBytes}');
     setState(() {
       image = img;
     });
@@ -34,6 +35,7 @@ class _EditProfilesState extends State<EditProfiles> {
         await StoreData()
             .savedata(imageUrl: imageUrl); // Make sure to use imageUrl
 
+        // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text('Image uploaded successfully'),
         ));
@@ -42,16 +44,17 @@ class _EditProfilesState extends State<EditProfiles> {
           image = null; // Clear the image after upload
         });
 
+        // ignore: use_build_context_synchronously
         Navigator.pop(context);
       } catch (error) {
-        print('Error uploading image: $error');
+        log('Error uploading image: $error');
         // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text('Error uploading image'),
         ));
       }
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text('Please select an image first'),
       ));
     }
@@ -94,7 +97,7 @@ class _EditProfilesState extends State<EditProfiles> {
                           radius: 70.0,
                           backgroundImage: MemoryImage(image!),
                         )
-                      : CircleAvatar(
+                      : const CircleAvatar(
                           backgroundColor: Colors.black,
                           radius: 50.0,
                           backgroundImage:

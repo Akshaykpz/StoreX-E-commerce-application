@@ -31,74 +31,72 @@ class _ItemViewsState extends State<ItemViews> {
     return Scaffold(
         body: Column(
       children: [
-        Expanded(
+        const Expanded(
           child: HomePageviews(),
         ),
-        QuantiyPage(),
+        const QuantiyPage(),
         Expanded(
-            child: Container(
-          child: Stack(children: [
-            // Positioned(
-            //   top: 20,
-            //   left: 20,
-            //   child: Text(
-            //     'Description',
-            //     style: kvrheading,
-            //   ),
-            // ),
-            const Positioned(
-              top: 20,
-              left: 20,
-              child: Text(
-                'SAMSUNG A -12',
-                style: kvrheading,
-              ),
+            child: Stack(children: [
+          // Positioned(
+          //   top: 20,
+          //   left: 20,
+          //   child: Text(
+          //     'Description',
+          //     style: kvrheading,
+          //   ),
+          // ),
+          const Positioned(
+            top: 20,
+            left: 20,
+            child: Text(
+              'SAMSUNG A -12',
+              style: kvrheading,
             ),
-            const Positioned(
-              top: 80,
-              left: 20,
-              child: Text(
-                'RAM -',
-                style: kblacktext,
-              ),
+          ),
+          const Positioned(
+            top: 80,
+            left: 20,
+            child: Text(
+              'RAM -',
+              style: kblacktext,
             ),
-            const Positioned(
-                top: 68,
-                left: 70,
-                child: Chipadd(
-                  label: '4-GB',
-                )),
-            const Positioned(
-                top: 68,
-                left: 150,
-                child: Chipadd(
-                  label: '6-GB',
-                )),
-            const Positioned(
-                top: 68,
-                left: 230,
-                child: Chipadd(
-                  label: '8-GB',
-                  isSelected: true,
-                )),
-            Positioned(
-              top: 118,
-              left: 20,
-              child: SizedBox(
-                width: MediaQuery.of(context).size.width -
-                    40, // Adjust the width as needed
-                child: const Text(
-                  'Lorem Ithe industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five  into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-                  style: TextStyle(
-                    fontSize: 16, // Adjust the font size as needed
-                    color: Colors.black,
-                  ),
-                  textAlign: TextAlign.left, // Align the text to the left
+          ),
+          const Positioned(
+              top: 68,
+              left: 70,
+              child: Chipadd(
+                label: '4-GB',
+              )),
+          const Positioned(
+              top: 68,
+              left: 150,
+              child: Chipadd(
+                label: '6-GB',
+              )),
+          const Positioned(
+              top: 68,
+              left: 230,
+              child: Chipadd(
+                label: '8-GB',
+                isSelected: true,
+              )),
+          Positioned(
+            top: 118,
+            left: 20,
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width -
+                  40, // Adjust the width as needed
+              child: const Text(
+                'Lorem Ithe industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five  into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+                style: TextStyle(
+                  fontSize: 16, // Adjust the font size as needed
+                  color: Colors.black,
                 ),
+                textAlign: TextAlign.left, // Align the text to the left
               ),
             ),
-          ]),
-        )),
+          ),
+        ])),
         Padding(
           padding: const EdgeInsets.only(bottom: 29),
           child: AnimatedButton(
@@ -107,13 +105,13 @@ class _ItemViewsState extends State<ItemViews> {
             height: 50,
             width: 200,
             text: 'BUY NOW',
-            gradient: LinearGradient(colors: [Colors.red, Colors.purple]),
-            selectedGradientColor: LinearGradient(
+            gradient: const LinearGradient(colors: [Colors.red, Colors.purple]),
+            selectedGradientColor: const LinearGradient(
                 colors: [Colors.pinkAccent, Colors.purpleAccent]),
             isReverse: true,
             selectedTextColor: Colors.black,
             transitionType: TransitionType.LEFT_CENTER_ROUNDER,
-            textStyle: TextStyle(
+            textStyle: const TextStyle(
                 fontSize: 20,
                 letterSpacing: 5,
                 color: Colors.white,

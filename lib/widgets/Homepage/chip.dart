@@ -130,9 +130,9 @@ class Chipadd extends StatelessWidget {
     final backgroundColor = isSelected ? selectedColor : Colors.white;
 
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 12),
       child: Container(
-        padding: EdgeInsets.only(left: 4, right: 14),
+        padding: const EdgeInsets.only(left: 4, right: 14),
         decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(Radius.circular(12)),
           border: Border.all(
@@ -153,7 +153,7 @@ class Chipadd extends StatelessWidget {
             SizedBox(width: 5.w),
             Text(
               label,
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.w500,
                 fontSize: 18,
                 color: Colors.black,

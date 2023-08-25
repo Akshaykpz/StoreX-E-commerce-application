@@ -5,13 +5,13 @@ class Serach extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 350,
       child: TextField(
           autofocus: true,
           // ...
           decoration: InputDecoration(
-            prefixIcon: Icon(Icons.search),
+            prefixIcon: const Icon(Icons.search),
             fillColor: Colors.grey[320],
             filled: true,
 
@@ -23,7 +23,7 @@ class Serach extends StatelessWidget {
 
             //                border: InputBorder.none,
             //                hintText: "My Custom Search Label", // KEY PROP
-            hintStyle: TextStyle(color: Colors.black), // KEY PROP
+            hintStyle: const TextStyle(color: Colors.black), // KEY PROP
           )),
     );
   }

@@ -5,7 +5,8 @@ class CustomBottomNavigationBar extends StatelessWidget {
   final int selectedIndex;
   final ValueChanged<int> onTabChange;
 
-  CustomBottomNavigationBar({
+  const CustomBottomNavigationBar({
+    super.key,
     required this.selectedIndex,
     required this.onTabChange,
   });
@@ -14,7 +15,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Divider(thickness: 1, color: Colors.black),
+        const Divider(thickness: 1, color: Colors.black),
         Container(
             height: 70,
             color: Colors.transparent,
@@ -26,7 +27,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
                 color: Colors.black,
                 activeColor: Colors.white,
                 tabBackgroundColor: Colors.teal,
-                padding: EdgeInsets.all(15),
+                padding: const EdgeInsets.all(15),
                 tabs: const [
                   GButton(
                     icon: Icons.home,

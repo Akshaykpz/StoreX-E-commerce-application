@@ -4,7 +4,7 @@ class MyNewButton extends StatelessWidget {
   final String buttontext;
   final VoidCallback onPressedCallback;
 
-  MyNewButton({
+  const MyNewButton({
     super.key,
     required this.buttontext,
     required this.onPressedCallback,
@@ -12,15 +12,15 @@ class MyNewButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 70,
       width: MediaQuery.of(context).size.width * 0.9,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            primary: Colors.white,
-            side: BorderSide(width: 3, color: Colors.white),
+            backgroundColor: Colors.white,
+            side: const BorderSide(width: 3, color: Colors.white),
             elevation: 3,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
@@ -30,7 +30,7 @@ class MyNewButton extends StatelessWidget {
           onPressed: onPressedCallback,
           child: Text(
             buttontext,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 17,
               fontWeight: FontWeight.w700,
               // Set the text color here

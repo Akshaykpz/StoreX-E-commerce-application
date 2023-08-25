@@ -6,7 +6,7 @@ class MyButton extends StatelessWidget {
   final String buttontext;
   final VoidCallback onPressedCallback;
 
-  MyButton(
+  const MyButton(
       {super.key, required this.buttontext, required this.onPressedCallback});
 
   @override

@@ -7,6 +7,8 @@ import 'package:giltezy_2ndproject/widgets/Accounts/mainhome.dart';
 import 'package:giltezy_2ndproject/widgets/Categories/catgory_items.dart';
 
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -34,9 +36,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   Expanded(
                     child: IndexedStack(
                       index: _selectedIndex,
-                      children: [
-                        const HomePage(),
-                        const Cart(),
+                      children: const [
+                        HomePage(),
+                        Cart(),
                         CategoryItems(),
                         Accounts()
                       ],

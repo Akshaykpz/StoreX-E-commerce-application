@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/utils/theme/theme.dart';
 
 class MyTextformFiled extends StatelessWidget {
+  // ignore: prefer_typing_uninitialized_variables
   final controller;
   final String? hinttext;
   final bool? obcuretext;
