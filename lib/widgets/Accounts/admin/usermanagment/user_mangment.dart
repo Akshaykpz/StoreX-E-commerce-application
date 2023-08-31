@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:giltezy_2ndproject/widgets/Accounts/admin/usermanagment/admintext.dart';
+import 'package:giltezy_2ndproject/widgets/Accounts/admin/usermanagment/users_list.dart';
 
 class MyUserManagment extends StatelessWidget {
   const MyUserManagment({super.key});
@@ -15,15 +17,24 @@ class MyUserManagment extends StatelessWidget {
         Card(
           elevation: 2,
           child: Container(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 24,
+            ),
             height: 53,
             width: 400,
             color: Colors.white,
-            child: Row(
+            child: const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [Text("Users"), Text("Actions"), Text("Status")]),
+                children: [
+                  AdminText(text: 'Users'),
+                  AdminText(text: 'Status'),
+                ]),
           ),
-        )
+        ),
+        UserList(),
+        UserList(),
+        UserList(),
+        UserList()
       ]),
     );
   }
