@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flip_card/flip_card.dart';
 import 'package:flip_card/flip_card_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:giltezy_2ndproject/utils/theme/decoration.dart';
 
 class AppbarUi extends StatefulWidget {
   const AppbarUi({super.key});
@@ -13,10 +12,10 @@ class AppbarUi extends StatefulWidget {
 }
 
 class _AppbarUiState extends State<AppbarUi> {
-  FlipCardController _controller = FlipCardController();
+  final FlipCardController _controller = FlipCardController();
   bool _isFlipped = false;
   Timer? _timer;
-  int _flipInterval = 2; // Flip interval in seconds
+  final int _flipInterval = 2; // Flip interval in seconds
 
   @override
   void initState() {
@@ -76,11 +75,11 @@ class _AppbarUiState extends State<AppbarUi> {
               side: _isFlipped ? CardSide.BACK : CardSide.FRONT,
               front: Container(
                 color: Colors.pink.shade50,
-                child: Center(),
+                child: const Center(),
               ),
               back: Container(
                 color: Colors.pink.shade50,
-                child: Center(),
+                child: const Center(),
               ),
             ),
           ),
