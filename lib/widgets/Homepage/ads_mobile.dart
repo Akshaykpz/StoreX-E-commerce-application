@@ -112,7 +112,7 @@ class _FavoritesPageState extends State<HomePage> {
               ),
             ],
           ),
-          const ItemsGrid(),
+          ItemsGrid(),
           const Expanded(child: SecondGrid())
         ],
       ),

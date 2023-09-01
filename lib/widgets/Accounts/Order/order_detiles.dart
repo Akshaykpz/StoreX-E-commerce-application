@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:giltezy_2ndproject/widgets/Accounts/order/order_text.dart';
+import 'package:giltezy_2ndproject/widgets/accounts/order/order_text.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
 class OrderDetiles extends StatelessWidget {

@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:giltezy_2ndproject/utils/theme/theme.dart';
-import 'package:giltezy_2ndproject/widgets/Login/login_page.dart';
+import 'package:giltezy_2ndproject/widgets/login/login_page.dart';
 
 class Splashscreen extends StatelessWidget {
   const Splashscreen({super.key});

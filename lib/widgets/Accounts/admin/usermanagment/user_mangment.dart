@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:giltezy_2ndproject/widgets/Accounts/admin/usermanagment/admintext.dart';
-import 'package:giltezy_2ndproject/widgets/Accounts/admin/usermanagment/users_list.dart';
+import 'package:giltezy_2ndproject/widgets/accounts/admin/usermanagment/admintext.dart';
+import 'package:giltezy_2ndproject/widgets/accounts/admin/usermanagment/users_list.dart';
 
 class MyUserManagment extends StatelessWidget {
   const MyUserManagment({super.key});

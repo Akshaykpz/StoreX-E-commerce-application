@@ -128,7 +128,6 @@ class Chipadd extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final backgroundColor = isSelected ? selectedColor : Colors.white;
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 12),
       child: Container(

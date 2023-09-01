@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/utils/theme/textstyle.dart';
-import 'package:giltezy_2ndproject/widgets/Cart/button.dart';
-import 'package:giltezy_2ndproject/widgets/Cart/cart_items.dart';
+import 'package:giltezy_2ndproject/widgets/cart/button.dart';
+import 'package:giltezy_2ndproject/widgets/cart/cart_items.dart';
 
 class Cart extends StatefulWidget {
   const Cart({super.key});

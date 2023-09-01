@@ -36,7 +36,7 @@ class _SecondGridState extends State<CategoryItems> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const ItemsGrid(),
+        ItemsGrid(),
         Expanded(
           child: GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

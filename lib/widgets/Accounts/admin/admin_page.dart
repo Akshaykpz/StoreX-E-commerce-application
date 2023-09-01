@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:giltezy_2ndproject/widgets/Accounts/admin/appbar.dart';
+import 'package:giltezy_2ndproject/widgets/accounts/admin/appbar.dart';
 
-import 'package:giltezy_2ndproject/widgets/Accounts/admin/buttons.dart';
-import 'package:giltezy_2ndproject/widgets/Accounts/admin/categorymangment/category_mgt.dart';
-import 'package:giltezy_2ndproject/widgets/Accounts/admin/dashboard/dash_board.dart';
-import 'package:giltezy_2ndproject/widgets/Accounts/admin/productmanagment/product_managment.dart';
-import 'package:giltezy_2ndproject/widgets/Accounts/admin/usermanagment/user_mangment.dart';
+import 'package:giltezy_2ndproject/widgets/accounts/admin/buttons.dart';
+import 'package:giltezy_2ndproject/widgets/accounts/admin/categorymangment/category_mgt.dart';
+import 'package:giltezy_2ndproject/widgets/accounts/admin/dashboard/dash_board.dart';
+import 'package:giltezy_2ndproject/widgets/accounts/admin/productmanagment/product_managment.dart';
+import 'package:giltezy_2ndproject/widgets/accounts/admin/usermanagment/user_mangment.dart';
 
 class AdminPage extends StatelessWidget {
   const AdminPage({super.key});

@@ -8,9 +8,9 @@ import 'package:giltezy_2ndproject/utils/theme/decoration.dart';
 import 'package:giltezy_2ndproject/utils/theme/icons.dart';
 import 'package:giltezy_2ndproject/utils/theme/textstyle.dart';
 
-import 'package:giltezy_2ndproject/widgets/Login/background_image.dart';
-import 'package:giltezy_2ndproject/widgets/Login/buttons.dart';
-import 'package:giltezy_2ndproject/widgets/Login/textfiled.dart';
+import 'package:giltezy_2ndproject/widgets/login/background_image.dart';
+import 'package:giltezy_2ndproject/widgets/login/buttons.dart';
+import 'package:giltezy_2ndproject/widgets/login/textfiled.dart';
 
 import '../../service/google_auth.dart';
 import '../../service/login_user.dart';

@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:giltezy_2ndproject/widgets/Login/login_page.dart';
+import 'package:giltezy_2ndproject/widgets/login/login_page.dart';
 
 Future<void> showSignOutDialog(BuildContext context) async {
   await showDialog(

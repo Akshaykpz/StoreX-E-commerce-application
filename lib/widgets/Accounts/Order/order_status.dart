@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:giltezy_2ndproject/widgets/Accounts/order/order_detiles.dart';
+import 'package:giltezy_2ndproject/widgets/accounts/order/order_detiles.dart';
 
 class MyOrder extends StatelessWidget {
   const MyOrder({super.key});

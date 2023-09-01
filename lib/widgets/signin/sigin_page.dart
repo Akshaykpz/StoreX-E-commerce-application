@@ -7,8 +7,8 @@ import '../../service/google_auth.dart';
 import '../../service/signin_user.dart';
 import '../../utils/theme/icons.dart';
 import '../../utils/theme/textstyle.dart';
-import '../Login/buttons.dart';
-import '../Login/textfiled.dart';
+import '../login/buttons.dart';
+import '../login/textfiled.dart';
 import 'background_image.dart';
 
 class MySigin extends StatefulWidget {

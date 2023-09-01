@@ -3,9 +3,9 @@ import 'package:giltezy_2ndproject/service/login_user.dart';
 import 'package:giltezy_2ndproject/service/sign_out.dart';
 import 'package:giltezy_2ndproject/widgets/Accounts/admin/admin_page.dart';
 
-import 'package:giltezy_2ndproject/widgets/Accounts/shippingAddress/shipping_address.dart';
+import 'package:giltezy_2ndproject/widgets/accounts/shippingAddress/shipping_address.dart';
 import 'package:giltezy_2ndproject/widgets/Accounts/allSettings/wish_list.dart';
-import 'package:giltezy_2ndproject/widgets/Accounts/order/order_status.dart';
+import 'package:giltezy_2ndproject/widgets/accounts/order/order_status.dart';
 
 import 'package:giltezy_2ndproject/widgets/Accounts/buttons.dart';
 

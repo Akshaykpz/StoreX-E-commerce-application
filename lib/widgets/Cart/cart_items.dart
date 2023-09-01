@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:giltezy_2ndproject/widgets/Cart/counter_cart.dart';
+import 'package:giltezy_2ndproject/widgets/cart/counter_cart.dart';
 
 class CartItemsviews extends StatelessWidget {
   final String imagePath; // Change the parameter type to String

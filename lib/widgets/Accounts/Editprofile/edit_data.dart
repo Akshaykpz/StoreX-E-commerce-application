@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/service/profile_data.dart';
 
 import 'package:giltezy_2ndproject/utils/theme/textstyle.dart';
-import 'package:giltezy_2ndproject/widgets/Accounts/editprofile/edit_profile.dart';
-import 'package:giltezy_2ndproject/widgets/Accounts/editprofile/image_picker.dart';
+import 'package:giltezy_2ndproject/widgets/accounts/editprofile/edit_profile.dart';
+import 'package:giltezy_2ndproject/widgets/accounts/editprofile/image_picker.dart';
 import 'package:image_picker/image_picker.dart';
 
 class EditProfiles extends StatefulWidget {

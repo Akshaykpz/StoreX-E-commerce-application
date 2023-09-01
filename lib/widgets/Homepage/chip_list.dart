@@ -41,9 +41,9 @@ class ItemsGrid extends StatelessWidget {
       child: Row(
         children: [
           Chipadd(
-            borderColor: Colors.red,
             label: 'Apple',
             image: 'assets/images/Apple-Logo.png',
+            isSelected: true, // This chip will be initially selected and red
           ),
           Chipadd(
             label: 'Xiomi',

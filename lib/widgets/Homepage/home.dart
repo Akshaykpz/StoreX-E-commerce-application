@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'ads_mobile.dart';
 import 'bottombar.dart';
-import 'package:giltezy_2ndproject/widgets/Cart/cart_view.dart';
-import 'package:giltezy_2ndproject/widgets/Accounts/mainhome.dart';
-import 'package:giltezy_2ndproject/widgets/Categories/catgory_items.dart';
+import 'package:giltezy_2ndproject/widgets/cart/cart_view.dart';
+import 'package:giltezy_2ndproject/widgets/accounts/mainhome.dart';
+import 'package:giltezy_2ndproject/widgets/categories/catgory_items.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
