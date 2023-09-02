@@ -61,24 +61,27 @@ class _ItemViewsState extends State<ItemViews> {
               style: kblacktext,
             ),
           ),
-          const Positioned(
+          Positioned(
               top: 68,
               left: 70,
               child: Chipadd(
                 label: '4-GB',
+                onChipTap: () {},
               )),
-          const Positioned(
+          Positioned(
               top: 68,
               left: 150,
               child: Chipadd(
                 label: '6-GB',
+                onChipTap: () {},
               )),
-          const Positioned(
+          Positioned(
               top: 68,
               left: 230,
               child: Chipadd(
                 label: '8-GB',
                 isSelected: true,
+                onChipTap: () {},
               )),
           Positioned(
             top: 118,

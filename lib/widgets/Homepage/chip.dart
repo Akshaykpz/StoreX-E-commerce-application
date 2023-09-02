@@ -120,7 +120,7 @@ class Chipadd extends StatelessWidget {
       this.borderColor,
       this.image,
       this.isSelected = false, // Default to not selected
-      this.selectedColor = Colors.blue
+      this.selectedColor = Colors.blue, required Null Function() onChipTap
 // Default color for selected chip
       })
       : super(key: key);
