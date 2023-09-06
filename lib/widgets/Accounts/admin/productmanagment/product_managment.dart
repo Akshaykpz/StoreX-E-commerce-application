@@ -7,14 +7,19 @@ class ProductMangment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SingleChildScrollView(
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        foregroundColor: Colors.black,
+      ),
+      body: const SingleChildScrollView(
         child: Column(
           children: [
             SizedBox(
               height: 20,
             ),
-            ImagePicker(),
+            ImagePickerWidget(),
             ProductFiled(),
             ProductFiled(),
             ProductFiled()
