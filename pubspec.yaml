@@ -65,7 +65,8 @@ dependencies:
   firebase_storage: ^11.2.6
   iconify_flutter: ^0.0.5
   flip_card: ^0.7.0
-  flutter_neumorphic: ^3.2.0
+  google_fonts: ^5.1.0
+  
 
 dev_dependencies:
   flutter_test:
@@ -115,9 +116,8 @@ flutter:
     - assets/images/Xiaomi-logo.jpg
     - assets/images/Vivo-logo.jpg
     - assets/images/Samsung-logo.jpg
-    - assets/images/65720-removebg-preview.png
+
     - assets/images/OnePlus-logo.jpg
-    - assets/images/787-removebg-preview.png
     - assets/images/Apple-Logo.png
     - assets/images/LG-Logo-1995.jpg
     - assets/images/Huawei-logo.jpg

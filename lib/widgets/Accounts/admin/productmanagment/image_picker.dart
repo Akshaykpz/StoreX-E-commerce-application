@@ -40,33 +40,72 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
     return Column(
       children: [
         Container(
-          decoration: BoxDecoration(border: Border.all()),
-          width: MediaQuery.of(context).size.width * 0.7,
-          height: 200,
-          child: Stack(
-            children: [
-              pickedImage != null ? Image.file(pickedImage!) : Container(),
-              IconButton(onPressed: () {}, icon: Icon(Icons.cancel_outlined)),
-            ],
+          child: Center(
+            child: Container(
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  pickedImage != null
+                      ? Image.file(
+                          pickedImage!,
+                        )
+                      : Container(),
+                  // IconButton(
+                  //     onPressed: () {}, icon: Icon(Icons.cancel_outlined)),
+                ],
+              ),
+              width: 180,
+              height: 200,
+              decoration: BoxDecoration(
+                color: Colors.grey.shade300,
+                borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(10.0),
+                    bottomRight: Radius.circular(10.0),
+                    topLeft: Radius.circular(10.0),
+                    bottomLeft: Radius.circular(10.0)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.7),
+                    spreadRadius: 8,
+                    blurRadius: 10,
+                    offset: Offset(10, 10), // changes position of shadow
+                  ),
+                  BoxShadow(
+                    color: Colors.white.withOpacity(0.7),
+                    spreadRadius: 8,
+                    blurRadius: 10,
+                    offset: Offset(-10, -10), // changes position of shadow
+                  ),
+                ],
+              ),
+            ),
           ),
         ),
-        ImagePickerButton(
-          isloggingin: true,
-          onpress: () {
-            getImageFromGallery();
-          },
-          title: 'haiiii',
+        SizedBox(
+          height: 38,
         ),
-        const SizedBox(
-          height: 20,
-        ),
-        ImagePickerButton(
-          isloggingin: true,
-          title: 'helllo',
-          onpress: () {
-            UploadImage().uploadImageToFirebase(pickedImage);
-          },
-        ),
+
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            ImagePickerButton(
+              iconss: Icons.add_a_photo,
+              isloggingin: true,
+              onpress: () {
+                getImageFromGallery();
+              },
+              title: 'Pick Image',
+            ),
+            ImagePickerButton(
+              iconss: Icons.upload_file,
+              isloggingin: true,
+              title: 'Upload Image',
+              onpress: () {
+                UploadImage().uploadImageToFirebase(pickedImage);
+              },
+            ),
+          ],
+        )
 
         // Your other widgets here
       ],

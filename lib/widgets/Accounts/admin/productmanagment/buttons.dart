@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
 class ImagePickerButton extends StatelessWidget {
   final String title;
+  final IconData iconss;
   final VoidCallback onpress;
   bool? isloading = false;
   bool? isloggingin = false;
   ImagePickerButton(
       {super.key,
+      required this.iconss,
       required this.title,
       this.isloading,
       this.isloggingin,
@@ -18,10 +19,30 @@ class ImagePickerButton extends StatelessWidget {
     return GestureDetector(
       onTap: onpress,
       child: Container(
-        height: 60,
+        decoration: BoxDecoration(
+            color: Colors.grey,
+            borderRadius: BorderRadius.circular(15),
+            boxShadow: const [
+              BoxShadow(
+                  color: Colors.white10,
+                  spreadRadius: 1,
+                  blurRadius: 8,
+                  offset: Offset(4, 4)),
+              BoxShadow(
+                  color: Colors.black12,
+                  spreadRadius: 1,
+                  blurRadius: 8,
+                  offset: Offset(-4, -4))
+            ]),
+        height: 50,
         width: 130,
-        color: Colors.amber,
-        child: Center(child: Text(title)),
+        child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+          Text(
+            title,
+            style: TextStyle(color: Colors.white),
+          ),
+          Icon(iconss)
+        ]),
       ),
     );
   }

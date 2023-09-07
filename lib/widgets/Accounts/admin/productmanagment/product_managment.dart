@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:giltezy_2ndproject/service/add_data.dart';
 import 'package:giltezy_2ndproject/widgets/accounts/admin/productmanagment/image_picker.dart';
 import 'package:giltezy_2ndproject/widgets/accounts/admin/productmanagment/product_filed.dart';
+import 'package:giltezy_2ndproject/widgets/accounts/admin/productmanagment/product_price_field.dart';
 
-class ProductMangment extends StatelessWidget {
-  const ProductMangment({super.key});
+class ProductMangment extends StatefulWidget {
+  ProductMangment({super.key});
 
+  @override
+  State<ProductMangment> createState() => _ProductMangmentState();
+}
+
+class _ProductMangmentState extends State<ProductMangment> {
+  TextEditingController prouductnameController = TextEditingController();
+  TextEditingController productpriceController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,16 +22,19 @@ class ProductMangment extends StatelessWidget {
         backgroundColor: Colors.transparent,
         foregroundColor: Colors.black,
       ),
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
-              height: 20,
-            ),
             ImagePickerWidget(),
-            ProductFiled(),
-            ProductFiled(),
-            ProductFiled()
+            ProductFiled(namecontroller: prouductnameController),
+            ProductPriceFiled(pricecontroller: productpriceController),
+            ElevatedButton(
+                onPressed: () async {
+                  await addData(
+                      price: productpriceController.text,
+                      name: prouductnameController.text);
+                },
+                child: Text('add'))
           ],
         ),
       ),
