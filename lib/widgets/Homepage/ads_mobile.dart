@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:giltezy_2ndproject/widgets/Homepage/ItemView/serach.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../utils/theme/textstyle.dart';
 import 'items.dart';
@@ -90,29 +91,33 @@ class _FavoritesPageState extends State<HomePage> {
               },
             ),
           ),
-
-          // Container(
-          //   width: 340.w,
-          //   height: 170.h,
-          //   decoration: BoxDecoration(
-          //       borderRadius: BorderRadius.circular(18).r,
-          //       image: DecorationImage(
-          //         fit: BoxFit.cover,
-          //         image: AssetImage(camera[currentIndex]),
-          //       )),
-          // ),
+          SizedBox(
+            height: 20,
+          ),
+          ItemsGrid(),
           Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'Popular',
+                  style: GoogleFonts.abhayaLibre(
+                      fontWeight: FontWeight.bold, fontSize: 17),
+                ),
+              ),
               TextButton(
                 onPressed: () {
-                  // Navigator.push(context, MaterialPageRoute(builder: (context) => ,))
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //       builder: (context) => CategoryItems(),
+                  //     ));
                 },
-                child: const Text('See All'),
+                child: const Text('More..'),
               ),
             ],
           ),
-          ItemsGrid(),
           const Expanded(child: SecondGrid())
         ],
       ),

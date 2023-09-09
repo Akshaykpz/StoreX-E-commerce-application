@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class ProductPriceFiled extends StatelessWidget {
   TextEditingController pricecontroller;
   ProductPriceFiled({super.key, required this.pricecontroller});

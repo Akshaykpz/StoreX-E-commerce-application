@@ -58,7 +58,7 @@ class AdminPage extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const MyCategory(),
+                      builder: (context) => MyCategory(),
                     ));
               },
               text: 'Category Management',

@@ -25,8 +25,8 @@ const TextStyle kwbottom = TextStyle(
   fontWeight: FontWeight.w400,
 );
 const TextStyle kxbutton = TextStyle(
-  color: Colors.white,
-  fontSize: 18,
+  color: Colors.blue,
+  fontSize: 23,
   fontFamily: 'Roboto',
   fontWeight: FontWeight.w700,
 );
@@ -58,4 +58,4 @@ const TextStyle kblacktext = TextStyle(
   fontWeight: FontWeight.w500,
 );
 TextStyle kcdtext = const TextStyle(
-    fontSize: 12, color: Colors.white, fontWeight: FontWeight.bold);
+    fontSize: 22, color: Colors.blue, fontWeight: FontWeight.bold);

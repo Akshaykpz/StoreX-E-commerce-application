@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flip_card/flip_card.dart';
 import 'package:flip_card/flip_card_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppbarUi extends StatefulWidget {
   const AppbarUi({super.key});
@@ -50,6 +51,7 @@ class _AppbarUiState extends State<AppbarUi> {
             left: 0,
             right: 0,
             child: Container(
+              alignment: Alignment.centerLeft,
               decoration: const BoxDecoration(
                 gradient: LinearGradient(colors: [
                   Color.fromRGBO(230, 157, 157, 1),
@@ -59,8 +61,11 @@ class _AppbarUiState extends State<AppbarUi> {
                   bottom: Radius.circular(20),
                 ),
               ),
-              // width: MediaQuery.of(context).size.width * 0.40,
-              // height: MediaQuery.of(context).size.height * 0.40,
+              child: IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: Icon(Icons.arrow_back)),
             ),
           ),
           Positioned(
@@ -79,7 +84,24 @@ class _AppbarUiState extends State<AppbarUi> {
               ),
               back: Container(
                 color: Colors.pink.shade50,
-                child: const Center(),
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(
+                        'Welcome ....',
+                        style: GoogleFonts.gabriela(
+                            fontSize: 26,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.blue),
+                      ),
+                      Text(
+                        'Akshay-kp',
+                        style: GoogleFonts.gabriela(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.blue),
+                      ),
+                    ]),
               ),
             ),
           ),

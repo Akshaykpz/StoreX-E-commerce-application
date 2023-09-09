@@ -2,8 +2,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/service/add_data.dart';
-import 'package:giltezy_2ndproject/utils/theme/textstyle.dart';
+import 'package:giltezy_2ndproject/service/proudcts.dart';
+
 import 'package:giltezy_2ndproject/widgets/Homepage/ItemView/item_view.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:like_button/like_button.dart';
 
 class SecondGrid extends StatefulWidget {
@@ -41,7 +43,7 @@ class _SecondGridState extends State<SecondGrid> {
           }
 
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return CircularProgressIndicator();
+            return Center(child: CircularProgressIndicator());
           }
 
           if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
@@ -49,10 +51,15 @@ class _SecondGridState extends State<SecondGrid> {
           }
           return GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
+              crossAxisCount:
+                  2, // Adjust the number of items per row (horizontal)
               crossAxisSpacing: 1.0,
               mainAxisSpacing: 1.0,
+              childAspectRatio:
+                  0.75, // Adjust the aspect ratio to control item height
             ),
+            scrollDirection:
+                Axis.vertical, // Set the scroll direction to vertical
             itemCount: snapshot.data!.docs.length,
             itemBuilder: (context, index) {
               final document = snapshot.data!.docs[index];
@@ -63,54 +70,53 @@ class _SecondGridState extends State<SecondGrid> {
                   rowColors[index % rowColors.length]; // Get the row color
 
               return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                padding: const EdgeInsets.all(5), // Adjust padding as needed
                 child: GestureDetector(
                   onTap: () {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const ItemViews(),
+                          builder: (context) => ItemViews(
+                            product: Product(
+                              name: productName,
+                              price: productPrice,
+                            ),
+                          ),
                         ));
                   },
                   child: Card(
-                    color:
-                        rowColor, // Set the row color as the background color
+                    color: rowColor,
                     shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(7)),
                     ),
                     elevation: 3,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      crossAxisAlignment: CrossAxisAlignment.end,
+                      // crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Stack(
                           children: [
                             Image.network(
                               yourImagesList[index],
                               height: 150,
+                              width: MediaQuery.sizeOf(context)
+                                  .width, // Adjust the height as needed
                               fit: BoxFit.fitWidth,
-                            ),
-                            const Positioned(
-                              top: 0,
-                              right: 3,
-                              bottom: 190,
-                              child: LikeButton(
-                                size: 29,
-                              ),
                             ),
                           ],
                         ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text(
                               productName,
-                              style: kcdtext,
+                              style: GoogleFonts.dmSerifDisplay(
+                                  color: Colors.blue),
                             ),
                             Text(
-                              productPrice,
-                              style: kvwtext,
+                              '₹$productPrice',
+                              style:
+                                  GoogleFonts.arbutusSlab(color: Colors.black),
                             ),
                           ],
                         ),

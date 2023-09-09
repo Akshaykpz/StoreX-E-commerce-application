@@ -36,7 +36,6 @@ class ItemsGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: EdgeInsets.all(10),
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
@@ -56,41 +55,37 @@ class ItemsGrid extends StatelessWidget {
             image: 'assets/images/OnePlus-logo.jpg',
             onChipTap: () {},
           ),
-          Chipadd(
-            label: 'Huwei',
-            image: 'assets/images/Huawei-logo.jpg',
-            onChipTap: () {},
-          ),
-          Chipadd(
-            label: 'Samsung',
-            image: 'assets/images/Samsung-logo.jpg',
-            onChipTap: () {},
-          ),
-          Chipadd(
-            label: 'Poco',
-            image: 'assets/images/Screenshot 2023-08-07 010809.png',
-            onChipTap: () {},
-          ),
-          Chipadd(
-            label: 'Oppo',
-            image: 'assets/images/OPPO-logo.jpg',
-            onChipTap: () {},
-          ),
-          Chipadd(
-            label: 'Vivo',
-            image: 'assets/images/Vivo-logo.jpg',
-            onChipTap: () {},
-          ),
-          Chipadd(
-            label: 'Lenovo',
-            image: 'assets/images/Lenovo-logo.jpg',
-            onChipTap: () {},
-          ),
-          Chipadd(
-            label: 'Nokia',
-            image: 'assets/images/Nokia-Logo.png',
-            onChipTap: () {},
-          ),
+
+          // Chipadd(
+          //   label: 'Samsung',
+          //   image: 'assets/images/Samsung-logo.jpg',
+          //   onChipTap: () {},
+          // ),
+          // Chipadd(
+          //   label: 'Poco',
+          //   image: 'assets/images/Screenshot 2023-08-07 010809.png',
+          //   onChipTap: () {},
+          // ),
+          // Chipadd(
+          //   label: 'Oppo',
+          //   image: 'assets/images/OPPO-logo.jpg',
+          //   onChipTap: () {},
+          // ),
+          // Chipadd(
+          //   label: 'Vivo',
+          //   image: 'assets/images/Vivo-logo.jpg',
+          //   onChipTap: () {},
+          // ),
+          // Chipadd(
+          //   label: 'Lenovo',
+          //   image: 'assets/images/Lenovo-logo.jpg',
+          //   onChipTap: () {},
+          // ),
+          // Chipadd(
+          //   label: 'Nokia',
+          //   image: 'assets/images/Nokia-Logo.png',
+          //   onChipTap: () {},
+          // ),
         ],
       ),
     );

@@ -112,7 +112,7 @@ class _MyLoginState extends State<MyLogin> {
                                     builder: (context) => const MySigin(),
                                   ));
                             },
-                            child: const Text(
+                            child: Text(
                               'Sign Up',
                               style: kxbutton,
                             ))
