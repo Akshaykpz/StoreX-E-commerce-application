@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:giltezy_2ndproject/widgets/categories/category_view.dart';
 
 import 'ads_mobile.dart';
 import 'bottombar.dart';

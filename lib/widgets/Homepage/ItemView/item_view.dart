@@ -1,10 +1,12 @@
 import 'package:bottom_bar_with_sheet/bottom_bar_with_sheet.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/service/proudcts.dart';
 
 class ItemViews extends StatefulWidget {
   final Product product;
-  const ItemViews({super.key, required this.product});
+  final String imageUrl;
+  const ItemViews({super.key, required this.product, required this.imageUrl});
 
   @override
   State<ItemViews> createState() => _ItemViewsState();
@@ -24,9 +26,16 @@ class _ItemViewsState extends State<ItemViews> {
           maxScale: 5.0,
           minScale: 0.01,
           boundaryMargin: EdgeInsets.all(double.infinity),
-          child: Center(
-              child: Image.network(
-                  'https://firebasestorage.googleapis.com/v0/b/giltezy.appspot.com/o/images%2F1694061454177.jpg?alt=media&token=d9a6ae39-0c64-4225-8d65-eddc0cebf46f'))),
+          child: Column(
+            children: [
+              Text(widget.product.price),
+              Text(widget.product.name),
+              Center(
+                  child: Image.network(
+                widget.imageUrl,
+              )),
+            ],
+          )),
 
       //   body: Column(
       // children: [

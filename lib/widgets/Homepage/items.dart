@@ -77,6 +77,7 @@ class _SecondGridState extends State<SecondGrid> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => ItemViews(
+                            imageUrl: yourImagesList[index],
                             product: Product(
                               name: productName,
                               price: productPrice,
