@@ -67,6 +67,8 @@ dependencies:
   flip_card: ^0.7.0
   google_fonts: ^5.1.0
   bottom_bar_with_sheet: ^2.4.0
+  motion_toast: ^2.7.8
+  readmore: ^2.2.0
   
 
 dev_dependencies:

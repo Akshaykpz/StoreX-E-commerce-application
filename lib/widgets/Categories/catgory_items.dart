@@ -1,14 +1,8 @@
-import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:giltezy_2ndproject/service/add_data.dart';
-import 'package:giltezy_2ndproject/utils/theme/textstyle.dart';
-import 'package:giltezy_2ndproject/widgets/Homepage/ItemView/item_view.dart';
 
 import 'package:giltezy_2ndproject/widgets/homepage/ItemView/serach.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:like_button/like_button.dart';
 
 class CategoryViewPage extends StatefulWidget {
   const CategoryViewPage({super.key});
@@ -37,99 +31,120 @@ class _SecondGridState extends State<CategoryViewPage> {
 
   @override
   Widget build(BuildContext context) {
+    Stream<QuerySnapshot> productStream =
+        FirebaseFirestore.instance.collection('products').snapshots();
     return Scaffold(
-      body: Column(
-        children: [
-          Serach(),
-          Expanded(
-            child: StreamBuilder<QuerySnapshot>(
-                stream: collection,
-                builder: (context, snapshot) {
-                  if (snapshot.hasError) {
-                    return Text('Error: ${snapshot.error}');
-                  }
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          foregroundColor: Colors.black,
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(6.0),
+          child: Column(children: [
+            const Serach(),
+            const SizedBox(
+              height: 20,
+            ),
+            Expanded(
+                child:
 
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(child: CircularProgressIndicator());
-                  }
-                  if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-                    return Text('No products available.');
-                  }
-                  return GridView.builder(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 1,
-                      crossAxisSpacing: 1.0,
-                      mainAxisSpacing: 1.0,
-                    ),
-                    itemCount: snapshot.data!.docs.length,
-                    itemBuilder: (context, index) {
-                      final document = snapshot.data!.docs[index];
-                      final productName = document['p_name'];
-                      final productPrice = document['p_price'];
-                      final rowColor = rowColors[
-                          index % rowColors.length]; // Get the row color
+                    // Stream to listen for changes in the Firestore collection
 
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 5, vertical: 5),
-                        child: GestureDetector(
-                          onTap: () {
-                            // Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //       builder: (context) => const ItemViews(),
-                            //     ));
-                          },
-                          child: Card(
-                            color:
-                                rowColor, // Set the row color as the background color
-                            shape: const RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(7)),
-                            ),
-                            elevation: 3,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Stack(
-                                  children: [
-                                    Image.network(
-                                      yourImagesList[index],
-                                      height: 130,
-                                      fit: BoxFit.fitWidth,
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      productName,
-                                      style: GoogleFonts.dmSerifDisplay(
-                                          color: Colors.blue),
-                                    ),
-                                    Text(
-                                      productPrice,
-                                      style: GoogleFonts.arbutusSlab(
-                                          color: Colors.black),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
+                    // Use a StreamBuilder to display the data
+                    StreamBuilder<QuerySnapshot>(
+              stream: productStream,
+              builder: (context, snapshot) {
+                if (snapshot.hasError) {
+                  return Text('Error: ${snapshot.error}');
+                }
+
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+
+                if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+                  return const Text('No products available.');
+                }
+
+                return GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    childAspectRatio: MediaQuery.of(context).size.width /
+                        (MediaQuery.of(context).size.height / 4.9),
+                    crossAxisCount: 1,
+                    crossAxisSpacing: 1,
+                    mainAxisSpacing: 1.0,
+                  ),
+                  itemCount: snapshot.data!.docs.length,
+                  itemBuilder: (context, index) {
+                    final document = snapshot.data!.docs[index];
+                    final productName = document['p_name'];
+                    final productPrice = document['p_price'];
+                    final rowColor = rowColors[
+                        index % rowColors.length]; // Get the row color
+
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 5, vertical: 5),
+                      child: GestureDetector(
+                        onTap: () {
+                          // Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //       builder: (context) => const ItemViews(),
+                          //     ));
+                        },
+                        child: Card(
+                          color:
+                              rowColor, // Set the row color as the background color
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(7)),
+                          ),
+                          elevation: 3,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            // crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Stack(
+                                children: [
+                                  Image.network(
+                                    yourImagesList[index],
+                                    height: 130,
+                                    fit: BoxFit.fitWidth,
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                // crossAxisAlignment: CrossAxisAlignment.end,
+                                // mainAxisAlignment:
+                                //     MainAxisAlignment.spaceAround,
+                                children: [
+                                  Text(
+                                    productName,
+                                    style: GoogleFonts.dmSerifDisplay(
+                                        color: Colors.blue),
+                                  ),
+                                  Text(
+                                    productPrice,
+                                    style: GoogleFonts.arbutusSlab(
+                                        color: Colors.black),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ),
-                      );
-                    },
-                  );
-                }),
-          ),
-        ],
-      ),
-    );
+                      ),
+                    );
+                  },
+                );
+              },
+            ))
+          ]),
+        ));
   }
 }

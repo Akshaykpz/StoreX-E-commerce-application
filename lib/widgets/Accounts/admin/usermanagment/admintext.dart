@@ -8,7 +8,7 @@ class AdminText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: TextStyle(
+      style: const TextStyle(
           fontSize: 17, fontWeight: FontWeight.w500, color: Colors.teal),
     );
   }

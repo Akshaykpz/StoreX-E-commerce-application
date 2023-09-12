@@ -23,9 +23,9 @@ class _UserListState extends State<UserList> {
 
     return Card(
         elevation: 2.0,
-        margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
+        margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
         child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               color: Color.fromRGBO(64, 75, 96, .9),
               borderRadius: BorderRadius.all(
                 Radius.circular(12),

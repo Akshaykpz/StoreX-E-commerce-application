@@ -120,7 +120,8 @@ class Chipadd extends StatelessWidget {
       this.borderColor,
       this.image,
       this.isSelected = false, // Default to not selected
-      this.selectedColor = Colors.blue, required Null Function() onChipTap
+      this.selectedColor = Colors.blue,
+      required Null Function() onChipTap
 // Default color for selected chip
       })
       : super(key: key);
@@ -133,7 +134,7 @@ class Chipadd extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.only(left: 4, right: 14),
         decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(Radius.circular(12)),
+          borderRadius: const BorderRadius.all(Radius.circular(15)),
           border: Border.all(
             width: 1,
             color: borderColor ?? Colors.black54,

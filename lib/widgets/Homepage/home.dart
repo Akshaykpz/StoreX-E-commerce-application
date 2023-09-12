@@ -5,7 +5,6 @@ import 'ads_mobile.dart';
 import 'bottombar.dart';
 import 'package:giltezy_2ndproject/widgets/cart/cart_view.dart';
 import 'package:giltezy_2ndproject/widgets/accounts/mainhome.dart';
-import 'package:giltezy_2ndproject/widgets/categories/catgory_items.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -39,8 +38,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       index: _selectedIndex,
                       children: const [
                         HomePage(),
-                        Cart(),
                         CategoryItems(),
+                        Cart(),
                         Accounts()
                       ],
                     ),

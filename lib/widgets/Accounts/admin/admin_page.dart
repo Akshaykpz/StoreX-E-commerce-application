@@ -48,7 +48,7 @@ class AdminPage extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ProductMangment(),
+                        builder: (context) => const ProductMangment(),
                       ));
                 },
                 text: 'Product Management',

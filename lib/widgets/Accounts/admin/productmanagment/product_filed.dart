@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 // ignore: must_be_immutable
 class ProductFiled extends StatelessWidget {
   TextEditingController namecontroller;
-  ProductFiled({super.key, required this.namecontroller});
+  final String label;
+  ProductFiled({super.key, required this.namecontroller, required this.label});
 
   @override
   Widget build(BuildContext context) {
@@ -11,10 +12,10 @@ class ProductFiled extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       child: TextFormField(
         controller: namecontroller,
-        decoration: const InputDecoration(
-          labelText: 'Product name',
-          border: OutlineInputBorder(borderSide: BorderSide()),
-          suffixIcon: Icon(
+        decoration: InputDecoration(
+          labelText: label,
+          border: const OutlineInputBorder(borderSide: BorderSide()),
+          suffixIcon: const Icon(
             Icons.error,
           ),
         ),

@@ -65,7 +65,7 @@ class _AppbarUiState extends State<AppbarUi> {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  icon: Icon(Icons.arrow_back)),
+                  icon: const Icon(Icons.arrow_back)),
             ),
           ),
           Positioned(

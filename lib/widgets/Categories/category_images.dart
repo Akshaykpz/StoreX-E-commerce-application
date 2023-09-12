@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class CategoryList {
   final String imageyrl;
   final String text;

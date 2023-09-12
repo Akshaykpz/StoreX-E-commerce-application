@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 // Reference to the Firestore collection
@@ -12,6 +14,6 @@ Future<void> addProduct(String productName, double productPrice) async {
       'p_price': productPrice,
     });
   } catch (e) {
-    print('Error adding product: $e');
+    log('Error adding product: $e');
   }
 }

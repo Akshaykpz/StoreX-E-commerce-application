@@ -34,12 +34,12 @@ class CustomBottomNavigationBar extends StatelessWidget {
                     text: 'Home',
                   ),
                   GButton(
-                    icon: Icons.shopping_cart,
-                    text: 'Cart',
-                  ),
-                  GButton(
                     icon: Icons.category,
                     text: 'category',
+                  ),
+                  GButton(
+                    icon: Icons.shopping_cart,
+                    text: 'Cart',
                   ),
                   GButton(
                     icon: Icons.account_box,

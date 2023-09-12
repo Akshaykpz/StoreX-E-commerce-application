@@ -6,7 +6,6 @@ import 'package:giltezy_2ndproject/service/proudcts.dart';
 
 import 'package:giltezy_2ndproject/widgets/Homepage/ItemView/item_view.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:like_button/like_button.dart';
 
 class SecondGrid extends StatefulWidget {
   const SecondGrid({super.key});
@@ -43,11 +42,11 @@ class _SecondGridState extends State<SecondGrid> {
           }
 
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
 
           if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-            return Text('No products available.');
+            return const Text('No products available.');
           }
           return GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -70,7 +69,7 @@ class _SecondGridState extends State<SecondGrid> {
                   rowColors[index % rowColors.length]; // Get the row color
 
               return Padding(
-                padding: const EdgeInsets.all(5), // Adjust padding as needed
+                padding: const EdgeInsets.all(7), // Adjust padding as needed
                 child: GestureDetector(
                   onTap: () {
                     Navigator.push(
@@ -108,16 +107,17 @@ class _SecondGridState extends State<SecondGrid> {
                         ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Text(
                               productName,
-                              style: GoogleFonts.dmSerifDisplay(
-                                  color: Colors.blue),
+                              style: GoogleFonts.breeSerif(
+                                  fontSize: 19, color: Colors.blueAccent),
                             ),
                             Text(
                               '₹$productPrice',
-                              style:
-                                  GoogleFonts.arbutusSlab(color: Colors.black),
+                              style: GoogleFonts.arbutusSlab(
+                                  color: Colors.black87),
                             ),
                           ],
                         ),

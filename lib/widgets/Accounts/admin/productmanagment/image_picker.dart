@@ -36,49 +36,47 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          child: Center(
-            child: Container(
-              child: Stack(
-                fit: StackFit.expand,
-                children: [
-                  pickedImage != null
-                      ? Image.file(
-                          pickedImage!,
-                        )
-                      : Container(),
-                  // IconButton(
-                  //     onPressed: () {}, icon: Icon(Icons.cancel_outlined)),
-                ],
-              ),
-              width: 180,
-              height: 200,
-              decoration: BoxDecoration(
-                color: Colors.grey.shade300,
-                borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(10.0),
-                    bottomRight: Radius.circular(10.0),
-                    topLeft: Radius.circular(10.0),
-                    bottomLeft: Radius.circular(10.0)),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.7),
-                    spreadRadius: 8,
-                    blurRadius: 10,
-                    offset: Offset(10, 10), // changes position of shadow
-                  ),
-                  BoxShadow(
-                    color: Colors.white.withOpacity(0.7),
-                    spreadRadius: 8,
-                    blurRadius: 10,
-                    offset: Offset(-10, -10), // changes position of shadow
-                  ),
-                ],
-              ),
+        Center(
+          child: Container(
+            width: 180,
+            height: 200,
+            decoration: BoxDecoration(
+              color: Colors.grey.shade300,
+              borderRadius: const BorderRadius.only(
+                  topRight: Radius.circular(10.0),
+                  bottomRight: Radius.circular(10.0),
+                  topLeft: Radius.circular(10.0),
+                  bottomLeft: Radius.circular(10.0)),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.7),
+                  spreadRadius: 8,
+                  blurRadius: 10,
+                  offset: const Offset(10, 10), // changes position of shadow
+                ),
+                BoxShadow(
+                  color: Colors.white.withOpacity(0.7),
+                  spreadRadius: 8,
+                  blurRadius: 10,
+                  offset: const Offset(-10, -10), // changes position of shadow
+                ),
+              ],
+            ),
+            child: Stack(
+              fit: StackFit.expand,
+              children: [
+                pickedImage != null
+                    ? Image.file(
+                        pickedImage!,
+                      )
+                    : Container(),
+                // IconButton(
+                //     onPressed: () {}, icon: Icon(Icons.cancel_outlined)),
+              ],
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 38,
         ),
 

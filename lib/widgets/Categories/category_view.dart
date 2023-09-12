@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/widgets/categories/category_images.dart';
 import 'package:giltezy_2ndproject/widgets/categories/catgory_items.dart';
@@ -24,6 +22,14 @@ class CategoryItems extends StatelessWidget {
       CategoryList(imageyrl: 'assets/images/Nokia-Logo.png', text: 'Nokia')
     ];
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        title: const Text(
+          'Category Items',
+          style: TextStyle(color: Colors.black),
+        ),
+      ),
       body: GridView.builder(
         gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
           maxCrossAxisExtent: 350.0,
@@ -39,7 +45,7 @@ class CategoryItems extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => CategoryViewPage(),
+                    builder: (context) => const CategoryViewPage(),
                   ));
             },
             child: Card(
