@@ -1,3 +1,4 @@
+import 'package:cool_alert/cool_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/service/add_data.dart';
 import 'package:giltezy_2ndproject/widgets/accounts/admin/productmanagment/image_picker.dart';
@@ -35,9 +36,28 @@ class _ProductMangmentState extends State<ProductMangment> {
               width: MediaQuery.of(context).size.width * 0.5,
               child: ElevatedButton(
                 onPressed: () async {
-                  await addData(
+                  try {
+                    await addData(
                       price: productpriceController.text,
-                      name: prouductnameController.text);
+                      name: prouductnameController.text,
+                    );
+
+                    // ignore: use_build_context_synchronously
+                    CoolAlert.show(
+                      context: context,
+                      type: CoolAlertType.success,
+                      text: "Your transaction was successful",
+                    );
+                  } catch (e) {
+                    print("Error: $e");
+
+                    // ignore: use_build_context_synchronously
+                    CoolAlert.show(
+                      context: context,
+                      type: CoolAlertType.error,
+                      text: "An error occurred while saving",
+                    );
+                  }
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.green,

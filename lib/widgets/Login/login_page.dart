@@ -25,6 +25,7 @@ class MyLogin extends StatefulWidget {
 
 class _MyLoginState extends State<MyLogin> {
   final _emailController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   final _passwordController = TextEditingController();
 
@@ -40,54 +41,78 @@ class _MyLoginState extends State<MyLogin> {
             width: double.infinity,
             child: Stack(
               children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text('Login', style: khheading),
-                    MyTextformFiled(
-                      icons: emailIcon,
-                      controller: _emailController,
-                      hinttext: 'email',
-                      obcuretext: false,
-                    ),
-                    MyTextformFiled(
-                      icons: PasswordIcon,
-                      controller: _passwordController,
-                      hinttext: 'password',
-                      obcuretext: false,
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 23),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          MyButtons(
-                              buttonText: 'Forgot Password',
-                              destinationRoute: ForgotPasswordScreen()),
-                        ],
+                Form(
+                  key: _formKey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text('Login', style: khheading),
+                      MyTextformFiled(
+                        icons: emailIcon,
+                        controller: _emailController,
+                        hinttext: 'email',
+                        obcuretext: false,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter an email';
+                          } else if (!isValidEmail(value)) {
+                            return 'Invalid email format';
+                          }
+                          return null;
+                        },
                       ),
-                    ),
-                    k20box,
-                    MyButton(
-                        buttontext: 'Login',
-                        onPressedCallback: () {
-                          String email = _emailController.text;
-                          String password = _passwordController.text;
-                          handleLogin(
-                              context: context,
-                              email: email,
-                              password: password);
-                        }),
-                    k20box,
-                    GoogleAuthButton(
-                      isLoading: false,
-                      onPressed: () {
-                        handleGoogleSignIn(context);
-                      },
-                      style: const AuthButtonStyle(
-                          buttonColor: Colors.white, elevation: 2),
-                    ),
-                  ],
+                      // Text(
+                      //   _emailError ?? '', // Display the email error message
+                      //   style: TextStyle(color: Colors.red),
+                      // ),
+                      MyTextformFiled(
+                        icons: PasswordIcon,
+                        controller: _passwordController,
+                        hinttext: 'password',
+                        obcuretext: false,
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Please Enter Password';
+                          }
+                          return null;
+                        },
+                      ),
+
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 23),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            MyButtons(
+                                buttonText: 'Forgot Password',
+                                destinationRoute: ForgotPasswordScreen()),
+                          ],
+                        ),
+                      ),
+                      k20box,
+                      MyButton(
+                          buttontext: 'Login',
+                          onPressedCallback: () {
+                            if (_formKey.currentState!.validate()) {
+                              String email = _emailController.text;
+                              String password = _passwordController.text;
+                              handleLogin(
+                                  context: context,
+                                  email: email,
+                                  password: password);
+                            }
+                          }),
+                      k20box,
+                      GoogleAuthButton(
+                        isLoading: false,
+                        onPressed: () {
+                          handleGoogleSignIn(context);
+                        },
+                        style: const AuthButtonStyle(
+                            buttonColor: Colors.white, elevation: 2),
+                      ),
+                    ],
+                  ),
                 ),
                 Positioned(
                   bottom: 0.2,
@@ -114,7 +139,7 @@ class _MyLoginState extends State<MyLogin> {
                             },
                             child: const Text(
                               'Sign Up',
-                              style: kxbutton,
+                              style: kstext,
                             ))
                       ],
                     ),

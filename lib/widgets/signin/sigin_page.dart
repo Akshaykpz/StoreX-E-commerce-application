@@ -20,6 +20,7 @@ class MySigin extends StatefulWidget {
 
 class _MySiginState extends State<MySigin> {
   // ...
+  final _formKey = GlobalKey<FormState>();
   final _emailSigninController = TextEditingController();
 
   final _passwordSigninController = TextEditingController();
@@ -37,53 +38,77 @@ class _MySiginState extends State<MySigin> {
               // Wrap the Column with a Container
               height: 800.h,
               width: double.infinity,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text('Sign Up', style: khheading),
-                  MyTextformFiled(
-                      icons: emailIcon,
-                      controller: _emailSigninController,
-                      hinttext: 'email',
-                      obcuretext: false),
-                  MyTextformFiled(
-                      icons: PasswordIcon,
-                      controller: _passwordSigninController,
-                      hinttext: 'password',
-                      obcuretext: false),
-                  MyTextformFiled(
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text('Sign Up', style: khheading),
+                    MyTextformFiled(
+                        icons: emailIcon,
+                        controller: _emailSigninController,
+                        hinttext: 'email',
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Please Enter Email';
+                          }
+                          return null;
+                        },
+                        obcuretext: false),
+                    MyTextformFiled(
+                        icons: PasswordIcon,
+                        controller: _passwordSigninController,
+                        hinttext: 'password',
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Please Enter Password';
+                          }
+                          return null;
+                        },
+                        obcuretext: false),
+                    MyTextformFiled(
                       icons: PasswordIcon,
                       controller: _passwordSigninConfirmController,
                       hinttext: 'confirm password',
-                      obcuretext: false),
-                  k10box,
-                  MyButton(
-                    onPressedCallback: () {
-                      String confirmPassword =
-                          _passwordSigninConfirmController.text;
-                      String email = _emailSigninController.text;
-                      String password = _passwordSigninController.text;
-                      if (password == confirmPassword) {
-                        handleSignUp(
-                          confirmPassword: confirmPassword,
-                          context: context,
-                          email: email,
-                          password: password,
-                        );
-                      }
-                    },
-                    buttontext: 'Sign Up',
-                  ),
-                  k20box,
-                  GoogleAuthButton(
-                    isLoading: false,
-                    onPressed: () {
-                      handleGoogleSignIn(context);
-                    },
-                    style: const AuthButtonStyle(
-                        buttonColor: Colors.white, elevation: 2),
-                  ),
-                ],
+                      obcuretext: false,
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Please Enter Confirm Password';
+                        }
+                        return null;
+                      },
+                    ),
+                    k10box,
+                    MyButton(
+                      onPressedCallback: () {
+                        if (_formKey.currentState!.validate()) {
+                          String confirmPassword =
+                              _passwordSigninConfirmController.text;
+                          String email = _emailSigninController.text;
+                          String password = _passwordSigninController.text;
+                          if (password == confirmPassword) {
+                            handleSignUp(
+                              confirmPassword: confirmPassword,
+                              context: context,
+                              email: email,
+                              password: password,
+                            );
+                          }
+                        }
+                      },
+                      buttontext: 'Sign Up',
+                    ),
+                    k20box,
+                    GoogleAuthButton(
+                      isLoading: false,
+                      onPressed: () {
+                        handleGoogleSignIn(context);
+                      },
+                      style: const AuthButtonStyle(
+                          buttonColor: Colors.white, elevation: 2),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

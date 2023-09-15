@@ -103,6 +103,11 @@ class _SecondGridState extends State<SecondGrid> {
                                   .width, // Adjust the height as needed
                               fit: BoxFit.fitWidth,
                             ),
+                            if (snapshot.connectionState ==
+                                ConnectionState.waiting)
+                              Center(
+                                child: CircularProgressIndicator(),
+                              ),
                           ],
                         ),
                         Column(

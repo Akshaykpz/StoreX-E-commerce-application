@@ -90,6 +90,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             TextField(
               controller: _emailController,
               decoration: InputDecoration(
+                hintText: 'Enter our Email',
                 fillColor: Colors.white,
                 border: OutlineInputBorder(
                   borderSide: BorderSide.none,

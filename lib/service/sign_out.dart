@@ -1,62 +1,18 @@
 import 'dart:developer';
-
+import 'package:cool_alert/cool_alert.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/widgets/login/login_page.dart';
 
-Future<void> showSignOutDialog(BuildContext context) async {
-  await showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: const Text('Sign Out'),
-        content: const Text('Are you sure you want to sign out?'),
-        actions: <Widget>[
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop(); // Close the dialog
-            },
-            child: const Text('Cancel'),
-          ),
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop(); // Close the dialog
-              _handleSignOut(context); // Call the sign-out function
-            },
-            child: const Text('Sign Out'),
-          ),
-        ],
-      );
-    },
-  );
-}
-
 Future<void> _handleSignOut(BuildContext context) async {
   try {
-    showDialog(
+    Navigator.of(context).pop(); // Close the CoolAlert
+
+    CoolAlert.show(
       context: context,
-      builder: (context) {
-        return AlertDialog(
-          backgroundColor: Colors.white, // Set background color
-          contentTextStyle:
-              const TextStyle(color: Colors.black), // Set text color
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const CircularProgressIndicator(
-                color: Colors.black, // Set indicator color
-              ),
-              const SizedBox(height: 20),
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context); // Close the dialog
-                },
-                child: const Text('Reset'),
-              ),
-            ],
-          ),
-        );
-      },
+      type: CoolAlertType.loading, // Show loading indicator
+      text: 'Signing Out...',
+      barrierDismissible: false, // Prevent user from dismissing the alert
     );
 
     await FirebaseAuth.instance.signOut().then((value) {
@@ -69,4 +25,19 @@ Future<void> _handleSignOut(BuildContext context) async {
   } catch (e) {
     log('Error occurred while signing out: $e');
   }
+}
+
+Future<void> showSignOutDialog(BuildContext context) async {
+  CoolAlert.show(
+    context: context,
+    type: CoolAlertType.confirm, // Use confirm type for confirmation dialog
+    title: 'Sign Out',
+    confirmBtnText: 'Sign Out',
+    cancelBtnText: 'Cancel',
+    confirmBtnColor: Colors.red, // Customize the confirm button color
+    onConfirmBtnTap: () async {
+      Navigator.of(context).pop(); // Close the CoolAlert
+      await _handleSignOut(context); // Call the sign-out function
+    },
+  );
 }

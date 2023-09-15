@@ -69,6 +69,8 @@ dependencies:
   bottom_bar_with_sheet: ^2.4.0
   motion_toast: ^2.7.8
   readmore: ^2.2.0
+  animated_text_kit: ^4.2.2
+  cool_alert: ^2.0.1
   
 
 dev_dependencies:

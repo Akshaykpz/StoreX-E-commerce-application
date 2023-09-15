@@ -72,7 +72,9 @@ class _FavoritesPageState extends State<HomePage> {
                     height: 19,
                   ),
                   CarouselSlider(
-                    items: camera.map((imageUrl) {
+                    items: camera.map((
+                      imageUrl,
+                    ) {
                       return Container(
                         width: 300.w,
                         height: 60.h, // Adjust this height as needed
