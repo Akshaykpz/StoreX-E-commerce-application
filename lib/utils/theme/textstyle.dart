@@ -22,7 +22,7 @@ const TextStyle kwbottom = TextStyle(
   color: Colors.white,
   fontSize: 18,
   fontFamily: 'Roboto',
-  fontWeight: FontWeight.w400,
+  fontWeight: FontWeight.w600,
 );
 const TextStyle kxbutton = TextStyle(
   color: Colors.blue,
