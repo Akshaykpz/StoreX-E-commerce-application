@@ -6,8 +6,14 @@ import 'package:giltezy_2ndproject/widgets/accounts/admin/productmanagment/image
 import 'package:giltezy_2ndproject/widgets/accounts/admin/productmanagment/product_filed.dart';
 
 // ignore: must_be_immutable
-class CategoryAdd extends StatelessWidget {
+class CategoryAdd extends StatefulWidget {
   CategoryAdd({super.key});
+
+  @override
+  State<CategoryAdd> createState() => _CategoryAddState();
+}
+
+class _CategoryAddState extends State<CategoryAdd> {
   TextEditingController categorynamecontroller = TextEditingController();
 
   @override
@@ -50,6 +56,7 @@ class CategoryAdd extends StatelessWidget {
                       text: "An error occurred while saving",
                     );
                   }
+                  Navigator.pop(context);
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.green,

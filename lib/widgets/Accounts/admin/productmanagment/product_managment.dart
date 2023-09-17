@@ -5,6 +5,8 @@ import 'package:giltezy_2ndproject/widgets/accounts/admin/productmanagment/image
 import 'package:giltezy_2ndproject/widgets/accounts/admin/productmanagment/product_filed.dart';
 import 'package:giltezy_2ndproject/widgets/accounts/admin/productmanagment/product_price_field.dart';
 
+import '../../../../service/find_category.dart';
+
 class ProductMangment extends StatefulWidget {
   const ProductMangment({super.key});
 
@@ -37,10 +39,11 @@ class _ProductMangmentState extends State<ProductMangment> {
               child: ElevatedButton(
                 onPressed: () async {
                   try {
+                    final id = await findDocumentIdByCategory('Apple');
                     await addData(
-                      price: productpriceController.text,
-                      name: prouductnameController.text,
-                    );
+                        price: productpriceController.text,
+                        name: prouductnameController.text,
+                        id: id);
 
                     // ignore: use_build_context_synchronously
                     CoolAlert.show(

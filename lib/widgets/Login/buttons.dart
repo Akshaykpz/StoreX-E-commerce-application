@@ -5,9 +5,13 @@ import '../../utils/theme/textstyle.dart';
 class MyButton extends StatelessWidget {
   final String buttontext;
   final VoidCallback onPressedCallback;
+  final IconData icons;
 
   const MyButton(
-      {super.key, required this.buttontext, required this.onPressedCallback});
+      {super.key,
+      required this.buttontext,
+      required this.onPressedCallback,
+      required this.icons});
 
   @override
   Widget build(BuildContext context) {
@@ -22,13 +26,16 @@ class MyButton extends StatelessWidget {
           ),
           elevation: 15.0,
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(13.0),
-          child: Text(
-            buttontext,
-            style: kstext,
+        child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Icon(icons),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+            child: Text(
+              buttontext,
+              style: kstext,
+            ),
           ),
-        ),
+        ]),
       ),
     );
   }

@@ -11,7 +11,7 @@ class WishList extends StatelessWidget {
             child: ElevatedButton(
       onPressed: () {
         // Call the addProduct function to add data
-        addProduct('Example Product', 100.0);
+        addcategory(categoryimage: 'haii', categoryname: 'hello');
       },
       child: const Text('Add Product'),
     )));

@@ -43,8 +43,8 @@ Future<void> handleLogin({
       isLoggedIn = true;
       isAdmin = true; // Admin credentials
     } else {
-      isLoggedIn = true;
-      isAdmin = false; // Regular user
+      // isLoggedIn = true;
+      // isAdmin = false; // Regular user
     }
 
     await FirebaseAuth.instance

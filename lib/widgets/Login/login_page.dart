@@ -91,6 +91,7 @@ class _MyLoginState extends State<MyLogin> {
                       ),
                       k20box,
                       MyButton(
+                          icons: Icons.login,
                           buttontext: 'Login',
                           onPressedCallback: () {
                             if (_formKey.currentState!.validate()) {
@@ -126,7 +127,7 @@ class _MyLoginState extends State<MyLogin> {
                       // crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         const Text(
-                          "Dont'have an account ?",
+                          "Create an Account.",
                           style: kwbottom,
                         ),
                         TextButton(
