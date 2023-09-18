@@ -8,13 +8,6 @@ Future<void> _handleSignOut(BuildContext context) async {
   try {
     Navigator.of(context).pop(); // Close the CoolAlert
 
-    CoolAlert.show(
-      context: context,
-      type: CoolAlertType.loading, // Show loading indicator
-      text: 'Signing Out...',
-      barrierDismissible: false, // Prevent user from dismissing the alert
-    );
-
     await FirebaseAuth.instance.signOut().then((value) {
       Navigator.pushAndRemoveUntil(
         context,
@@ -36,7 +29,7 @@ Future<void> showSignOutDialog(BuildContext context) async {
     cancelBtnText: 'Cancel',
     confirmBtnColor: Colors.red, // Customize the confirm button color
     onConfirmBtnTap: () async {
-      Navigator.of(context).pop(); // Close the CoolAlert
+      // Navigator.of(context).pop(); // Close the CoolAlert
       await _handleSignOut(context); // Call the sign-out function
     },
   );

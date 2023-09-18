@@ -5,7 +5,7 @@ import 'package:giltezy_2ndproject/widgets/accounts/admin/categorymangment/categ
 import 'package:hidable/hidable.dart';
 
 class MyCategory extends StatelessWidget {
-  MyCategory({Key? key}) : super(key: key);
+  const MyCategory({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class MyCategory extends StatelessWidget {
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {
                 return Container(
-                  padding: EdgeInsets.all(20.0),
+                  padding: const EdgeInsets.all(20.0),
                   color: RandomColorModel()
                       .getColor(), // Use the random color function here
                   child: Center(
@@ -31,13 +31,13 @@ class MyCategory extends StatelessWidget {
                       footer: Text(
                         'Item $index',
                         textAlign: TextAlign.center,
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 15,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      child: Icon(Icons.access_alarm,
+                      child: const Icon(Icons.access_alarm,
                           size: 40.0, color: Colors.white),
                     ),
                   ),

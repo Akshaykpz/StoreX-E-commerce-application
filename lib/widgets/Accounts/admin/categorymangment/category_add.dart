@@ -26,7 +26,7 @@ class _CategoryAddState extends State<CategoryAdd> {
         ),
         body: Column(
           children: [
-            ImagePickerWidget(),
+            const ImagePickerWidget(),
             ProductFiled(
               namecontroller: categorynamecontroller,
               label: 'category item',
@@ -56,6 +56,7 @@ class _CategoryAddState extends State<CategoryAdd> {
                       text: "An error occurred while saving",
                     );
                   }
+                  // ignore: use_build_context_synchronously
                   Navigator.pop(context);
                 },
                 style: ElevatedButton.styleFrom(

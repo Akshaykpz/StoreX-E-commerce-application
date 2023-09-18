@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:giltezy_2ndproject/utils/theme/theme.dart';
 
 class MyTextformFiled extends StatelessWidget {
   final TextEditingController? controller;
@@ -9,7 +8,7 @@ class MyTextformFiled extends StatelessWidget {
   final Function(String?)? onSubmitted;
   final String? Function(String?)? validator; // Add this validator function
 
-  MyTextformFiled({
+  const MyTextformFiled({
     Key? key,
     this.controller,
     this.hinttext,
@@ -22,19 +21,22 @@ class MyTextformFiled extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 19, horizontal: 29),
+      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
       child: TextFormField(
+        style: const TextStyle(color: Colors.white),
         controller: controller,
         obscureText: obcuretext ?? false,
         decoration: InputDecoration(
           prefixIcon: icons,
+          prefixIconColor: Colors.white,
           border: OutlineInputBorder(
             borderSide: BorderSide.none,
             borderRadius: BorderRadius.circular(12),
           ),
           filled: true,
           hintText: hinttext,
-          fillColor: AppUtils.gkwhite,
+          fillColor: Colors.white54,
+          hintStyle: const TextStyle(color: Colors.white),
           errorStyle: const TextStyle(
             color: Colors.redAccent, // Change the text color to red
             fontSize: 14.0,

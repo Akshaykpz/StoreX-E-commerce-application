@@ -4,6 +4,7 @@ class AppUtils {
   static Color scaffoldBackgroundColoryello = Colors.amber;
   static Color scaffoldBackgroundColorwhite = Colors.white;
   static const Color gkwhite = Colors.white;
+  static const Color gkgrey = Colors.grey;
   static Color scaffoldBackgroundColorblack =
       Colors.black; // Replace with your desired background color for Scaffold
   static Color appBarBackgroundColor =

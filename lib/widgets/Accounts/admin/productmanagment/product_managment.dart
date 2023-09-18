@@ -43,7 +43,7 @@ class _ProductMangmentState extends State<ProductMangment> {
                     await addData(
                         price: productpriceController.text,
                         name: prouductnameController.text,
-                        id: id);
+                        id: id); 
 
                     // ignore: use_build_context_synchronously
                     CoolAlert.show(

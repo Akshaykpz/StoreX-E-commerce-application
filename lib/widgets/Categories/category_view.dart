@@ -23,6 +23,10 @@ class CategoryItems extends StatelessWidget {
     ];
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: () {}, icon: Icon(Icons.search, color: Colors.black))
+        ],
         elevation: 0,
         backgroundColor: Colors.transparent,
         title: const Text(
@@ -31,6 +35,7 @@ class CategoryItems extends StatelessWidget {
         ),
       ),
       body: GridView.builder(
+        padding: const EdgeInsets.all(7),
         gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
           maxCrossAxisExtent: 350.0,
           childAspectRatio: 2 / 2,
@@ -52,7 +57,7 @@ class CategoryItems extends StatelessWidget {
               // color: Colors.red,
               elevation: 2,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
+                borderRadius: BorderRadius.circular(22.0),
               ),
               child: Container(
                 padding: const EdgeInsets.all(20.0),

@@ -1,18 +1,18 @@
-import 'package:auth_buttons/auth_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:giltezy_2ndproject/service/forgot_password.dart';
+import 'package:giltezy_2ndproject/service/google_auth.dart';
 
 import 'package:giltezy_2ndproject/utils/theme/buttons.dart';
 import 'package:giltezy_2ndproject/utils/theme/decoration.dart';
 import 'package:giltezy_2ndproject/utils/theme/icons.dart';
+import 'package:giltezy_2ndproject/utils/theme/squre_tile.dart';
 import 'package:giltezy_2ndproject/utils/theme/textstyle.dart';
 
 import 'package:giltezy_2ndproject/widgets/login/background_image.dart';
 import 'package:giltezy_2ndproject/widgets/login/buttons.dart';
 import 'package:giltezy_2ndproject/widgets/login/textfiled.dart';
 
-import '../../service/google_auth.dart';
 import '../../service/login_user.dart';
 import '../signin/sigin_page.dart';
 
@@ -79,7 +79,9 @@ class _MyLoginState extends State<MyLogin> {
                       ),
 
                       const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 23),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 20,
+                        ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
@@ -104,14 +106,17 @@ class _MyLoginState extends State<MyLogin> {
                             }
                           }),
                       k20box,
-                      GoogleAuthButton(
-                        isLoading: false,
-                        onPressed: () {
-                          handleGoogleSignIn(context);
-                        },
-                        style: const AuthButtonStyle(
-                            buttonColor: Colors.white, elevation: 2),
-                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Squretile(
+                            onpress: () {
+                              handleGoogleSignIn(context);
+                            },
+                            imagepath: 'assets/images/Google__G__Logo.png',
+                          ),
+                        ],
+                      )
                     ],
                   ),
                 ),
