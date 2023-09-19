@@ -28,22 +28,22 @@ class _AccountsState extends State<Accounts> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.pop(
-                  context); // Navigate back when the button is pressed
-            },
-          ),
-          title: const Text(
-            'Account',
-            style: TextStyle(color: Colors.black, fontStyle: FontStyle.italic),
-          ),
-          elevation: 0,
-          foregroundColor: Colors.black,
-          backgroundColor: Colors.transparent,
-        ),
+        // appBar: AppBar(
+        //   leading: IconButton(
+        //     icon: const Icon(Icons.arrow_back),
+        //     onPressed: () {
+        //       Navigator.pop(
+        //           context); // Navigate back when the button is pressed
+        //     },
+        //   ),
+        //   title: const Text(
+        //     'Account',
+        //     style: TextStyle(color: Colors.black, fontStyle: FontStyle.italic),
+        //   ),
+        //   elevation: 0,
+        //   foregroundColor: Colors.black,
+        //   backgroundColor: Colors.transparent,
+        // ),
         backgroundColor: Colors.transparent,
         body: SingleChildScrollView(
           child: Column(

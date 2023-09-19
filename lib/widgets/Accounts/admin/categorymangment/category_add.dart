@@ -1,13 +1,13 @@
 import 'package:cool_alert/cool_alert.dart';
 import 'package:flutter/material.dart';
-import 'package:giltezy_2ndproject/service/test.dart';
+import 'package:giltezy_2ndproject/service/category_item_add.dart';
 
 import 'package:giltezy_2ndproject/widgets/accounts/admin/productmanagment/image_picker.dart';
 import 'package:giltezy_2ndproject/widgets/accounts/admin/productmanagment/product_filed.dart';
 
 // ignore: must_be_immutable
 class CategoryAdd extends StatefulWidget {
-  CategoryAdd({super.key});
+  const CategoryAdd({super.key});
 
   @override
   State<CategoryAdd> createState() => _CategoryAddState();
@@ -19,13 +19,13 @@ class _CategoryAddState extends State<CategoryAdd> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-          foregroundColor: Colors.black,
-        ),
-        body: Column(
+        body: SafeArea(
+      child: SingleChildScrollView(
+        child: Column(
           children: [
+            SizedBox(
+              height: 22,
+            ),
             const ImagePickerWidget(),
             ProductFiled(
               namecontroller: categorynamecontroller,
@@ -76,6 +76,8 @@ class _CategoryAddState extends State<CategoryAdd> {
               ),
             ),
           ],
-        ));
+        ),
+      ),
+    ));
   }
 }

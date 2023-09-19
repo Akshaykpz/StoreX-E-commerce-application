@@ -61,11 +61,6 @@ class _AppbarUiState extends State<AppbarUi> {
                   bottom: Radius.circular(20),
                 ),
               ),
-              child: IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(Icons.arrow_back)),
             ),
           ),
           Positioned(

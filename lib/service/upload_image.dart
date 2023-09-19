@@ -1,9 +1,13 @@
 import 'dart:io';
 import 'dart:developer';
+
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+
+String? url;
 
 class UploadImage {
   File? images;
+
   Future<void> uploadImageToFirebase(File? imageFile) async {
     try {
       if (imageFile == null) {
@@ -21,11 +25,13 @@ class UploadImage {
 
       if (snapshot.state == firebase_storage.TaskState.success) {
         final imageUrl = await snapshot.ref.getDownloadURL();
-
+        url = imageUrl;
+        print(url);
         log("Download URL: $imageUrl");
       } else {
         log("Image upload task is not in success state.");
       }
+      return;
     } catch (error) {
       log('Error uploading image:$error');
     }

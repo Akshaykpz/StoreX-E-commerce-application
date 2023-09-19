@@ -8,34 +8,31 @@ class MyUserManagment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        foregroundColor: Colors.black,
-      ),
-      body: Column(children: [
-        Card(
-          elevation: 2,
-          child: Container(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 24,
+      body: SafeArea(
+        child: Column(children: [
+          Card(
+            elevation: 3,
+            child: Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 24,
+              ),
+              height: 53,
+              width: 400,
+              color: Colors.white,
+              child: const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    AdminText(text: 'Users'),
+                    AdminText(text: 'Status'),
+                  ]),
             ),
-            height: 53,
-            width: 400,
-            color: Colors.white,
-            child: const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  AdminText(text: 'Users'),
-                  AdminText(text: 'Status'),
-                ]),
           ),
-        ),
-        const UserList(),
-        const UserList(),
-        const UserList(),
-        const UserList()
-      ]),
+          const UserList(),
+          const UserList(),
+          const UserList(),
+          const UserList()
+        ]),
+      ),
     );
   }
 }

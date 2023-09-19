@@ -17,14 +17,17 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 //   }
 // }
 
-CollectionReference CatgoryCollection =
+// ignore: non_constant_identifier_names
+CollectionReference catgoryCollection =
     FirebaseFirestore.instance.collection('category');
+final catgoryStream =
+    FirebaseFirestore.instance.collection('category').snapshots();
 
 Future<void> addcategory(
     {required String categoryname, required String categoryimage}) async {
   try {
-    await CatgoryCollection.add(
-        {'cat_name': categoryname, 'cat_image': categoryimage});
+    await catgoryCollection
+        .add({'cat_name': categoryname, 'cat_image': categoryimage});
   } catch (e) {
     log('Error adding cateory');
   }

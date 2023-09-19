@@ -14,22 +14,22 @@ class _CartState extends State<Cart> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        foregroundColor: Colors.black,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new_outlined),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        elevation: 0,
-        backgroundColor: Colors.white,
-        title: const Text(
-          'My Cart',
-          style: kvrheading,
-        ),
-        centerTitle: true,
-      ),
+      // appBar: AppBar(
+      //   foregroundColor: Colors.black,
+      //   leading: IconButton(
+      //     icon: const Icon(Icons.arrow_back_ios_new_outlined),
+      //     onPressed: () {
+      //       Navigator.pop(context);
+      //     },
+      //   ),
+      //   elevation: 0,
+      //   backgroundColor: Colors.white,
+      //   title: const Text(
+      //     'My Cart',
+      //     style: kvrheading,
+      //   ),
+      //   centerTitle: true,
+      // ),
       body: const SingleChildScrollView(
         child: Column(
           children: [

@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/service/add_data.dart';
 import 'package:giltezy_2ndproject/service/proudcts.dart';
+import 'package:giltezy_2ndproject/service/upload_image.dart';
 
 import 'package:giltezy_2ndproject/widgets/Homepage/ItemView/item_view.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,14 +17,14 @@ class SecondGrid extends StatefulWidget {
 }
 
 class _SecondGridState extends State<SecondGrid> {
-  List<String> yourImagesList = [
-    'https://firebasestorage.googleapis.com/v0/b/giltezy.appspot.com/o/images%2F1694061454177.jpg?alt=media&token=d9a6ae39-0c64-4225-8d65-eddc0cebf46f',
-    'https://firebasestorage.googleapis.com/v0/b/giltezy.appspot.com/o/images%2F1694061955495.jpg?alt=media&token=6cf45032-357b-40c1-a37d-a5141d3eb47d',
-    'https://firebasestorage.googleapis.com/v0/b/giltezy.appspot.com/o/images%2F1694061454177.jpg?alt=media&token=d9a6ae39-0c64-4225-8d65-eddc0cebf46f',
-    'https://firebasestorage.googleapis.com/v0/b/giltezy.appspot.com/o/images%2F1694061955495.jpg?alt=media&token=6cf45032-357b-40c1-a37d-a5141d3eb47d',
-    'https://firebasestorage.googleapis.com/v0/b/giltezy.appspot.com/o/images%2F1694061454177.jpg?alt=media&token=d9a6ae39-0c64-4225-8d65-eddc0cebf46f',
-    'https://firebasestorage.googleapis.com/v0/b/giltezy.appspot.com/o/images%2F1694061955495.jpg?alt=media&token=6cf45032-357b-40c1-a37d-a5141d3eb47d',
-  ];
+  // List<String> yourImagesList = [
+  //   'https://firebasestorage.googleapis.com/v0/b/giltezy.appspot.com/o/images%2F1694061454177.jpg?alt=media&token=d9a6ae39-0c64-4225-8d65-eddc0cebf46f',
+  //   'https://firebasestorage.googleapis.com/v0/b/giltezy.appspot.com/o/images%2F1694061955495.jpg?alt=media&token=6cf45032-357b-40c1-a37d-a5141d3eb47d',
+  //   'https://firebasestorage.googleapis.com/v0/b/giltezy.appspot.com/o/images%2F1694061454177.jpg?alt=media&token=d9a6ae39-0c64-4225-8d65-eddc0cebf46f',
+  //   'https://firebasestorage.googleapis.com/v0/b/giltezy.appspot.com/o/images%2F1694061955495.jpg?alt=media&token=6cf45032-357b-40c1-a37d-a5141d3eb47d',
+  //   'https://firebasestorage.googleapis.com/v0/b/giltezy.appspot.com/o/images%2F1694061454177.jpg?alt=media&token=d9a6ae39-0c64-4225-8d65-eddc0cebf46f',
+  //   'https://firebasestorage.googleapis.com/v0/b/giltezy.appspot.com/o/images%2F1694061955495.jpg?alt=media&token=6cf45032-357b-40c1-a37d-a5141d3eb47d',
+  // ];
 
   List<Color> rowColors = [
     Colors.blue.shade100,
@@ -64,19 +65,19 @@ class _SecondGridState extends State<SecondGrid> {
               final document = snapshot.data!.docs[index];
               final productName = document['p_name'];
               final productPrice = document['p_price'];
+              final productImage = document['P-imageurl'];
 
-              final rowColor =
-                  rowColors[index % rowColors.length]; // Get the row color
+              final rowColor = rowColors[index % rowColors.length];
 
               return Padding(
-                padding: const EdgeInsets.all(7), // Adjust padding as needed
+                padding: const EdgeInsets.all(7),
                 child: GestureDetector(
                   onTap: () {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => ItemViews(
-                            imageUrl: yourImagesList[index],
+                            imageUrl: productImage,
                             product: Product(
                               name: productName,
                               price: productPrice,
@@ -97,15 +98,15 @@ class _SecondGridState extends State<SecondGrid> {
                         Stack(
                           children: [
                             Image.network(
-                              yourImagesList[index],
-                              height: 150,
+                              productImage,
+                              height: 100,
                               width: MediaQuery.sizeOf(context)
                                   .width, // Adjust the height as needed
                               fit: BoxFit.fitWidth,
                             ),
                             if (snapshot.connectionState ==
                                 ConnectionState.waiting)
-                              Center(
+                              const Center(
                                 child: CircularProgressIndicator(),
                               ),
                           ],
