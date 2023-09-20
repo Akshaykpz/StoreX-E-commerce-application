@@ -20,6 +20,11 @@ class ProductPriceFiled extends StatelessWidget {
             Icons.error,
           ),
         ),
+        validator: (value) {
+          if (value!.isEmpty) {
+            return 'please enter product price';
+          }
+        },
       ),
     );
   }

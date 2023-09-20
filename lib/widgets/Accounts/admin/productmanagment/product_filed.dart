@@ -19,6 +19,11 @@ class ProductFiled extends StatelessWidget {
             Icons.error,
           ),
         ),
+        validator: (value) {
+          if (value!.isEmpty || value == null) {
+            return 'please enter product name';
+          }
+        },
       ),
     );
   }

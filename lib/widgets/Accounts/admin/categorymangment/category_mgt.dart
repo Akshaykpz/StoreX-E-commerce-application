@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_scrolling_fab_animated/flutter_scrolling_fab_animated.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:giltezy_2ndproject/service/category_item_add.dart';
-import 'package:giltezy_2ndproject/widgets/accounts/admin/categorymangment/category_add.dart';
 
-import 'package:google_fonts/google_fonts.dart';
+import 'package:giltezy_2ndproject/widgets/accounts/admin/categorymangment/category_add.dart';
+import 'package:giltezy_2ndproject/widgets/accounts/admin/categorymangment/category_name.dart';
+import 'package:giltezy_2ndproject/widgets/accounts/admin/categorymangment/category_popup.dart';
 
 class MyCategory extends StatelessWidget {
   const MyCategory({Key? key}) : super(key: key);
@@ -16,7 +17,7 @@ class MyCategory extends StatelessWidget {
       child: Scaffold(
         body: CustomScrollView(
           controller: _scrollController,
-          slivers: <Widget>[
+          slivers: [
             StreamBuilder<QuerySnapshot>(
               stream: catgoryStream,
               builder: (context, snapshot) {
@@ -44,19 +45,55 @@ class MyCategory extends StatelessWidget {
                       final categorydata = snapshot.data!.docs[index];
                       final productname = categorydata['cat_name'];
                       final productimage = categorydata['cat_image'];
+                      print('hello  {$productimage}');
+
                       return Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            color: Colors.red,
+                        padding: const EdgeInsets.all(10.0),
+                        child: Card(
+                          shape: const RoundedRectangleBorder(
+                            side: BorderSide(
+                              color: Colors.grey,
+                            ),
                           ),
-                          padding: const EdgeInsets.all(20.0),
-                          child: Center(
-                            child: Text(
-                              productname,
-                              style: GoogleFonts.breeSerif(
-                                  fontSize: 19, color: Colors.blueAccent),
+                          elevation: 3,
+                          child: Container(
+                            padding: const EdgeInsets.all(6.0),
+                            child: Column(
+                              children: [
+                                const Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Categoryedit(),
+                                  ],
+                                ),
+                                FutureBuilder(
+                                  future: precacheImage(
+                                    NetworkImage(productimage),
+                                    context,
+                                  ),
+                                  builder: (context, snapshot) {
+                                    if (snapshot.connectionState ==
+                                        ConnectionState.waiting) {
+                                      return CircularProgressIndicator();
+                                    }
+                                    if (snapshot.hasError) {
+                                      return Text('Error: ${snapshot.error}');
+                                    }
+                                    return Image.network(
+                                      productimage,
+                                      height: 100,
+                                      width: MediaQuery.of(context).size.width,
+                                      fit: BoxFit.fitWidth,
+                                    );
+                                  },
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                Categoryname(
+                                  name: productname ?? '1200',
+                                ),
+                              ],
                             ),
                           ),
                         ),

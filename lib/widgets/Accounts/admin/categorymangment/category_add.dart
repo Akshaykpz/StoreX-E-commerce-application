@@ -1,9 +1,12 @@
 import 'package:cool_alert/cool_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/service/category_item_add.dart';
+import 'package:giltezy_2ndproject/service/upload_image.dart';
 
 import 'package:giltezy_2ndproject/widgets/accounts/admin/productmanagment/image_picker.dart';
 import 'package:giltezy_2ndproject/widgets/accounts/admin/productmanagment/product_filed.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 // ignore: must_be_immutable
 class CategoryAdd extends StatefulWidget {
@@ -37,27 +40,29 @@ class _CategoryAddState extends State<CategoryAdd> {
                 onPressed: () async {
                   try {
                     await addcategory(
-                        categoryname: categorynamecontroller.text,
-                        categoryimage: '');
-
-                    // ignore: use_build_context_synchronously
-                    CoolAlert.show(
-                      context: context,
-                      type: CoolAlertType.success,
-                      text: "Your transaction was successful",
+                      categoryname: categorynamecontroller.text,
+                      categoryimage: url.toString(),
                     );
+                    showTopSnackBar(
+                      Overlay.of(context),
+                      CustomSnackBar.success(
+                        message: "category added sucessfully...",
+                      ),
+                    );
+
+                    await Future.delayed(Duration(seconds: 2));
+
+                    Navigator.pop(context);
                   } catch (e) {
                     print("Error: $e");
 
-                    // ignore: use_build_context_synchronously
-                    CoolAlert.show(
-                      context: context,
-                      type: CoolAlertType.error,
-                      text: "An error occurred while saving",
+                    showTopSnackBar(
+                      Overlay.of(context),
+                      CustomSnackBar.error(
+                        message: "Something went wrong....",
+                      ),
                     );
                   }
-                  // ignore: use_build_context_synchronously
-                  Navigator.pop(context);
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.green,

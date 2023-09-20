@@ -17,15 +17,6 @@ class SecondGrid extends StatefulWidget {
 }
 
 class _SecondGridState extends State<SecondGrid> {
-  // List<String> yourImagesList = [
-  //   'https://firebasestorage.googleapis.com/v0/b/giltezy.appspot.com/o/images%2F1694061454177.jpg?alt=media&token=d9a6ae39-0c64-4225-8d65-eddc0cebf46f',
-  //   'https://firebasestorage.googleapis.com/v0/b/giltezy.appspot.com/o/images%2F1694061955495.jpg?alt=media&token=6cf45032-357b-40c1-a37d-a5141d3eb47d',
-  //   'https://firebasestorage.googleapis.com/v0/b/giltezy.appspot.com/o/images%2F1694061454177.jpg?alt=media&token=d9a6ae39-0c64-4225-8d65-eddc0cebf46f',
-  //   'https://firebasestorage.googleapis.com/v0/b/giltezy.appspot.com/o/images%2F1694061955495.jpg?alt=media&token=6cf45032-357b-40c1-a37d-a5141d3eb47d',
-  //   'https://firebasestorage.googleapis.com/v0/b/giltezy.appspot.com/o/images%2F1694061454177.jpg?alt=media&token=d9a6ae39-0c64-4225-8d65-eddc0cebf46f',
-  //   'https://firebasestorage.googleapis.com/v0/b/giltezy.appspot.com/o/images%2F1694061955495.jpg?alt=media&token=6cf45032-357b-40c1-a37d-a5141d3eb47d',
-  // ];
-
   List<Color> rowColors = [
     Colors.blue.shade100,
     Colors.green.shade100,

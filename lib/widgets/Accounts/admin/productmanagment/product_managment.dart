@@ -5,8 +5,8 @@ import 'package:giltezy_2ndproject/service/upload_image.dart';
 import 'package:giltezy_2ndproject/widgets/accounts/admin/productmanagment/image_picker.dart';
 import 'package:giltezy_2ndproject/widgets/accounts/admin/productmanagment/product_filed.dart';
 import 'package:giltezy_2ndproject/widgets/accounts/admin/productmanagment/product_price_field.dart';
-
-import '../../../../service/find_category.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class ProductMangment extends StatefulWidget {
   const ProductMangment({super.key});
@@ -16,6 +16,8 @@ class ProductMangment extends StatefulWidget {
 }
 
 class _ProductMangmentState extends State<ProductMangment> {
+  final _formkey = GlobalKey<FormState>();
+
   TextEditingController prouductnameController = TextEditingController();
   TextEditingController productpriceController = TextEditingController();
 
@@ -24,69 +26,76 @@ class _ProductMangmentState extends State<ProductMangment> {
     return Scaffold(
       body: SingleChildScrollView(
         child: SafeArea(
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 19,
-              ),
-              const ImagePickerWidget(),
-              ProductFiled(
-                  namecontroller: prouductnameController,
-                  label: 'product name'),
-              ProductPriceFiled(
-                  pricecontroller: productpriceController,
-                  label: 'product price'),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.5,
-                child: ElevatedButton(
-                  onPressed: () async {
-                    try {
-                      // final id = await findDocumentIdByCategory('Apple');
-                      print('clicked');
+          child: Form(
+            key: _formkey,
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 19,
+                ),
+                const ImagePickerWidget(),
+                ProductFiled(
+                    namecontroller: prouductnameController,
+                    label: 'product name'),
+                ProductPriceFiled(
+                    pricecontroller: productpriceController,
+                    label: 'product price'),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.5,
+                  child: ElevatedButton(
+                    onPressed: () async {
+                      try {
+                        // final id = await findDocumentIdByCategory('Apple');
+                        print('clicked');
+                        if (_formkey.currentState!.validate()) {
+                          await addData(
+                                  price: productpriceController.text,
+                                  name: prouductnameController.text,
+                                  imageurls: url!,
+                                  id: 'dsff')
+                              .whenComplete(() async {
+                            print('completed');
+                            showTopSnackBar(
+                              Overlay.of(context),
+                              CustomSnackBar.success(
+                                message: "category added sucessfully...",
+                              ),
+                            );
 
-                      await addData(
-                              price: productpriceController.text,
-                              name: prouductnameController.text,
-                              imageurls: url!,
-                              id: 'dsff')
-                          .whenComplete(() {
-                        print('completed');
+                            await Future.delayed(Duration(seconds: 2));
+
+                            Navigator.pop(context);
+                          });
+                        }
+                      } catch (e) {
+                        print("Error: $e");
+
+                        // ignore: use_build_context_synchronously
                         CoolAlert.show(
                           context: context,
-                          type: CoolAlertType.success,
-                          text: "Your transaction was successful",
+                          type: CoolAlertType.error,
+                          text: "An error occurred while saving",
                         );
-                      });
-
-                      // ignore: use_build_context_synchronously
-                    } catch (e) {
-                      print("Error: $e");
-
-                      // ignore: use_build_context_synchronously
-                      CoolAlert.show(
-                        context: context,
-                        type: CoolAlertType.error,
-                        text: "An error occurred while saving",
-                      );
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25),
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      elevation: 15.0,
                     ),
-                    elevation: 15.0,
-                  ),
-                  child: const Padding(
-                    padding: EdgeInsets.all(15.0),
-                    child: Text(
-                      'Save',
-                      style: TextStyle(fontSize: 20),
+                    child: const Padding(
+                      padding: EdgeInsets.all(15.0),
+                      child: Text(
+                        'Save',
+                        style: TextStyle(fontSize: 20),
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
