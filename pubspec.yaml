@@ -76,6 +76,8 @@ dependencies:
   flutter_scrolling_fab_animated: ^0.1.4
   flutter_spinkit: ^5.2.0
   top_snackbar_flutter: ^3.1.0
+  flutter_riverpod: ^2.4.0
+ 
  
   
   
