@@ -6,6 +6,7 @@ import 'package:giltezy_2ndproject/service/upload_image.dart';
 import 'package:giltezy_2ndproject/widgets/accounts/admin/productmanagment/image_picker.dart';
 import 'package:giltezy_2ndproject/widgets/accounts/admin/productmanagment/product_filed.dart';
 import 'package:giltezy_2ndproject/widgets/accounts/admin/productmanagment/product_price_field.dart';
+import 'package:giltezy_2ndproject/widgets/accounts/admin/productmanagment/proudct_description.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
@@ -21,6 +22,7 @@ class _ProductMangmentState extends State<ProductMangment> {
 
   TextEditingController prouductnameController = TextEditingController();
   TextEditingController productpriceController = TextEditingController();
+  TextEditingController productdescriptioncontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +43,9 @@ class _ProductMangmentState extends State<ProductMangment> {
                 ProductPriceFiled(
                     pricecontroller: productpriceController,
                     label: 'product price'),
+                Productdescription(
+                    description: productdescriptioncontroller,
+                    label: 'description'),
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.5,
                   child: ElevatedButton(

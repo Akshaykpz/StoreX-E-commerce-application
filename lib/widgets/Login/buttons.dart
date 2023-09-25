@@ -18,8 +18,6 @@ class MyButton extends StatefulWidget {
   State<MyButton> createState() => _MyButtonState();
 }
 
-bool _isLoading = false;
-
 class _MyButtonState extends State<MyButton> {
   @override
   Widget build(BuildContext context) {
