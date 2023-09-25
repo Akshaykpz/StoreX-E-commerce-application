@@ -15,8 +15,8 @@ class ProductPriceFiled extends StatelessWidget {
         controller: pricecontroller,
         decoration: InputDecoration(
           labelText: label,
-          border: OutlineInputBorder(borderSide: BorderSide()),
-          suffixIcon: Icon(
+          border: const OutlineInputBorder(borderSide: BorderSide()),
+          suffixIcon: const Icon(
             Icons.error,
           ),
         ),
@@ -24,6 +24,7 @@ class ProductPriceFiled extends StatelessWidget {
           if (value!.isEmpty) {
             return 'please enter product price';
           }
+          return null;
         },
       ),
     );

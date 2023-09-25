@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../utils/theme/textstyle.dart';
 
-class MyButton extends StatelessWidget {
+class MyButton extends StatefulWidget {
   final String buttontext;
   final VoidCallback? onPressedCallback;
   final IconData icons;
@@ -15,26 +15,33 @@ class MyButton extends StatelessWidget {
   });
 
   @override
+  State<MyButton> createState() => _MyButtonState();
+}
+
+bool _isLoading = false;
+
+class _MyButtonState extends State<MyButton> {
+  @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        fixedSize: Size(250, 50),
+        fixedSize: const Size(250, 50),
         backgroundColor: const Color.fromARGB(255, 77, 180, 228),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(25),
         ),
       ),
+      onPressed: widget.onPressedCallback,
       child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-        Icon(icons),
+        Icon(widget.icons),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
           child: Text(
-            buttontext,
+            widget.buttontext,
             style: kstext,
           ),
         ),
       ]),
-      onPressed: onPressedCallback,
     );
   }
 }

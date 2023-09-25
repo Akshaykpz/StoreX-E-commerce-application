@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:giltezy_2ndproject/service/delete_data.dart';
 
 class Categoryedit extends StatefulWidget {
-  const Categoryedit({super.key});
+  final String categoryid;
+  const Categoryedit({super.key, required this.categoryid});
 
   @override
   State<Categoryedit> createState() => _CategoryeditState();
@@ -21,25 +23,27 @@ class _CategoryeditState extends State<Categoryedit> {
           value: edit,
           child: Row(
             children: [
-              Icon(Icons.edit),
-              Padding(padding: EdgeInsets.all(5)),
+              const Icon(Icons.edit),
+              const Padding(padding: EdgeInsets.all(5)),
               Text(edit),
             ],
           ),
         ),
         PopupMenuItem(
-          value: edit,
+          value: delete,
           child: Row(
             children: [
-              Icon(Icons.delete),
-              Padding(padding: EdgeInsets.all(5)),
+              const Icon(Icons.delete),
+              const Padding(padding: EdgeInsets.all(5)),
               Text(delete),
             ],
           ),
         ),
       ],
       onSelected: (String newvalue) {
-        setState(() {});
+        if (newvalue == delete) {
+          deleteCategory(widget.categoryid);
+        } else if (newvalue == edit) {}
       },
     );
   }

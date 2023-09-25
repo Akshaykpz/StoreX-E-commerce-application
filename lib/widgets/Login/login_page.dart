@@ -92,6 +92,10 @@ class _MyLoginState extends State<MyLogin> {
                         ),
                       ),
                       k20box,
+                      // _isLoading
+                      //     ? Center(
+                      //         child: CircularProgressIndicator(),
+                      //       )
                       MyButton(
                           icons: Icons.login,
                           buttontext: 'Login',

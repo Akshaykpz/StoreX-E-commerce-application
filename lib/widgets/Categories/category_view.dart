@@ -25,7 +25,8 @@ class CategoryItems extends StatelessWidget {
       appBar: AppBar(
         actions: [
           IconButton(
-              onPressed: () {}, icon: Icon(Icons.search, color: Colors.black))
+              onPressed: () {},
+              icon: const Icon(Icons.search, color: Colors.black))
         ],
         elevation: 0,
         backgroundColor: Colors.transparent,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:giltezy_2ndproject/utils/theme/textstyle.dart';
+
 import 'package:giltezy_2ndproject/widgets/cart/button.dart';
 import 'package:giltezy_2ndproject/widgets/cart/cart_items.dart';
 
@@ -13,7 +13,7 @@ class Cart extends StatefulWidget {
 class _CartState extends State<Cart> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       // appBar: AppBar(
       //   foregroundColor: Colors.black,
       //   leading: IconButton(
@@ -30,7 +30,7 @@ class _CartState extends State<Cart> {
       //   ),
       //   centerTitle: true,
       // ),
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Column(
           children: [
             SizedBox(

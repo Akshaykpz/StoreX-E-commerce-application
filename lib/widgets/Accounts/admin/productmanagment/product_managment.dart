@@ -1,6 +1,7 @@
 import 'package:cool_alert/cool_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/service/add_data.dart';
+import 'package:giltezy_2ndproject/service/find_category.dart';
 import 'package:giltezy_2ndproject/service/upload_image.dart';
 import 'package:giltezy_2ndproject/widgets/accounts/admin/productmanagment/image_picker.dart';
 import 'package:giltezy_2ndproject/widgets/accounts/admin/productmanagment/product_filed.dart';
@@ -45,7 +46,7 @@ class _ProductMangmentState extends State<ProductMangment> {
                   child: ElevatedButton(
                     onPressed: () async {
                       try {
-                        // final id = await findDocumentIdByCategory('Apple');
+                        final id = await findDocumentIdByCategory('Apple');
                         print('clicked');
                         if (_formkey.currentState!.validate()) {
                           await addData(
@@ -57,12 +58,12 @@ class _ProductMangmentState extends State<ProductMangment> {
                             print('completed');
                             showTopSnackBar(
                               Overlay.of(context),
-                              CustomSnackBar.success(
+                              const CustomSnackBar.success(
                                 message: "category added sucessfully...",
                               ),
                             );
 
-                            await Future.delayed(Duration(seconds: 2));
+                            await Future.delayed(const Duration(seconds: 1));
 
                             Navigator.pop(context);
                           });

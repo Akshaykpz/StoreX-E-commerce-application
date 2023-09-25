@@ -1,4 +1,3 @@
-import 'package:cool_alert/cool_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/service/category_item_add.dart';
 import 'package:giltezy_2ndproject/service/upload_image.dart';
@@ -26,7 +25,7 @@ class _CategoryAddState extends State<CategoryAdd> {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 22,
             ),
             const ImagePickerWidget(),
@@ -44,21 +43,24 @@ class _CategoryAddState extends State<CategoryAdd> {
                       categoryimage: url.toString(),
                     );
                     showTopSnackBar(
+                      // ignore: use_build_context_synchronously
                       Overlay.of(context),
-                      CustomSnackBar.success(
+                      const CustomSnackBar.success(
                         message: "category added sucessfully...",
                       ),
                     );
 
-                    await Future.delayed(Duration(seconds: 2));
+                    await Future.delayed(const Duration(seconds: 2));
 
+                    // ignore: use_build_context_synchronously
                     Navigator.pop(context);
                   } catch (e) {
                     print("Error: $e");
 
                     showTopSnackBar(
+                      // ignore: use_build_context_synchronously
                       Overlay.of(context),
-                      CustomSnackBar.error(
+                      const CustomSnackBar.error(
                         message: "Something went wrong....",
                       ),
                     );

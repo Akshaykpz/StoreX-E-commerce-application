@@ -6,7 +6,9 @@ import 'package:giltezy_2ndproject/widgets/accounts/admin/productmanagment/butto
 import 'package:image_picker/image_picker.dart';
 
 class ImagePickerWidget extends StatefulWidget {
-  const ImagePickerWidget({Key? key});
+  const ImagePickerWidget({
+    super.key,
+  });
 
   @override
   State<ImagePickerWidget> createState() => _ImagePickerWidgetState();

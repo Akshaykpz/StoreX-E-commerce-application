@@ -12,11 +12,11 @@ class MyCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ScrollController _scrollController = ScrollController();
+    final ScrollController scrollController = ScrollController();
     return SafeArea(
       child: Scaffold(
         body: CustomScrollView(
-          controller: _scrollController,
+          controller: scrollController,
           slivers: [
             StreamBuilder<QuerySnapshot>(
               stream: catgoryStream,
@@ -60,10 +60,10 @@ class MyCategory extends StatelessWidget {
                             padding: const EdgeInsets.all(6.0),
                             child: Column(
                               children: [
-                                const Row(
+                                Row(
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
-                                    Categoryedit(),
+                                    Categoryedit(categoryid: categorydata.id),
                                   ],
                                 ),
                                 FutureBuilder(
@@ -74,7 +74,7 @@ class MyCategory extends StatelessWidget {
                                   builder: (context, snapshot) {
                                     if (snapshot.connectionState ==
                                         ConnectionState.waiting) {
-                                      return CircularProgressIndicator();
+                                      return const CircularProgressIndicator();
                                     }
                                     if (snapshot.hasError) {
                                       return Text('Error: ${snapshot.error}');
@@ -124,7 +124,7 @@ class MyCategory extends StatelessWidget {
               ),
             );
           },
-          scrollController: _scrollController,
+          scrollController: scrollController,
           animateIcon: true,
           inverted: false,
           radius: 10.0,
