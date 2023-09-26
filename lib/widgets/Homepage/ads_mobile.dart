@@ -58,78 +58,78 @@ class _FavoritesPageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.transparent,
+        // backgroundColor: Colors.transparent,
         body: CustomScrollView(
-          controller: scrollController,
-          slivers: [
-            SliverFillRemaining(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.start,
+      controller: scrollController,
+      slivers: [
+        SliverFillRemaining(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              const Serach(),
+              const SizedBox(
+                height: 19,
+              ),
+              CarouselSlider(
+                items: camera.map((
+                  imageUrl,
+                ) {
+                  return Container(
+                    width: 300.w,
+                    height: 60.h, // Adjust this height as needed
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(18).r,
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage(imageUrl),
+                      ),
+                    ),
+                  );
+                }).toList(),
+                options: CarouselOptions(
+                  height: 170.h, // Set the desired height of the carousel
+                  autoPlay: true,
+                  enlargeCenterPage: true,
+                  onPageChanged: (index, reason) {
+                    setState(() {
+                      currentIndex = index;
+                    });
+                  },
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              const ItemsGrid(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Serach(),
-                  const SizedBox(
-                    height: 19,
-                  ),
-                  CarouselSlider(
-                    items: camera.map((
-                      imageUrl,
-                    ) {
-                      return Container(
-                        width: 300.w,
-                        height: 60.h, // Adjust this height as needed
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(18).r,
-                          image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: AssetImage(imageUrl),
-                          ),
-                        ),
-                      );
-                    }).toList(),
-                    options: CarouselOptions(
-                      height: 170.h, // Set the desired height of the carousel
-                      autoPlay: true,
-                      enlargeCenterPage: true,
-                      onPageChanged: (index, reason) {
-                        setState(() {
-                          currentIndex = index;
-                        });
-                      },
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      'Popular',
+                      style: GoogleFonts.abhayaLibre(
+                          fontWeight: FontWeight.bold, fontSize: 17),
                     ),
                   ),
-                  const SizedBox(
-                    height: 20,
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const CategoryItems(),
+                          ));
+                    },
+                    child: const Text('More..'),
                   ),
-                  const ItemsGrid(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          'Popular',
-                          style: GoogleFonts.abhayaLibre(
-                              fontWeight: FontWeight.bold, fontSize: 17),
-                        ),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const CategoryItems(),
-                              ));
-                        },
-                        child: const Text('More..'),
-                      ),
-                    ],
-                  ),
-                  const Expanded(child: SecondGrid())
                 ],
               ),
-            )
-          ],
-        ));
+              const Expanded(child: SecondGrid())
+            ],
+          ),
+        )
+      ],
+    ));
   }
 }

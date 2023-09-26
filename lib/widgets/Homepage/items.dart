@@ -3,9 +3,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/service/add_data.dart';
 import 'package:giltezy_2ndproject/service/proudcts.dart';
-import 'package:giltezy_2ndproject/service/upload_image.dart';
 
 import 'package:giltezy_2ndproject/widgets/Homepage/ItemView/item_view.dart';
+import 'package:giltezy_2ndproject/widgets/cacheed_image.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SecondGrid extends StatefulWidget {
@@ -88,13 +88,14 @@ class _SecondGridState extends State<SecondGrid> {
                       children: [
                         Stack(
                           children: [
-                            Image.network(
-                              productImage,
-                              height: 100,
-                              width: MediaQuery.sizeOf(context)
-                                  .width, // Adjust the height as needed
-                              fit: BoxFit.fitWidth,
-                            ),
+                            CachedImage(url: productImage),
+                            // Image.network(
+                            //   productImage,
+                            //   height: 100,
+                            //   width: MediaQuery.sizeOf(context)
+                            //       .width, // Adjust the height as needed
+                            //   fit: BoxFit.fitWidth,
+                            // ),
                             if (snapshot.connectionState ==
                                 ConnectionState.waiting)
                               const Center(
