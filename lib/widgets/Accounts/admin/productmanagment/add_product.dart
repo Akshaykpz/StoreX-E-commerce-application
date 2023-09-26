@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_scrolling_fab_animated/flutter_scrolling_fab_animated.dart';
 import 'package:giltezy_2ndproject/service/add_data.dart';
+import 'package:giltezy_2ndproject/widgets/accounts/admin/categorymangment/category_name.dart';
 import 'package:giltezy_2ndproject/widgets/accounts/admin/productmanagment/product_managment.dart';
 
 class MyProductView extends StatelessWidget {
@@ -24,19 +25,69 @@ class MyProductView extends StatelessWidget {
                 }
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const SliverToBoxAdapter(
-                    child: Center(child: SizedBox()),
+                    child: Center(child: CircularProgressIndicator()),
                   );
                 }
                 return SliverGrid(
                   delegate: SliverChildBuilderDelegate((context, index) {
                     final prouctdata = snapshot.data!.docs[index];
-                    final proudctimg = prouctdata['P_imageurl'];
+                    final proudctimg = prouctdata['P-imageurl'];
                     final productname = prouctdata['p_name'];
                     final proudctprice = prouctdata['p_price'];
 
-                    return Image.network(productname);
-                  }),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    return Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Card(
+                          shape: const RoundedRectangleBorder(
+                            side: BorderSide(
+                              color: Colors.grey,
+                            ),
+                          ),
+                          elevation: 3,
+                          child: Container(
+                            padding: const EdgeInsets.all(6.0),
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [],
+                                ),
+                                FutureBuilder(
+                                  future: precacheImage(
+                                    NetworkImage(proudctimg),
+                                    context,
+                                  ),
+                                  builder: (context, snapshot) {
+                                    if (snapshot.connectionState ==
+                                        ConnectionState.waiting) {
+                                      return const CircularProgressIndicator();
+                                    }
+                                    if (snapshot.hasError) {
+                                      return Text('Error: ${snapshot.error}');
+                                    }
+                                    return Image.network(
+                                      proudctimg,
+                                      height: 100,
+                                      width: MediaQuery.of(context).size.width,
+                                      fit: BoxFit.fitWidth,
+                                    );
+                                  },
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                Categoryname(
+                                  name: productname ?? '1200',
+                                ),
+                                Categoryname(
+                                  name: proudctprice ?? '1200',
+                                )
+                              ],
+                            ),
+                          ),
+                        ));
+                  }, childCount: snapshot.data!.docs.length),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     crossAxisSpacing: 1.0,
                     mainAxisSpacing: 1.0,

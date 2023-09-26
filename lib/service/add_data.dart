@@ -7,11 +7,13 @@ Future addData(
     {required String price,
     required String name,
     id,
+    required String description,
     required String imageurls}) async {
   await storage.collection('products').doc().set({
     'p_name': name,
     'p_price': price,
     'categroy_id': id,
+    'p_description': description,
     'P-imageurl': imageurls
   }).then((value) => log('add data'));
 }

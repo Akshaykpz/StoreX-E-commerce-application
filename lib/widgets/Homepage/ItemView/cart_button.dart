@@ -1,55 +1,38 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter_animated_button/flutter_animated_button.dart';
+import 'package:flutter/material.dart';
+import 'package:giltezy_2ndproject/widgets/accounts/order/order_status.dart';
+import 'package:pushable_button/pushable_button.dart';
 
-// class AnimatedButtonDemo extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     var submitTextStyle = TextStyle(
-//       fontSize: 28,
-//       letterSpacing: 5,
-//       color: Colors.white,
-//       fontWeight: FontWeight.w300,
-//     );
+class CartButton extends StatelessWidget {
+  const CartButton({Key? key});
 
-//     return Column(
-//       children: [
-//         SizedBox(height: 20), // Add spacing if needed
-
-//         AnimatedButton(
-//           animatedOn: AnimatedOn.onHover,
-//           onPress: () {},
-//           onChanges: (change) {},
-//           height: 70,
-//           width: 200,
-//           text: 'SUBMIT',
-//           isReverse: true,
-//           selectedTextColor: Colors.black,
-//           transitionType: TransitionType.LEFT_TOP_ROUNDER,
-//           textStyle: submitTextStyle,
-//           backgroundColor: Colors.black,
-//           selectedBackgroundColor: Colors.lightGreen,
-//           borderColor: Colors.white,
-//           borderWidth: 1,
-//         ),
-
-//         SizedBox(height: 20), // Add spacing if needed
-
-//         AnimatedButton.strip(
-//           animatedOn: AnimatedOn.onHover,
-//           height: 70,
-//           width: 200,
-//           text: 'SUBMIT',
-//           isReverse: true,
-//           selectedTextColor: Colors.black,
-//           textStyle: submitTextStyle,
-//           backgroundColor: Colors.black,
-//           onPress: () {},
-//         ),
-
-//         // ... other AnimatedButton widgets
-
-//         // ... other components or widgets if needed
-//       ],
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(30.0),
+      child: PushableButton(
+        height: 40, // Adjust the height here
+        elevation: 6,
+        hslColor: const HSLColor.fromAHSL(0.8, 1, 0, 1.0), // White color
+        shadow: BoxShadow(
+          color: Colors.grey.withOpacity(0.2),
+          spreadRadius: 5,
+          blurRadius: 7,
+          offset: const Offset(0, 1),
+        ),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const MyOrder(),
+            ),
+          );
+        },
+        child: const Text(
+          'BUY NOW',
+          style: TextStyle(
+              fontWeight: FontWeight.w700, color: Colors.black), // Text color
+        ),
+      ),
+    );
+  }
+}

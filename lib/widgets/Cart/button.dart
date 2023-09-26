@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/widgets/accounts/order/order_status.dart';
 import 'package:pushable_button/pushable_button.dart';
 
-class CartButton extends StatelessWidget {
-  const CartButton({super.key});
+class BuyButton extends StatelessWidget {
+  const BuyButton({super.key});
 
   @override
   Widget build(BuildContext context) {

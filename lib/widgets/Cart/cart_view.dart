@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:giltezy_2ndproject/widgets/cart/button.dart';
 import 'package:giltezy_2ndproject/widgets/cart/cart_items.dart';
+import 'package:giltezy_2ndproject/widgets/homepage/ItemView/cart_button.dart';
 
 class Cart extends StatefulWidget {
   const Cart({super.key});
@@ -71,7 +72,7 @@ class _CartState extends State<Cart> {
                 imagePath:
                     'assets/images/max-whitehead-nRKzAy4w6mE-unsplash.jpg',
                 price: ' ₹24500'),
-            CartButton()
+            BuyButton()
           ],
         ),
       ),

@@ -55,6 +55,8 @@ class _ProductMangmentState extends State<ProductMangment> {
                         print('clicked');
                         if (_formkey.currentState!.validate()) {
                           await addData(
+                                  description:
+                                      productdescriptioncontroller.text,
                                   price: productpriceController.text,
                                   name: prouductnameController.text,
                                   imageurls: url!,

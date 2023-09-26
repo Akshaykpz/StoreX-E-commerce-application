@@ -3,8 +3,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/service/add_data.dart';
 import 'package:giltezy_2ndproject/service/proudcts.dart';
+import 'package:giltezy_2ndproject/service/upload_image.dart';
 
 import 'package:giltezy_2ndproject/widgets/Homepage/ItemView/item_view.dart';
+import 'package:giltezy_2ndproject/widgets/accounts/admin/productmanagment/proudct_description.dart';
 import 'package:giltezy_2ndproject/widgets/cacheed_image.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -57,6 +59,7 @@ class _SecondGridState extends State<SecondGrid> {
               final productName = document['p_name'];
               final productPrice = document['p_price'];
               final productImage = document['P-imageurl'];
+              final Productdescription = document['p_description'];
 
               final rowColor = rowColors[index % rowColors.length];
 
@@ -67,14 +70,12 @@ class _SecondGridState extends State<SecondGrid> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ItemViews(
-                            imageUrl: productImage,
-                            product: Product(
-                              name: productName,
-                              price: productPrice,
-                            ),
-                          ),
-                        ));
+                            builder: (context) => ItemViews(
+                                  imageUrl: productImage,
+                                  productDescription: Productdescription,
+                                  productName: productName,
+                                  productPrice: productPrice,
+                                )));
                   },
                   child: Card(
                     color: rowColor,
@@ -88,7 +89,7 @@ class _SecondGridState extends State<SecondGrid> {
                       children: [
                         Stack(
                           children: [
-                            CachedImage(url: productImage),
+                            CachedImage(url: productImage, height: 140),
                             // Image.network(
                             //   productImage,
                             //   height: 100,
