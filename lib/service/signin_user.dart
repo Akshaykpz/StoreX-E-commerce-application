@@ -38,7 +38,7 @@ Future<void> handleSignUp({
           (value) => Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const MyHomePage(),
+              builder: (context) => const MyItemviewpage(),
             ),
           ),
         );

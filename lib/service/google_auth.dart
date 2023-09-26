@@ -32,7 +32,7 @@ Future<void> handleGoogleSignIn(BuildContext context) async {
     // ignore: use_build_context_synchronously
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const MyHomePage()),
+      MaterialPageRoute(builder: (context) => const MyItemviewpage()),
     );
   } catch (e) {
     // Handle sign-in error
