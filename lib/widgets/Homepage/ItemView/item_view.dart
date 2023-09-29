@@ -1,111 +1,11 @@
-// import 'package:bottom_bar_with_sheet/bottom_bar_with_sheet.dart';
-
-// import 'package:flutter/material.dart';
-// import 'package:giltezy_2ndproject/service/proudcts.dart';
-// import 'package:google_fonts/google_fonts.dart';
-
-// class ItemViews extends StatefulWidget {
-//   final Product product;
-//   final String imageUrl;
-//   const ItemViews({super.key, required this.product, required this.imageUrl});
-
-//   @override
-//   State<ItemViews> createState() => _ItemViewsState();
-// }
-
-// class _ItemViewsState extends State<ItemViews> {
-//   final _bottomBarController = BottomBarWithSheetController(initialIndex: 0);
-
-//   @override
-//   void initState() {
-//     _bottomBarController.openSheet();
-//     // TODO: implement initState
-//     super.initState();
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         backgroundColor: Colors.transparent,
-//         foregroundColor: Colors.black,
-//         elevation: 0,
-//       ),
-//       body: InteractiveViewer(
-//           maxScale: 5.0,
-//           minScale: 0.01,
-//           boundaryMargin: const EdgeInsets.all(double.infinity),
-//           child: SingleChildScrollView(
-//             child: Column(
-//               children: [
-
-//                    Image.network(
-//                   widget.imageUrl,
-//                 ),
-//               ],
-//             ),
-//           )),
-
-//       bottomNavigationBar: BottomBarWithSheet(
-//         curve: Curves.decelerate,
-//         controller: _bottomBarController,
-//         bottomBarTheme: const BottomBarTheme(
-//           mainButtonPosition: MainButtonPosition.middle,
-//           decoration: BoxDecoration(
-//               color: Colors.black12,
-//               borderRadius: BorderRadius.vertical(top: Radius.circular(27))),
-//           itemIconColor: Colors.red,
-//         ),
-//         items: const [
-//           BottomBarWithSheetItem(icon: Icons.shopping_cart),
-//           BottomBarWithSheetItem(icon: Icons.favorite),
-//         ],
-//         sheetChild:
-//             Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-//           const Padding(padding: EdgeInsets.all(12)),
-//           SingleChildScrollView(
-//             child: Column(
-//               children: [
-//                 Text(widget.product.name,
-//                     style: GoogleFonts.cairoPlay(
-//                         fontWeight: FontWeight.w600,
-//                         fontSize: 29,
-//                         color: Colors.blueAccent)),
-//                 // Text(widget.product.price,
-//                 //     style: GoogleFonts.anekDevanagari(
-//                 //         fontSize: 16, color: Colors.black)),
-//                 Text(widget.product.description.toString())
-//               ],
-//             ),
-//           ),
-//           ElevatedButton(onPressed: () {}, child: const Text("haii"))
-//         ]),
-//       ),
-
-//       // SingleChildScrollView(
-//       //     child: Column(
-//       //   children: [
-//       //     Container(
-//       //       width: MediaQuery.of(context).size.width,
-//       //       decoration: BoxDecoration(
-//       //           borderRadius: BorderRadius.circular(30),
-//       //           boxShadow: [
-//       //             BoxShadow(blurRadius: 2, color: Colors.black.withOpacity(2))
-//       //           ]),
-//       //       child: Stack(children: <Widget>[]),
-//       //     )
-//       //   ],
-//       // )),
-//     );
-//   }
-// }
 import 'package:bottom_bar_with_sheet/bottom_bar_with_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:giltezy_2ndproject/service/proudcts.dart';
+import 'package:giltezy_2ndproject/widgets/accounts/allsettings/wish_list.dart';
+
 import 'package:giltezy_2ndproject/widgets/cacheed_image.dart';
-import 'package:giltezy_2ndproject/widgets/cart/button.dart';
+
 import 'package:giltezy_2ndproject/widgets/homepage/ItemView/cart_button.dart';
 import 'package:giltezy_2ndproject/widgets/homepage/ItemView/star_rating.dart';
 
@@ -168,6 +68,25 @@ class _ItemOnClickState extends ConsumerState<ItemViews> {
             fontSize: 10.0,
           ),
         ),
+        onSelectItem: (index) async {
+          if (index == 0) {
+            return addWishlistItem('productIdooooooo').whenComplete(() {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: const Text('This is snackbar'),
+                  behavior: SnackBarBehavior.floating,
+                ),
+              );
+            });
+          } else if (index == 1) {
+            return addWishlistItem('hello').whenComplete(() {
+              SnackBar(
+                content: Text('haiiii'),
+                backgroundColor: Colors.black,
+              );
+            });
+          }
+        },
         // onSelectItem: (index) async {
         //   if (index == 0) {
         //     return product.addToCart(widget.docId).whenComplete(() {});
@@ -213,7 +132,7 @@ class _ItemOnClickState extends ConsumerState<ItemViews> {
                           ),
                         ],
                       ),
-                      StarRating(),
+                      const StarRating(),
                       SizedBox(
                         height: 10.w,
                       ),
@@ -239,7 +158,7 @@ class _ItemOnClickState extends ConsumerState<ItemViews> {
                       const SizedBox(
                         height: 55,
                       ),
-                      CartButton()
+                      const CartButton()
                     ],
                   ),
                 ],

@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/widgets/categories/category_view.dart';
 
-import 'ads_mobile.dart';
+import 'main_home_view.dart';
 import 'bottombar.dart';
 import 'package:giltezy_2ndproject/widgets/cart/cart_view.dart';
 import 'package:giltezy_2ndproject/widgets/accounts/mainhome.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class MyItemviewpage extends StatefulWidget {
+  const MyItemviewpage({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MyItemviewpage> createState() => _MyItemviewpageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyItemviewpageState extends State<MyItemviewpage> {
   int _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {

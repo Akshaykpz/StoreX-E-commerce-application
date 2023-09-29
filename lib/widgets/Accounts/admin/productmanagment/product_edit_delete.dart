@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/service/delete_data.dart';
 import 'package:giltezy_2ndproject/service/delete_product.dart';
 
-class Categoryedit extends StatefulWidget {
+class Productedit extends StatefulWidget {
   final String categoryid;
-  const Categoryedit({super.key, required this.categoryid});
+  const Productedit({super.key, required this.categoryid});
 
   @override
-  State<Categoryedit> createState() => _CategoryeditState();
+  State<Productedit> createState() => _CategoryeditState();
 }
 
-class _CategoryeditState extends State<Categoryedit> {
+class _CategoryeditState extends State<Productedit> {
   @override
   Widget build(BuildContext context) {
     String edit = 'edit';

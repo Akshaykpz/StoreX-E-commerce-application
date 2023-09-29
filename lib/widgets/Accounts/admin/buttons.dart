@@ -26,7 +26,7 @@ class AdminButtons extends StatelessWidget {
             width: 370,
             height: 70,
             decoration: BoxDecoration(
-              color: Colors.grey.shade300,
+              color: Colors.white,
               borderRadius: const BorderRadius.only(
                   topRight: Radius.circular(30.0),
                   bottomRight: Radius.circular(30.0),
@@ -54,7 +54,11 @@ class AdminButtons extends StatelessWidget {
                   Icon(
                     icon,
                   ),
-                  Text(text),
+                  Text(
+                    text,
+                    style: const TextStyle(
+                        fontSize: 15, fontWeight: FontWeight.w700),
+                  ),
                   const Icon(Icons.arrow_forward_ios_outlined)
                 ]),
           ),

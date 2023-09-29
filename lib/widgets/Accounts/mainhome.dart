@@ -111,6 +111,7 @@ class _AccountsState extends State<Accounts> {
               ),
               isLoggedIn && isAdmin
                   ? MyNewButton(
+                      icons: Icons.account_box,
                       onPressedCallback: () {
                         Navigator.push(
                           context,
@@ -125,6 +126,7 @@ class _AccountsState extends State<Accounts> {
                     )
                   : const SizedBox(),
               MyNewButton(
+                  icons: Icons.edit,
                   onPressedCallback: () {
                     Navigator.push(
                         context,
@@ -134,6 +136,7 @@ class _AccountsState extends State<Accounts> {
                   },
                   buttontext: 'Edit Profile'),
               MyNewButton(
+                icons: Icons.favorite,
                 onPressedCallback: () {
                   Navigator.push(
                       context,
@@ -143,6 +146,7 @@ class _AccountsState extends State<Accounts> {
                 buttontext: 'Wishlist',
               ),
               MyNewButton(
+                icons: Icons.check_outlined,
                 onPressedCallback: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const MyOrder()));
@@ -150,6 +154,7 @@ class _AccountsState extends State<Accounts> {
                 buttontext: 'Orders',
               ),
               MyNewButton(
+                icons: Icons.home,
                 onPressedCallback: () {
                   Navigator.push(
                       context,
@@ -159,6 +164,7 @@ class _AccountsState extends State<Accounts> {
                 buttontext: 'Shipping Address',
               ),
               MyNewButton(
+                icons: Icons.logout,
                 onPressedCallback: () {
                   showSignOutDialog(context);
                 },

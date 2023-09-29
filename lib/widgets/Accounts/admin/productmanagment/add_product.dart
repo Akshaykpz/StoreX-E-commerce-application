@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_scrolling_fab_animated/flutter_scrolling_fab_animated.dart';
 import 'package:giltezy_2ndproject/service/add_data.dart';
 import 'package:giltezy_2ndproject/widgets/accounts/admin/categorymangment/category_name.dart';
+import 'package:giltezy_2ndproject/widgets/accounts/admin/productmanagment/product_edit_delete.dart';
 import 'package:giltezy_2ndproject/widgets/accounts/admin/productmanagment/product_managment.dart';
 
 class MyProductView extends StatelessWidget {
@@ -48,7 +49,7 @@ class MyProductView extends StatelessWidget {
                             padding: const EdgeInsets.all(6.0),
                             child: Column(
                               children: [
-                                Row(
+                                const Row(
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [],
                                 ),
@@ -78,6 +79,9 @@ class MyProductView extends StatelessWidget {
                                 ),
                                 Categoryname(
                                   name: productname ?? '1200',
+                                ),
+                                const SizedBox(
+                                  height: 20,
                                 ),
                                 Categoryname(
                                   name: proudctprice ?? '1200',

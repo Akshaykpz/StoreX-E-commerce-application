@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 class MyNewButton extends StatelessWidget {
   final String buttontext;
   final VoidCallback onPressedCallback;
+  final IconData? icons;
 
   const MyNewButton({
     super.key,
+    this.icons,
     required this.buttontext,
     required this.onPressedCallback,
   });
@@ -20,7 +22,7 @@ class MyNewButton extends StatelessWidget {
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.white,
-            side: const BorderSide(width: 3, color: Colors.white),
+            side: const BorderSide(width: 0.9, color: Colors.black),
             elevation: 3,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
@@ -28,14 +30,25 @@ class MyNewButton extends StatelessWidget {
             // padding: EdgeInsets.all(20),
           ),
           onPressed: onPressedCallback,
-          child: Text(
-            buttontext,
-            style: const TextStyle(
-              fontSize: 17,
-              fontWeight: FontWeight.w700,
-              // Set the text color here
-              color: Colors.teal, // Change this to your desired text color
-            ),
+          child: Row(
+            children: [
+              Icon(
+                icons,
+                color: Colors.black54,
+              ),
+              const SizedBox(
+                width: 15,
+              ),
+              Text(
+                buttontext,
+                style: const TextStyle(
+                  fontSize: 17,
+                  fontWeight: FontWeight.w400,
+                  // Set the text color here
+                  color: Colors.black, // Change this to your desired text color
+                ),
+              ),
+            ],
           ),
         ),
       ),

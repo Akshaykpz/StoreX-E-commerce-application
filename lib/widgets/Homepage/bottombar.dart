@@ -15,7 +15,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        const Divider(thickness: 1, color: Colors.black),
+        const Divider(thickness: 0.2, color: Colors.black),
         Container(
             height: 70,
             color: Colors.transparent,
@@ -26,7 +26,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
                 onTabChange: onTabChange,
                 color: Colors.black,
                 activeColor: Colors.white,
-                tabBackgroundColor: Colors.teal,
+                tabBackgroundColor: Colors.black,
                 padding: const EdgeInsets.all(15),
                 tabs: const [
                   GButton(

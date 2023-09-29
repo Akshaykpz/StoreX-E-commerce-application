@@ -2,11 +2,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/service/add_data.dart';
-import 'package:giltezy_2ndproject/service/proudcts.dart';
-import 'package:giltezy_2ndproject/service/upload_image.dart';
 
 import 'package:giltezy_2ndproject/widgets/Homepage/ItemView/item_view.dart';
-import 'package:giltezy_2ndproject/widgets/accounts/admin/productmanagment/proudct_description.dart';
+
 import 'package:giltezy_2ndproject/widgets/cacheed_image.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -24,7 +22,7 @@ class _SecondGridState extends State<SecondGrid> {
     Colors.green.shade100,
     Colors.orange.shade100,
     Colors.red.shade100,
-  ]; // Define row colors
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -44,21 +42,19 @@ class _SecondGridState extends State<SecondGrid> {
           }
           return GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount:
-                  2, // Adjust the number of items per row (horizontal)
+              crossAxisCount: 2,
               crossAxisSpacing: 1.0,
               mainAxisSpacing: 1.0,
-              childAspectRatio:
-                  0.75, // Adjust the aspect ratio to control item height
+              childAspectRatio: 0.75,
             ),
-            scrollDirection:
-                Axis.vertical, // Set the scroll direction to vertical
+            scrollDirection: Axis.vertical,
             itemCount: snapshot.data!.docs.length,
             itemBuilder: (context, index) {
               final document = snapshot.data!.docs[index];
               final productName = document['p_name'];
               final productPrice = document['p_price'];
               final productImage = document['P-imageurl'];
+              // ignore: non_constant_identifier_names
               final Productdescription = document['p_description'];
 
               final rowColor = rowColors[index % rowColors.length];

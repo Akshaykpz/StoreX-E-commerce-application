@@ -5,7 +5,7 @@ import 'package:giltezy_2ndproject/widgets/accounts/admin/buttons.dart';
 import 'package:giltezy_2ndproject/widgets/accounts/admin/categorymangment/category_mgt.dart';
 import 'package:giltezy_2ndproject/widgets/accounts/admin/dashboard/dash_board.dart';
 import 'package:giltezy_2ndproject/widgets/accounts/admin/productmanagment/add_product.dart';
-import 'package:giltezy_2ndproject/widgets/accounts/admin/productmanagment/product_managment.dart';
+
 import 'package:giltezy_2ndproject/widgets/accounts/admin/usermanagment/user_mangment.dart';
 
 class AdminPage extends StatelessWidget {

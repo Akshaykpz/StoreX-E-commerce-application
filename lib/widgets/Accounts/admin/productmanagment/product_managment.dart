@@ -72,6 +72,7 @@ class _ProductMangmentState extends State<ProductMangment> {
 
                             await Future.delayed(const Duration(seconds: 1));
 
+                            // ignore: use_build_context_synchronously
                             Navigator.pop(context);
                           });
                         }

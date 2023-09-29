@@ -1,9 +1,7 @@
 import 'dart:async';
 
-import 'package:flip_card/flip_card.dart';
 import 'package:flip_card/flip_card_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class AppbarUi extends StatefulWidget {
   const AppbarUi({super.key});
@@ -61,45 +59,38 @@ class _AppbarUiState extends State<AppbarUi> {
                   bottom: Radius.circular(20),
                 ),
               ),
+              child: const Center(
+                  child: Text(
+                "Admin Panel",
+                style: TextStyle(
+                    color: Colors.teal,
+                    fontSize: 25,
+                    fontWeight: FontWeight.w700),
+              )),
             ),
           ),
-          Positioned(
-            top: MediaQuery.of(context).size.height * .15,
-            height: 200,
-            left: 10,
-            right: 10,
-            child: FlipCard(
-              controller: _controller,
-              fill: Fill.fillBack,
-              direction: FlipDirection.HORIZONTAL,
-              side: _isFlipped ? CardSide.BACK : CardSide.FRONT,
-              front: Container(
-                color: Colors.pink.shade50,
-                child: const Center(),
-              ),
-              back: Container(
-                color: Colors.pink.shade50,
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text(
-                        'Welcome ....',
-                        style: GoogleFonts.gabriela(
-                            fontSize: 26,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.blue),
-                      ),
-                      Text(
-                        'Akshay-kp',
-                        style: GoogleFonts.gabriela(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.blue),
-                      ),
-                    ]),
-              ),
-            ),
-          ),
+          // Positioned(
+          //   top: MediaQuery.of(context).size.height * .15,
+          //   height: 200,
+          //   left: 10,
+          //   right: 10,
+          //   child: FlipCard(
+          //     controller: _controller,
+          //     fill: Fill.fillBack,
+          //     direction: FlipDirection.HORIZONTAL,
+          //     side: _isFlipped ? CardSide.BACK : CardSide.FRONT,
+          //     front: Container(
+          //       color: Colors.pink.shade50,
+          //       child: const Center(),
+          //     ),
+          //     back: Container(
+          //       color: Colors.pink.shade50,
+          //       child: Column(
+          //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          //           children: []),
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );
