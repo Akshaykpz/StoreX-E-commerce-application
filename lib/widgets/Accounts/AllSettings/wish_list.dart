@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/service/find_category.dart';
 import 'package:giltezy_2ndproject/service/wish_list.dart';
@@ -46,11 +47,31 @@ Future<void> addWishlistItem(String productId) async {
 }
 
 void showMultiActionSnackbar(BuildContext context) {
-  final snackBar = const SnackBar(
+  const snackBar = SnackBar(
     content: Text('This is a multi-action Snackbar.'),
     duration: Duration(seconds: 1),
   );
 
   // Show the Snackbar
   ScaffoldMessenger.of(context).showSnackBar(snackBar);
+}
+
+Future<void> addCart(DocumentReference reference) async {
+  final cartuser = FirebaseAuth.instance.currentUser;
+  if (cartuser != null) {
+    try {
+      await FirebaseFirestore.instance
+          .collection('cart')
+          .doc(cartuser.email)
+          .collection('items')
+          .add({
+        'product_reference': reference,
+      });
+      print('Item added to cartitem successfully.');
+    } catch (e) {
+      print('Error adding item to cart: $e');
+    }
+  } else {
+    print('User is not authenticated.');
+  }
 }

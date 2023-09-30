@@ -119,6 +119,14 @@ class _MyLoginState extends State<MyLogin> {
                             },
                             imagepath: 'assets/images/Google__G__Logo.png',
                           ),
+                          const SizedBox(
+                            width: 22,
+                          ),
+                          // Squretile(
+                          //     onpress: () {
+                          //       handleGoogleSignIn(context);
+                          //     },
+                          //     imagepath: 'assets/images/XGehZ_9v_400x400.jpg'),
                         ],
                       )
                     ],

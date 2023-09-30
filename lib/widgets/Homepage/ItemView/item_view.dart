@@ -1,5 +1,7 @@
 import 'package:bottom_bar_with_sheet/bottom_bar_with_sheet.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:giltezy_2ndproject/widgets/accounts/allsettings/wish_list.dart';
@@ -16,12 +18,14 @@ class ItemViews extends ConsumerStatefulWidget {
   final String productPrice;
 
   final String productDescription;
+  final DocumentReference reference;
 
   const ItemViews({
     super.key,
     required this.imageUrl,
     required this.productName,
     required this.productPrice,
+    required this.reference,
     required this.productDescription,
   });
 
@@ -70,20 +74,12 @@ class _ItemOnClickState extends ConsumerState<ItemViews> {
         ),
         onSelectItem: (index) async {
           if (index == 0) {
-            return addWishlistItem('productIdooooooo').whenComplete(() {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: const Text('This is snackbar'),
-                  behavior: SnackBarBehavior.floating,
-                ),
-              );
+            await addCart(widget.reference).whenComplete(() {
+              _showLoadingSnackbar(context, 'cart item added sucessfully ');
             });
           } else if (index == 1) {
-            return addWishlistItem('hello').whenComplete(() {
-              SnackBar(
-                content: Text('haiiii'),
-                backgroundColor: Colors.black,
-              );
+            addWishlistItem('wishlist item added').whenComplete(() {
+              _showLoadingSnackbar(context, 'wishList item added sucessfully');
             });
           }
         },
@@ -191,4 +187,21 @@ class _ItemOnClickState extends ConsumerState<ItemViews> {
       ),
     );
   }
+}
+
+void _showLoadingSnackbar(BuildContext context, String text) {
+  EasyLoading.show(status: 'Loading...');
+  ScaffoldMessenger.of(context)
+      .showSnackBar(
+        SnackBar(
+          content: Text(text),
+          backgroundColor: Colors.black,
+          behavior: SnackBarBehavior.floating,
+          duration: Duration(seconds: 1),
+        ),
+      )
+      .closed
+      .then((reason) {
+    EasyLoading.dismiss();
+  });
 }

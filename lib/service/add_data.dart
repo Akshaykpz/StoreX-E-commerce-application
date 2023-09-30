@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:giltezy_2ndproject/widgets/homepage/ItemView/serach.dart';
 
 final storage = FirebaseFirestore.instance;
 Future addData(
@@ -18,4 +19,7 @@ Future addData(
   }).then((value) => log('add data'));
 }
 
-final collection = storage.collection('products').snapshots();
+final collection = storage
+    .collection('products')
+    .orderBy('p_name')
+    .startAt([name]).endAt([name + "\uf8ff"]).snapshots();

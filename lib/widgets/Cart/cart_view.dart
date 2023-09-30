@@ -1,80 +1,66 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:giltezy_2ndproject/controller/provder_auth.dart';
+import 'package:giltezy_2ndproject/service/add_data.dart';
 
-import 'package:giltezy_2ndproject/widgets/cart/button.dart';
-import 'package:giltezy_2ndproject/widgets/cart/cart_items.dart';
-
-class Cart extends StatefulWidget {
+class Cart extends ConsumerStatefulWidget {
   const Cart({super.key});
 
   @override
-  State<Cart> createState() => _CartState();
+  ConsumerState<Cart> createState() => _CartState();
 }
 
-class _CartState extends State<Cart> {
+class _CartState extends ConsumerState<Cart> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      // appBar: AppBar(
-      //   foregroundColor: Colors.black,
-      //   leading: IconButton(
-      //     icon: const Icon(Icons.arrow_back_ios_new_outlined),
-      //     onPressed: () {
-      //       Navigator.pop(context);
-      //     },
-      //   ),
-      //   elevation: 0,
-      //   backgroundColor: Colors.white,
-      //   title: const Text(
-      //     'My Cart',
-      //     style: kvrheading,
-      //   ),
-      //   centerTitle: true,
-      // ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(
-              height: 10,
-            ),
-            CartItemsviews(
-                descriptions: 'Iphone x-mas',
-                imagePath: 'assets/images/walling-52H5Nfi5WiE-unsplash.jpg',
-                price: '₹23000'),
-            SizedBox(
-              height: 10,
-            ),
-            CartItemsviews(
-                descriptions: 'Samsung A -13',
-                imagePath:
-                    'assets/images/ramal-wickramasinghe-OjMyiwfviQ4-unsplash.jpg',
-                price: '₹12000'),
-            SizedBox(
-              height: 10,
-            ),
-            CartItemsviews(
-                descriptions: 'OnePlus Nord 2',
-                imagePath: 'assets/images/anh-nhat-yqcloMb3Abw-unsplash.jpg',
-                price: '₹42000'),
-            SizedBox(
-              height: 10,
-            ),
-            CartItemsviews(
-                descriptions: 'Realme XMS',
-                imagePath:
-                    'assets/images/thai-nguyen-dcSJWwdyAl8-unsplash (1).jpg',
-                price: ' ₹45200'),
-            SizedBox(
-              height: 10,
-            ),
-            CartItemsviews(
-                descriptions: 'Samsung max',
-                imagePath:
-                    'assets/images/max-whitehead-nRKzAy4w6mE-unsplash.jpg',
-                price: ' ₹24500'),
-            BuyButton()
-          ],
-        ),
-      ),
+    final cartData = ref.watch(cartContentsProvider);
+    final product = ref.watch(productList);
+    return cartData.when(
+      data: (cart) {
+        return SafeArea(
+            child: product.when(
+                data: (productli) {
+                  return GridView.builder(
+                    itemCount: cart.length,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 1.0,
+                      mainAxisSpacing: 1.0,
+                      childAspectRatio: 0.75,
+                    ),
+                    itemBuilder: (context, index) {
+                      final cartProvider =
+                          cart[index].data() as Map<String, dynamic>;
+                      final reference = cartProvider['product_reference']
+                          as DocumentReference;
+
+                      // final productData = productli[index].data();
+
+                      final matchProduct = productli.firstWhere((element) {
+                        return element.reference == reference;
+                      });
+                      final productName = matchProduct['p_name'];
+                      final cartPrice = matchProduct['p_price'];
+                      final cartImage = matchProduct['P-imageurl'];
+
+                      return Column(
+                        children: [
+                          Text(productName),
+                          // Display other cart item details here as needed.
+                        ],
+                      );
+                    },
+                  );
+                },
+                error: (error, stackTrace) => CircularProgressIndicator(),
+                loading: () => CircularProgressIndicator()));
+      },
+      error: (error, stackTrace) => CircularProgressIndicator(),
+      loading: () => CircularProgressIndicator(),
     );
+
+    // ),
   }
 }

@@ -54,6 +54,7 @@ class _SecondGridState extends State<SecondGrid> {
               final productName = document['p_name'];
               final productPrice = document['p_price'];
               final productImage = document['P-imageurl'];
+              final reference = snapshot.data!.docs[index].reference;
               // ignore: non_constant_identifier_names
               final Productdescription = document['p_description'];
 
@@ -63,10 +64,12 @@ class _SecondGridState extends State<SecondGrid> {
                 padding: const EdgeInsets.all(7),
                 child: GestureDetector(
                   onTap: () {
+                    print(reference);
                     Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => ItemViews(
+                                  reference: reference,
                                   imageUrl: productImage,
                                   productDescription: Productdescription,
                                   productName: productName,

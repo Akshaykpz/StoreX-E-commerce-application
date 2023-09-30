@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/widgets/Homepage/chip.dart'; // Import other necessary dependencies
 
-class ItemsGrid extends StatelessWidget {
+class ItemsGrid extends StatefulWidget {
   const ItemsGrid({super.key});
 
+  @override
+  State<ItemsGrid> createState() => _ItemsGridState();
+}
+
+class _ItemsGridState extends State<ItemsGrid> {
+  bool _isselected = false;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -11,52 +17,21 @@ class ItemsGrid extends StatelessWidget {
       child: Row(
         children: [
           Chipadd(
-            label: 'Apple',
+            text: 'Apple',
             image: 'assets/images/Apple-Logo.png',
-            isSelected: true,
-            onChipTap: () {}, // This chip will be initially selected and red
           ),
           Chipadd(
-            label: 'Xiomi',
+            text: 'Xiomi',
             image: 'assets/images/Xiaomi-logo.jpg',
-            onChipTap: () {},
           ),
           Chipadd(
-            label: 'Oneplus',
+            text: 'Oneplus',
             image: 'assets/images/OnePlus-logo.jpg',
-            onChipTap: () {},
           ),
-
-          // Chipadd(
-          //   label: 'Samsung',
-          //   image: 'assets/images/Samsung-logo.jpg',
-          //   onChipTap: () {},
-          // ),
-          // Chipadd(
-          //   label: 'Poco',
-          //   image: 'assets/images/Screenshot 2023-08-07 010809.png',
-          //   onChipTap: () {},
-          // ),
-          // Chipadd(
-          //   label: 'Oppo',
-          //   image: 'assets/images/OPPO-logo.jpg',
-          //   onChipTap: () {},
-          // ),
-          // Chipadd(
-          //   label: 'Vivo',
-          //   image: 'assets/images/Vivo-logo.jpg',
-          //   onChipTap: () {},
-          // ),
-          // Chipadd(
-          //   label: 'Lenovo',
-          //   image: 'assets/images/Lenovo-logo.jpg',
-          //   onChipTap: () {},
-          // ),
-          // Chipadd(
-          //   label: 'Nokia',
-          //   image: 'assets/images/Nokia-Logo.png',
-          //   onChipTap: () {},
-          // ),
+          Chipadd(
+            text: 'Huwei',
+            image: 'assets/images/Huawei-logo.jpg',
+          ),
         ],
       ),
     );

@@ -32,7 +32,6 @@ class _FavoritesPageState extends State<HomePage> {
       if (scrollController.position.userScrollDirection ==
           ScrollDirection.reverse) {
         showbtmappbar = false;
-        setState(() {});
       } else {
         showbtmappbar = true;
         setState(() {});
@@ -67,7 +66,7 @@ class _FavoritesPageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const Serach(),
+              Serach(),
               const SizedBox(
                 height: 19,
               ),

@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
 
-class CustomSnackBarWidget {
-  void show(
-    BuildContext context, {
-    required String message,
-    Color backgroundColor = Colors.green,
-    double elevation = 10,
-    SnackBarBehavior behavior = SnackBarBehavior.floating,
-    EdgeInsetsGeometry margin = const EdgeInsets.all(5),
-  }) {
-    final snackDemo = SnackBar(
-      content: Text(message),
-      backgroundColor: backgroundColor,
-      elevation: elevation,
-      behavior: behavior,
-      margin: margin,
-    );
+import 'package:flutter/material.dart';
 
-    ScaffoldMessenger.of(context).showSnackBar(snackDemo);
+class CustomSnackBar extends StatelessWidget {
+  final String message;
+
+  CustomSnackBar({required this.message});
+
+  void show(BuildContext context) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        behavior: SnackBarBehavior.floating,
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // This widget doesn't need a build method.
+    return SizedBox.shrink();
   }
 }

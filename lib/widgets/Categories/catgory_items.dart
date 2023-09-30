@@ -42,7 +42,7 @@ class _SecondGridState extends State<CategoryViewPage> {
         body: Padding(
           padding: const EdgeInsets.all(6.0),
           child: Column(children: [
-            const Serach(),
+            // Serach(),
             const SizedBox(
               height: 20,
             ),
