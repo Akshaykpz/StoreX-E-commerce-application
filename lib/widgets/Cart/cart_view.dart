@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:giltezy_2ndproject/controller/provder_auth.dart';
-import 'package:giltezy_2ndproject/service/add_data.dart';
 
 class Cart extends ConsumerStatefulWidget {
   const Cart({super.key});
@@ -21,22 +20,13 @@ class _CartState extends ConsumerState<Cart> {
         return SafeArea(
             child: product.when(
                 data: (productli) {
-                  return GridView.builder(
+                  return ListView.builder(
                     itemCount: cart.length,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 1.0,
-                      mainAxisSpacing: 1.0,
-                      childAspectRatio: 0.75,
-                    ),
                     itemBuilder: (context, index) {
                       final cartProvider =
                           cart[index].data() as Map<String, dynamic>;
                       final reference = cartProvider['product_reference']
                           as DocumentReference;
-
-                      // final productData = productli[index].data();
 
                       final matchProduct = productli.firstWhere((element) {
                         return element.reference == reference;
@@ -45,11 +35,19 @@ class _CartState extends ConsumerState<Cart> {
                       final cartPrice = matchProduct['p_price'];
                       final cartImage = matchProduct['P-imageurl'];
 
-                      return Column(
-                        children: [
-                          Text(productName),
-                          // Display other cart item details here as needed.
-                        ],
+                      return Card(
+                        elevation: 5,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(6),
+                            side: const BorderSide(width: 0.7)),
+                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                        child: Column(
+                          children: [
+                            Image.network(cartImage),
+                            Text(productName),
+                            Text(cartPrice)
+                          ],
+                        ),
                       );
                     },
                   );

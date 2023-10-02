@@ -80,6 +80,7 @@ dependencies:
   cached_network_image: ^3.3.0
   flutter_rating_bar: ^4.0.1
   flutter_easyloading: ^3.0.5
+  draggable_home: ^1.0.5
  
  
   
