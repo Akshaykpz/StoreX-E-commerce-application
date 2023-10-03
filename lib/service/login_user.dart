@@ -1,12 +1,13 @@
-import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/utils/theme/theme.dart';
 import 'dart:developer';
 
 import 'package:giltezy_2ndproject/widgets/homepage/home.dart';
 
 bool isLoggedIn = false;
-bool isAdmin = false;
+// bool isAdmin = false;
+
 Future<void> handleLogin({
   required BuildContext context,
   required String email,
@@ -38,14 +39,6 @@ Future<void> handleLogin({
         );
       },
     );
-
-    if (email == 'admin@example.com' && password == '12345678') {
-      isLoggedIn = true;
-      isAdmin = true; // Admin credentials
-    } else {
-      // isLoggedIn = true;
-      // isAdmin = false; // Regular user
-    }
 
     await FirebaseAuth.instance
         .signInWithEmailAndPassword(

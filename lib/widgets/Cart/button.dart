@@ -9,17 +9,12 @@ class BuyButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(30.0),
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
       child: PushableButton(
         height: 40, // Adjust the height here
-        elevation: 8,
-        hslColor: const HSLColor.fromAHSL(1.0, 180, 1.0, 0.37),
-        shadow: BoxShadow(
-          color: Colors.grey.withOpacity(0.5),
-          spreadRadius: 5,
-          blurRadius: 7,
-          offset: const Offset(0, 1),
-        ),
+        elevation: 2,
+        hslColor: const HSLColor.fromAHSL(1, 160, 1.0, 0.20),
+
         onPressed: () {
           Navigator.push(
               context,
@@ -27,9 +22,22 @@ class BuyButton extends StatelessWidget {
                 builder: (context) => const MyOrder(),
               ));
         },
-        child: const Text('BUY NOW',
-            style: TextStyle(fontWeight: FontWeight.w700)),
+        child: const Text('Proceed to Check out',
+            style: TextStyle(fontWeight: FontWeight.w700, color: Colors.white)),
       ),
     );
   }
 }
+
+//             onPressed: () {},
+//             style: ElevatedButton.styleFrom(
+//               onPrimary: Colors.white,
+//               primary: Colors.cyan[300],
+//               minimumSize: const Size(88, 36),
+//               padding: const EdgeInsets.symmetric(horizontal: 16),
+//               shape: const RoundedRectangleBorder(
+//                 borderRadius: BorderRadius.all(Radius.circular(2)),
+//               ),
+//             ),
+//             child: const Text('Elevated Button'),
+//           ),

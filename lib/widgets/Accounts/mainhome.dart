@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/service/login_user.dart';
 import 'package:giltezy_2ndproject/service/sign_out.dart';
@@ -8,6 +9,7 @@ import 'package:giltezy_2ndproject/widgets/Accounts/allSettings/wish_list.dart';
 import 'package:giltezy_2ndproject/widgets/accounts/order/order_status.dart';
 
 import 'package:giltezy_2ndproject/widgets/Accounts/buttons.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'editprofile/edit_data.dart';
 
@@ -20,30 +22,29 @@ class Accounts extends StatefulWidget {
 }
 
 class _AccountsState extends State<Accounts> {
+  bool isAdmin = false;
   @override
   void initState() {
+    _isAdminCheck();
     super.initState();
   }
+
+  _isAdminCheck() {
+    FirebaseAuth _auth = FirebaseAuth.instance;
+    User? auth = _auth.currentUser;
+
+    if (auth!.email == 'admin@example.com') {
+      setState(() {
+        isAdmin = true;
+      });
+    }
+  }
+
+  final user = FirebaseAuth.instance.currentUser;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // appBar: AppBar(
-        //   leading: IconButton(
-        //     icon: const Icon(Icons.arrow_back),
-        //     onPressed: () {
-        //       Navigator.pop(
-        //           context); // Navigate back when the button is pressed
-        //     },
-        //   ),
-        //   title: const Text(
-        //     'Account',
-        //     style: TextStyle(color: Colors.black, fontStyle: FontStyle.italic),
-        //   ),
-        //   elevation: 0,
-        //   foregroundColor: Colors.black,
-        //   backgroundColor: Colors.transparent,
-        // ),
         backgroundColor: Colors.transparent,
         body: SingleChildScrollView(
           child: Column(
@@ -97,11 +98,10 @@ class _AccountsState extends State<Accounts> {
                       child: Container(
                         height: 70,
                         padding: const EdgeInsets.only(top: 8.0),
-                        child: const Text(
-                          '9072951662',
-                          style: TextStyle(
-                            fontFamily: 'SF Pro',
-                            fontSize: 14.0,
+                        child: Text(
+                          user!.email!,
+                          style: GoogleFonts.acme(
+                            fontSize: 16,
                           ),
                         ),
                       ),
@@ -109,7 +109,7 @@ class _AccountsState extends State<Accounts> {
                   ],
                 ),
               ),
-              isLoggedIn && isAdmin
+              isAdmin
                   ? MyNewButton(
                       icons: Icons.account_box,
                       onPressedCallback: () {

@@ -8,7 +8,7 @@ class SignUpImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ColorFiltered(
       colorFilter:
-          ColorFilter.mode(Colors.black.withOpacity(0.7), BlendMode.colorBurn),
+          ColorFilter.mode(Colors.black.withOpacity(0.5), BlendMode.colorBurn),
       child: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(

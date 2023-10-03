@@ -19,7 +19,7 @@ class Squretile extends StatelessWidget {
               BoxShadow(
                   color: Colors.white,
                   offset: Offset(4, 4),
-                  blurRadius: 15,
+                  blurRadius: 10,
                   spreadRadius: 1)
             ]),
         child: Image.asset(

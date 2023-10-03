@@ -1,55 +1,34 @@
+import 'package:flashy_tab_bar2/flashy_tab_bar2.dart';
 import 'package:flutter/material.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
 
-class CustomBottomNavigationBar extends StatelessWidget {
+class CustomTabBar extends StatelessWidget {
   final int selectedIndex;
-  final ValueChanged<int> onTabChange;
+  final ValueChanged<int> onTabSelected;
 
-  const CustomBottomNavigationBar({
-    super.key,
+  CustomTabBar({
     required this.selectedIndex,
-    required this.onTabChange,
+    required this.onTabSelected,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        const Divider(thickness: 0.2, color: Colors.black),
-        Container(
-            height: 70,
-            color: Colors.transparent,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-              child: GNav(
-                backgroundColor: Colors.transparent,
-                onTabChange: onTabChange,
-                color: Colors.black,
-                activeColor: Colors.white,
-                tabBackgroundColor: Colors.black,
-                padding: const EdgeInsets.all(15),
-                tabs: const [
-                  GButton(
-                    icon: Icons.home,
-                    text: 'Home',
-                  ),
-                  GButton(
-                    icon: Icons.category,
-                    text: 'category',
-                  ),
-                  GButton(
-                    icon: Icons.shopping_cart,
-                    text: 'Cart',
-                  ),
-                  GButton(
-                    icon: Icons.account_box,
-                    text: 'account',
-                  ),
-                ],
-                selectedIndex: selectedIndex,
-              ),
-            )),
+    return FlashyTabBar(
+      selectedIndex: selectedIndex,
+      showElevation: true,
+      onItemSelected: onTabSelected,
+      items: [
+        _buildTabBarItem(Icons.home, 'Home'),
+        _buildTabBarItem(Icons.category, 'Category'),
+        _buildTabBarItem(Icons.shopping_bag, 'Cart'),
+        _buildTabBarItem(Icons.settings, 'Settings'),
       ],
+    );
+  }
+
+  FlashyTabBarItem _buildTabBarItem(IconData iconData, String title) {
+    return FlashyTabBarItem(
+      icon: Icon(iconData),
+      title: Text(title),
     );
   }
 }

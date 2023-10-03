@@ -1,3 +1,4 @@
+import 'package:flashy_tab_bar2/flashy_tab_bar2.dart';
 import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/widgets/categories/category_view.dart';
 
@@ -20,13 +21,12 @@ class _MyItemviewpageState extends State<MyItemviewpage> {
     return SafeArea(
       child: Scaffold(
           backgroundColor: Colors.white,
-          bottomNavigationBar: CustomBottomNavigationBar(
+          bottomNavigationBar: CustomTabBar(
             selectedIndex: _selectedIndex,
-            onTabChange: (index) {
+            onTabSelected: (index) {
               setState(() {
                 _selectedIndex = index;
               });
-              // Add any code here to handle the tab change, such as navigating to different screens.
             },
           ),
           body: Padding(

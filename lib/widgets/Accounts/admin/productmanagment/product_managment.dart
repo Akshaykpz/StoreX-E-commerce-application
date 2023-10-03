@@ -23,7 +23,7 @@ class _ProductMangmentState extends State<ProductMangment> {
   TextEditingController prouductnameController = TextEditingController();
   TextEditingController productpriceController = TextEditingController();
   TextEditingController productdescriptioncontroller = TextEditingController();
-
+  TextEditingController categoryproudctController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,22 +46,23 @@ class _ProductMangmentState extends State<ProductMangment> {
                 Productdescription(
                     description: productdescriptioncontroller,
                     label: 'description'),
+                ProductFiled(
+                    namecontroller: categoryproudctController,
+                    label: 'category name'),
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.5,
                   child: ElevatedButton(
                     onPressed: () async {
                       try {
-                        final id = await findDocumentIdByCategory('Apple');
                         print('clicked');
                         if (_formkey.currentState!.validate()) {
                           await addData(
-                                  description:
-                                      productdescriptioncontroller.text,
-                                  price: productpriceController.text,
-                                  name: prouductnameController.text,
-                                  imageurls: url!,
-                                  id: 'dsff')
-                              .whenComplete(() async {
+                            categoryname: categoryproudctController.text,
+                            description: productdescriptioncontroller.text,
+                            price: productpriceController.text,
+                            name: prouductnameController.text,
+                            imageurls: url!,
+                          ).whenComplete(() async {
                             print('completed');
                             showTopSnackBar(
                               Overlay.of(context),

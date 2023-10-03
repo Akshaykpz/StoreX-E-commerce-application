@@ -2,6 +2,7 @@ import 'package:auth_buttons/auth_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:giltezy_2ndproject/utils/theme/decoration.dart';
+import 'package:giltezy_2ndproject/utils/theme/squre_tile.dart';
 
 import '../../service/google_auth.dart';
 import '../../service/signin_user.dart';
@@ -80,7 +81,7 @@ class _MySiginState extends State<MySigin> {
                     ),
                     k10box,
                     MyButton(
-                      icons: Icons.abc_sharp,
+                      icons: Icons.login,
                       onPressedCallback: () {
                         if (_formKey.currentState!.validate()) {
                           String confirmPassword =
@@ -100,14 +101,20 @@ class _MySiginState extends State<MySigin> {
                       buttontext: 'Sign Up',
                     ),
                     k20box,
-                    GoogleAuthButton(
-                      isLoading: false,
-                      onPressed: () {
+                    Squretile(
+                      onpress: () {
                         handleGoogleSignIn(context);
                       },
-                      style: const AuthButtonStyle(
-                          buttonColor: Colors.white, elevation: 2),
+                      imagepath: 'assets/images/Google__G__Logo.png',
                     ),
+                    // GoogleAuthButton(
+                    //   isLoading: false,
+                    //   onPressed: () {
+                    //     handleGoogleSignIn(context);
+                    //   },
+                    //   style: const AuthButtonStyle(
+                    //       buttonColor: Colors.white, elevation: 2),
+                    // ),
                   ],
                 ),
               ),

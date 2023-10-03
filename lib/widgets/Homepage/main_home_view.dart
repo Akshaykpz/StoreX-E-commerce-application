@@ -4,6 +4,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:giltezy_2ndproject/utils/theme/logout_button.dart';
 import 'package:giltezy_2ndproject/widgets/Homepage/ItemView/serach.dart';
 import 'package:giltezy_2ndproject/widgets/categories/category_view.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -27,7 +28,7 @@ class _FavoritesPageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    startImageChangeTimer();
+
     scrollController.addListener(() {
       if (scrollController.position.userScrollDirection ==
           ScrollDirection.reverse) {
@@ -36,14 +37,6 @@ class _FavoritesPageState extends State<HomePage> {
         showbtmappbar = true;
         setState(() {});
       }
-    });
-  }
-
-  void startImageChangeTimer() {
-    _imageChangeTimer = Timer.periodic(const Duration(seconds: 2), (timer) {
-      setState(() {
-        currentIndex = (currentIndex + 1) % camera.length;
-      });
     });
   }
 
@@ -57,6 +50,7 @@ class _FavoritesPageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
         // backgroundColor: Colors.transparent,
         body: CustomScrollView(
       controller: scrollController,
@@ -70,33 +64,34 @@ class _FavoritesPageState extends State<HomePage> {
               const SizedBox(
                 height: 19,
               ),
-              CarouselSlider(
-                items: camera.map((
-                  imageUrl,
-                ) {
-                  return Container(
-                    width: 300.w,
-                    height: 60.h, // Adjust this height as needed
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(18).r,
-                      image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: AssetImage(imageUrl),
-                      ),
-                    ),
-                  );
-                }).toList(),
-                options: CarouselOptions(
-                  height: 170.h, // Set the desired height of the carousel
-                  autoPlay: true,
-                  enlargeCenterPage: true,
-                  onPageChanged: (index, reason) {
-                    setState(() {
-                      currentIndex = index;
-                    });
-                  },
-                ),
-              ),
+              MyPageView(),
+              // CarouselSlider(
+              //   items: camera.map((
+              //     imageUrl,
+              //   ) {
+              //     return Container(
+              //       width: 390.w,
+              //       height: 60.h, // Adjust this height as needed
+              //       decoration: BoxDecoration(
+              //         borderRadius: BorderRadius.circular(18).r,
+              //         image: DecorationImage(
+              //           fit: BoxFit.cover,
+              //           image: AssetImage(imageUrl),
+              //         ),
+              //       ),
+              //     );
+              //   }).toList(),
+              //   options: CarouselOptions(
+              //     height: 170.h, // Set the desired height of the carousel
+              //     autoPlay: true,
+              //     enlargeCenterPage: true,
+              //     onPageChanged: (index, reason) {
+              //       setState(() {
+              //         currentIndex = index;
+              //       });
+              //     },
+              //   ),
+              // ),
               const SizedBox(
                 height: 20,
               ),

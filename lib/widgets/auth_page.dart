@@ -20,7 +20,8 @@ class AuthPage extends ConsumerWidget {
             return const MyLogin();
           }
         },
-        error: (error, stackTrace) => const CircularProgressIndicator(),
-        loading: () => const CircularProgressIndicator());
+        error: (error, stackTrace) =>
+            const Center(child: CircularProgressIndicator()),
+        loading: () => const Center(child: CircularProgressIndicator()));
   }
 }
