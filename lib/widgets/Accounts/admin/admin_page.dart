@@ -4,7 +4,8 @@ import 'package:giltezy_2ndproject/widgets/accounts/admin/appbar.dart';
 import 'package:giltezy_2ndproject/widgets/accounts/admin/buttons.dart';
 import 'package:giltezy_2ndproject/widgets/accounts/admin/categorymangment/category_mgt.dart';
 import 'package:giltezy_2ndproject/widgets/accounts/admin/dashboard/dash_board.dart';
-import 'package:giltezy_2ndproject/widgets/accounts/admin/productmanagment/add_product.dart';
+
+import 'package:giltezy_2ndproject/widgets/accounts/admin/productmanagment/add_view.dart';
 
 import 'package:giltezy_2ndproject/widgets/accounts/admin/usermanagment/user_mangment.dart';
 
@@ -49,7 +50,7 @@ class AdminPage extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const MyProductView(),
+                        builder: (context) => MyProductView(),
                       ));
                 },
                 text: 'Product Management',
@@ -59,7 +60,7 @@ class AdminPage extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const MyCategory(),
+                      builder: (context) => const MyCategory(categoryId: ''),
                     ));
               },
               text: 'Category Management',

@@ -1,38 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_scrolling_fab_animated/flutter_scrolling_fab_animated.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:giltezy_2ndproject/controller/category_prov.dart';
 import 'package:giltezy_2ndproject/service/category_item_add.dart';
 
 import 'package:giltezy_2ndproject/widgets/accounts/admin/categorymangment/category_add.dart';
 import 'package:giltezy_2ndproject/widgets/accounts/admin/categorymangment/category_name.dart';
 import 'package:giltezy_2ndproject/widgets/accounts/admin/categorymangment/category_popup.dart';
 
-class MyCategory extends StatelessWidget {
-  const MyCategory({Key? key}) : super(key: key);
+class MyCategory extends ConsumerStatefulWidget {
+  const MyCategory({Key? key, this.categoryId}) : super(key: key);
+  final String? categoryId;
 
   @override
+  ConsumerState<MyCategory> createState() => _MyCategoryState();
+}
+
+class _MyCategoryState extends ConsumerState<MyCategory> {
+  @override
   Widget build(BuildContext context) {
+    final category = ref.watch(categoryProvider);
     final ScrollController scrollController = ScrollController();
     return SafeArea(
       child: Scaffold(
         body: CustomScrollView(
           controller: scrollController,
           slivers: [
-            StreamBuilder<QuerySnapshot>(
-              stream: catgoryStream,
-              builder: (context, snapshot) {
-                if (snapshot.hasError) {
-                  return SliverToBoxAdapter(
-                    child: Text('Error: ${snapshot.error}'),
-                  );
-                }
-
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const SliverToBoxAdapter(
-                    child: Center(child: CircularProgressIndicator()),
-                  );
-                }
-
+            category.when(
+              data: (catgorydata) {
                 return SliverGrid(
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
@@ -40,70 +36,75 @@ class MyCategory extends StatelessWidget {
                     mainAxisSpacing: 1.0,
                     childAspectRatio: 0.75,
                   ),
-                  delegate: SliverChildBuilderDelegate(
-                    (context, index) {
-                      final categorydata = snapshot.data!.docs[index];
-                      final productname = categorydata['cat_name'];
-                      final productimage = categorydata['cat_image'];
-                      print('hello  {$productimage}');
+                  delegate: SliverChildBuilderDelegate((context, index) {
+                    final category =
+                        catgorydata[index].data() as Map<String, dynamic>;
+                    final productname = category['cat_name'];
+                    final productimage = category['cat_image'];
+                    print('hello  {$productimage}');
 
-                      return Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Card(
-                          shape: const RoundedRectangleBorder(
-                            side: BorderSide(
-                              color: Colors.grey,
-                            ),
-                          ),
-                          elevation: 3,
-                          child: Container(
-                            padding: const EdgeInsets.all(6.0),
-                            child: Column(
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Categoryedit(categoryid: categorydata.id),
-                                  ],
-                                ),
-                                FutureBuilder(
-                                  future: precacheImage(
-                                    NetworkImage(productimage),
-                                    context,
-                                  ),
-                                  builder: (context, snapshot) {
-                                    if (snapshot.connectionState ==
-                                        ConnectionState.waiting) {
-                                      return const CircularProgressIndicator();
-                                    }
-                                    if (snapshot.hasError) {
-                                      return Text('Error: ${snapshot.error}');
-                                    }
-                                    return Image.network(
-                                      productimage,
-                                      height: 100,
-                                      width: MediaQuery.of(context).size.width,
-                                      fit: BoxFit.fitWidth,
-                                    );
-                                  },
-                                ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                Categoryname(
-                                  name: productname ?? '1200',
-                                ),
-                              ],
-                            ),
+                    return Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Card(
+                        shape: const RoundedRectangleBorder(
+                          side: BorderSide(
+                            color: Colors.grey,
                           ),
                         ),
-                      );
-                    },
-                    childCount: snapshot.data!.docs.length,
-                  ),
+                        elevation: 3,
+                        child: Container(
+                          padding: const EdgeInsets.all(6.0),
+                          child: Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Categoryedit(
+                                      categoryid: widget.categoryId.toString()),
+                                ],
+                              ),
+                              FutureBuilder(
+                                future: precacheImage(
+                                  NetworkImage(productimage),
+                                  context,
+                                ),
+                                builder: (context, snapshot) {
+                                  if (snapshot.connectionState ==
+                                      ConnectionState.waiting) {
+                                    return const CircularProgressIndicator();
+                                  }
+                                  if (snapshot.hasError) {
+                                    return Text('Error: ${snapshot.error}');
+                                  }
+                                  return Image.network(
+                                    productimage,
+                                    height: 100,
+                                    width: MediaQuery.of(context).size.width,
+                                    fit: BoxFit.fitWidth,
+                                  );
+                                },
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              Categoryname(
+                                name: productname ?? '1200',
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  }, childCount: catgorydata.length),
                 );
               },
-            ),
+              error: (error, stackTrace) {
+                return CircularProgressIndicator();
+              },
+              loading: () {
+                return CircularProgressIndicator();
+              },
+            )
           ],
         ),
         floatingActionButton: ScrollingFabAnimated(

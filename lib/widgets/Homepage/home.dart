@@ -1,4 +1,3 @@
-import 'package:flashy_tab_bar2/flashy_tab_bar2.dart';
 import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/widgets/categories/category_view.dart';
 
@@ -16,6 +15,20 @@ class MyItemviewpage extends StatefulWidget {
 
 class _MyItemviewpageState extends State<MyItemviewpage> {
   int _selectedIndex = 0;
+
+  ScrollController _scrollController = ScrollController();
+  @override
+  void initState() {
+    _scrollController = ScrollController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(

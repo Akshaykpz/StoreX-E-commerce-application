@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../utils/theme/textstyle.dart';
 import '../editprofile/edit_profile.dart';
 
 class ShippingAddress extends StatelessWidget {
@@ -11,26 +10,20 @@ class ShippingAddress extends StatelessWidget {
     return Scaffold(
       body: Column(children: [
         const SizedBox(
-          height: 120,
-          child: Center(
-            child: Text(
-              'Shipping Address',
-              style: kvrheading,
-            ),
-          ),
+          height: 50,
         ),
-        const EditProfile(text: 'name'),
+        EditProfile(text: 'name'),
         const SizedBox(
           height: 3,
         ),
-        const EditProfile(text: 'address'),
-        const EditProfile(
+        EditProfile(text: 'address'),
+        EditProfile(
           text: 'phone',
         ),
-        const EditProfile(
+        EditProfile(
           text: 'District',
         ),
-        const EditProfile(
+        EditProfile(
           text: 'state',
         ),
         SizedBox(

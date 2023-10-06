@@ -1,87 +1,116 @@
 import 'package:flutter/material.dart';
-import 'package:giltezy_2ndproject/widgets/categories/category_images.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:giltezy_2ndproject/controller/category_prov.dart';
+import 'package:giltezy_2ndproject/controller/provder_auth.dart';
+import 'package:giltezy_2ndproject/service/category_item_add.dart';
+import 'package:giltezy_2ndproject/utils/theme/colors.dart';
 import 'package:giltezy_2ndproject/widgets/categories/catgory_items.dart';
 
-class CategoryItems extends StatelessWidget {
+class CategoryItems extends ConsumerStatefulWidget {
   const CategoryItems({super.key});
 
   @override
+  ConsumerState<CategoryItems> createState() => _CategoryItemsState();
+}
+
+class _CategoryItemsState extends ConsumerState<CategoryItems> {
+  @override
   Widget build(BuildContext context) {
-    List<CategoryList> categoryview = const [
-      CategoryList(imageyrl: 'assets/images/Apple-Logo.png', text: 'Apple'),
-      CategoryList(imageyrl: 'assets/images/Xiaomi-logo.jpg', text: 'Xiaomi'),
-      CategoryList(imageyrl: 'assets/images/OnePlus-logo.jpg', text: 'Oneplus'),
-      CategoryList(imageyrl: 'assets/images/Huawei-logo.jpg', text: 'Huawei'),
-      CategoryList(imageyrl: 'assets/images/Samsung-logo.jpg', text: 'Samsung'),
-      CategoryList(
-          imageyrl: 'assets/images/Screenshot 2023-08-07 010809.png',
-          text: 'Poco'),
-      CategoryList(imageyrl: 'assets/images/OPPO-logo.jpg', text: 'Oppo'),
-      CategoryList(imageyrl: 'assets/images/Vivo-logo.jpg', text: 'Vivo'),
-      CategoryList(imageyrl: 'assets/images/Lenovo-logo.jpg', text: 'Lenovo'),
-      CategoryList(imageyrl: 'assets/images/Nokia-Logo.png', text: 'Nokia')
-    ];
-    return Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.search, color: Colors.black))
-        ],
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        title: const Text(
-          'Category Items',
-          style: TextStyle(color: Colors.black),
-        ),
-      ),
-      body: GridView.builder(
-        padding: const EdgeInsets.all(7),
-        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent: 350.0,
-          childAspectRatio: 2 / 2,
-          crossAxisSpacing: 6,
-          mainAxisSpacing: 4,
-        ),
-        itemCount: categoryview.length,
-        itemBuilder: (context, index) {
-          final data = categoryview[index];
-          return GestureDetector(
-            onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const CategoryViewPage(),
-                  ));
-            },
-            child: Card(
-              // color: Colors.red,
-              elevation: 2,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(22.0),
+    final categoryData = ref.watch(categoryProvider);
+    final proudctData = ref.watch(productList);
+    return categoryData.when(
+      data: (category) {
+        return SafeArea(
+          child: Scaffold(
+            body: GridView.builder(
+              itemCount: category.length,
+              padding: const EdgeInsets.all(7),
+              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 350.0,
+                childAspectRatio: 2 / 2,
+                crossAxisSpacing: 6,
+                mainAxisSpacing: 4,
               ),
-              child: Container(
-                padding: const EdgeInsets.all(20.0),
-                margin: const EdgeInsets.all(1.0),
-                child: Center(
-                  child: GridTile(
-                    footer: Text(
-                      data.text,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
+              itemBuilder: (context, index) {
+                final catdata = category[index].data() as Map<String, dynamic>;
+                final docId = category[index].id;
+
+                final categoryname = catdata['cat_name'];
+                final categoryimage = catdata['cat_image'];
+                final rowColor = rowColors[index % rowColors.length];
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CategoryViewPage(docId: docId),
+                        ));
+                  },
+                  child: Card(
+                    color: rowColor,
+                    // color: Colors.red,
+                    elevation: 5,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: Container(
+                      padding: const EdgeInsets.all(20.0),
+                      margin: const EdgeInsets.all(1.0),
+                      child: Center(
+                        child: GridTile(
+                          footer: Text(categoryname,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.black87,
+                                fontWeight: FontWeight.w600,
+                              )),
+                          child: Image.network(categoryimage),
+                        ),
                       ),
                     ),
-                    child: Image.asset(data.imageyrl),
                   ),
-                ),
-              ),
+                );
+              },
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
+      error: (error, stackTrace) {
+        return CircularProgressIndicator();
+      },
+      loading: () {
+        return CircularProgressIndicator();
+      },
     );
+    // return StreamBuilder(
+    //   builder: (context, snapshot) {
+    //     if (snapshot.hasError) {
+    //       return Text('Error: ${snapshot.error.toString()}');
+    //     }
+
+    //     if (snapshot.connectionState == ConnectionState.waiting) {
+    //       return const Center(child: CircularProgressIndicator());
+    //     }
+
+    //     if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+    //       return const Text('No products available.');
+    //     }
+    //     return GridView.builder(
+    //       itemCount: snapshot.data!.docs.length,
+    //       padding: const EdgeInsets.all(7),
+    //       gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+    //         maxCrossAxisExtent: 350.0,
+    //         childAspectRatio: 2 / 2,
+    //         crossAxisSpacing: 6,
+    //         mainAxisSpacing: 4,
+    //       ),
+    //       itemBuilder: (context, index) {
+    //         final categorydata = snapshot.data!.docs[index];
+
+    //   },
+    //   stream: catgoryStream,
+
+    // );
   }
 }

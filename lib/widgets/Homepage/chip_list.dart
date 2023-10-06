@@ -9,10 +9,10 @@ class ItemsGrid extends StatefulWidget {
 }
 
 class _ItemsGridState extends State<ItemsGrid> {
-  bool _isselected = false;
+  final bool _isselected = false;
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return const SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [

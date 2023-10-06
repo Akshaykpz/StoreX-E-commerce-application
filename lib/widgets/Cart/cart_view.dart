@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:giltezy_2ndproject/controller/provder_auth.dart';
-import 'package:giltezy_2ndproject/service/delete_product.dart';
+
 import 'package:giltezy_2ndproject/widgets/cart/button.dart';
 import 'package:giltezy_2ndproject/widgets/cart/item_counter.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class Cart extends ConsumerStatefulWidget {
-  const Cart({super.key});
+  final String? cartId;
+  const Cart({super.key, this.cartId});
 
   @override
   ConsumerState<Cart> createState() => _CartState();
@@ -72,11 +72,11 @@ class _CartState extends ConsumerState<Cart> {
                               Column(
                                 children: [
                                   Text(productName,
-                                      style: GoogleFonts.andika(
+                                      style: TextStyle(
                                         fontSize: 18,
                                       )),
                                   Text(cartPrice,
-                                      style: GoogleFonts.andika(
+                                      style: TextStyle(
                                         fontSize: 15,
                                       )),
                                 ],
@@ -90,31 +90,32 @@ class _CartState extends ConsumerState<Cart> {
                   },
                 );
               },
-              error: (error, stackTrace) => CircularProgressIndicator(),
+              error: (error, stackTrace) => const CircularProgressIndicator(),
               loading: () => const CircularProgressIndicator()),
           bottomSheet: Container(
               decoration: const BoxDecoration(
                   borderRadius:
                       BorderRadius.vertical(top: Radius.circular(12))),
-              height: 130,
+              height: 129,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
                     child: Text(
                       'Shipping Cost- ',
-                      style: GoogleFonts.battambang(color: Colors.blue),
+                      style: TextStyle(color: Colors.blue),
                     ),
                   ),
                   const SizedBox(
-                    height: 9,
+                    height: 6,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 12),
                     child: Text(
                       "Total-",
-                      style: GoogleFonts.battambang(color: Colors.red),
+                      style: TextStyle(color: Colors.red),
                     ),
                   ),
                   const BuyButton()

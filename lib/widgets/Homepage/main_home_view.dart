@@ -1,15 +1,12 @@
 import 'dart:async';
 
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:giltezy_2ndproject/utils/theme/logout_button.dart';
 import 'package:giltezy_2ndproject/widgets/Homepage/ItemView/serach.dart';
 import 'package:giltezy_2ndproject/widgets/categories/category_view.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-import '../../utils/theme/textstyle.dart';
 import 'items.dart';
 import 'chip_list.dart';
 
@@ -57,14 +54,15 @@ class _FavoritesPageState extends State<HomePage> {
       slivers: [
         SliverFillRemaining(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            // crossAxisAlignment: CrossAxisAlignment.center,
+
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Serach(),
+              const Serach(),
               const SizedBox(
                 height: 19,
               ),
-              MyPageView(),
+              const MyPageView(),
               // CarouselSlider(
               //   items: camera.map((
               //     imageUrl,
@@ -103,8 +101,8 @@ class _FavoritesPageState extends State<HomePage> {
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
                       'Popular',
-                      style: GoogleFonts.abhayaLibre(
-                          fontWeight: FontWeight.bold, fontSize: 17),
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
                     ),
                   ),
                   TextButton(

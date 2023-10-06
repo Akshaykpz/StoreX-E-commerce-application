@@ -1,4 +1,3 @@
-import 'package:cart_stepper/cart_stepper.dart';
 import 'package:flutter/material.dart';
 
 class CounterApp extends StatefulWidget {
@@ -33,16 +32,16 @@ class _CounterAppState extends State<CounterApp> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             IconButton(
-              icon: Icon(Icons.remove),
+              icon: const Icon(Icons.remove),
               onPressed: _decrementCounter,
               color: Colors.red,
             ),
             Text(
               '$_counterInit',
-              style: TextStyle(fontSize: 24),
+              style: const TextStyle(fontSize: 24),
             ),
             IconButton(
-              icon: Icon(Icons.add),
+              icon: const Icon(Icons.add),
               onPressed: _incrementCounter,
               color: Colors.green,
             ),

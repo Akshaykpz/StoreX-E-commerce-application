@@ -6,7 +6,6 @@ import 'package:giltezy_2ndproject/service/add_data.dart';
 import 'package:giltezy_2ndproject/widgets/Homepage/ItemView/item_view.dart';
 
 import 'package:giltezy_2ndproject/widgets/cacheed_image.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class SecondGrid extends StatefulWidget {
   const SecondGrid({super.key});
@@ -109,13 +108,12 @@ class _SecondGridState extends State<SecondGrid> {
                           children: [
                             Text(
                               productName,
-                              style: GoogleFonts.breeSerif(
+                              style: TextStyle(
                                   fontSize: 19, color: Colors.blueAccent),
                             ),
                             Text(
                               '₹$productPrice',
-                              style: GoogleFonts.arbutusSlab(
-                                  color: Colors.black87),
+                              style: TextStyle(color: Colors.black87),
                             ),
                           ],
                         ),

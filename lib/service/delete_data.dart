@@ -11,3 +11,12 @@ Future<void> deleteCategory(String categoryid) async {
     print('Error deleting category: $e');
   }
 }
+
+Future<void> deleteCart(String cartId) async {
+  try {
+    await FirebaseFirestore.instance.collection('cart').doc(cartId).delete();
+    print('sucessfully deleted');
+  } catch (e) {
+    print('Error deleting category: $e');
+  }
+}

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class Categoryname extends StatelessWidget {
   final String name;
@@ -16,7 +15,7 @@ class Categoryname extends StatelessWidget {
       child: Center(
         child: Text(
           name,
-          style: GoogleFonts.almarai(
+          style: TextStyle(
               fontWeight: FontWeight.w700, color: Colors.green, fontSize: 16),
         ),
       ),

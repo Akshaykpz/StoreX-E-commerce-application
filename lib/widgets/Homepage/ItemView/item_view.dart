@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:giltezy_2ndproject/widgets/accounts/allsettings/wish_list.dart';
+import 'package:giltezy_2ndproject/service/wishlist_data.dart';
 
 import 'package:giltezy_2ndproject/widgets/cacheed_image.dart';
 
@@ -74,12 +74,12 @@ class _ItemOnClickState extends ConsumerState<ItemViews> {
         ),
         onSelectItem: (index) async {
           if (index == 0) {
-            await addCart(widget.reference).whenComplete(() {
-              _showLoadingSnackbar(context, 'cart item added sucessfully ');
+            await ItemAdd().addCart(widget.reference).whenComplete(() {
+              _showLoadingSnackbar(context, 'cart item added sucessfully');
             });
           } else if (index == 1) {
-            addWishlistItem('wishlist item added').whenComplete(() {
-              _showLoadingSnackbar(context, 'wishList item added sucessfully');
+            await ItemAdd().addWishlistItem(widget.reference).whenComplete(() {
+              _showLoadingSnackbar(context, 'wishlist items added sucessfully');
             });
           }
         },
@@ -197,7 +197,7 @@ void _showLoadingSnackbar(BuildContext context, String text) {
           content: Text(text),
           backgroundColor: Colors.black,
           behavior: SnackBarBehavior.floating,
-          duration: Duration(seconds: 1),
+          duration: const Duration(seconds: 1),
         ),
       )
       .closed

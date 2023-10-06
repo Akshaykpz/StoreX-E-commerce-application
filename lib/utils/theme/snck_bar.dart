@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter/material.dart';
-
 class CustomSnackBar extends StatelessWidget {
   final String message;
 
-  CustomSnackBar({required this.message});
+  const CustomSnackBar({super.key, required this.message});
 
   void show(BuildContext context) {
     ScaffoldMessenger.of(context).showSnackBar(
@@ -19,6 +17,6 @@ class CustomSnackBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // This widget doesn't need a build method.
-    return SizedBox.shrink();
+    return const SizedBox.shrink();
   }
 }

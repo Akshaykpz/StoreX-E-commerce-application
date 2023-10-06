@@ -24,25 +24,23 @@ Future<void> showSignOutDialog(BuildContext context) async {
   showDialog(
       context: context,
       builder: (context) {
-        return Container(
-          child: AlertDialog(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20)),
-              title: Text('Logout'),
-              content: const Text("Are you sure you want to Logout?"),
-              actions: [
-                TextButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: Text("No")),
-                TextButton(
-                    onPressed: () async {
-                      await _handleSignOut(context);
-                    },
-                    child: const Text("Yes"))
-              ]),
-        );
+        return AlertDialog(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            title: const Text('Logout'),
+            content: const Text("Are you sure you want to Logout?"),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text("No")),
+              TextButton(
+                  onPressed: () async {
+                    await _handleSignOut(context);
+                  },
+                  child: const Text("Yes"))
+            ]);
       });
   // CoolAlert.show(
   //   context: context,

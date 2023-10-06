@@ -169,7 +169,7 @@ import 'package:flutter/material.dart';
 class Chipadd extends StatefulWidget {
   final String text;
   final String image;
-  Chipadd({super.key, required this.text, required this.image});
+  const Chipadd({super.key, required this.text, required this.image});
 
   @override
   State<Chipadd> createState() => _ChipaddState();

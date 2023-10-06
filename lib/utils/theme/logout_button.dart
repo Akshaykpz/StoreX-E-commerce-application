@@ -4,7 +4,10 @@ import 'package:scroll_page_view/pager/page_controller.dart';
 import 'package:scroll_page_view/pager/scroll_page_view.dart';
 
 class MyPageView extends StatefulWidget {
+  const MyPageView({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _MyPageViewState createState() => _MyPageViewState();
 }
 

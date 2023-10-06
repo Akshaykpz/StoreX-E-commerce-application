@@ -11,17 +11,18 @@ Future addData(
     required String categoryname,
     required String description,
     required String imageurls}) async {
-  final id = findDocumentIdByCategory(categoryname);
-  await storage.collection('products').doc().set({
-    'p_name': name,
-    'p_price': price,
-    'categroy_id': id,
-    'p_description': description,
-    'P-imageurl': imageurls
-  }).then((value) => log('add data'));
+  final id = await findDocumentIdByCategory(categoryname);
+  if (id != null) {
+    await storage.collection('products').doc().set({
+      'p_name': name,
+      'p_price': price,
+      'categroy_id': id,
+      'p_description': description,
+      'P-imageurl': imageurls
+    }).then((value) => log('add data'));
+  } else {
+    print('id is $id');
+  }
 }
 
-final collection = storage
-    .collection('products')
-    .orderBy('p_name')
-    .startAt([name]).endAt([name + "\uf8ff"]).snapshots();
+final collection = storage.collection('products').snapshots();
