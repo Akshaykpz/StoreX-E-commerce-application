@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -29,6 +30,7 @@ class MyApp extends ConsumerWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) => MaterialApp(
+          builder: EasyLoading.init(),
           debugShowCheckedModeBanner: false,
           // theme: AppTheme.themeData,
           home: initilize.when(

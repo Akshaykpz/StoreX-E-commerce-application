@@ -190,7 +190,10 @@ class _ItemOnClickState extends ConsumerState<ItemViews> {
 }
 
 void _showLoadingSnackbar(BuildContext context, String text) {
-  EasyLoading.show(status: 'Loading...');
+  EasyLoading.show(
+    status: 'loading...',
+    dismissOnTap: false,
+  );
   ScaffoldMessenger.of(context)
       .showSnackBar(
         SnackBar(
