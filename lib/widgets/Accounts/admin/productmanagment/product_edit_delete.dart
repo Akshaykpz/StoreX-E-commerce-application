@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/service/delete_product.dart';
 
 class Productedit extends StatefulWidget {
-  final String categoryid;
-  const Productedit({super.key, required this.categoryid});
+  final String productid;
+  const Productedit({super.key, required this.productid});
 
   @override
   State<Productedit> createState() => _CategoryeditState();
@@ -43,7 +43,7 @@ class _CategoryeditState extends State<Productedit> {
       ],
       onSelected: (String newvalue) {
         if (newvalue == delete) {
-          deleteproudct(widget.categoryid);
+          deleteproudct(widget.productid);
         } else if (newvalue == edit) {}
       },
     );

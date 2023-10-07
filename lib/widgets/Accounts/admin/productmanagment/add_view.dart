@@ -5,12 +5,13 @@ import 'package:flutter_scrolling_fab_animated/flutter_scrolling_fab_animated.da
 import 'package:giltezy_2ndproject/controller/provder_auth.dart';
 import 'package:giltezy_2ndproject/service/add_data.dart';
 import 'package:giltezy_2ndproject/widgets/accounts/admin/categorymangment/category_name.dart';
+import 'package:giltezy_2ndproject/widgets/accounts/admin/productmanagment/product_edit_delete.dart';
 
 import 'package:giltezy_2ndproject/widgets/accounts/admin/productmanagment/product_managment.dart';
 
 class MyProductView extends ConsumerStatefulWidget {
-  const MyProductView({super.key});
-
+  const MyProductView({super.key, this.productId});
+  final String? productId;
   @override
   ConsumerState<MyProductView> createState() => _MyProductViewState();
 }
@@ -46,6 +47,9 @@ class _MyProductViewState extends ConsumerState<MyProductView> {
                           padding: const EdgeInsets.all(6.0),
                           child: Column(
                             children: [
+                              Productedit(
+                                productid: widget.productId.toString(),
+                              ),
                               FutureBuilder(
                                 future: precacheImage(
                                   NetworkImage(proudctimg),
