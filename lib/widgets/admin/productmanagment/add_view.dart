@@ -47,8 +47,13 @@ class _MyProductViewState extends ConsumerState<MyProductView> {
                           padding: const EdgeInsets.all(6.0),
                           child: Column(
                             children: [
-                              Productedit(
-                                productid: widget.productId.toString(),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Productedit(
+                                    productid: widget.productId.toString(),
+                                  ),
+                                ],
                               ),
                               FutureBuilder(
                                 future: precacheImage(
@@ -74,13 +79,13 @@ class _MyProductViewState extends ConsumerState<MyProductView> {
                                 },
                               ),
                               const SizedBox(
-                                height: 20,
+                                height: 9,
                               ),
                               Categoryname(
                                 name: productname ?? '1200',
                               ),
                               const SizedBox(
-                                height: 20,
+                                height: 10,
                               ),
                               Categoryname(
                                 name: proudctprice ?? '1200',

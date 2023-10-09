@@ -2,7 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/service/upload_image.dart';
-import 'package:giltezy_2ndproject/widgets/accounts/admin/productmanagment/buttons.dart';
+import 'package:giltezy_2ndproject/widgets/admin/productmanagment/buttons.dart';
+
 import 'package:image_picker/image_picker.dart';
 
 class ImagePickerWidget extends StatefulWidget {

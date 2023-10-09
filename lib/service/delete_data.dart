@@ -6,9 +6,11 @@ Future<void> deleteCategory(String categoryid) async {
         .collection('category')
         .doc(categoryid)
         .delete();
-    print('sucessfully deleted');
+    print('Successfully deleted category with ID: $categoryid');
   } catch (e) {
     print('Error deleting category: $e');
+    // Rethrow the error so it can be handled elsewhere if needed.
+    throw e;
   }
 }
 

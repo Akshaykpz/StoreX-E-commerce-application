@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:giltezy_2ndproject/widgets/accounts/admin/appbar.dart';
 
-import 'package:giltezy_2ndproject/widgets/accounts/admin/buttons.dart';
-import 'package:giltezy_2ndproject/widgets/accounts/admin/categorymangment/category_mgt.dart';
-import 'package:giltezy_2ndproject/widgets/accounts/admin/dashboard/dash_board.dart';
-
-import 'package:giltezy_2ndproject/widgets/accounts/admin/productmanagment/add_view.dart';
-
-import 'package:giltezy_2ndproject/widgets/accounts/admin/usermanagment/user_mangment.dart';
+import 'package:giltezy_2ndproject/widgets/admin/appbar.dart';
+import 'package:giltezy_2ndproject/widgets/admin/buttons.dart';
+import 'package:giltezy_2ndproject/widgets/admin/categorymangment/category_mgt.dart';
+import 'package:giltezy_2ndproject/widgets/admin/dashboard/dash_board.dart';
+import 'package:giltezy_2ndproject/widgets/admin/productmanagment/add_view.dart';
+import 'package:giltezy_2ndproject/widgets/admin/usermanagment/user_mangment.dart';
 
 class AdminPage extends StatelessWidget {
   const AdminPage({super.key});
@@ -50,7 +48,9 @@ class AdminPage extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => MyProductView(),
+                        builder: (context) => const MyProductView(
+                          productId: '',
+                        ),
                       ));
                 },
                 text: 'Product Management',
@@ -60,7 +60,7 @@ class AdminPage extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const MyCategory(categoryId: ''),
+                      builder: (context) => const MyCategory(),
                     ));
               },
               text: 'Category Management',

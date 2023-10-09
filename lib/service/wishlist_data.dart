@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class ItemAdd {
   Future<void> addWishlistItem(DocumentReference referenceId) async {
@@ -39,17 +40,27 @@ class ItemAdd {
   Future<void> addCart(DocumentReference reference) async {
     final cartuser = FirebaseAuth.instance.currentUser;
     if (cartuser != null) {
-      try {
-        await FirebaseFirestore.instance
-            .collection('cart')
-            .doc(cartuser.email)
-            .collection('items')
-            .add({
-          'product_reference': reference,
-        });
-        print('Item added to cartitem successfully.');
-      } catch (e) {
-        print('Error adding item to cart: $e');
+      final itemsexits = await FirebaseFirestore.instance
+          .collection('cart')
+          .doc(cartuser.email)
+          .collection('items')
+          .where('product_reference', isEqualTo: reference)
+          .get()
+          .then((value) => value.docs.isNotEmpty);
+
+      if (itemsexits) {
+        print('cart itema alreday added');
+      } else {
+        try {
+          await FirebaseFirestore.instance
+              .collection('cart')
+              .doc(cartuser.email)
+              .collection('items')
+              .add({'product_reference': reference});
+          print('items added sucessfull cart');
+        } catch (e) {
+          print('error something add cart ');
+        }
       }
     } else {
       print('User is not authenticated.');

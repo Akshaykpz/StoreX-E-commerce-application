@@ -3,9 +3,14 @@ import 'package:flutter/material.dart';
 class EditProfile extends StatelessWidget {
   final String text;
   final Icon? icons;
+  final FormFieldValidator<String>? validation;
   final TextEditingController? controller;
   const EditProfile(
-      {super.key, required this.text, this.icons, this.controller});
+      {super.key,
+      required this.text,
+      this.icons,
+      this.controller,
+      this.validation});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +23,8 @@ class EditProfile extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(7),
                 border: Border.all(color: Colors.grey)),
-            child: TextField(
+            child: TextFormField(
+              validator: validation,
               controller: controller,
               decoration: InputDecoration(
                 prefixIcon: icons,

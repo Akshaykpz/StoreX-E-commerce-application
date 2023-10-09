@@ -1,9 +1,10 @@
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/service/category_item_add.dart';
 import 'package:giltezy_2ndproject/service/upload_image.dart';
+import 'package:giltezy_2ndproject/widgets/admin/productmanagment/image_picker.dart';
+import 'package:giltezy_2ndproject/widgets/admin/productmanagment/product_filed.dart';
 
-import 'package:giltezy_2ndproject/widgets/accounts/admin/productmanagment/image_picker.dart';
-import 'package:giltezy_2ndproject/widgets/accounts/admin/productmanagment/product_filed.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
@@ -37,6 +38,7 @@ class _CategoryAddState extends State<CategoryAdd> {
               width: MediaQuery.of(context).size.width * 0.5,
               child: ElevatedButton(
                 onPressed: () async {
+                  log('addall');
                   try {
                     await addcategory(
                       categoryname: categorynamecontroller.text,

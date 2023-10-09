@@ -10,8 +10,9 @@ import 'package:giltezy_2ndproject/widgets/accounts/admin/categorymangment/categ
 import 'package:giltezy_2ndproject/widgets/accounts/admin/categorymangment/category_popup.dart';
 
 class MyCategory extends ConsumerStatefulWidget {
-  const MyCategory({Key? key, this.categoryId}) : super(key: key);
-  final String? categoryId;
+  const MyCategory({
+    Key? key,
+  }) : super(key: key);
 
   @override
   ConsumerState<MyCategory> createState() => _MyCategoryState();
@@ -59,8 +60,7 @@ class _MyCategoryState extends ConsumerState<MyCategory> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
-                                  Categoryedit(
-                                      categoryid: widget.categoryId.toString()),
+                                  Categoryedit(categoryid: 'deleted'),
                                 ],
                               ),
                               FutureBuilder(

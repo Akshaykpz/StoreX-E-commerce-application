@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:giltezy_2ndproject/service/find_category.dart';
-import 'package:giltezy_2ndproject/widgets/homepage/ItemView/serach.dart';
 
 final storage = FirebaseFirestore.instance;
 Future addData(
@@ -21,7 +20,8 @@ Future addData(
       'P-imageurl': imageurls
     }).then((value) => log('add data'));
   } else {
-    print('id is $id');
+    log(id!);
+    // print('id is $id');
   }
 }
 

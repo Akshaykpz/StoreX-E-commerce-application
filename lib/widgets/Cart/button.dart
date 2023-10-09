@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:giltezy_2ndproject/widgets/accounts/order/order_status.dart';
+import 'package:giltezy_2ndproject/widgets/checkout/checkout_view.dart';
 import 'package:pushable_button/pushable_button.dart';
 
 class BuyButton extends StatelessWidget {
@@ -19,7 +20,7 @@ class BuyButton extends StatelessWidget {
           Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const MyOrder(),
+                builder: (context) => const CheckOut(),
               ));
         },
         child: const Text('Proceed to Check out',

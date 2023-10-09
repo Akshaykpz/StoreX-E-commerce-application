@@ -29,7 +29,39 @@ class _EditProfilesState extends State<EditProfiles> {
   String? _imageUrl;
 
 // ...
-  Future<void> selectImage() async {
+  // Future<void> selectImage() async {
+  //   final picker = ImagePicker();
+  //   final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+
+  //   if (pickedFile != null) {
+  //     setState(() {
+  //       image = File(pickedFile.path);
+  //     });
+  //   }
+  // }
+
+  // Future<void> upload(File? imagerl) async {
+  //   if (image != null) {
+  //     try {
+  //       final Reference storageReference =
+  //           firebase_storage.FirebaseStorage.instance.ref();
+  //       final imageName = DateTime.now().millisecondsSinceEpoch.toString();
+  //       // Upload the image to Firebase Storage
+  //       final UploadTask uploadTask =
+  //           storageReference.child('images/$imageName.jpg').putFile(imagerl!);
+
+  //       // Wait for the upload to complete and get the download UR
+  //       final TaskSnapshot taskSnapshot = await uploadTask;
+  //       if (taskSnapshot.state == firebase_storage.TaskState.success) {
+  //         final String imageUrl = await taskSnapshot.ref.getDownloadURL();
+  //         print(imageUrl);
+  //       }
+  //     } catch (error) {
+  //       print('Error uploading image: $error');
+  //     }
+  //   }
+
+  Future<void> selectImageAndUpload() async {
     final picker = ImagePicker();
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
 
@@ -37,24 +69,24 @@ class _EditProfilesState extends State<EditProfiles> {
       setState(() {
         image = File(pickedFile.path);
       });
-    }
-  }
 
-  Future<void> upload(File? imagerl) async {
-    if (image != null) {
+      // Upload the selected image to Firebase Storage
       try {
         final Reference storageReference =
             firebase_storage.FirebaseStorage.instance.ref();
         final imageName = DateTime.now().millisecondsSinceEpoch.toString();
         // Upload the image to Firebase Storage
         final UploadTask uploadTask =
-            storageReference.child('images/$imageName.jpg').putFile(imagerl!);
+            storageReference.child('images/$imageName.jpg').putFile(image!);
 
-        // Wait for the upload to complete and get the download UR
+        // Wait for the upload to complete and get the download URL
         final TaskSnapshot taskSnapshot = await uploadTask;
         if (taskSnapshot.state == firebase_storage.TaskState.success) {
           final String imageUrl = await taskSnapshot.ref.getDownloadURL();
-          print(imageUrl);
+          setState(() {
+            _imageUrl = imageUrl;
+          });
+          print('Image uploaded successfully: $imageUrl');
         }
       } catch (error) {
         print('Error uploading image: $error');
@@ -97,28 +129,28 @@ class _EditProfilesState extends State<EditProfiles> {
                         width: 4.0,
                       ),
                     ),
-                    // child: image != null
-                    //     ? CircleAvatar(
-                    //         radius: 70.0,
-                    //         backgroundImage:AssetImage(''))
-                    //       ),
-                    //     : const CircleAvatar(
-                    //         backgroundColor: Colors.black,
-                    //         radius: 50.0,
-                    //         backgroundImage:
-                    //             AssetImage('assets/images/reallogo.png'),
-                    //       ),
+                    child: image != null
+                        ? CircleAvatar(
+                            backgroundColor: Colors.white,
+                            radius: 70.0,
+                            backgroundImage: FileImage(image!))
+                        : const CircleAvatar(
+                            backgroundColor: Colors.black,
+                            radius: 50.0,
+                            backgroundImage:
+                                AssetImage('assets/images/reallogo.png'),
+                          ),
                   ),
                 ),
               ),
               Positioned(
-                bottom: 20,
-                right: 19,
+                bottom: 7,
+                right: 3,
                 child: CircleAvatar(
                     backgroundColor: Colors.teal,
                     child: IconButton(
                         onPressed: () {
-                          selectImage();
+                          selectImageAndUpload();
                         },
                         icon: const Icon(
                           Icons.edit,
@@ -127,18 +159,34 @@ class _EditProfilesState extends State<EditProfiles> {
               )
             ]),
             EditProfile(
-                text: 'name',
-                icons: const Icon(Icons.account_box),
-                controller: _nameController),
+              validation: (value) {
+                if (value!.isEmpty) {
+                  return 'please enter name';
+                }
+              },
+              text: 'name',
+              icons: const Icon(Icons.account_box),
+              controller: _nameController,
+            ),
             const SizedBox(
               height: 3,
             ),
             EditProfile(
+              validation: (value) {
+                if (value!.isEmpty) {
+                  return 'please enter email';
+                }
+              },
               controller: _emailController,
               text: 'email',
               icons: const Icon(Icons.email),
             ),
             EditProfile(
+              validation: (value) {
+                if (value!.isEmpty) {
+                  return 'please enter phone';
+                }
+              },
               controller: _phoneController,
               text: 'phone',
               icons: const Icon(Icons.phone),
@@ -149,12 +197,13 @@ class _EditProfilesState extends State<EditProfiles> {
                 child: ElevatedButton(
                   onPressed: () async {
                     print(_imageUrl);
-                    if (_formkey.currentState!.validate()) {
+                    if (_formkey.currentState!.validate() && image != null) {
                       await adduserProfile(
                           imagurl: _imageUrl.toString(),
                           email: _emailController.text,
                           name: _nameController.text,
                           phone: _phoneController.text);
+                      Navigator.pop(context);
                     }
                   },
                   style: ElevatedButton.styleFrom(
@@ -167,7 +216,8 @@ class _EditProfilesState extends State<EditProfiles> {
                       borderRadius:
                           BorderRadius.circular(8), // Button border radius
                     ),
-                    elevation: 4, // Elevation of the button
+                    elevation: 4,
+                    // Elevation of the button
                   ),
                   child: const Text('DONE'),
                 ))
