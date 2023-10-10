@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_scrolling_fab_animated/flutter_scrolling_fab_animated.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:giltezy_2ndproject/controller/category_prov.dart';
-import 'package:giltezy_2ndproject/service/category_item_add.dart';
 import 'package:giltezy_2ndproject/widgets/admin/categorymangment/category_add.dart';
 import 'package:giltezy_2ndproject/widgets/admin/categorymangment/category_name.dart';
 import 'package:giltezy_2ndproject/widgets/admin/categorymangment/category_popup.dart';
@@ -56,7 +54,7 @@ class _MyCategoryState extends ConsumerState<MyCategory> {
                           padding: const EdgeInsets.all(6.0),
                           child: Column(
                             children: [
-                              Row(
+                              const Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   Categoryedit(categoryid: 'deleted'),
@@ -87,7 +85,8 @@ class _MyCategoryState extends ConsumerState<MyCategory> {
                                 height: 20,
                               ),
                               Categoryname(
-                                name: productname ?? '1200',
+                                width: 70,
+                                name: productname ?? '',
                               ),
                             ],
                           ),

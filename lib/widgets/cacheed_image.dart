@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class CachedImage extends StatelessWidget {
   final String url;
   final double height;
+
   const CachedImage({super.key, required this.url, required this.height});
 
   @override
@@ -11,8 +12,8 @@ class CachedImage extends StatelessWidget {
     return CachedNetworkImage(
       imageUrl: url,
       height: height,
-      width: MediaQuery.sizeOf(context).width, // Adjust the height as needed
-      fit: BoxFit.fitWidth,
+
+      width: 110, // Adjust the height as needed
 
       alignment: Alignment.center,
       placeholder: (context, url) =>

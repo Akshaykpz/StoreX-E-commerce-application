@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:giltezy_2ndproject/widgets/cart/cart_view.dart';
 import 'package:giltezy_2ndproject/widgets/checkout/address_view.dart';
 
 class CheckOut extends StatelessWidget {
@@ -7,7 +8,7 @@ class CheckOut extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Column(children: [AddressView()]),
+      body: Column(children: []),
     );
   }
 }

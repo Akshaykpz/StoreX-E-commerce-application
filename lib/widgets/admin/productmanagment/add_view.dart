@@ -73,13 +73,12 @@ class _MyProductViewState extends ConsumerState<MyProductView> {
                                   return Image.network(
                                     proudctimg,
                                     height: 100,
-                                    width: MediaQuery.of(context).size.width,
                                     fit: BoxFit.fitWidth,
                                   );
                                 },
                               ),
                               const SizedBox(
-                                height: 9,
+                                height: 14,
                               ),
                               Categoryname(
                                 name: productname ?? '1200',
