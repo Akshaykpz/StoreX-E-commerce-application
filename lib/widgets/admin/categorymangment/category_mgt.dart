@@ -4,10 +4,9 @@ import 'package:flutter_scrolling_fab_animated/flutter_scrolling_fab_animated.da
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:giltezy_2ndproject/controller/category_prov.dart';
 import 'package:giltezy_2ndproject/service/category_item_add.dart';
-
-import 'package:giltezy_2ndproject/widgets/accounts/admin/categorymangment/category_add.dart';
-import 'package:giltezy_2ndproject/widgets/accounts/admin/categorymangment/category_name.dart';
-import 'package:giltezy_2ndproject/widgets/accounts/admin/categorymangment/category_popup.dart';
+import 'package:giltezy_2ndproject/widgets/admin/categorymangment/category_add.dart';
+import 'package:giltezy_2ndproject/widgets/admin/categorymangment/category_name.dart';
+import 'package:giltezy_2ndproject/widgets/admin/categorymangment/category_popup.dart';
 
 class MyCategory extends ConsumerStatefulWidget {
   const MyCategory({
