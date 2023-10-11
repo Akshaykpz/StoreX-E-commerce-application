@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:giltezy_2ndproject/controller/provder_auth.dart';
+import 'package:giltezy_2ndproject/service/proudcts.dart';
+import 'package:giltezy_2ndproject/widgets/homepage/ItemView/item_view.dart';
 
 class CategoryViewPage extends ConsumerStatefulWidget {
   const CategoryViewPage({super.key, required this.docId});
@@ -57,8 +59,15 @@ class _SecondGridState extends ConsumerState<CategoryViewPage> {
                     itemBuilder: (context, index) {
                       final document =
                           filterData[index].data() as Map<String, dynamic>;
+                      final ProductImage = document['P-imageurl'];
                       final productName = document['p_name'];
                       final productPrice = document['p_price'];
+
+                      // ignore: non_constant_identifier_names
+                      final Productdescription = document['p_description'];
+
+                      // ignore: non_constant_identifier_names
+
                       final rowColor = rowColors[
                           index % rowColors.length]; // Get the row color
 
@@ -70,44 +79,87 @@ class _SecondGridState extends ConsumerState<CategoryViewPage> {
                             // Navigator.push(
                             //     context,
                             //     MaterialPageRoute(
-                            //       builder: (context) => const ItemViews(),
+                            //       builder: (context) => ItemViews(
+                            //         imageUrl: ProductImage,
+                            //         productDescription: Productdescription,
+                            //         productName: productName,
+                            //         productPrice: productPrice,
+                            //         reference:,
+                            //       ),
                             //     ));
                           },
                           child: Card(
-                            color:
-                                rowColor, // Set the row color as the background color
-                            shape: const RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(7)),
-                            ),
-                            elevation: 3,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              // crossAxisAlignment: CrossAxisAlignment.end,
+                            elevation: 5,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(6),
+                                side: const BorderSide(width: 0.5)),
+                            clipBehavior: Clip.antiAliasWithSaveLayer,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                Stack(children: []),
-                                Row(
+                                CircleAvatar(
+                                  radius: 50,
+                                  backgroundColor: Colors.transparent,
+                                  child: Image.network(
+                                    ProductImage,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                Column(
                                   mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  // crossAxisAlignment: CrossAxisAlignment.end,
-                                  // mainAxisAlignment:
-                                  //     MainAxisAlignment.spaceAround,
+                                      MainAxisAlignment.spaceAround,
                                   children: [
-                                    Text(
-                                      productName,
-                                      style: TextStyle(color: Colors.blue),
-                                    ),
-                                    Text(
-                                      productPrice,
-                                      style: TextStyle(color: Colors.black),
-                                    ),
+                                    Text(productName,
+                                        style: const TextStyle(
+                                          fontSize: 18,
+                                        )),
+                                    Text(productPrice,
+                                        style: const TextStyle(
+                                          fontSize: 15,
+                                        )),
                                   ],
                                 ),
                               ],
                             ),
                           ),
+                          // child: Card(
+                          //   color:
+                          //       rowColor, // Set the row color as the background color
+                          //   shape: const RoundedRectangleBorder(
+                          //     borderRadius:
+                          //         BorderRadius.all(Radius.circular(7)),
+                          //   ),
+                          //   elevation: 3,
+                          //   child: Column(
+                          //     crossAxisAlignment: CrossAxisAlignment.center,
+                          //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          //     // crossAxisAlignment: CrossAxisAlignment.end,
+                          //     children: [
+                          //       Image.network(
+                          //         ProductImage,
+                          //         height: 80,
+                          //       ),
+                          //       Row(
+                          //         mainAxisAlignment:
+                          //             MainAxisAlignment.spaceEvenly,
+                          //         crossAxisAlignment: CrossAxisAlignment.center,
+                          //         // crossAxisAlignment: CrossAxisAlignment.end,
+                          //         // mainAxisAlignment:
+                          //         //     MainAxisAlignment.spaceAround,
+                          //         children: [
+                          //           Text(
+                          //             productName,
+                          //             style: TextStyle(color: Colors.blue),
+                          //           ),
+                          //           Text(
+                          //             productPrice,
+                          //             style: TextStyle(color: Colors.black),
+                          //           ),
+                          //         ],
+                          //       ),
+                          //     ],
+                          //   ),
+                          // ),
                         ),
                       );
                     },

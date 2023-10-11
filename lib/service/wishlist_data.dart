@@ -37,7 +37,9 @@ class ItemAdd {
     }
   }
 
-  Future<void> addCart(DocumentReference reference) async {
+  Future<void> addCart(
+    DocumentReference reference,
+  ) async {
     final cartuser = FirebaseAuth.instance.currentUser;
     if (cartuser != null) {
       final itemsexits = await FirebaseFirestore.instance
@@ -49,14 +51,14 @@ class ItemAdd {
           .then((value) => value.docs.isNotEmpty);
 
       if (itemsexits) {
-        print('cart itema alreday added');
+        print('cart item alreday added');
       } else {
         try {
           await FirebaseFirestore.instance
               .collection('cart')
               .doc(cartuser.email)
               .collection('items')
-              .add({'product_reference': reference});
+              .add({'product_reference': reference, 'itemCount': 1});
           print('items added sucessfull cart');
         } catch (e) {
           print('error something add cart ');
@@ -64,6 +66,20 @@ class ItemAdd {
       }
     } else {
       print('User is not authenticated.');
+    }
+  }
+
+  Future<void> updatCount(String id, int itemCount) async {
+    final user = FirebaseAuth.instance.currentUser;
+    try {
+      await FirebaseFirestore.instance
+          .collection('cart')
+          .doc(user!.email)
+          .collection('items')
+          .doc(id)
+          .update({'itemCount': itemCount});
+    } catch (e) {
+      print('log error $e');
     }
   }
 }

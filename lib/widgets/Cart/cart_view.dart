@@ -32,7 +32,8 @@ class _CartState extends ConsumerState<Cart> {
                         cart[index].data() as Map<String, dynamic>;
                     final reference =
                         cartProvider['product_reference'] as DocumentReference;
-
+                    final docid = cart[index].id;
+                    print('this is cart doc id ${docid}');
                     final matchProduct = productli.firstWhere((element) {
                       return element.reference == reference;
                     });
@@ -67,12 +68,13 @@ class _CartState extends ConsumerState<Cart> {
                                 child: Image.network(
                                   cartImage,
                                   fit: BoxFit.cover,
+                                  height: 80,
                                 ),
                               ),
                               Column(
                                 children: [
                                   Text(productName,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontSize: 18,
                                       )),
                                   Text(cartPrice,
@@ -81,7 +83,7 @@ class _CartState extends ConsumerState<Cart> {
                                       )),
                                 ],
                               ),
-                              const CounterApp(),
+                              CounterApp(Id: docid),
                             ],
                           ),
                         ),
@@ -97,28 +99,33 @@ class _CartState extends ConsumerState<Cart> {
                   borderRadius:
                       BorderRadius.vertical(top: Radius.circular(12))),
               height: 129,
-              child: Column(
+              child: const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+                    padding: EdgeInsets.symmetric(horizontal: 12, vertical: 5),
                     child: Text(
-                      'Shipping Cost- ',
-                      style: TextStyle(color: Colors.blue),
+                      '',
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.blue,
+                          fontWeight: FontWeight.w700),
                     ),
                   ),
-                  const SizedBox(
+                  SizedBox(
                     height: 6,
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    padding: EdgeInsets.symmetric(horizontal: 12),
                     child: Text(
-                      "Total-",
-                      style: TextStyle(color: Colors.red),
+                      "Total -",
+                      style: TextStyle(
+                          color: Colors.red,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16),
                     ),
                   ),
-                  const BuyButton()
+                  BuyButton()
                 ],
               )),
         );

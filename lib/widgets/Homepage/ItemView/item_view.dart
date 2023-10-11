@@ -177,7 +177,10 @@ class _ItemOnClickState extends ConsumerState<ItemViews> {
               Expanded(
                 child: InteractiveViewer(
                   child: Center(
-                    child: CachedImage(url: widget.imageUrl, height: 330),
+                    child: CachedImage(
+                      url: widget.imageUrl,
+                      height: 330,
+                    ),
                   ),
                 ),
               )

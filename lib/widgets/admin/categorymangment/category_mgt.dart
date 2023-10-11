@@ -85,7 +85,8 @@ class _MyCategoryState extends ConsumerState<MyCategory> {
                                 height: 20,
                               ),
                               Categoryname(
-                                width: 70,
+                                width: 90,
+                                height: 30,
                                 name: productname ?? '',
                               ),
                             ],

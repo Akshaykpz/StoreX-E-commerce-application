@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:giltezy_2ndproject/service/wishlist_data.dart';
 
 class CounterApp extends StatefulWidget {
-  const CounterApp({Key? key}) : super(key: key);
+  final String Id;
+  CounterApp({Key? key, required this.Id}) : super(key: key);
 
   @override
   State<CounterApp> createState() => _CounterAppState();
 }
 
 class _CounterAppState extends State<CounterApp> {
-  int _counterInit = 0;
+  int _counterInit = 1;
 
   void _incrementCounter() {
     setState(() {
       _counterInit++;
+      ItemAdd().updatCount(widget.Id, _counterInit);
     });
   }
 
@@ -20,6 +23,7 @@ class _CounterAppState extends State<CounterApp> {
     setState(() {
       if (_counterInit > 0) {
         _counterInit--;
+        ItemAdd().updatCount(widget.Id, _counterInit);
       }
     });
   }
@@ -33,7 +37,9 @@ class _CounterAppState extends State<CounterApp> {
           children: [
             IconButton(
               icon: const Icon(Icons.remove),
-              onPressed: _decrementCounter,
+              onPressed: () {
+                _decrementCounter();
+              },
               color: Colors.red,
             ),
             Text(
@@ -42,7 +48,9 @@ class _CounterAppState extends State<CounterApp> {
             ),
             IconButton(
               icon: const Icon(Icons.add),
-              onPressed: _incrementCounter,
+              onPressed: () {
+                _incrementCounter();
+              },
               color: Colors.green,
             ),
           ],

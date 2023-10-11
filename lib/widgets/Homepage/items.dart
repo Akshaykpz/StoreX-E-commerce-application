@@ -87,7 +87,10 @@ class _SecondGridState extends State<SecondGrid> {
                       children: [
                         Stack(
                           children: [
-                            CachedImage(url: productImage, height: 140),
+                            CachedImage(
+                              url: productImage,
+                              height: 150,
+                            ),
                             // Image.network(
                             //   productImage,
                             //   height: 100,
@@ -108,12 +111,18 @@ class _SecondGridState extends State<SecondGrid> {
                           children: [
                             Text(
                               productName,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 19, color: Colors.blueAccent),
+                            ),
+                            const SizedBox(
+                              height: 10,
                             ),
                             Text(
                               '₹$productPrice',
-                              style: TextStyle(color: Colors.black87),
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black87,
+                                  fontSize: 15),
                             ),
                           ],
                         ),

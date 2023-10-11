@@ -35,8 +35,8 @@ class _CategoryItemsState extends ConsumerState<CategoryItems> {
                 final catdata = category[index].data() as Map<String, dynamic>;
                 final docId = category[index].id;
 
-                final categoryname = catdata['cat_name'];
-                final categoryimage = catdata['cat_image'];
+                final cartname = catdata['cat_name'];
+                final cartimage = catdata['cat_image'];
                 final rowColor = rowColors[index % rowColors.length];
                 return GestureDetector(
                   onTap: () {
@@ -58,14 +58,14 @@ class _CategoryItemsState extends ConsumerState<CategoryItems> {
                       margin: const EdgeInsets.all(1.0),
                       child: Center(
                         child: GridTile(
-                          footer: Text(categoryname,
+                          footer: Text(cartname,
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 15,
                                 color: Colors.black87,
                                 fontWeight: FontWeight.w600,
                               )),
-                          child: Image.network(categoryimage),
+                          child: Image.network(cartimage),
                         ),
                       ),
                     ),

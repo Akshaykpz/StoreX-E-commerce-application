@@ -75,10 +75,10 @@ class _AccountsState extends State<Accounts> {
                         userData['user_num'] as String? ?? "No Phone";
                     print("its user image$userimage");
                     return Container(
-                      margin: const EdgeInsets.all(19.0),
+                      // margin: const EdgeInsets.all(10.0),
                       decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(16.0),
+                        borderRadius: BorderRadius.circular(18.0),
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -131,7 +131,7 @@ class _AccountsState extends State<Accounts> {
                               padding: const EdgeInsets.only(top: 8.0),
                               child: Text(
                                 userPhone,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 16,
                                 ),
                               ),

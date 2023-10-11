@@ -3,14 +3,17 @@ import 'package:flutter/material.dart';
 class Categoryname extends StatelessWidget {
   final String name;
   final double? width;
-  const Categoryname({super.key, required this.name, this.width});
+  final double? height;
+  const Categoryname({super.key, required this.name, this.width, this.height});
 
   @override
   Widget build(BuildContext context) {
     return Flexible(
       child: Container(
         width: width,
+        height: height,
         decoration: BoxDecoration(
+          boxShadow: [BoxShadow(blurRadius: 1)],
           border: Border.all(),
         ),
         child: Center(
