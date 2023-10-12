@@ -59,6 +59,7 @@ class _SecondGridState extends ConsumerState<CategoryViewPage> {
                     itemBuilder: (context, index) {
                       final document =
                           filterData[index].data() as Map<String, dynamic>;
+                      final reference = filterData[index].reference;
                       final ProductImage = document['P-imageurl'];
                       final productName = document['p_name'];
                       final productPrice = document['p_price'];
@@ -76,17 +77,17 @@ class _SecondGridState extends ConsumerState<CategoryViewPage> {
                             horizontal: 5, vertical: 5),
                         child: GestureDetector(
                           onTap: () {
-                            // Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //       builder: (context) => ItemViews(
-                            //         imageUrl: ProductImage,
-                            //         productDescription: Productdescription,
-                            //         productName: productName,
-                            //         productPrice: productPrice,
-                            //         reference:,
-                            //       ),
-                            //     ));
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ItemViews(
+                                    imageUrl: ProductImage,
+                                    productDescription: Productdescription,
+                                    productName: productName,
+                                    productPrice: productPrice,
+                                    reference: reference,
+                                  ),
+                                ));
                           },
                           child: Card(
                             elevation: 5,

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'package:giltezy_2ndproject/service/delete_product.dart';
+import 'package:giltezy_2ndproject/service/delete_data.dart';
 
 class Productedit extends StatefulWidget {
   final String productid;
@@ -41,9 +40,9 @@ class _CategoryeditState extends State<Productedit> {
           ),
         ),
       ],
-      onSelected: (String newvalue) {
+      onSelected: (String newvalue) async {
         if (newvalue == delete) {
-          deleteproudct(widget.productid);
+          await deleteproudct(widget.productid);
         } else if (newvalue == edit) {}
       },
     );

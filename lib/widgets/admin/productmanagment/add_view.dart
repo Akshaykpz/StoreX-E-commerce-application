@@ -10,8 +10,10 @@ import 'package:giltezy_2ndproject/widgets/admin/productmanagment/product_edit_d
 import 'package:giltezy_2ndproject/widgets/admin/productmanagment/product_managment.dart';
 
 class MyProductView extends ConsumerStatefulWidget {
-  const MyProductView({super.key, this.productId});
-  final String? productId;
+  const MyProductView({
+    super.key,
+  });
+
   @override
   ConsumerState<MyProductView> createState() => _MyProductViewState();
 }
@@ -30,9 +32,11 @@ class _MyProductViewState extends ConsumerState<MyProductView> {
               return SliverGrid(
                 delegate: SliverChildBuilderDelegate((context, index) {
                   final prodata = data[index].data() as Map<String, dynamic>;
+                  final productId = data[index].id;
                   final proudctimg = prodata['P-imageurl'];
                   final productname = prodata['p_name'];
                   final proudctprice = prodata['p_price'];
+                  print(" this is my productId ${productId}");
 
                   return Padding(
                       padding: const EdgeInsets.all(10.0),
@@ -51,7 +55,7 @@ class _MyProductViewState extends ConsumerState<MyProductView> {
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   Productedit(
-                                    productid: widget.productId.toString(),
+                                    productid: productId,
                                   ),
                                 ],
                               ),

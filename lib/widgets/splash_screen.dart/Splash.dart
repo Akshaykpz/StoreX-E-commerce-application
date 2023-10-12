@@ -18,10 +18,10 @@ class Splashscreen extends StatelessWidget {
               width: 262.w,
               height: 216.h,
               decoration: const BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('assets/images/logo.jpg'),
-                    fit: BoxFit.fill),
-              ),
+                  // image: DecorationImage(
+                  //     image: AssetImage('assets/images/logo.jpg'),
+                  //     fit: BoxFit.fill),
+                  ),
             ),
           ),
           Column(

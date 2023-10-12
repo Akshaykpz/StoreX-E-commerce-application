@@ -37,8 +37,10 @@ class _MyCategoryState extends ConsumerState<MyCategory> {
                   delegate: SliverChildBuilderDelegate((context, index) {
                     final category =
                         catgorydata[index].data() as Map<String, dynamic>;
+
                     final productname = category['cat_name'];
                     final productimage = category['cat_image'];
+                    final CatId = catgorydata[index].id;
                     print('hello  {$productimage}');
 
                     return Padding(
@@ -54,10 +56,10 @@ class _MyCategoryState extends ConsumerState<MyCategory> {
                           padding: const EdgeInsets.all(6.0),
                           child: Column(
                             children: [
-                              const Row(
+                              Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
-                                  Categoryedit(categoryid: 'deleted'),
+                                  Categoryedit(categoryid: CatId),
                                 ],
                               ),
                               FutureBuilder(

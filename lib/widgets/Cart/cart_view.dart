@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:giltezy_2ndproject/controller/provder_auth.dart';
+import 'package:giltezy_2ndproject/service/add_wishlist.dart';
+import 'package:giltezy_2ndproject/service/delete_data.dart';
 
 import 'package:giltezy_2ndproject/widgets/cart/button.dart';
 import 'package:giltezy_2ndproject/widgets/cart/item_counter.dart';
@@ -15,119 +17,154 @@ class Cart extends ConsumerStatefulWidget {
   ConsumerState<Cart> createState() => _CartState();
 }
 
+double calculateTotal(
+    {required List<DocumentSnapshot<Object?>> cartData,
+    required List<DocumentSnapshot<Object?>> product}) {
+  double totalprice = 0;
+  for (final cartitem in cartData) {
+    final cartDataMap = cartitem.data() as Map<String, dynamic>;
+    final productRef = cartDataMap['product_reference'] as DocumentReference;
+    final itemCount = cartDataMap['itemCount'] as int;
+
+    final matchingProudct =
+        product.firstWhere((element) => element.reference == productRef);
+    final productpr = matchingProudct['p_price'];
+    final productprice = double.parse(productpr.toString());
+    totalprice = (productprice * itemCount);
+  }
+  return totalprice;
+}
+
 class _CartState extends ConsumerState<Cart> {
   @override
   Widget build(BuildContext context) {
     final cartData = ref.watch(cartContentsProvider);
     final product = ref.watch(productList);
+
     return cartData.when(
       data: (cart) {
-        return Scaffold(
-          body: product.when(
+        return SafeArea(
+          child: product.when(
               data: (productli) {
-                return ListView.builder(
-                  itemCount: cart.length,
-                  itemBuilder: (context, index) {
-                    final cartProvider =
-                        cart[index].data() as Map<String, dynamic>;
-                    final reference =
-                        cartProvider['product_reference'] as DocumentReference;
-                    final docid = cart[index].id;
-                    print('this is cart doc id ${docid}');
-                    final matchProduct = productli.firstWhere((element) {
-                      return element.reference == reference;
-                    });
-                    final productName = matchProduct['p_name'];
-                    final cartPrice = matchProduct['p_price'];
-                    final cartImage = matchProduct['P-imageurl'];
-
-                    return Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: Slidable(
-                        endActionPane: ActionPane(
-                          motion: const ScrollMotion(),
-                          children: [
-                            SlidableAction(
-                                backgroundColor: Colors.red,
-                                onPressed: (context) {},
-                                icon: Icons.delete),
-                          ],
-                        ),
-                        child: Card(
-                          elevation: 5,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(6),
-                              side: const BorderSide(width: 0.5)),
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          child: Row(
+                return Scaffold(
+                  bottomSheet: Container(
+                    decoration: const BoxDecoration(
+                        borderRadius:
+                            BorderRadius.vertical(top: Radius.circular(12))),
+                    height: 90,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 12, vertical: 5),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "Total Amount",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          ),
+                          Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              CircleAvatar(
-                                radius: 50,
-                                backgroundColor: Colors.transparent,
-                                child: Image.network(
-                                  cartImage,
-                                  fit: BoxFit.cover,
-                                  height: 80,
+                              Text(
+                                '₹${calculateTotal(cartData: cart, product: productli).toStringAsFixed(2)}',
+                                style: const TextStyle(
+                                  color: Colors.green,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 19,
                                 ),
                               ),
-                              Column(
-                                children: [
-                                  Text(productName,
-                                      style: const TextStyle(
-                                        fontSize: 18,
-                                      )),
-                                  Text(cartPrice,
-                                      style: TextStyle(
-                                        fontSize: 15,
-                                      )),
-                                ],
-                              ),
-                              CounterApp(Id: docid),
+                              BuyButton()
                             ],
                           ),
-                        ),
+                        ],
                       ),
-                    );
-                  },
+                    ),
+                  ),
+                  body: ListView.builder(
+                    itemCount: cart.length,
+                    itemBuilder: (context, index) {
+                      final cartProvider =
+                          cart[index].data() as Map<String, dynamic>;
+                      final reference = cartProvider['product_reference']
+                          as DocumentReference;
+                      final docid = cart[index].id;
+                      print('this is cart doc id ${docid}');
+                      final matchProduct = productli.firstWhere((element) {
+                        return element.reference == reference;
+                      });
+                      final productName = matchProduct['p_name'];
+                      final cartPrice = matchProduct['p_price'];
+                      final cartImage = matchProduct['P-imageurl'];
+
+                      return Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Slidable(
+                          endActionPane: ActionPane(
+                            motion: const ScrollMotion(),
+                            children: [
+                              SlidableAction(
+                                  backgroundColor: Colors.red,
+                                  onPressed: (context) {
+                                    deleteCart(reference).whenComplete(
+                                      () {
+                                        ShowSnackbar().showLoadingSnackbar(
+                                            context, 'cart item deleted');
+                                      },
+                                    );
+                                  },
+                                  icon: Icons.delete),
+                            ],
+                          ),
+                          child: Card(
+                            elevation: 5,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(6),
+                                side: const BorderSide(width: 0.5)),
+                            clipBehavior: Clip.antiAliasWithSaveLayer,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                CircleAvatar(
+                                  radius: 50,
+                                  backgroundColor: Colors.transparent,
+                                  child: Image.network(
+                                    cartImage,
+                                    fit: BoxFit.cover,
+                                    height: 80,
+                                  ),
+                                ),
+                                Column(
+                                  children: [
+                                    Text(productName,
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 18,
+                                        )),
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text('₹${cartPrice}',
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 15,
+                                        )),
+                                  ],
+                                ),
+                                CounterApp(Id: docid),
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
                 );
               },
               error: (error, stackTrace) => const CircularProgressIndicator(),
               loading: () => const CircularProgressIndicator()),
-          bottomSheet: Container(
-              decoration: const BoxDecoration(
-                  borderRadius:
-                      BorderRadius.vertical(top: Radius.circular(12))),
-              height: 129,
-              child: const Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 12, vertical: 5),
-                    child: Text(
-                      '',
-                      style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.blue,
-                          fontWeight: FontWeight.w700),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 6,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 12),
-                    child: Text(
-                      "Total -",
-                      style: TextStyle(
-                          color: Colors.red,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16),
-                    ),
-                  ),
-                  BuyButton()
-                ],
-              )),
         );
       },
       error: (error, stackTrace) => const CircularProgressIndicator(),
