@@ -5,6 +5,7 @@ class MyTextformFiled extends StatelessWidget {
   final String? hinttext;
   final bool? obcuretext;
   final Icon? icons;
+  final IconButton? icon;
   final Function(String?)? onSubmitted;
   final String? Function(String?)? validator; // Add this validator function
 
@@ -14,6 +15,7 @@ class MyTextformFiled extends StatelessWidget {
     this.hinttext,
     this.obcuretext,
     this.icons,
+    this.icon,
     this.onSubmitted,
     this.validator,
   }) : super(key: key);
@@ -26,7 +28,9 @@ class MyTextformFiled extends StatelessWidget {
         style: const TextStyle(color: Colors.white),
         controller: controller,
         obscureText: obcuretext ?? false,
+
         decoration: InputDecoration(
+          suffixIcon: icon,
           prefixIcon: icons,
           prefixIconColor: Colors.white,
           border: OutlineInputBorder(

@@ -1,28 +1,25 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:giltezy_2ndproject/service/edit_user_profile.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:giltezy_2ndproject/controller/users_auth.dart';
 import 'package:giltezy_2ndproject/service/sign_out.dart';
-
-import 'package:giltezy_2ndproject/widgets/accounts/shippingAddress/shipping_address.dart';
-import 'package:giltezy_2ndproject/widgets/Accounts/allSettings/wish_list.dart';
+import 'package:giltezy_2ndproject/service/button.dart';
+import 'package:giltezy_2ndproject/widgets/accounts/editprofile/edit_data.dart';
 import 'package:giltezy_2ndproject/widgets/accounts/order/order_status.dart';
-
-import 'package:giltezy_2ndproject/widgets/Accounts/buttons.dart';
+import 'package:giltezy_2ndproject/widgets/accounts/shippingAddress/shipping_address.dart';
 import 'package:giltezy_2ndproject/widgets/admin/admin_page.dart';
-
-import 'editprofile/edit_data.dart';
+import 'package:giltezy_2ndproject/widgets/wishlist/wish_list.dart';
+import 'package:page_transition/page_transition.dart';
 
 // ignore: must_be_immutable
-class Accounts extends StatefulWidget {
+class Accounts extends ConsumerStatefulWidget {
   const Accounts({super.key});
 
   @override
-  State<Accounts> createState() => _AccountsState();
+  ConsumerState<Accounts> createState() => _AccountsState();
 }
 
-class _AccountsState extends State<Accounts> {
+class _AccountsState extends ConsumerState<Accounts> {
   bool isAdmin = false;
   @override
   void initState() {
@@ -31,8 +28,8 @@ class _AccountsState extends State<Accounts> {
   }
 
   _isAdminCheck() {
-    FirebaseAuth _auth = FirebaseAuth.instance;
-    User? auth = _auth.currentUser;
+    FirebaseAuth auth0 = FirebaseAuth.instance;
+    User? auth = auth0.currentUser;
 
     if (auth!.email == 'admin@example.com') {
       setState(() {
@@ -45,165 +42,147 @@ class _AccountsState extends State<Accounts> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.transparent,
-        body: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              StreamBuilder<QuerySnapshot>(
-                  stream: useryStream,
-                  builder: (context, snapshot) {
-                    if (snapshot.hasError) {
-                      return Text('Error: ${snapshot.error}');
-                    }
+    final userdata = ref.watch(userprovider);
+    return userdata.when(
+      data: (data) {
+        if (data.isEmpty) {
+          return const Center(child: Text('No data available'));
+        }
 
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Center(child: CircularProgressIndicator());
-                    }
-
-                    if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-                      return const Text('No products available.');
-                    }
-                    final userData =
-                        snapshot.data!.docs[0].data() as Map<String, dynamic>;
-                    final userimage = userData['user_image'];
-                    final userName = userData['user'] as String? ?? "No Name";
-                    final userEmail =
-                        userData['user_email'] as String? ?? "No Email";
-                    final userPhone =
-                        userData['user_num'] as String? ?? "No Phone";
-                    print("its user image$userimage");
-                    return Container(
-                      // margin: const EdgeInsets.all(10.0),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(18.0),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          SizedBox(
-                            child: CircleAvatar(
-                              radius: 70.0,
-                              backgroundColor: Colors.white,
-                              child: Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(50.0)),
-                                    border: Border.all(
-                                      color: Colors.grey.shade300,
-                                      width: 4.0,
-                                    ),
-                                  ),
-                                  child: userimage ==
-                                          null // Check if userimage is not null (has a network URL)
-                                      ? const CircleAvatar(
-                                          backgroundColor: Colors.black,
-                                          radius: 50.0,
-                                          backgroundImage: AssetImage(
-                                              'assets/images/reallogo.png'),
-                                        )
-                                      : CircleAvatar(
-                                          backgroundColor: Colors.white,
-                                          radius: 50.0,
-                                          backgroundImage:
-                                              NetworkImage(userimage),
-                                        )),
-                            ),
-                          ),
-                          Center(
-                            child: Container(
-                              padding: const EdgeInsets.only(top: 10.0),
-                              child: Text(
-                                userName,
-                                style: const TextStyle(
-                                  fontFamily: 'SF Pro',
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 24.0,
-                                ),
+        final userdetiles = data[0].data() as Map<String, dynamic>;
+        final username = userdetiles['user'];
+        final userimage = userdetiles['user_image'];
+        return Scaffold(
+            body: Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                // margin: const EdgeInsets.all(10.0),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(18.0),
+                ),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      SizedBox(
+                          child: CircleAvatar(
+                        radius: 70.0,
+                        backgroundColor: Colors.white,
+                        child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(50.0)),
+                              border: Border.all(
+                                color: Colors.grey.shade300,
+                                width: 4.0,
                               ),
                             ),
-                          ),
-                          Center(
-                            child: Container(
-                              height: 70,
-                              padding: const EdgeInsets.only(top: 8.0),
-                              child: Text(
-                                userPhone,
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                ),
-                              ),
+                            child: userimage ==
+                                    null // Check if userimage is not null (has a network URL)
+                                ? const CircleAvatar(
+                                    backgroundColor: Colors.black,
+                                    radius: 50.0,
+                                    backgroundImage: AssetImage(
+                                        'assets/images/reallogo.png'),
+                                  )
+                                : CircleAvatar(
+                                    backgroundColor: Colors.white,
+                                    radius: 50.0,
+                                    backgroundImage: NetworkImage(userimage),
+                                  )),
+                      )),
+                      Center(
+                        child: Container(
+                          padding: const EdgeInsets.only(top: 10.0),
+                          child: Text(
+                            username,
+                            style: const TextStyle(
+                              fontFamily: 'SF Pro',
+                              fontWeight: FontWeight.w700,
+                              fontSize: 24.0,
                             ),
                           ),
-                        ],
+                        ),
                       ),
-                    );
-                  }),
-              isAdmin
-                  ? MyNewButton(
-                      icons: Icons.account_box,
-                      onPressedCallback: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const AdminPage()),
-                        );
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      isAdmin
+                          ? MyNewButton(
+                              icons: Icons.account_box,
+                              onPressedCallback: () {
+                                Navigator.push(
+                                  context,
+                                  PageTransition(
+                                      type: PageTransitionType.leftToRight,
+                                      child: const AdminPage()),
+                                );
 
-                        // Handle user login
-                        // For example, show an error message or navigate to a different page
-                      },
-                      buttontext: 'Admin',
-                    )
-                  : const SizedBox(),
-              MyNewButton(
-                  icons: Icons.edit,
-                  onPressedCallback: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const EditProfiles(),
-                        ));
-                  },
-                  buttontext: 'Edit Profile'),
-              MyNewButton(
-                icons: Icons.favorite,
-                onPressedCallback: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const WishList()));
-                },
-                buttontext: 'Wishlist',
-              ),
-              MyNewButton(
-                icons: Icons.check_outlined,
-                onPressedCallback: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const MyOrder()));
-                },
-                buttontext: 'Orders',
-              ),
-              MyNewButton(
-                icons: Icons.home,
-                onPressedCallback: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const ShippingAddress()));
-                },
-                buttontext: 'Shipping Address',
-              ),
-              MyNewButton(
-                icons: Icons.logout,
-                onPressedCallback: () {
-                  showSignOutDialog(context);
-                },
-                buttontext: 'Logout',
-              )
-            ],
-          ),
-        ));
+                                // Handle user login
+                                // For example, show an error message or navigate to a different page
+                              },
+                              buttontext: 'Admin',
+                            )
+                          : const SizedBox(),
+                      MyNewButton(
+                          icons: Icons.edit,
+                          onPressedCallback: () {
+                            Navigator.push(
+                                context,
+                                PageTransition(
+                                  type: PageTransitionType.leftToRight,
+                                  child: const EditProfiles(),
+                                ));
+                          },
+                          buttontext: 'Edit Profile'),
+                      MyNewButton(
+                        icons: Icons.favorite,
+                        onPressedCallback: () {
+                          Navigator.push(
+                              context,
+                              PageTransition(
+                                  type: PageTransitionType.leftToRight,
+                                  child: const WishList()));
+                        },
+                        buttontext: 'Wishlist',
+                      ),
+                      MyNewButton(
+                        icons: Icons.check_outlined,
+                        onPressedCallback: () {
+                          Navigator.push(
+                              context,
+                              PageTransition(
+                                  type: PageTransitionType.leftToRight,
+                                  child: const MyOrder()));
+                        },
+                        buttontext: 'Orders',
+                      ),
+                      MyNewButton(
+                        icons: Icons.home,
+                        onPressedCallback: () {
+                          Navigator.push(
+                              context,
+                              PageTransition(
+                                  type: PageTransitionType.leftToRight,
+                                  child: ShippingAddress()));
+                        },
+                        buttontext: 'Shipping Address',
+                      ),
+                      MyNewButton(
+                        icons: Icons.logout,
+                        onPressedCallback: () {
+                          showSignOutDialog(context);
+                        },
+                        buttontext: 'Logout',
+                      )
+                    ])));
+      },
+      error: (error, stackTrace) {
+        return const Text(' data is not availble');
+      },
+      loading: () {
+        return const Center(child: CircularProgressIndicator());
+      },
+    );
   }
 }

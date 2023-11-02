@@ -1,9 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_scrolling_fab_animated/flutter_scrolling_fab_animated.dart';
 import 'package:giltezy_2ndproject/controller/provder_auth.dart';
-import 'package:giltezy_2ndproject/service/add_data.dart';
 
 import 'package:giltezy_2ndproject/widgets/admin/categorymangment/category_name.dart';
 import 'package:giltezy_2ndproject/widgets/admin/productmanagment/product_edit_delete.dart';
@@ -67,9 +65,8 @@ class _MyProductViewState extends ConsumerState<MyProductView> {
                                 builder: (context, snapshot) {
                                   if (snapshot.connectionState ==
                                       ConnectionState.waiting) {
-                                    return Center(
-                                        child:
-                                            const CircularProgressIndicator());
+                                    return const Center(
+                                        child: CircularProgressIndicator());
                                   }
                                   if (snapshot.hasError) {
                                     return Text('Error: ${snapshot.error}');
@@ -107,10 +104,10 @@ class _MyProductViewState extends ConsumerState<MyProductView> {
               );
             },
             error: (error, stackTrace) {
-              return CircularProgressIndicator();
+              return const CircularProgressIndicator();
             },
             loading: () {
-              return CircularProgressIndicator();
+              return const CircularProgressIndicator();
             },
           )
         ],

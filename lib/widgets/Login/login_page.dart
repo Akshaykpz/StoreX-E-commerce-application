@@ -12,6 +12,7 @@ import 'package:giltezy_2ndproject/utils/theme/textstyle.dart';
 import 'package:giltezy_2ndproject/widgets/login/background_image.dart';
 import 'package:giltezy_2ndproject/widgets/login/buttons.dart';
 import 'package:giltezy_2ndproject/widgets/login/textfiled.dart';
+import 'package:page_transition/page_transition.dart';
 
 import '../../service/login_user.dart';
 import '../signin/sigin_page.dart';
@@ -26,8 +27,15 @@ class MyLogin extends StatefulWidget {
 class _MyLoginState extends State<MyLogin> {
   final _emailController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  bool? _isSecure;
 
   final _passwordController = TextEditingController();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _isSecure = false;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +59,6 @@ class _MyLoginState extends State<MyLogin> {
                         icons: emailIcon,
                         controller: _emailController,
                         hinttext: 'email',
-                        obcuretext: false,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter an email';
@@ -61,15 +68,25 @@ class _MyLoginState extends State<MyLogin> {
                           return null;
                         },
                       ),
-                      // Text(
-                      //   _emailError ?? '', // Display the email error message
-                      //   style: TextStyle(color: Colors.red),
-                      // ),
+
                       MyTextformFiled(
+                        obcuretext: _isSecure,
+                        icon: IconButton(
+                          icon: Icon(
+                            _isSecure!
+                                ? Icons.visibility_off
+                                : Icons.visibility,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _isSecure = !_isSecure!;
+                            });
+                          },
+                        ),
                         icons: PasswordIcon,
                         controller: _passwordController,
                         hinttext: 'password',
-                        obcuretext: false,
                         validator: (value) {
                           if (value!.isEmpty) {
                             return 'Please Enter Password';
@@ -151,8 +168,9 @@ class _MyLoginState extends State<MyLogin> {
                             onPressed: () {
                               Navigator.push(
                                   context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const MySigin(),
+                                  PageTransition(
+                                    type: PageTransitionType.leftToRight,
+                                    child: const MySigin(),
                                   ));
                             },
                             child: const Text(

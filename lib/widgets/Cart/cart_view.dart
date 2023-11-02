@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:giltezy_2ndproject/controller/provder_auth.dart';
 import 'package:giltezy_2ndproject/service/add_wishlist.dart';
+import 'package:giltezy_2ndproject/service/cart_total.dart';
 import 'package:giltezy_2ndproject/service/delete_data.dart';
 
 import 'package:giltezy_2ndproject/widgets/cart/button.dart';
@@ -15,24 +17,6 @@ class Cart extends ConsumerStatefulWidget {
 
   @override
   ConsumerState<Cart> createState() => _CartState();
-}
-
-double calculateTotal(
-    {required List<DocumentSnapshot<Object?>> cartData,
-    required List<DocumentSnapshot<Object?>> product}) {
-  double totalprice = 0;
-  for (final cartitem in cartData) {
-    final cartDataMap = cartitem.data() as Map<String, dynamic>;
-    final productRef = cartDataMap['product_reference'] as DocumentReference;
-    final itemCount = cartDataMap['itemCount'] as int;
-
-    final matchingProudct =
-        product.firstWhere((element) => element.reference == productRef);
-    final productpr = matchingProudct['p_price'];
-    final productprice = double.parse(productpr.toString());
-    totalprice = (productprice * itemCount);
-  }
-  return totalprice;
 }
 
 class _CartState extends ConsumerState<Cart> {
@@ -69,14 +53,14 @@ class _CartState extends ConsumerState<Cart> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                '₹${calculateTotal(cartData: cart, product: productli).toStringAsFixed(2)}',
+                                '₹${CartTotal().calculateTotal(cartData: cart, product: productli).toStringAsFixed(1)}',
                                 style: const TextStyle(
                                   color: Colors.green,
                                   fontWeight: FontWeight.w600,
                                   fontSize: 19,
                                 ),
                               ),
-                              BuyButton()
+                              const BuyButton()
                             ],
                           ),
                         ],
@@ -108,10 +92,11 @@ class _CartState extends ConsumerState<Cart> {
                               SlidableAction(
                                   backgroundColor: Colors.red,
                                   onPressed: (context) {
+                                    ShowSnackbar()
+                                        .showsnackbar(context, ' item removed');
                                     deleteCart(reference).whenComplete(
                                       () {
-                                        ShowSnackbar().showLoadingSnackbar(
-                                            context, 'cart item deleted');
+                                        EasyLoading.dismiss();
                                       },
                                     );
                                   },

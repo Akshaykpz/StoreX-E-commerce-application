@@ -9,6 +9,7 @@ Future addData(
     required String name,
     required String categoryname,
     required String description,
+    required String stock,
     required String imageurls}) async {
   final id = await findDocumentIdByCategory(categoryname);
   if (id != null) {
@@ -17,7 +18,8 @@ Future addData(
       'p_price': price,
       'categroy_id': id,
       'p_description': description,
-      'P-imageurl': imageurls
+      'P-imageurl': imageurls,
+      'stock': stock
     }).then((value) => log('add data'));
   } else {
     log(id!);

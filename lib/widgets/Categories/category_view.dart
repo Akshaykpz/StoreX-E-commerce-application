@@ -1,10 +1,11 @@
+import 'package:anim_search_bar/anim_search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:giltezy_2ndproject/controller/category_prov.dart';
-import 'package:giltezy_2ndproject/controller/provder_auth.dart';
-import 'package:giltezy_2ndproject/service/category_item_add.dart';
+
 import 'package:giltezy_2ndproject/utils/theme/colors.dart';
 import 'package:giltezy_2ndproject/widgets/categories/catgory_items.dart';
+import 'package:page_transition/page_transition.dart';
 
 class CategoryItems extends ConsumerStatefulWidget {
   const CategoryItems({super.key});
@@ -13,15 +14,36 @@ class CategoryItems extends ConsumerStatefulWidget {
   ConsumerState<CategoryItems> createState() => _CategoryItemsState();
 }
 
+TextEditingController textController = TextEditingController();
+
 class _CategoryItemsState extends ConsumerState<CategoryItems> {
   @override
   Widget build(BuildContext context) {
     final categoryData = ref.watch(categoryProvider);
-    final proudctData = ref.watch(productList);
+
     return categoryData.when(
       data: (category) {
         return SafeArea(
           child: Scaffold(
+            appBar: AppBar(
+                elevation: 0,
+                backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
+                actions: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 9),
+                    child: AnimSearchBar(
+                      color: Colors.grey,
+                      width: 390,
+                      textController: textController,
+                      onSuffixTap: () {
+                        setState(() {
+                          textController.clear();
+                        });
+                      },
+                      onSubmitted: (String) {},
+                    ),
+                  ),
+                ]),
             body: GridView.builder(
               itemCount: category.length,
               padding: const EdgeInsets.all(7),
@@ -42,8 +64,9 @@ class _CategoryItemsState extends ConsumerState<CategoryItems> {
                   onTap: () {
                     Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => CategoryViewPage(docId: docId),
+                        PageTransition(
+                          type: PageTransitionType.leftToRight,
+                          child: CategoryViewPage(docId: docId),
                         ));
                   },
                   child: Card(
@@ -60,7 +83,7 @@ class _CategoryItemsState extends ConsumerState<CategoryItems> {
                         child: GridTile(
                           footer: Text(cartname,
                               textAlign: TextAlign.center,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 15,
                                 color: Colors.black87,
                                 fontWeight: FontWeight.w600,
@@ -77,40 +100,11 @@ class _CategoryItemsState extends ConsumerState<CategoryItems> {
         );
       },
       error: (error, stackTrace) {
-        return CircularProgressIndicator();
+        return const Text(' is error');
       },
       loading: () {
-        return CircularProgressIndicator();
+        return const CircularProgressIndicator();
       },
     );
-    // return StreamBuilder(
-    //   builder: (context, snapshot) {
-    //     if (snapshot.hasError) {
-    //       return Text('Error: ${snapshot.error.toString()}');
-    //     }
-
-    //     if (snapshot.connectionState == ConnectionState.waiting) {
-    //       return const Center(child: CircularProgressIndicator());
-    //     }
-
-    //     if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-    //       return const Text('No products available.');
-    //     }
-    //     return GridView.builder(
-    //       itemCount: snapshot.data!.docs.length,
-    //       padding: const EdgeInsets.all(7),
-    //       gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-    //         maxCrossAxisExtent: 350.0,
-    //         childAspectRatio: 2 / 2,
-    //         crossAxisSpacing: 6,
-    //         mainAxisSpacing: 4,
-    //       ),
-    //       itemBuilder: (context, index) {
-    //         final categorydata = snapshot.data!.docs[index];
-
-    //   },
-    //   stream: catgoryStream,
-
-    // );
   }
 }

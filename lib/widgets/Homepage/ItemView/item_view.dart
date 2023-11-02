@@ -4,19 +4,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:giltezy_2ndproject/service/add_wishlist.dart';
 import 'package:giltezy_2ndproject/service/wishlist_data.dart';
+import 'package:giltezy_2ndproject/widgets/admin/productmanagment/proudct_description.dart';
 
 import 'package:giltezy_2ndproject/widgets/cacheed_image.dart';
 
 import 'package:giltezy_2ndproject/widgets/homepage/ItemView/cart_button.dart';
 import 'package:giltezy_2ndproject/widgets/homepage/ItemView/star_rating.dart';
+import 'package:readmore/readmore.dart';
 
 class ItemViews extends ConsumerStatefulWidget {
   final String imageUrl;
   final String productName;
 
   final String productPrice;
-
+  final String? stock;
   final String productDescription;
   final DocumentReference reference;
 
@@ -26,6 +29,7 @@ class ItemViews extends ConsumerStatefulWidget {
     required this.productName,
     required this.productPrice,
     required this.reference,
+    this.stock,
     required this.productDescription,
   });
 
@@ -74,12 +78,16 @@ class _ItemOnClickState extends ConsumerState<ItemViews> {
         ),
         onSelectItem: (index) async {
           if (index == 0) {
-            await ItemAdd().addCart(widget.reference).whenComplete(() {
-              _showLoadingSnackbar(context, 'cart item added sucessfully');
+            ShowSnackbar()
+                .showLoadingSnackbar(context, 'cart items added sucessfully');
+            ItemAdd().addCart(widget.reference).whenComplete(() {
+              EasyLoading.dismiss();
             });
           } else if (index == 1) {
-            await ItemAdd().addWishlistItem(widget.reference).whenComplete(() {
-              _showLoadingSnackbar(context, 'wishlist items added sucessfully');
+            ShowSnackbar().showLoadingSnackbar(
+                context, 'wishlist items added sucessfully');
+            ItemAdd().addWishlistItem(widget.reference).whenComplete(() {
+              EasyLoading.dismiss();
             });
           }
         },
@@ -108,6 +116,7 @@ class _ItemOnClickState extends ConsumerState<ItemViews> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Text(widget.stock.toString()),
                       Text(widget.productName,
                           style: TextStyle(
                               fontSize: 27.519121170043945.sp,
@@ -124,7 +133,7 @@ class _ItemOnClickState extends ConsumerState<ItemViews> {
                                   fontWeight: FontWeight.w400,
                                   color: Colors.red)),
                           SizedBox(
-                            width: 150.w,
+                            width: 100.w,
                           ),
                         ],
                       ),
@@ -143,13 +152,17 @@ class _ItemOnClickState extends ConsumerState<ItemViews> {
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
+                      ReadMoreText(
                         widget.productDescription,
-                        style: TextStyle(
-                          fontSize: 12.863384246826172.sp,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.white,
-                        ),
+                        trimLines: 2,
+                        trimMode: TrimMode.Line,
+                        trimCollapsedText: 'Show more',
+                        style: const TextStyle(color: Colors.white),
+                        trimExpandedText: 'Show less',
+                        moreStyle: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.red),
                       ),
                       const SizedBox(
                         height: 55,
@@ -179,7 +192,7 @@ class _ItemOnClickState extends ConsumerState<ItemViews> {
                   child: Center(
                     child: CachedImage(
                       url: widget.imageUrl,
-                      height: 330,
+                      height: 550,
                     ),
                   ),
                 ),

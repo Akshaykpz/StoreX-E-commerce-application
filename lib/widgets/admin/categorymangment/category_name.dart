@@ -13,13 +13,13 @@ class Categoryname extends StatelessWidget {
         width: width,
         height: height,
         decoration: BoxDecoration(
-          boxShadow: [BoxShadow(blurRadius: 1)],
+          boxShadow: const [BoxShadow(blurRadius: 1)],
           border: Border.all(),
         ),
         child: Center(
           child: Text(
             name,
-            style: TextStyle(
+            style: const TextStyle(
                 fontWeight: FontWeight.w700, color: Colors.green, fontSize: 16),
           ),
         ),

@@ -9,7 +9,6 @@ class ItemsGrid extends StatefulWidget {
 }
 
 class _ItemsGridState extends State<ItemsGrid> {
-  final bool _isselected = false;
   @override
   Widget build(BuildContext context) {
     return const SingleChildScrollView(
@@ -17,6 +16,7 @@ class _ItemsGridState extends State<ItemsGrid> {
       child: Row(
         children: [
           Chipadd(
+            
             text: 'Apple',
             image: 'assets/images/Apple-Logo.png',
           ),
@@ -25,6 +25,7 @@ class _ItemsGridState extends State<ItemsGrid> {
             image: 'assets/images/Xiaomi-logo.jpg',
           ),
           Chipadd(
+
             text: 'Oneplus',
             image: 'assets/images/OnePlus-logo.jpg',
           ),

@@ -20,12 +20,12 @@ class CartButton extends StatelessWidget {
           offset: const Offset(0, 1),
         ),
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const MyOrder(),
-            ),
-          );
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(
+          //     builder: (context) => const MyOrder(),
+          //   ),
+          // );
         },
         child: const Text(
           'BUY NOW',

@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:firebase_storage/firebase_storage.dart';
@@ -102,9 +101,9 @@ class _EditProfilesState extends State<EditProfiles> {
         elevation: 0,
         foregroundColor: Colors.black,
       ),
-      body: SingleChildScrollView(
-        child: Form(
-          key: _formkey,
+      body: Form(
+        key: _formkey,
+        child: SingleChildScrollView(
           child: Column(children: [
             const SizedBox(
               height: 70,
@@ -163,6 +162,7 @@ class _EditProfilesState extends State<EditProfiles> {
                 if (value!.isEmpty) {
                   return 'please enter name';
                 }
+                return null;
               },
               text: 'name',
               icons: const Icon(Icons.account_box),
@@ -176,6 +176,7 @@ class _EditProfilesState extends State<EditProfiles> {
                 if (value!.isEmpty) {
                   return 'please enter email';
                 }
+                return null;
               },
               controller: _emailController,
               text: 'email',
@@ -186,14 +187,18 @@ class _EditProfilesState extends State<EditProfiles> {
                 if (value!.isEmpty) {
                   return 'please enter phone';
                 }
+                return null;
               },
               controller: _phoneController,
               text: 'phone',
               icons: const Icon(Icons.phone),
             ),
             SizedBox(
+              height: 14,
+            ),
+            SizedBox(
                 height: 50,
-                width: 200,
+                width: 350,
                 child: ElevatedButton(
                   onPressed: () async {
                     print(_imageUrl);
@@ -203,18 +208,18 @@ class _EditProfilesState extends State<EditProfiles> {
                           email: _emailController.text,
                           name: _nameController.text,
                           phone: _phoneController.text);
+                      // ignore: use_build_context_synchronously
                       Navigator.pop(context);
                     }
                   },
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
-                    backgroundColor: Colors.teal, // Text color
-                    textStyle: const TextStyle(fontSize: 16), // Text style
+                    backgroundColor: Colors.teal,
+                    textStyle: const TextStyle(fontSize: 16),
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 12), // Button padding
+                        horizontal: 20, vertical: 12),
                     shape: RoundedRectangleBorder(
-                      borderRadius:
-                          BorderRadius.circular(8), // Button border radius
+                      borderRadius: BorderRadius.circular(8),
                     ),
                     elevation: 4,
                     // Elevation of the button

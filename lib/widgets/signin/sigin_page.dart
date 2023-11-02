@@ -81,14 +81,14 @@ class _MySiginState extends State<MySigin> {
                     k10box,
                     MyButton(
                       icons: Icons.login,
-                      onPressedCallback: () {
+                      onPressedCallback: () async {
                         if (_formKey.currentState!.validate()) {
                           String confirmPassword =
                               _passwordSigninConfirmController.text;
                           String email = _emailSigninController.text;
                           String password = _passwordSigninController.text;
                           if (password == confirmPassword) {
-                            handleSignUp(
+                            await handleSignUp(
                               confirmPassword: confirmPassword,
                               context: context,
                               email: email,

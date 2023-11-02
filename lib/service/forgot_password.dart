@@ -80,6 +80,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       backgroundColor: Colors.white70,
       appBar: AppBar(
         backgroundColor: Colors.black,
+        elevation: 0,
         title: const Text('Reset Password'),
       ),
       body: Padding(
@@ -91,7 +92,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               controller: _emailController,
               decoration: InputDecoration(
                 hintText: 'Enter our Email',
-                fillColor: Colors.white,
+                fillColor: Colors.grey[400],
                 border: OutlineInputBorder(
                   borderSide: BorderSide.none,
                   borderRadius: BorderRadius.circular(10),

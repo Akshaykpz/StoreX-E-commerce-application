@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
+
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 class ItemAdd {
@@ -53,6 +52,11 @@ class ItemAdd {
           .then((value) => value.docs.isNotEmpty);
 
       if (itemsexits) {
+        EasyLoading.dismiss().then((value) {
+          EasyLoading.showToast('item is already exist',
+              maskType: EasyLoadingMaskType.clear,
+              toastPosition: EasyLoadingToastPosition.top);
+        });
         print('cart alredaya added');
       } else {
         try {

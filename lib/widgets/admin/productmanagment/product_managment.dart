@@ -25,6 +25,7 @@ class _ProductMangmentState extends State<ProductMangment> {
   TextEditingController productpriceController = TextEditingController();
   TextEditingController productdescriptioncontroller = TextEditingController();
   TextEditingController categoryproudctController = TextEditingController();
+  TextEditingController stockController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,6 +51,7 @@ class _ProductMangmentState extends State<ProductMangment> {
                 ProductFiled(
                     namecontroller: categoryproudctController,
                     label: 'category name'),
+                ProductFiled(namecontroller: stockController, label: 'stock'),
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.5,
                   child: ElevatedButton(
@@ -58,13 +60,16 @@ class _ProductMangmentState extends State<ProductMangment> {
                         print('clicked');
                         if (_formkey.currentState!.validate()) {
                           await addData(
-                            categoryname: categoryproudctController.text,
-                            description: productdescriptioncontroller.text,
-                            price: productpriceController.text,
-                            name: prouductnameController.text,
-                            imageurls: url!,
-                          ).whenComplete(() async {
+                                  categoryname: categoryproudctController.text,
+                                  description:
+                                      productdescriptioncontroller.text,
+                                  price: productpriceController.text,
+                                  name: prouductnameController.text,
+                                  imageurls: url!,
+                                  stock: stockController.text)
+                              .whenComplete(() async {
                             print('completed');
+                            print(" this is my stock${stockController.text}");
                             showTopSnackBar(
                               Overlay.of(context),
                               const CustomSnackBar.success(

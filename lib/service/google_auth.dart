@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:page_transition/page_transition.dart';
 
 import '../widgets/Homepage/home.dart';
 
@@ -32,7 +33,8 @@ Future<void> handleGoogleSignIn(BuildContext context) async {
     // ignore: use_build_context_synchronously
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const MyItemviewpage()),
+      PageTransition(
+          type: PageTransitionType.leftToRight, child: const MyItemviewpage()),
     );
   } catch (e) {
     // Handle sign-in error

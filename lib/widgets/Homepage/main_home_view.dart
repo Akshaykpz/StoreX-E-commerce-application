@@ -6,8 +6,10 @@ import 'package:flutter/rendering.dart';
 import 'package:giltezy_2ndproject/utils/theme/logout_button.dart';
 import 'package:giltezy_2ndproject/widgets/Homepage/ItemView/serach.dart';
 import 'package:giltezy_2ndproject/widgets/categories/category_view.dart';
+import 'package:giltezy_2ndproject/widgets/splash_screen.dart/logo_view.dart';
+import 'package:giltezy_2ndproject/widgets/homepage/ItemView/serach_view.dart';
 
-import 'items.dart';
+import 'product_items.dart';
 import 'chip_list.dart';
 
 class HomePage extends StatefulWidget {
@@ -42,63 +44,72 @@ class _FavoritesPageState extends State<HomePage> {
     _imageChangeTimer.cancel();
     super.dispose();
   }
+  // Your existing code
+
+// Function to handle navigation to the ProductSearchScreen
+
+// Your existing code
 
   bool showbtmappbar = true;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-
-        // backgroundColor: Colors.transparent,
-        body: CustomScrollView(
+    return CustomScrollView(
       controller: scrollController,
       slivers: [
+        SliverAppBar(
+          automaticallyImplyLeading: false,
+          forceMaterialTransparency: true,
+
+          flexibleSpace: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                child: CircleAvatar(
+                    backgroundColor: Colors.white,
+                    child: IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.search,
+                          color: Colors.black,
+                        ))),
+              ),
+            ],
+          ),
+
+          toolbarHeight: 190,
+          title: const MyPageView(),
+
+          // actions: [
+          //   currentIndex == 0
+          //       ? IconButton(
+          //           onPressed: () {},
+          //           icon: const Icon(
+          //             Icons.search,
+          //             color: Colors.black,
+          //           ))
+          //       : Container(),
+          // ],
+          elevation: 0,
+          backgroundColor: Colors.deepPurple[50],
+        ),
         SliverFillRemaining(
           child: Column(
             // crossAxisAlignment: CrossAxisAlignment.center,
 
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const Serach(),
+              // ,
+
               const SizedBox(
-                height: 19,
-              ),
-              const MyPageView(),
-              // CarouselSlider(
-              //   items: camera.map((
-              //     imageUrl,
-              //   ) {
-              //     return Container(
-              //       width: 390.w,
-              //       height: 60.h, // Adjust this height as needed
-              //       decoration: BoxDecoration(
-              //         borderRadius: BorderRadius.circular(18).r,
-              //         image: DecorationImage(
-              //           fit: BoxFit.cover,
-              //           image: AssetImage(imageUrl),
-              //         ),
-              //       ),
-              //     );
-              //   }).toList(),
-              //   options: CarouselOptions(
-              //     height: 170.h, // Set the desired height of the carousel
-              //     autoPlay: true,
-              //     enlargeCenterPage: true,
-              //     onPageChanged: (index, reason) {
-              //       setState(() {
-              //         currentIndex = index;
-              //       });
-              //     },
-              //   ),
-              // ),
-              const SizedBox(
-                height: 20,
+                height: 30,
               ),
               const ItemsGrid(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
                     child: Text(
                       'Popular',
                       style:
@@ -122,6 +133,6 @@ class _FavoritesPageState extends State<HomePage> {
           ),
         )
       ],
-    ));
+    );
   }
 }

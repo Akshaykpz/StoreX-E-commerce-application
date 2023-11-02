@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:giltezy_2ndproject/widgets/Homepage/ItemView/serach.dart';
 import 'package:giltezy_2ndproject/widgets/categories/category_view.dart';
 
 import 'main_home_view.dart';
-import 'bottombar.dart';
+import 'bottombar_view.dart';
 import 'package:giltezy_2ndproject/widgets/cart/cart_view.dart';
 import 'package:giltezy_2ndproject/widgets/accounts/mainhome.dart';
 
@@ -31,34 +32,46 @@ class _MyItemviewpageState extends State<MyItemviewpage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-          backgroundColor: Colors.white,
-          bottomNavigationBar: CustomTabBar(
-            selectedIndex: _selectedIndex,
-            onTabSelected: (index) {
-              setState(() {
-                _selectedIndex = index;
-              });
-            },
-          ),
-          body: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 30),
-              child: Column(
-                children: [
-                  Expanded(
-                    child: IndexedStack(
-                      index: _selectedIndex,
-                      children: const [
-                        HomePage(),
-                        CategoryItems(),
-                        Cart(),
-                        Accounts()
-                      ],
-                    ),
+    return Scaffold(
+        // appBar: AppBar(
+        //   actions: [
+        //     _selectedIndex == 0
+        //         ? IconButton(
+        //             onPressed: () {},
+        //             icon: const Icon(
+        //               Icons.search,
+        //               color: Colors.black,
+        //             ))
+        //         : Container(),
+        //   ],
+        //   elevation: 0,
+        //   backgroundColor: Colors.deepPurple[200],
+        // ),
+        backgroundColor: Colors.white,
+        bottomNavigationBar: CustomTabBar(
+          selectedIndex: _selectedIndex,
+          onTabSelected: (index) {
+            setState(() {
+              _selectedIndex = index;
+            });
+          },
+        ),
+        body: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 30),
+            child: Column(
+              children: [
+                Expanded(
+                  child: IndexedStack(
+                    index: _selectedIndex,
+                    children: const [
+                      HomePage(),
+                      CategoryItems(),
+                      Cart(),
+                      Accounts()
+                    ],
                   ),
-                ],
-              ))),
-    );
+                ),
+              ],
+            )));
   }
 }

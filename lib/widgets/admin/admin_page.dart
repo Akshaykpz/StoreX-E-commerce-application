@@ -6,6 +6,7 @@ import 'package:giltezy_2ndproject/widgets/admin/categorymangment/category_mgt.d
 import 'package:giltezy_2ndproject/widgets/admin/dashboard/dash_board.dart';
 import 'package:giltezy_2ndproject/widgets/admin/productmanagment/add_view.dart';
 import 'package:giltezy_2ndproject/widgets/admin/usermanagment/user_mangment.dart';
+import 'package:page_transition/page_transition.dart';
 
 class AdminPage extends StatelessWidget {
   const AdminPage({super.key});
@@ -27,8 +28,9 @@ class AdminPage extends StatelessWidget {
               onPressedCallback: () {
                 Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => const DashBoard(),
+                    PageTransition(
+                      type: PageTransitionType.leftToRight,
+                      child: const DashBoard(),
                     ));
               },
               text: 'DashBoard',
@@ -37,8 +39,9 @@ class AdminPage extends StatelessWidget {
             AdminButtons(
               onPressedCallback: () => Navigator.push(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => const MyUserManagment(),
+                  PageTransition(
+                    type: PageTransitionType.leftToRight,
+                    child: const MyUserManagment(),
                   )),
               text: 'User Management',
               icon: Icons.account_box,
@@ -47,8 +50,9 @@ class AdminPage extends StatelessWidget {
                 onPressedCallback: () {
                   Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => const MyProductView(),
+                      PageTransition(
+                        type: PageTransitionType.leftToRight,
+                        child: const MyProductView(),
                       ));
                 },
                 text: 'Product Management',
@@ -57,8 +61,9 @@ class AdminPage extends StatelessWidget {
               onPressedCallback: () {
                 Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => const MyCategory(),
+                    PageTransition(
+                      type: PageTransitionType.leftToRight,
+                      child: const MyCategory(),
                     ));
               },
               text: 'Category Management',

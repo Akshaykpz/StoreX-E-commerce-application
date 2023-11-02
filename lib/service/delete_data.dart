@@ -11,7 +11,7 @@ Future<void> deleteCategory(String categoryid) async {
   } catch (e) {
     print('Error deleting category: $e');
     // Rethrow the error so it can be handled elsewhere if needed.
-    throw e;
+    rethrow;
   }
 }
 
@@ -29,9 +29,9 @@ Future<void> deleteCart(
           .where('product_reference', isEqualTo: reference)
           .get()
           .then((querySnapshot) {
-        querySnapshot.docs.forEach((doc) {
+        for (var doc in querySnapshot.docs) {
           doc.reference.delete(); // Delete the document
-        });
+        }
       });
       print('Item removed from cart successfully.');
     } catch (e) {
@@ -48,5 +48,32 @@ Future<void> deleteproudct(String proudctId) async {
     print('delete sucessfully');
   } catch (e) {
     print('Error deleting product: $e');
+  }
+}
+
+Future<void> deletewishlsit(
+  DocumentReference referen,
+) async {
+  final User = FirebaseAuth.instance.currentUser;
+
+  if (User != null) {
+    try {
+      await FirebaseFirestore.instance
+          .collection('wishlist')
+          .doc(User.email)
+          .collection('items')
+          .where('product_referce', isEqualTo: referen)
+          .get()
+          .then((querySnapshot) {
+        querySnapshot.docs.forEach((doc) {
+          doc.reference.delete();
+        });
+      });
+      print('Item removed from wishlist successfully.');
+    } catch (e) {
+      print('Error removing item from wishlist: $e');
+    }
+  } else {
+    print('User is not authenticated.');
   }
 }

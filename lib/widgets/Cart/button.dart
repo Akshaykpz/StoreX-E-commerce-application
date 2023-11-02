@@ -1,25 +1,26 @@
 import 'package:flutter/material.dart';
 
-import 'package:giltezy_2ndproject/widgets/accounts/order/order_status.dart';
-import 'package:giltezy_2ndproject/widgets/checkout/checkout_view.dart';
-import 'package:pushable_button/pushable_button.dart';
+import 'package:giltezy_2ndproject/widgets/checkout/check_out_view_page.dart';
+import 'package:page_transition/page_transition.dart';
 
 class BuyButton extends StatelessWidget {
   const BuyButton({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(backgroundColor: Colors.teal[800]),
-      onPressed: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const CheckOut(),
-            ));
-      },
-      child: const Text('Proceed to Check out',
-          style: TextStyle(fontWeight: FontWeight.w700, color: Colors.white)),
+    return SizedBox(
+      height: 45,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(backgroundColor: Colors.cyan[800]),
+        onPressed: () {
+          Navigator.push(
+              context,
+              PageTransition(
+                  type: PageTransitionType.fade, child: const CheckOutPage()));
+        },
+        child: const Text('Proceed to Check out',
+            style: TextStyle(fontWeight: FontWeight.w700, color: Colors.white)),
+      ),
     );
   }
 }

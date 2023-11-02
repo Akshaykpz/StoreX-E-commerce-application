@@ -100,10 +100,10 @@ class _MyCategoryState extends ConsumerState<MyCategory> {
                 );
               },
               error: (error, stackTrace) {
-                return CircularProgressIndicator();
+                return const CircularProgressIndicator();
               },
               loading: () {
-                return CircularProgressIndicator();
+                return const CircularProgressIndicator();
               },
             )
           ],

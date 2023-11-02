@@ -183,7 +183,9 @@ class _ChipaddState extends State<Chipadd> {
     return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 6),
         child: ChoiceChip(
-          elevation: 4,
+          pressElevation: 3,
+          shadowColor: Colors.grey[500],
+          elevation: 5,
           backgroundColor: Colors.white,
           label: Text(widget.text),
           avatar: Image.asset(
@@ -194,9 +196,7 @@ class _ChipaddState extends State<Chipadd> {
           ),
           selected: _isSelected,
           onSelected: (value) {
-            setState(() {
-              _isSelected = value;
-            });
+            setState(() {});
           },
           selectedColor: Colors.blue,
         ));

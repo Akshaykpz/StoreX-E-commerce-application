@@ -21,9 +21,29 @@ class ShowSnackbar {
         .showSnackBar(
           SnackBar(
             content: Text(text),
-            backgroundColor: Colors.black,
+            backgroundColor: Colors.green,
             behavior: SnackBarBehavior.floating,
-            duration: const Duration(milliseconds: 100),
+            duration: const Duration(seconds: 1),
+          ),
+        )
+        .closed
+        .then((reason) {
+      EasyLoading.dismiss();
+    });
+  }
+
+  void showsnackbar(BuildContext context, String text) {
+    EasyLoading.show(
+      status: 'loading...',
+      dismissOnTap: false,
+    );
+    ScaffoldMessenger.of(context)
+        .showSnackBar(
+          SnackBar(
+            content: Text(text),
+            backgroundColor: Colors.red,
+            behavior: SnackBarBehavior.floating,
+            duration: const Duration(seconds: 1),
           ),
         )
         .closed

@@ -2,6 +2,8 @@ import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:giltezy_2ndproject/widgets/login/login_page.dart';
+import 'package:page_transition/page_transition.dart';
 
 import '../utils/theme/theme.dart';
 import '../widgets/Homepage/home.dart';
@@ -37,8 +39,9 @@ Future<void> handleSignUp({
         .then(
           (value) => Navigator.push(
             context,
-            MaterialPageRoute(
-              builder: (context) => const MyItemviewpage(),
+            PageTransition(
+              type: PageTransitionType.leftToRight,
+              child: MyLogin(),
             ),
           ),
         );

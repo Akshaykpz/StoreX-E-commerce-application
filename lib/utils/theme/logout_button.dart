@@ -23,8 +23,8 @@ class _MyPageViewState extends State<MyPageView> {
 
   Widget _imageView(String image) {
     return Container(
-      width: 300, // Adjust this width as needed
-      height: 164.0, // Set the desired height of the carousel
+      width: 300,
+      height: 166.0,
       decoration: BoxDecoration(
         image: DecorationImage(
           fit: BoxFit.cover,

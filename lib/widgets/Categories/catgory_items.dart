@@ -1,9 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:giltezy_2ndproject/controller/provder_auth.dart';
-import 'package:giltezy_2ndproject/service/proudcts.dart';
+
+import 'package:giltezy_2ndproject/utils/theme/colors.dart';
 import 'package:giltezy_2ndproject/widgets/homepage/ItemView/item_view.dart';
+import 'package:page_transition/page_transition.dart';
 
 class CategoryViewPage extends ConsumerStatefulWidget {
   const CategoryViewPage({super.key, required this.docId});
@@ -15,12 +16,7 @@ class CategoryViewPage extends ConsumerStatefulWidget {
 }
 
 class _SecondGridState extends ConsumerState<CategoryViewPage> {
-  List<Color> rowColors = [
-    Colors.blue.shade100,
-    Colors.green.shade100,
-    Colors.orange.shade100,
-    Colors.red.shade100,
-  ]; // Define row colors
+  // Define row colors
 
   @override
   Widget build(BuildContext context) {
@@ -63,6 +59,7 @@ class _SecondGridState extends ConsumerState<CategoryViewPage> {
                       final ProductImage = document['P-imageurl'];
                       final productName = document['p_name'];
                       final productPrice = document['p_price'];
+                      final productStock = document['stock'];
 
                       // ignore: non_constant_identifier_names
                       final Productdescription = document['p_description'];
@@ -77,10 +74,14 @@ class _SecondGridState extends ConsumerState<CategoryViewPage> {
                             horizontal: 5, vertical: 5),
                         child: GestureDetector(
                           onTap: () {
+                            print(
+                                'heloooooooooooooooooooooooooooooooooooooooo$productStock');
                             Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                  builder: (context) => ItemViews(
+                                PageTransition(
+                                  type: PageTransitionType.fade,
+                                  child: ItemViews(
+                                    stock: productStock,
                                     imageUrl: ProductImage,
                                     productDescription: Productdescription,
                                     productName: productName,
@@ -90,6 +91,7 @@ class _SecondGridState extends ConsumerState<CategoryViewPage> {
                                 ));
                           },
                           child: Card(
+                            color: rowColor,
                             elevation: 5,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(6),
@@ -118,6 +120,7 @@ class _SecondGridState extends ConsumerState<CategoryViewPage> {
                                         style: const TextStyle(
                                           fontSize: 15,
                                         )),
+                                    // Text(productStock)
                                   ],
                                 ),
                               ],
@@ -167,10 +170,13 @@ class _SecondGridState extends ConsumerState<CategoryViewPage> {
                   );
                 },
                 error: (error, stackTrace) {
-                  return CircularProgressIndicator();
+                  return Center(
+                    child: Image.asset(
+                        'assets/images/Animation - 1698048433173.gif'),
+                  );
                 },
                 loading: () {
-                  return CircularProgressIndicator();
+                  return const CircularProgressIndicator();
                 },
               ),
             )

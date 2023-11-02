@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/widgets/login/login_page.dart';
+import 'package:page_transition/page_transition.dart';
 
 Future<void> _handleSignOut(BuildContext context) async {
   try {
@@ -11,7 +12,7 @@ Future<void> _handleSignOut(BuildContext context) async {
     await FirebaseAuth.instance.signOut().then((value) {
       Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (context) => const MyLogin()),
+        PageTransition(type: PageTransitionType.fade, child: const MyLogin()),
         (route) => false,
       );
     });
