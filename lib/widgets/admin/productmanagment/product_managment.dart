@@ -26,6 +26,7 @@ class _ProductMangmentState extends State<ProductMangment> {
   TextEditingController productdescriptioncontroller = TextEditingController();
   TextEditingController categoryproudctController = TextEditingController();
   TextEditingController stockController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

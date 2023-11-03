@@ -59,7 +59,7 @@ class _CategoryItemsState extends ConsumerState<CategoryItems> {
 
                 final cartname = catdata['cat_name'];
                 final cartimage = catdata['cat_image'];
-                final rowColor = rowColors[index % rowColors.length];
+                final rowColor = IconsColors[index % rowColors.length];
                 return GestureDetector(
                   onTap: () {
                     Navigator.push(
@@ -70,27 +70,37 @@ class _CategoryItemsState extends ConsumerState<CategoryItems> {
                         ));
                   },
                   child: Card(
-                    color: rowColor,
-                    // color: Colors.red,
-                    elevation: 5,
+                    elevation: 7,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
+                        borderRadius: BorderRadius.circular(15.0)),
                     child: Container(
-                      padding: const EdgeInsets.all(20.0),
-                      margin: const EdgeInsets.all(1.0),
-                      child: Center(
-                        child: GridTile(
-                          footer: Text(cartname,
+                      height: 300,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: rowColor),
+                      width: 150,
+                      padding: const EdgeInsets.symmetric(vertical: 17),
+                      // margin: const EdgeInsets.all(1.0),
+                      child: Column(children: [
+                        Image.network(
+                          cartimage,
+                          height: 130,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 2),
+                          child: Text(cartname,
                               textAlign: TextAlign.center,
                               style: const TextStyle(
                                 fontSize: 15,
-                                color: Colors.black87,
+                                color: Colors.black,
                                 fontWeight: FontWeight.w600,
                               )),
-                          child: Image.network(cartimage),
                         ),
-                      ),
+                      ]),
+                      // child: GridTile(
+
+                      //   child: Image.network(cartimage),
+                      // ),
                     ),
                   ),
                 );

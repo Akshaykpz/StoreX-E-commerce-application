@@ -6,6 +6,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:giltezy_2ndproject/controller/provder_auth.dart';
 import 'package:giltezy_2ndproject/service/add_wishlist.dart';
+import 'package:giltezy_2ndproject/service/proudcts.dart';
 import 'package:giltezy_2ndproject/service/wishlist_data.dart';
 
 import 'package:giltezy_2ndproject/utils/theme/colors.dart';
@@ -62,6 +63,7 @@ class _SecondGridState extends ConsumerState<SecondGrid> {
             final productName = document['p_name'];
             final productPrice = document['p_price'];
             final productImage = document['P-imageurl'];
+            final productstock = document['stock'];
             // final reference = document[index].reference;
             final reference = productdata[index].reference;
 
@@ -180,6 +182,7 @@ class _SecondGridState extends ConsumerState<SecondGrid> {
                                               Productdescription,
                                           productName: productName,
                                           productPrice: productPrice,
+                                          stock: productstock,
                                         )));
                               },
                               child: const Icon(Icons.add)),

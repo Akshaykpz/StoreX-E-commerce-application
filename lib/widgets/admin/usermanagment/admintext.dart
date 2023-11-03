@@ -9,7 +9,7 @@ class AdminText extends StatelessWidget {
     return Text(
       text,
       style: const TextStyle(
-          fontSize: 17, fontWeight: FontWeight.w500, color: Colors.teal),
+          fontSize: 17, fontWeight: FontWeight.w500, color: Colors.black),
     );
   }
 }

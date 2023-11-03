@@ -16,3 +16,13 @@ Future adduserProfile(
 
 final useryStream =
     FirebaseFirestore.instance.collection('userprofile').snapshots();
+
+void updateBlockStatus(String userId, bool isBlocked) {
+  FirebaseFirestore.instance.collection('userprofile').doc(userId).update({
+    'isBlocked': isBlocked,
+  }).then((value) {
+    print('User block status updated successfully.');
+  }).catchError((error) {
+    print('Failed to update user block status: $error');
+  });
+}

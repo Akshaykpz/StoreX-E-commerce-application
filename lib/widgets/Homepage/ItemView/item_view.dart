@@ -49,6 +49,7 @@ class _ItemOnClickState extends ConsumerState<ItemViews> {
   int count = 1;
   @override
   Widget build(BuildContext context) {
+    int intValue = int.parse(widget.stock.toString());
     return Scaffold(
       bottomNavigationBar: BottomBarWithSheet(
         controller: _bottomBarController,
@@ -116,7 +117,6 @@ class _ItemOnClickState extends ConsumerState<ItemViews> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(widget.stock.toString()),
                       Text(widget.productName,
                           style: TextStyle(
                               fontSize: 27.519121170043945.sp,
@@ -127,7 +127,7 @@ class _ItemOnClickState extends ConsumerState<ItemViews> {
                           SizedBox(
                             height: 60.h,
                           ),
-                          Text("price ₹ ${widget.productPrice}",
+                          Text(" price ₹${widget.productPrice} ",
                               style: TextStyle(
                                   fontSize: 21.519121170043945.sp,
                                   fontWeight: FontWeight.w400,
@@ -135,6 +135,30 @@ class _ItemOnClickState extends ConsumerState<ItemViews> {
                           SizedBox(
                             width: 100.w,
                           ),
+                          (intValue != 0)
+                              ? Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 8, vertical: 4),
+                                  height: 30,
+                                  width: 90,
+                                  decoration: BoxDecoration(
+                                      boxShadow: const [
+                                        BoxShadow(
+                                            blurRadius: 5, color: Colors.white)
+                                      ],
+                                      borderRadius: BorderRadius.circular(5),
+                                      color: Colors.green),
+                                  child: const Text("On Stock",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 16,
+                                          color: Colors.white)),
+                                )
+                              : const Text("No Stock",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 16,
+                                      color: Colors.red))
                         ],
                       ),
                       const StarRating(),
@@ -162,7 +186,7 @@ class _ItemOnClickState extends ConsumerState<ItemViews> {
                         moreStyle: const TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
-                            color: Colors.red),
+                            color: Colors.blue),
                       ),
                       const SizedBox(
                         height: 55,

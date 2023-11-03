@@ -9,7 +9,7 @@ Future addData(
     required String name,
     required String categoryname,
     required String description,
-    required String stock,
+    required var stock,
     required String imageurls}) async {
   final id = await findDocumentIdByCategory(categoryname);
   if (id != null) {
