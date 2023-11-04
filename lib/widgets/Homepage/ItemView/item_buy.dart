@@ -77,7 +77,7 @@ class _ItemBuypageState extends ConsumerState<ItemBuypage> {
           ],
         ),
       ),
-      bottomSheet: const Padding(
+      bottomSheet: Padding(
         padding: EdgeInsets.symmetric(vertical: 25),
         child: CheckOut(),
       ),

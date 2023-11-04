@@ -44,15 +44,12 @@ class _CategoryAddState extends State<CategoryAdd> {
                       categoryname: categorynamecontroller.text,
                       categoryimage: url.toString(),
                     );
-                    showTopSnackBar(
-                      // ignore: use_build_context_synchronously
-                      Overlay.of(context),
-                      const CustomSnackBar.success(
-                        message: "category added sucessfully...",
-                      ),
-                    );
 
-                    await Future.delayed(const Duration(microseconds: 400));
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      content: Text('error'),
+                      backgroundColor: Colors.green,
+                    ));
+                    await Future.delayed(const Duration(microseconds: 100));
 
                     // ignore: use_build_context_synchronously
                     Navigator.pop(context);

@@ -41,65 +41,75 @@ class _CheckOutItemsState extends ConsumerState<CheckOutItems> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(7.0),
-                          child: Container(
-                            height: 130,
-                            width: 380,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12),
-                                border:
-                                    Border.all(width: 1.5, color: Colors.teal)),
-                            child: Column(
-                              children: [
-                                SizedBox(
-                                  height: 15,
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Image.network(
-                                      cartImage,
-                                      height: 90,
-                                      width: 100,
-                                    ),
-                                    Column(
-                                      children: [
-                                        Text(
-                                          productName,
-                                          style: const TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 17,
+                          child: Card(
+                            elevation: 5,
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(7),
+                              ),
+                            ),
+                            child: Container(
+                              height: 120,
+                              width: 380,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(7),
+                                  border: Border.all(
+                                      width: 1.5, color: Colors.black45)),
+                              child: Column(
+                                children: [
+                                  const SizedBox(
+                                    height: 15,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Image.network(
+                                        cartImage,
+                                        height: 90,
+                                        width: 100,
+                                      ),
+                                      Column(
+                                        children: [
+                                          Text(
+                                            productName,
+                                            style: const TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 17,
+                                            ),
                                           ),
-                                        ),
-                                        const SizedBox(
-                                          height: 7,
-                                        ),
-                                        Text(
-                                          cartPrice,
-                                          style: const TextStyle(
-                                            color: Colors.green,
-                                            fontWeight: FontWeight.w800,
-                                            fontSize: 17,
+                                          const SizedBox(
+                                            height: 7,
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                    Container(
-                                      decoration: BoxDecoration(
-                                          border: Border.all(width: 0.8)),
-                                      height: 22,
-                                      width: 55,
-                                      child: Text(
-                                        " Qty - $data",
-                                        style: const TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 15,
+                                          Text(
+                                            cartPrice,
+                                            style: const TextStyle(
+                                              color: Colors.green,
+                                              fontWeight: FontWeight.w800,
+                                              fontSize: 17,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            border: Border.all(
+                                                color: Colors.black38),
+                                            color: Colors.black12),
+                                        height: 22,
+                                        width: 55,
+                                        child: Text(
+                                          " Qty - $data",
+                                          style: const TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 15,
+                                              color: Colors.black),
                                         ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              ],
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),

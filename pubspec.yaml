@@ -93,6 +93,7 @@ dependencies:
   anim_search_bar: ^2.0.3
   liquid_pull_to_refresh: ^3.0.1
   page_transition: ^2.1.0
+  fluttertoast: ^8.2.2
   
  
  
