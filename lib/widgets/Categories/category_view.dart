@@ -21,29 +21,10 @@ class _CategoryItemsState extends ConsumerState<CategoryItems> {
   Widget build(BuildContext context) {
     final categoryData = ref.watch(categoryProvider);
 
-    return categoryData.when(
-      data: (category) {
-        return SafeArea(
-          child: Scaffold(
-            appBar: AppBar(
-                elevation: 0,
-                backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
-                actions: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 9),
-                    child: AnimSearchBar(
-                      color: Colors.grey,
-                      width: 390,
-                      textController: textController,
-                      onSuffixTap: () {
-                        setState(() {
-                          textController.clear();
-                        });
-                      },
-                      onSubmitted: (String) {},
-                    ),
-                  ),
-                ]),
+    return SafeArea(
+      child: categoryData.when(
+        data: (category) {
+          return Scaffold(
             body: GridView.builder(
               itemCount: category.length,
               padding: const EdgeInsets.all(7),
@@ -72,26 +53,32 @@ class _CategoryItemsState extends ConsumerState<CategoryItems> {
                   child: Card(
                     elevation: 7,
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0)),
+                        borderRadius: BorderRadius.circular(10.0)),
                     child: Container(
                       height: 300,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
+                          borderRadius: BorderRadius.circular(8),
                           color: rowColor),
                       width: 150,
-                      padding: const EdgeInsets.symmetric(vertical: 17),
-                      // margin: const EdgeInsets.all(1.0),
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      margin: const EdgeInsets.all(1.0),
                       child: Column(children: [
                         Image.network(
                           cartimage,
-                          height: 130,
+                          height: 120,
                         ),
                         Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 2),
+                          padding: const EdgeInsets.symmetric(vertical: 7),
                           child: Text(cartname,
                               textAlign: TextAlign.center,
                               style: const TextStyle(
-                                fontSize: 15,
+                                shadows: [
+                                  Shadow(
+                                      blurRadius: 2,
+                                      color: Colors.white,
+                                      offset: Offset(0, 2))
+                                ],
+                                fontSize: 16,
                                 color: Colors.black,
                                 fontWeight: FontWeight.w600,
                               )),
@@ -106,15 +93,15 @@ class _CategoryItemsState extends ConsumerState<CategoryItems> {
                 );
               },
             ),
-          ),
-        );
-      },
-      error: (error, stackTrace) {
-        return const Text(' is error');
-      },
-      loading: () {
-        return const CircularProgressIndicator();
-      },
+          );
+        },
+        error: (error, stackTrace) {
+          return const Text(' is error');
+        },
+        loading: () {
+          return const CircularProgressIndicator();
+        },
+      ),
     );
   }
 }

@@ -16,7 +16,8 @@ class BuyButton extends StatelessWidget {
           Navigator.push(
               context,
               PageTransition(
-                  type: PageTransitionType.fade, child: const CheckOutPage()));
+                  type: PageTransitionType.leftToRight,
+                  child: const CheckOutPage()));
         },
         child: const Text('Proceed to Check out',
             style: TextStyle(fontWeight: FontWeight.w700, color: Colors.white)),

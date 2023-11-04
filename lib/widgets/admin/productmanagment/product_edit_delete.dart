@@ -1,9 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/service/delete_data.dart';
+import 'package:giltezy_2ndproject/widgets/admin/productmanagment/product_managment.dart';
+import 'package:giltezy_2ndproject/widgets/admin/productmanagment/update_prouduct.dart';
 
 class Productedit extends StatefulWidget {
   final String productid;
-  const Productedit({super.key, required this.productid});
+  final String name;
+  final String price;
+  final String description;
+  final String stock;
+  final String category;
+  final String image;
+  const Productedit(
+      {super.key,
+      required this.productid,
+      required this.name,
+      required this.price,
+      required this.description,
+      required this.stock,
+      required this.category,
+      required this.image});
 
   @override
   State<Productedit> createState() => _CategoryeditState();
@@ -43,7 +59,19 @@ class _CategoryeditState extends State<Productedit> {
       onSelected: (String newvalue) async {
         if (newvalue == delete) {
           await deleteproudct(widget.productid);
-        } else if (newvalue == edit) {}
+        } else if (newvalue == edit) {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => UpdateProduct(
+                    category: widget.category,
+                    description: widget.description,
+                    image: widget.image,
+                    name: widget.name,
+                    price: widget.price,
+                    stock: widget.stock),
+              ));
+        }
       },
     );
   }

@@ -34,18 +34,26 @@ class _MyProductViewState extends ConsumerState<MyProductView> {
                   final proudctimg = prodata['P-imageurl'];
                   final productname = prodata['p_name'];
                   final proudctprice = prodata['p_price'];
+                  final productcat = prodata['categroy_id'];
+                  final productdescription = prodata['p_description'];
+                  final productstock = prodata['stock'];
+
                   print(" this is my productId ${productId}");
 
                   return Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Card(
-                        shape: const RoundedRectangleBorder(
-                          side: BorderSide(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          side: const BorderSide(
                             color: Colors.grey,
                           ),
                         ),
-                        elevation: 3,
+                        elevation: 5,
                         child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
                           padding: const EdgeInsets.all(6.0),
                           child: Column(
                             children: [
@@ -53,7 +61,13 @@ class _MyProductViewState extends ConsumerState<MyProductView> {
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   Productedit(
+                                    category: productcat,
                                     productid: productId,
+                                    description: productdescription,
+                                    image: proudctimg,
+                                    name: productname,
+                                    price: proudctprice,
+                                    stock: productstock,
                                   ),
                                 ],
                               ),
@@ -113,6 +127,9 @@ class _MyProductViewState extends ConsumerState<MyProductView> {
         ],
       ),
       floatingActionButton: ScrollingFabAnimated(
+        curve: Curves.bounceInOut,
+        duration: Duration(milliseconds: 2),
+        color: Colors.green,
         icon: const Icon(
           Icons.add,
           color: Colors.white,

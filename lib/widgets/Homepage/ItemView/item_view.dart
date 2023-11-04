@@ -9,8 +9,8 @@ import 'package:giltezy_2ndproject/service/wishlist_data.dart';
 import 'package:giltezy_2ndproject/widgets/admin/productmanagment/proudct_description.dart';
 
 import 'package:giltezy_2ndproject/widgets/cacheed_image.dart';
+import 'package:giltezy_2ndproject/widgets/homepage/ItemView/buy_button.dart';
 
-import 'package:giltezy_2ndproject/widgets/homepage/ItemView/cart_button.dart';
 import 'package:giltezy_2ndproject/widgets/homepage/ItemView/star_rating.dart';
 import 'package:readmore/readmore.dart';
 
@@ -186,12 +186,18 @@ class _ItemOnClickState extends ConsumerState<ItemViews> {
                         moreStyle: const TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
-                            color: Colors.blue),
+                            color: Colors.amber),
                       ),
                       const SizedBox(
                         height: 55,
                       ),
-                      const CartButton()
+                      CartButton(
+                        imageUrl: widget.imageUrl,
+                        productDescription: widget.productDescription,
+                        productName: widget.productName,
+                        productPrice: widget.productPrice,
+                        reference: widget.reference,
+                      )
                     ],
                   ),
                 ],

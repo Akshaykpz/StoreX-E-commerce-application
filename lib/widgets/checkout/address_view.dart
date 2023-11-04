@@ -25,11 +25,6 @@ class _AddressViewState extends ConsumerState<AddressView> {
             // decoration: BoxDecoration(color: Colors.blue),
             height: 150,
             width: 370,
-
-            // child: ListView.builder(
-            //   itemCount: data.length,
-            //   itemBuilder: (context, index) {
-
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,

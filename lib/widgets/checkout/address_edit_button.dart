@@ -2,7 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/widgets/accounts/shippingAddress/shipping_address.dart';
 
 class AddressEditButton extends StatefulWidget {
-  const AddressEditButton({super.key});
+  final String? name;
+
+  final String? address;
+  final String? phone;
+  final String? pincode;
+  final String? district;
+  const AddressEditButton(
+      {super.key,
+      this.name,
+      this.address,
+      this.phone,
+      this.pincode,
+      this.district});
 
   @override
   State<AddressEditButton> createState() => _AddressEditButtonState();
@@ -16,7 +28,12 @@ class _AddressEditButtonState extends State<AddressEditButton> {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => ShippingAddress(),
+              builder: (context) => ShippingAddress(
+                  name: widget.name.toString(),
+                  address: widget.address,
+                  district: widget.district,
+                  phone: widget.phone,
+                  pincode: widget.pincode),
             ));
       },
       child: Container(

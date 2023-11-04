@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:giltezy_2ndproject/service/serach_data.dart';
+import 'package:giltezy_2ndproject/widgets/homepage/ItemView/item_view.dart';
+import 'package:page_transition/page_transition.dart';
 
 class SearchViewPage extends ConsumerStatefulWidget {
   const SearchViewPage({Key? key}) : super(key: key);
@@ -13,6 +15,7 @@ class SearchViewPage extends ConsumerStatefulWidget {
 class _SearchViewPageState extends ConsumerState<SearchViewPage> {
   TextEditingController _searchController = TextEditingController();
   String _searchQuery = '';
+  List<QueryDocumentSnapshot> _searchResults = [];
 
   @override
   Widget build(BuildContext context) {
@@ -25,61 +28,116 @@ class _SearchViewPageState extends ConsumerState<SearchViewPage> {
           backgroundColor: Colors.transparent,
           centerTitle: true,
           foregroundColor: Colors.black,
-          title: const Text(
-            'Search Your product',
-            style: TextStyle(color: Colors.black),
+          title: TextField(
+            controller: _searchController,
+            decoration: InputDecoration(
+              suffixIcon: const Icon(Icons.clear_rounded),
+
+              fillColor: Colors.grey[280],
+              filled: true,
+
+              hintText: '    Search ',
+              border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: BorderSide.none),
+              contentPadding: EdgeInsets.zero,
+
+              //                border: InputBorder.none,
+              //                hintText: "My Custom Search Label", // KEY PROP
+              hintStyle: const TextStyle(color: Colors.black), // KEY PROP
+            ),
+            onChanged: (value) {
+              setState(() {
+                _searchQuery = value;
+              });
+              firebaseService.searchItems(_searchQuery).then((results) {
+                setState(() {
+                  _searchResults = results; // Update the search results
+                });
+              });
+            },
           ),
         ),
         body: Padding(
           padding: const EdgeInsets.all(7),
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextField(
-                  controller: _searchController,
-                  decoration: InputDecoration(
-                    suffixIcon: const Icon(Icons.clear_rounded),
-
-                    fillColor: Colors.grey[280],
-                    filled: true,
-
-                    hintText: '    Search ',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide.none),
-                    contentPadding: EdgeInsets.zero,
-
-                    //                border: InputBorder.none,
-                    //                hintText: "My Custom Search Label", // KEY PROP
-                    hintStyle: const TextStyle(color: Colors.black), // KEY PROP
-                  ),
-                  onChanged: (value) {
-                    setState(() {
-                      _searchQuery = value;
-                    });
-                  },
-                ),
-              ),
               Expanded(
                 child: FutureBuilder<List<QueryDocumentSnapshot>>(
                   future: firebaseService.searchItems(_searchQuery),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Center(child: CircularProgressIndicator());
+                      return const Center(child: CircularProgressIndicator());
                     } else if (snapshot.hasError) {
                       return Center(child: Text('Error: ${snapshot.error}'));
-                    } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                      return Center(child: Text('No items found'));
+                    } else if (_searchQuery.isEmpty) {
+                      return const Center(
+                          child: Text('Please enter a search query'));
+                    } else if (_searchResults.isEmpty) {
+                      return const Center(child: Text('No items found'));
                     } else {
-                      return ListView(
-                        children: snapshot.data!.map((doc) {
-                          Map<String, dynamic> data =
-                              doc.data() as Map<String, dynamic>;
-                          return ListTile(
-                            title: Text(data['p_name']),
+                      return ListView.separated(
+                        itemCount: _searchResults.length,
+                        separatorBuilder: (BuildContext context, int index) {
+                          return const Divider(
+                            height: 1,
+                            color: Colors.grey,
                           );
-                        }).toList(),
+                        },
+                        itemBuilder: (BuildContext context, int index) {
+                          final data = _searchResults[index].data()
+                              as Map<String, dynamic>;
+                          final productname = data["p_name"].toString();
+
+                          final productimage = data['P-imageurl'].toString();
+
+                          final productPrice = data['p_price'].toString();
+
+                          final productstock = data['stock'].toString();
+                          // final reference = document[index].reference;
+                          // final reference = data[index].reference;
+
+                          // ignore: non_constant_identifier_names
+                          final Productdescription =
+                              data['p_description'].toString();
+                          return InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  PageTransition(
+                                      type: PageTransitionType.fade,
+                                      child: ItemViews(
+                                          stock: productstock,
+                                          imageUrl: productimage,
+                                          productName: productname,
+                                          productPrice: productPrice,
+                                          reference:
+                                              _searchResults[index].reference,
+                                          productDescription:
+                                              Productdescription)));
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              height: 70,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Image.network(
+                                      productimage,
+                                      height: 70,
+                                    ),
+                                    Text(productname)
+                                  ],
+                                ),
+                              ),
+                            ),
+                          );
+                        },
                       );
                     }
                   },

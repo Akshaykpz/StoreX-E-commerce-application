@@ -9,18 +9,23 @@ import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 // ignore: must_be_immutable
-class CategoryAdd extends StatefulWidget {
-  const CategoryAdd({super.key});
+class UpdateCategory extends StatefulWidget {
+  final String categoryname;
+  final String image;
+
+  const UpdateCategory(
+      {super.key, required this.categoryname, required this.image});
 
   @override
-  State<CategoryAdd> createState() => _CategoryAddState();
+  State<UpdateCategory> createState() => _UpdateCategoryState();
 }
 
-class _CategoryAddState extends State<CategoryAdd> {
+class _UpdateCategoryState extends State<UpdateCategory> {
   TextEditingController categorynamecontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    categorynamecontroller.text = widget.categoryname;
     return Scaffold(
         body: SafeArea(
       child: SingleChildScrollView(
@@ -52,20 +57,18 @@ class _CategoryAddState extends State<CategoryAdd> {
                       ),
                     );
 
-                    await Future.delayed(const Duration(microseconds: 400));
+                    await Future.delayed(const Duration(microseconds: 100));
 
-                    // ignore: use_build_context_synchronously
                     Navigator.pop(context);
                   } catch (e) {
                     print("Error: $e");
 
-                    // showTopSnackBar(
-                    //   // ignore: use_build_context_synchronously
-                    //   Overlay.of(context),
-                    //   const CustomSnackBar.error(
-                    //     message: "Something went wrong....",
-                    //   ),
-                    // );
+                    showTopSnackBar(
+                      Overlay.of(context),
+                      const CustomSnackBar.error(
+                        message: "Something went wrong....",
+                      ),
+                    );
                   }
                 },
                 style: ElevatedButton.styleFrom(
@@ -78,7 +81,7 @@ class _CategoryAddState extends State<CategoryAdd> {
                 child: const Padding(
                   padding: EdgeInsets.all(15.0),
                   child: Text(
-                    'Save',
+                    'update',
                     style: TextStyle(fontSize: 20),
                   ),
                 ),

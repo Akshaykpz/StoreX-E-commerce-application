@@ -46,20 +46,27 @@ class _MyCategoryState extends ConsumerState<MyCategory> {
                     return Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Card(
-                        shape: const RoundedRectangleBorder(
-                          side: BorderSide(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          side: const BorderSide(
                             color: Colors.grey,
                           ),
                         ),
-                        elevation: 3,
+                        elevation: 6,
                         child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
                           padding: const EdgeInsets.all(6.0),
                           child: Column(
                             children: [
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
-                                  Categoryedit(categoryid: CatId),
+                                  Categoryedit(
+                                      categoryid: CatId,
+                                      image: productimage,
+                                      name: productname),
                                 ],
                               ),
                               FutureBuilder(
@@ -78,7 +85,6 @@ class _MyCategoryState extends ConsumerState<MyCategory> {
                                   return Image.network(
                                     productimage,
                                     height: 100,
-                                    width: MediaQuery.of(context).size.width,
                                     fit: BoxFit.fitWidth,
                                   );
                                 },
@@ -109,6 +115,7 @@ class _MyCategoryState extends ConsumerState<MyCategory> {
           ],
         ),
         floatingActionButton: ScrollingFabAnimated(
+          color: Colors.green,
           icon: const Icon(
             Icons.add,
             color: Colors.white,

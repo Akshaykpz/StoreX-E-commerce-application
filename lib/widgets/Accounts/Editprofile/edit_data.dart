@@ -27,39 +27,6 @@ class _EditProfilesState extends State<EditProfiles> {
   File? image;
   String? _imageUrl;
 
-// ...
-  // Future<void> selectImage() async {
-  //   final picker = ImagePicker();
-  //   final pickedFile = await picker.pickImage(source: ImageSource.gallery);
-
-  //   if (pickedFile != null) {
-  //     setState(() {
-  //       image = File(pickedFile.path);
-  //     });
-  //   }
-  // }
-
-  // Future<void> upload(File? imagerl) async {
-  //   if (image != null) {
-  //     try {
-  //       final Reference storageReference =
-  //           firebase_storage.FirebaseStorage.instance.ref();
-  //       final imageName = DateTime.now().millisecondsSinceEpoch.toString();
-  //       // Upload the image to Firebase Storage
-  //       final UploadTask uploadTask =
-  //           storageReference.child('images/$imageName.jpg').putFile(imagerl!);
-
-  //       // Wait for the upload to complete and get the download UR
-  //       final TaskSnapshot taskSnapshot = await uploadTask;
-  //       if (taskSnapshot.state == firebase_storage.TaskState.success) {
-  //         final String imageUrl = await taskSnapshot.ref.getDownloadURL();
-  //         print(imageUrl);
-  //       }
-  //     } catch (error) {
-  //       print('Error uploading image: $error');
-  //     }
-  //   }
-
   Future<void> selectImageAndUpload() async {
     final picker = ImagePicker();
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);

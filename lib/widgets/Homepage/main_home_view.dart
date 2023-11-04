@@ -5,12 +5,11 @@ import 'package:flutter/rendering.dart';
 
 import 'package:giltezy_2ndproject/utils/theme/logout_button.dart';
 import 'package:giltezy_2ndproject/widgets/Homepage/ItemView/serach.dart';
+import 'package:giltezy_2ndproject/widgets/Homepage/chip_list.dart';
+import 'package:giltezy_2ndproject/widgets/Homepage/product_items.dart';
 import 'package:giltezy_2ndproject/widgets/categories/category_view.dart';
 import 'package:giltezy_2ndproject/widgets/splash_screen.dart/logo_view.dart';
 import 'package:giltezy_2ndproject/widgets/homepage/ItemView/serach_view.dart';
-
-import 'product_items.dart';
-import 'chip_list.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -59,7 +58,6 @@ class _FavoritesPageState extends State<HomePage> {
         SliverAppBar(
           automaticallyImplyLeading: false,
           forceMaterialTransparency: true,
-
           flexibleSpace: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
@@ -68,7 +66,13 @@ class _FavoritesPageState extends State<HomePage> {
                 child: CircleAvatar(
                     backgroundColor: Colors.white,
                     child: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SearchViewPage(),
+                              ));
+                        },
                         icon: const Icon(
                           Icons.search,
                           color: Colors.black,
@@ -76,20 +80,8 @@ class _FavoritesPageState extends State<HomePage> {
               ),
             ],
           ),
-
           toolbarHeight: 190,
           title: const MyPageView(),
-
-          // actions: [
-          //   currentIndex == 0
-          //       ? IconButton(
-          //           onPressed: () {},
-          //           icon: const Icon(
-          //             Icons.search,
-          //             color: Colors.black,
-          //           ))
-          //       : Container(),
-          // ],
           elevation: 0,
           backgroundColor: Colors.deepPurple[50],
         ),

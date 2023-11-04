@@ -3,25 +3,23 @@ import 'package:giltezy_2ndproject/service/address_add_firebase.dart';
 
 import '../editprofile/edit_profile.dart';
 
-class ShippingAddress extends StatefulWidget {
-  final String? name;
+class EditShippingAddress extends StatefulWidget {
   final String? address;
   final String? phone;
   final String? pincode;
   final String? district;
-  const ShippingAddress(
+  const EditShippingAddress(
       {super.key,
-      this.name,
-      this.address,
-      this.phone,
-      this.pincode,
-      this.district});
+      required this.address,
+      required this.phone,
+      required this.pincode,
+      required this.district});
 
   @override
-  State<ShippingAddress> createState() => _ShippingAddressState();
+  State<EditShippingAddress> createState() => _EditShippingAddressState();
 }
 
-class _ShippingAddressState extends State<ShippingAddress> {
+class _EditShippingAddressState extends State<EditShippingAddress> {
   final _formkey = GlobalKey<FormState>();
   TextEditingController nameController = TextEditingController();
   TextEditingController addressController = TextEditingController();
@@ -126,7 +124,7 @@ class _ShippingAddressState extends State<ShippingAddress> {
                     elevation: 4, // Elevation of the button
                   ),
                   child: const Text(
-                    'Save Address',
+                    'Update Address',
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                   ),
                 ))

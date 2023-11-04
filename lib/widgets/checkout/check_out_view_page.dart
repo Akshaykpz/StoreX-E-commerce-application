@@ -176,7 +176,7 @@ class _DataState extends ConsumerState<CheckOutPage> {
                               children: [
                                 const Text(
                                   '   Order',
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                     fontWeight: FontWeight.w500,
                                     fontSize: 15,
                                   ),

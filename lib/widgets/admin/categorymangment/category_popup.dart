@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/service/delete_data.dart';
+import 'package:giltezy_2ndproject/widgets/admin/categorymangment/update_category.dart';
 
 class Categoryedit extends StatefulWidget {
   final String categoryid;
-  const Categoryedit({super.key, required this.categoryid});
+  final String image;
+  final String name;
+
+  const Categoryedit(
+      {super.key,
+      required this.categoryid,
+      required this.image,
+      required this.name});
 
   @override
   State<Categoryedit> createState() => _CategoryeditState();
@@ -43,7 +51,14 @@ class _CategoryeditState extends State<Categoryedit> {
       onSelected: (String newvalue) {
         if (newvalue == delete) {
           deleteCategory(widget.categoryid);
-        } else if (newvalue == edit) {}
+        } else if (newvalue == edit) {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => UpdateCategory(
+                    categoryname: widget.name, image: widget.image),
+              ));
+        }
       },
     );
   }
