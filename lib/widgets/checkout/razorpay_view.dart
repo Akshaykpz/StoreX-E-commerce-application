@@ -171,8 +171,7 @@ class _CheckOutState extends State<CheckOut> {
         textColor: Colors.white,
         fontSize: 16.0);
     DataAdd().checOutitems(response.paymentId!, widget.productReference);
-    print(" ${widget.productReference }
- ");
+    print(" {$widget.productReference  ");
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {

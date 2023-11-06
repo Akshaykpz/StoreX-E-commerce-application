@@ -49,6 +49,7 @@ class _WishListState extends ConsumerState<WishList> {
                       endActionPane:
                           ActionPane(motion: const ScrollMotion(), children: [
                         SlidableAction(
+                          borderRadius: BorderRadius.circular(12),
                           backgroundColor: Colors.red,
                           icon: Icons.delete,
                           onPressed: (context) {
@@ -69,24 +70,29 @@ class _WishListState extends ConsumerState<WishList> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             CircleAvatar(
-                              radius: 50,
+                              radius: 60,
                               backgroundColor: Colors.transparent,
                               child: Image.network(
                                 wishListImage,
                                 fit: BoxFit.cover,
+                                height: 80,
                               ),
                             ),
-                            Column(
-                              children: [
-                                Text(productName,
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                    )),
-                                Text(wishListPrice,
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                    )),
-                              ],
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 20),
+                              child: Column(
+                                children: [
+                                  Text(productName,
+                                      style: const TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w700)),
+                                  Text(wishListPrice,
+                                      style: const TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w500)),
+                                ],
+                              ),
                             ),
                           ],
                         ),
