@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:giltezy_2ndproject/controller/provder_auth.dart';
@@ -35,79 +36,100 @@ class _DataState extends ConsumerState<CheckOutPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                cartAsyncValue.when(
-                  data: (cart) {
-                    return productAsyncValue.when(
-                      data: (productli) {
+                productAsyncValue.when(
+                  data: (productli) {
+                    return cartAsyncValue.when(
+                      data: (cart) {
                         final total = CartTotal()
                             .calculateTotal(cartData: cart, product: productli);
                         const deliveryCharge = 20.0;
                         final sum = total + deliveryCharge;
+
                         return Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: List.generate(
+                          cart.length,
+                          (index) {
+                            final checkout =
+                                cart[index].data() as Map<String, dynamic>;
+                            final reference = checkout['product_reference']
+                                as DocumentReference;
+
+                            return Column(
                               children: [
-                                const Text(
-                                  '   Order',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 15,
-                                  ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    const Text(
+                                      '   Order',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 15,
+                                      ),
+                                    ),
+                                    Text(
+                                      '      ₹${total.toStringAsFixed(1)}  ',
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 19,
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                Text(
-                                  '      ₹${total.toStringAsFixed(1)}  ',
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 19,
-                                  ),
+                                const SizedBox(
+                                  height: 10,
                                 ),
+                                const Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "   Delivery Charges",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 15,
+                                      ),
+                                    ),
+                                    Text(
+                                      '₹ $deliveryCharge    ',
+                                      style: TextStyle(
+                                        color: Colors.red,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      ' ₹ ${sum.toStringAsFixed(1)}',
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 6,
+                                    )
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                const Divider(
+                                  thickness: 1,
+                                ),
+                                CheckOut(productReference: reference),
                               ],
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            const Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "   Delivery Charges",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 15,
-                                  ),
-                                ),
-                                Text(
-                                  '₹ $deliveryCharge    ',
-                                  style: TextStyle(
-                                    color: Colors.red,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Text(
-                                  ' ₹ ${sum.toStringAsFixed(1)}',
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 6,
-                                )
-                              ],
-                            ),
-                          ],
-                        );
+                            );
+                          },
+                        ));
                       },
                       loading: () => const CircularProgressIndicator(),
                       error: (error, stackTrace) => const Text('Product Error'),
@@ -116,19 +138,13 @@ class _DataState extends ConsumerState<CheckOutPage> {
                   loading: () => const CircularProgressIndicator(),
                   error: (error, stackTrace) => const Text('Cart Error'),
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
-                const Divider(
-                  thickness: 1,
-                ),
-                CheckOut(), // Uncomment this line if CheckOut is a valid widget
+                // Uncomment this line if CheckOut is a valid widget
               ],
             ),
           )
         ],
       ),
-      body: const Column(
+      body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Expanded(
@@ -140,11 +156,11 @@ class _DataState extends ConsumerState<CheckOutPage> {
                 child: Column(
                   children: [
                     CheckOutItems(),
-                    SizedBox(
+                    const SizedBox(
                       height: 12,
                     ),
-                    Divider(thickness: 1),
-                    Row(
+                    const Divider(thickness: 1),
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
@@ -157,8 +173,8 @@ class _DataState extends ConsumerState<CheckOutPage> {
                         AddressEditButton(),
                       ],
                     ),
-                    AddressView(),
-                    Divider(thickness: 1),
+                    const AddressView(),
+                    const Divider(thickness: 1),
                   ],
                 ),
               ),

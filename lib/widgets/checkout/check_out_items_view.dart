@@ -6,7 +6,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:giltezy_2ndproject/controller/provder_auth.dart';
 
 class CheckOutItems extends ConsumerStatefulWidget {
-  const CheckOutItems({super.key});
+  CheckOutItems({
+    super.key,
+  });
 
   @override
   ConsumerState<CheckOutItems> createState() => _CheckOutItemsState();
@@ -37,6 +39,7 @@ class _CheckOutItemsState extends ConsumerState<CheckOutItems> {
                     final productName = matchProduct['p_name'];
                     final cartPrice = matchProduct['p_price'];
                     final cartImage = matchProduct['P-imageurl'];
+
                     return Column(
                       children: [
                         Padding(
