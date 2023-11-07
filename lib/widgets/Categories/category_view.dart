@@ -53,11 +53,11 @@ class _CategoryItemsState extends ConsumerState<CategoryItems> {
                   child: Card(
                     elevation: 7,
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0)),
+                        borderRadius: BorderRadius.circular(12.0)),
                     child: Container(
                       height: 300,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(11),
                           color: rowColor),
                       width: 150,
                       padding: const EdgeInsets.symmetric(vertical: 16),

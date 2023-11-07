@@ -19,7 +19,7 @@ class BuyButton extends StatelessWidget {
                   type: PageTransitionType.leftToRight,
                   child: const CheckOutPage()));
         },
-        child: const Text('Proceed to Check out',
+        child: Text('Proceed to Check out',
             style: TextStyle(fontWeight: FontWeight.w700, color: Colors.white)),
       ),
     );

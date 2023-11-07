@@ -60,7 +60,7 @@ class _CartState extends ConsumerState<Cart> {
                                   fontSize: 19,
                                 ),
                               ),
-                              const BuyButton()
+                              BuyButton()
                             ],
                           ),
                         ],
