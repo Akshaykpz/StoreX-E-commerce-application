@@ -6,12 +6,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:giltezy_2ndproject/service/add_wishlist.dart';
 import 'package:giltezy_2ndproject/service/wishlist_data.dart';
+import 'package:giltezy_2ndproject/widgets/accounts/order/star_rating.dart';
 import 'package:giltezy_2ndproject/widgets/admin/productmanagment/proudct_description.dart';
 
 import 'package:giltezy_2ndproject/widgets/cacheed_image.dart';
 import 'package:giltezy_2ndproject/widgets/homepage/ItemView/buy_button.dart';
 
-import 'package:giltezy_2ndproject/widgets/homepage/ItemView/star_rating.dart';
 import 'package:readmore/readmore.dart';
 
 class ItemViews extends ConsumerStatefulWidget {
@@ -161,7 +161,26 @@ class _ItemOnClickState extends ConsumerState<ItemViews> {
                                       color: Colors.red))
                         ],
                       ),
-                      const StarRating(),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 7),
+                        child: Row(children: [
+                          Text(
+                            "3.4",
+                            style: TextStyle(
+                              fontSize: 15.863384246826172.sp,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.white,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 3,
+                          ),
+                          const Icon(
+                            Icons.star,
+                            color: Colors.amber,
+                          )
+                        ]),
+                      ),
                       SizedBox(
                         height: 10.w,
                       ),

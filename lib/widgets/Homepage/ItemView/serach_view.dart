@@ -24,19 +24,26 @@ class _SearchViewPageState extends ConsumerState<SearchViewPage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          toolbarHeight: 80,
           elevation: 0,
           backgroundColor: Colors.transparent,
           centerTitle: true,
           foregroundColor: Colors.black,
           title: TextField(
+            cursorColor: Colors.black,
+            cursorOpacityAnimates: true,
             controller: _searchController,
             decoration: InputDecoration(
-              suffixIcon: const Icon(Icons.clear_rounded),
+              suffixIcon: const Icon(
+                Icons.clear_rounded,
+                color: Colors.black,
+              ),
 
-              fillColor: Colors.grey[280],
+              fillColor: Colors.grey[500],
               filled: true,
 
-              hintText: '    Search ',
+              hintText: '   Search ',
+
               border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                   borderSide: BorderSide.none),
@@ -71,8 +78,12 @@ class _SearchViewPageState extends ConsumerState<SearchViewPage> {
                     } else if (snapshot.hasError) {
                       return Center(child: Text('Error: ${snapshot.error}'));
                     } else if (_searchQuery.isEmpty) {
-                      return const Center(
-                          child: Text('Please enter a search query'));
+                      return Center(
+                          child: Image.asset(
+                        // 'assets/images/Animation - 1699335032719.gif',
+                        'assets/images/Animation - 1699335032719.gif',
+                        color: Colors.black38,
+                      ));
                     } else if (_searchResults.isEmpty) {
                       return const Center(child: Text('No items found'));
                     } else {

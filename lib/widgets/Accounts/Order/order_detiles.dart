@@ -7,7 +7,7 @@ class OrderDetiles extends StatelessWidget {
   final bool islast;
   final bool ispast;
   // ignore: prefer_typing_uninitialized_variables
-  final texts;
+  final String texts;
   const OrderDetiles(
       {super.key,
       required this.isfrist,
@@ -18,13 +18,13 @@ class OrderDetiles extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 220,
+      height: 120,
       child: TimelineTile(
-        beforeLineStyle: const LineStyle(
-          color: Colors.teal,
+        beforeLineStyle: LineStyle(
+          color: ispast ? Colors.teal : Colors.teal.shade100,
         ),
         indicatorStyle: IndicatorStyle(
-            color: Colors.teal,
+            color: ispast ? Colors.teal : Colors.teal.shade100,
             width: 40,
             iconStyle: IconStyle(iconData: Icons.done, color: Colors.white)),
         isFirst: isfrist,

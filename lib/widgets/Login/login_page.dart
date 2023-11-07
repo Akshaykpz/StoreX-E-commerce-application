@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:giltezy_2ndproject/service/forgot_password.dart';
@@ -12,6 +13,7 @@ import 'package:giltezy_2ndproject/utils/theme/textstyle.dart';
 import 'package:giltezy_2ndproject/widgets/login/background_image.dart';
 import 'package:giltezy_2ndproject/widgets/login/buttons.dart';
 import 'package:giltezy_2ndproject/widgets/login/textfiled.dart';
+import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
 
 import '../../service/login_user.dart';
@@ -39,16 +41,24 @@ class _MyLoginState extends State<MyLogin> {
 
   @override
   Widget build(BuildContext context) {
-    return Backgroundimage(
+    return Container(
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+            Colors.purple.shade200.withOpacity(0.8),
+            Colors.purple.shade800.withOpacity(0.8)
+          ])),
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        body: SafeArea(
-            child: SingleChildScrollView(
+        body: (SingleChildScrollView(
           child: SizedBox(
-            height: 800.h,
+            height: 1010.h,
             width: double.infinity,
             child: Stack(
               children: [
+                Lottie.asset('animations/Animation - 1699343253438.json'),
                 Form(
                   key: _formKey,
                   child: Column(
@@ -58,7 +68,7 @@ class _MyLoginState extends State<MyLogin> {
                       MyTextformFiled(
                         icons: emailIcon,
                         controller: _emailController,
-                        hinttext: 'email',
+                        hinttext: 'Email',
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter an email';
@@ -86,7 +96,7 @@ class _MyLoginState extends State<MyLogin> {
                         ),
                         icons: PasswordIcon,
                         controller: _passwordController,
-                        hinttext: 'password',
+                        hinttext: 'Password',
                         validator: (value) {
                           if (value!.isEmpty) {
                             return 'Please Enter Password';
@@ -155,7 +165,7 @@ class _MyLoginState extends State<MyLogin> {
                     alignment: Alignment.center,
                     width: 400.w,
                     height: 59.h,
-                    decoration: khdecoarion,
+                    // decoration: khdecoarion,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       // crossAxisAlignment: CrossAxisAlignment.end,

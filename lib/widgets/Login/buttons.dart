@@ -24,7 +24,7 @@ class _MyButtonState extends State<MyButton> {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         fixedSize: const Size(250, 50),
-        backgroundColor: const Color.fromARGB(255, 77, 180, 228),
+        backgroundColor: Colors.purple,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(25),
         ),

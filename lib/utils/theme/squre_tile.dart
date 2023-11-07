@@ -12,15 +12,14 @@ class Squretile extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(7),
         decoration: BoxDecoration(
-            border: Border.all(color: Colors.white),
+            border: Border.all(color: Colors.white, width: 2),
             borderRadius: BorderRadius.circular(10),
-            color: Colors.white,
+            // color: Colors.white,
             boxShadow: const [
               BoxShadow(
-                  color: Colors.white,
-                  offset: Offset(4, 4),
-                  blurRadius: 10,
-                  spreadRadius: 1)
+                  color: Colors.transparent,
+                  offset: Offset(1, 2),
+                  spreadRadius: 3)
             ]),
         child: Image.asset(
           imagepath,

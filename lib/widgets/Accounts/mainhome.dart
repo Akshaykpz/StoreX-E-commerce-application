@@ -5,7 +5,7 @@ import 'package:giltezy_2ndproject/controller/users_auth.dart';
 import 'package:giltezy_2ndproject/service/sign_out.dart';
 import 'package:giltezy_2ndproject/service/button.dart';
 import 'package:giltezy_2ndproject/widgets/accounts/editprofile/edit_data.dart';
-import 'package:giltezy_2ndproject/widgets/accounts/order/order_status_page_view.dart';
+import 'package:giltezy_2ndproject/widgets/accounts/order/order_list_page_view.dart';
 import 'package:giltezy_2ndproject/widgets/accounts/shippingAddress/shipping_address.dart';
 import 'package:giltezy_2ndproject/widgets/admin/admin_page.dart';
 import 'package:giltezy_2ndproject/widgets/wishlist/wish_list.dart';

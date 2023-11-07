@@ -12,10 +12,10 @@ class OrderText extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.all(10),
       height: 90.0,
-      width: 200.0,
+      width: 150.0,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
-        color: Colors.teal,
+        color: Colors.teal.shade400,
         boxShadow: const [
           BoxShadow(
             color: Colors.grey,

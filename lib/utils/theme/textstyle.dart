@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 
 const TextStyle khheading = TextStyle(
   color: Colors.white,
-  fontSize: 60,
+  fontSize: 40,
   fontFamily: 'Roboto',
-  fontWeight: FontWeight.w700,
+  fontWeight: FontWeight.w500,
 );
+
 const TextStyle kvrheading = TextStyle(
   color: Colors.black,
   fontSize: 25,
@@ -34,7 +35,7 @@ const TextStyle kvwtext = TextStyle(
   color: Colors.white,
   fontSize: 15,
   fontFamily: 'Roboto',
-  fontWeight: FontWeight.bold,
+  fontWeight: FontWeight.w500,
 );
 Container kwscontiner = Container(
   width: 285,

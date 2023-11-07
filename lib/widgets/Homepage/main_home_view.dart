@@ -10,6 +10,7 @@ import 'package:giltezy_2ndproject/widgets/Homepage/product_items.dart';
 import 'package:giltezy_2ndproject/widgets/categories/category_view.dart';
 import 'package:giltezy_2ndproject/widgets/splash_screen.dart/logo_view.dart';
 import 'package:giltezy_2ndproject/widgets/homepage/ItemView/serach_view.dart';
+import 'package:page_transition/page_transition.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -69,8 +70,9 @@ class _FavoritesPageState extends State<HomePage> {
                         onPressed: () {
                           Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                builder: (context) => SearchViewPage(),
+                              PageTransition(
+                                type: PageTransitionType.leftToRight,
+                                child: SearchViewPage(),
                               ));
                         },
                         icon: const Icon(
@@ -112,8 +114,9 @@ class _FavoritesPageState extends State<HomePage> {
                     onPressed: () {
                       Navigator.push(
                           context,
-                          MaterialPageRoute(
-                            builder: (context) => const CategoryItems(),
+                          PageTransition(
+                            type: PageTransitionType.fade,
+                            child: const CategoryItems(),
                           ));
                     },
                     child: const Text('More..'),

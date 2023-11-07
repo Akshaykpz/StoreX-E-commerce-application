@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:giltezy_2ndproject/controller/provder_auth.dart';
 import 'package:giltezy_2ndproject/service/add_wishlist.dart';
 import 'package:giltezy_2ndproject/service/proudcts.dart';
@@ -78,7 +79,7 @@ class _SecondGridState extends ConsumerState<SecondGrid> {
                 color: rowColor,
                 shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(
-                    Radius.circular(15),
+                    Radius.circular(10),
                   ),
                 ),
                 elevation: 4,
@@ -90,6 +91,7 @@ class _SecondGridState extends ConsumerState<SecondGrid> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(5),
+
                           child: FavorateButton(
                             ontap: () {
                               buttonPressed(index);
@@ -158,15 +160,34 @@ class _SecondGridState extends ConsumerState<SecondGrid> {
                       height: 2.3,
                     ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          child: Row(children: [
+                            Text(
+                              "3.4",
+                              style: TextStyle(
+                                  fontSize: 12.863384246826172.sp,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.black87),
+                            ),
+                            const SizedBox(
+                              width: 2,
+                            ),
+                            const Icon(
+                              Icons.star,
+                              color: Colors.amber,
+                            )
+                          ]),
+                        ),
                         Container(
                           decoration: BoxDecoration(
                               color: iconclr,
                               borderRadius: const BorderRadius.only(
                                   // bottomLeft: Radius.circular(10),
-                                  bottomRight: Radius.circular(14),
-                                  topLeft: Radius.circular(14))),
+                                  bottomRight: Radius.circular(10),
+                                  topLeft: Radius.circular(10))),
                           height: 37,
                           width: 36,
                           child: GestureDetector(

@@ -39,7 +39,7 @@ class MyTextformFiled extends StatelessWidget {
           ),
           filled: true,
           hintText: hinttext,
-          fillColor: Colors.white54,
+          fillColor: Colors.white30,
           hintStyle: const TextStyle(color: Colors.white),
           errorStyle: const TextStyle(
             color: Colors.redAccent, // Change the text color to red
