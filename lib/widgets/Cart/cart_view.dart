@@ -60,7 +60,7 @@ class _CartState extends ConsumerState<Cart> {
                                   fontSize: 19,
                                 ),
                               ),
-                              BuyButton()
+                              const BuyButton()
                             ],
                           ),
                         ],
@@ -75,7 +75,7 @@ class _CartState extends ConsumerState<Cart> {
                       final reference = cartProvider['product_reference']
                           as DocumentReference;
                       final docid = cart[index].id;
-                      print('this is cart doc id ${docid}');
+
                       final matchProduct = productli.firstWhere((element) {
                         return element.reference == reference;
                       });
@@ -131,7 +131,7 @@ class _CartState extends ConsumerState<Cart> {
                                     const SizedBox(
                                       height: 5,
                                     ),
-                                    Text('₹${cartPrice}',
+                                    Text('₹$cartPrice',
                                         style: const TextStyle(
                                           fontWeight: FontWeight.w600,
                                           fontSize: 15,
@@ -155,7 +155,5 @@ class _CartState extends ConsumerState<Cart> {
       error: (error, stackTrace) => const CircularProgressIndicator(),
       loading: () => const CircularProgressIndicator(),
     );
-
-    // ),
   }
 }

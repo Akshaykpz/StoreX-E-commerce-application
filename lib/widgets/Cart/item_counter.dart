@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/service/wishlist_data.dart';
 
 class CounterApp extends StatefulWidget {
+  // ignore: non_constant_identifier_names
   final String Id;
-  CounterApp({Key? key, required this.Id}) : super(key: key);
+  // ignore: non_constant_identifier_names
+  const CounterApp({Key? key, required this.Id}) : super(key: key);
 
   @override
   State<CounterApp> createState() => _CounterAppState();
@@ -67,11 +69,11 @@ class _CounterAppState extends State<CounterApp> {
                 height: 25,
                 width: 25,
                 child: InkWell(
-                  child: const Icon(Icons.add),
                   onTap: () {
                     _incrementCounter();
                   },
                   focusColor: Colors.green,
+                  child: const Icon(Icons.add),
                 ),
               ),
             ],

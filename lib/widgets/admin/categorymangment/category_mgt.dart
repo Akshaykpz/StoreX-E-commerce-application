@@ -40,8 +40,8 @@ class _MyCategoryState extends ConsumerState<MyCategory> {
 
                     final productname = category['cat_name'];
                     final productimage = category['cat_image'];
+                    // ignore: non_constant_identifier_names
                     final CatId = catgorydata[index].id;
-                    print('hello  {$productimage}');
 
                     return Padding(
                       padding: const EdgeInsets.all(10.0),
@@ -125,7 +125,6 @@ class _MyCategoryState extends ConsumerState<MyCategory> {
             style: TextStyle(color: Colors.white, fontSize: 16.0),
           ),
           onPress: () {
-            print("object");
             Navigator.push(
               context,
               MaterialPageRoute(

@@ -38,8 +38,6 @@ class _MyProductViewState extends ConsumerState<MyProductView> {
                   final productdescription = prodata['p_description'];
                   final productstock = prodata['stock'];
 
-                  print(" this is my productId ${productId}");
-
                   return Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Card(
@@ -128,7 +126,7 @@ class _MyProductViewState extends ConsumerState<MyProductView> {
       ),
       floatingActionButton: ScrollingFabAnimated(
         curve: Curves.bounceInOut,
-        duration: Duration(milliseconds: 2),
+        duration: const Duration(milliseconds: 2),
         color: Colors.green,
         icon: const Icon(
           Icons.add,
@@ -139,7 +137,6 @@ class _MyProductViewState extends ConsumerState<MyProductView> {
           style: TextStyle(color: Colors.white, fontSize: 16.0),
         ),
         onPress: () {
-          print("object");
           Navigator.push(
             context,
             MaterialPageRoute(

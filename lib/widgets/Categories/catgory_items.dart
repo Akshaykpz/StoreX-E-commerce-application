@@ -56,6 +56,7 @@ class _SecondGridState extends ConsumerState<CategoryViewPage> {
                       final document =
                           filterData[index].data() as Map<String, dynamic>;
                       final reference = filterData[index].reference;
+                      // ignore: non_constant_identifier_names
                       final ProductImage = document['P-imageurl'];
                       final productName = document['p_name'];
                       final productPrice = document['p_price'];
@@ -74,8 +75,6 @@ class _SecondGridState extends ConsumerState<CategoryViewPage> {
                             horizontal: 5, vertical: 5),
                         child: GestureDetector(
                           onTap: () {
-                            print(
-                                'heloooooooooooooooooooooooooooooooooooooooo$productStock');
                             Navigator.push(
                                 context,
                                 PageTransition(
@@ -126,44 +125,6 @@ class _SecondGridState extends ConsumerState<CategoryViewPage> {
                               ],
                             ),
                           ),
-                          // child: Card(
-                          //   color:
-                          //       rowColor, // Set the row color as the background color
-                          //   shape: const RoundedRectangleBorder(
-                          //     borderRadius:
-                          //         BorderRadius.all(Radius.circular(7)),
-                          //   ),
-                          //   elevation: 3,
-                          //   child: Column(
-                          //     crossAxisAlignment: CrossAxisAlignment.center,
-                          //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          //     // crossAxisAlignment: CrossAxisAlignment.end,
-                          //     children: [
-                          //       Image.network(
-                          //         ProductImage,
-                          //         height: 80,
-                          //       ),
-                          //       Row(
-                          //         mainAxisAlignment:
-                          //             MainAxisAlignment.spaceEvenly,
-                          //         crossAxisAlignment: CrossAxisAlignment.center,
-                          //         // crossAxisAlignment: CrossAxisAlignment.end,
-                          //         // mainAxisAlignment:
-                          //         //     MainAxisAlignment.spaceAround,
-                          //         children: [
-                          //           Text(
-                          //             productName,
-                          //             style: TextStyle(color: Colors.blue),
-                          //           ),
-                          //           Text(
-                          //             productPrice,
-                          //             style: TextStyle(color: Colors.black),
-                          //           ),
-                          //         ],
-                          //       ),
-                          //     ],
-                          //   ),
-                          // ),
                         ),
                       );
                     },

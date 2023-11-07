@@ -77,8 +77,7 @@ class _AccountsState extends ConsumerState<Accounts> {
                                 width: 4.0,
                               ),
                             ),
-                            child: userimage ==
-                                    null // Check if userimage is not null (has a network URL)
+                            child: userimage == null
                                 ? const CircleAvatar(
                                     backgroundColor: Colors.black,
                                     radius: 50.0,
@@ -117,9 +116,6 @@ class _AccountsState extends ConsumerState<Accounts> {
                                       type: PageTransitionType.leftToRight,
                                       child: const AdminPage()),
                                 );
-
-                                // Handle user login
-                                // For example, show an error message or navigate to a different page
                               },
                               buttontext: 'Admin',
                             )
@@ -164,7 +160,7 @@ class _AccountsState extends ConsumerState<Accounts> {
                               context,
                               PageTransition(
                                   type: PageTransitionType.leftToRight,
-                                  child: ShippingAddress()));
+                                  child: const ShippingAddress()));
                         },
                         buttontext: 'Shipping Address',
                       ),

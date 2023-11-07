@@ -6,7 +6,6 @@ import 'package:giltezy_2ndproject/widgets/login/login_page.dart';
 import 'package:page_transition/page_transition.dart';
 
 import '../utils/theme/theme.dart';
-import '../widgets/Homepage/home.dart';
 
 Future<void> handleSignUp({
   required BuildContext context,
@@ -41,7 +40,7 @@ Future<void> handleSignUp({
             context,
             PageTransition(
               type: PageTransitionType.leftToRight,
-              child: MyLogin(),
+              child: const MyLogin(),
             ),
           ),
         );

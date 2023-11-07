@@ -1,6 +1,6 @@
-import 'package:anim_search_bar/anim_search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:giltezy_2ndproject/controller/category_prov.dart';
 
 import 'package:giltezy_2ndproject/utils/theme/colors.dart';
@@ -55,20 +55,19 @@ class _CategoryItemsState extends ConsumerState<CategoryItems> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12.0)),
                     child: Container(
-                      height: 300,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(11),
                           color: rowColor),
-                      width: 150,
+
                       padding: const EdgeInsets.symmetric(vertical: 16),
-                      margin: const EdgeInsets.all(1.0),
+                      margin: const EdgeInsets.all(2.0),
                       child: Column(children: [
                         Image.network(
                           cartimage,
-                          height: 120,
+                          height: 110.h,
                         ),
                         Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 7),
+                          padding: const EdgeInsets.symmetric(vertical: 10),
                           child: Text(cartname,
                               textAlign: TextAlign.center,
                               style: const TextStyle(

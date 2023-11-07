@@ -1,7 +1,7 @@
 import 'package:cool_alert/cool_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/service/add_data.dart';
-import 'package:giltezy_2ndproject/service/find_category.dart';
+
 import 'package:giltezy_2ndproject/service/upload_image.dart';
 
 import 'package:giltezy_2ndproject/widgets/admin/productmanagment/image_picker.dart';
@@ -58,7 +58,6 @@ class _ProductMangmentState extends State<ProductMangment> {
                   child: ElevatedButton(
                     onPressed: () async {
                       try {
-                        print('clicked');
                         if (_formkey.currentState!.validate()) {
                           await addData(
                                   categoryname: categoryproudctController.text,
@@ -69,8 +68,6 @@ class _ProductMangmentState extends State<ProductMangment> {
                                   imageurls: url!,
                                   stock: stockController.text)
                               .whenComplete(() async {
-                            print('completed');
-                            print(" this is my stock${stockController.text}");
                             showTopSnackBar(
                               Overlay.of(context),
                               const CustomSnackBar.success(
@@ -85,8 +82,6 @@ class _ProductMangmentState extends State<ProductMangment> {
                           });
                         }
                       } catch (e) {
-                        print("Error: $e");
-
                         // ignore: use_build_context_synchronously
                         CoolAlert.show(
                           context: context,

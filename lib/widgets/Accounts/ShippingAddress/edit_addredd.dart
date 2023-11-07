@@ -107,8 +107,8 @@ class _EditShippingAddressState extends State<EditShippingAddress> {
                           phone: phoneController.text,
                           pincode: pincodeController.text,
                           district: districtController.text);
-                      print('adddress added sucesssfully');
 
+                      // ignore: use_build_context_synchronously
                       Navigator.pop(context);
                     }
                   },

@@ -59,11 +59,11 @@ class _UpdateCategoryState extends State<UpdateCategory> {
 
                     await Future.delayed(const Duration(microseconds: 100));
 
+                    // ignore: use_build_context_synchronously
                     Navigator.pop(context);
                   } catch (e) {
-                    print("Error: $e");
-
                     showTopSnackBar(
+                      // ignore: use_build_context_synchronously
                       Overlay.of(context),
                       const CustomSnackBar.error(
                         message: "Something went wrong....",

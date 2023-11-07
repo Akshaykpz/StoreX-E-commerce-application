@@ -1,4 +1,3 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:giltezy_2ndproject/service/forgot_password.dart';
@@ -10,11 +9,9 @@ import 'package:giltezy_2ndproject/utils/theme/icons.dart';
 import 'package:giltezy_2ndproject/utils/theme/squre_tile.dart';
 import 'package:giltezy_2ndproject/utils/theme/textstyle.dart';
 
-import 'package:giltezy_2ndproject/widgets/login/background_image.dart';
 import 'package:giltezy_2ndproject/widgets/login/buttons.dart';
 import 'package:giltezy_2ndproject/widgets/login/textfiled.dart';
 import 'package:lottie/lottie.dart';
-import 'package:page_transition/page_transition.dart';
 
 import '../../service/login_user.dart';
 import '../signin/sigin_page.dart';
@@ -34,7 +31,6 @@ class _MyLoginState extends State<MyLogin> {
   final _passwordController = TextEditingController();
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _isSecure = false;
   }
@@ -54,7 +50,7 @@ class _MyLoginState extends State<MyLogin> {
         backgroundColor: Colors.transparent,
         body: (SingleChildScrollView(
           child: SizedBox(
-            height: 1010.h,
+            height: 835.h,
             width: double.infinity,
             child: Stack(
               children: [
@@ -113,7 +109,7 @@ class _MyLoginState extends State<MyLogin> {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             MyButtons(
-                                buttonText: 'Forgot Password',
+                                buttonText: 'Forgot Password  ',
                                 destinationRoute: ForgotPasswordScreen()),
                           ],
                         ),
@@ -146,9 +142,7 @@ class _MyLoginState extends State<MyLogin> {
                             },
                             imagepath: 'assets/images/Google__G__Logo.png',
                           ),
-                          const SizedBox(
-                            width: 22,
-                          ),
+
                           // Squretile(
                           //     onpress: () {
                           //       handleGoogleSignIn(context);
@@ -161,7 +155,11 @@ class _MyLoginState extends State<MyLogin> {
                 ),
                 Positioned(
                   bottom: 0.2,
+                  // right: 25,
                   child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white10,
+                        borderRadius: BorderRadius.circular(3)),
                     alignment: Alignment.center,
                     width: 400.w,
                     height: 59.h,
@@ -178,10 +176,13 @@ class _MyLoginState extends State<MyLogin> {
                             onPressed: () {
                               Navigator.push(
                                   context,
-                                  PageTransition(
-                                    type: PageTransitionType.leftToRight,
-                                    child: const MySigin(),
+                                  MaterialPageRoute(
+                                    builder: (context) => const MySigin(),
                                   ));
+                              // PageTransition(
+                              //   type: PageTransitionType.,
+                              //   child: const MySigin(),
+                              // ));
                             },
                             child: const Text(
                               'Sign Up',

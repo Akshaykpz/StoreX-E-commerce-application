@@ -29,8 +29,7 @@ class _MyOrderState extends ConsumerState<MyOrder> {
                   itemBuilder: (context, index) {
                     final newdata =
                         orderdata[index].data() as Map<String, dynamic>;
-                    // final orderId = newdata['payment_id'];
-                    // final ordertime = newdata['time'];
+
                     final reference =
                         newdata['product_reference'] as DocumentReference;
                     final orderitems = productdata.where((element) {
@@ -44,7 +43,7 @@ class _MyOrderState extends ConsumerState<MyOrder> {
 
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Container(
+                        child: SizedBox(
                           height: 100,
                           child: Card(
                             color: Colors.deepPurple[100],
@@ -69,7 +68,8 @@ class _MyOrderState extends ConsumerState<MyOrder> {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) => OrderStatus(),
+                                          builder: (context) =>
+                                              const OrderStatus(),
                                         ));
                                   },
                                   icon: const Icon(Icons.arrow_forward_ios)),

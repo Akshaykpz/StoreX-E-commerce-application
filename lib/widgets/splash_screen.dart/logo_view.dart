@@ -5,7 +5,7 @@ class LogoImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       // color: const Color.fromRGBO(255, 193, 7, 1),
       // height: 50,
       // width: 90,

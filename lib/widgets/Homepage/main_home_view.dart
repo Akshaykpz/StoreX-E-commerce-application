@@ -63,7 +63,7 @@ class _FavoritesPageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12),
+                padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: CircleAvatar(
                     backgroundColor: Colors.white,
                     child: IconButton(
@@ -77,12 +77,13 @@ class _FavoritesPageState extends State<HomePage> {
                         },
                         icon: const Icon(
                           Icons.search,
+                          size: 30,
                           color: Colors.black,
                         ))),
               ),
             ],
           ),
-          toolbarHeight: 190,
+          toolbarHeight: 220,
           title: const MyPageView(),
           elevation: 0,
           backgroundColor: Colors.deepPurple[50],

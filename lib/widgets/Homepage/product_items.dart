@@ -128,12 +128,12 @@ class _SecondGridState extends ConsumerState<SecondGrid> {
                       children: [
                         CachedImage(
                           url: productImage,
-                          height: 123,
+                          height: 121.h,
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      height: 7,
+                    SizedBox(
+                      height: 7.h,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -144,8 +144,8 @@ class _SecondGridState extends ConsumerState<SecondGrid> {
                           style: const TextStyle(
                               fontSize: 19, color: Colors.black54),
                         ),
-                        const SizedBox(
-                          height: 3,
+                        SizedBox(
+                          height: 3.h,
                         ),
                         Text(
                           '₹$productPrice',
@@ -156,14 +156,14 @@ class _SecondGridState extends ConsumerState<SecondGrid> {
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      height: 2.3,
+                    SizedBox(
+                      height: 2.3.h,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
                           child: Row(children: [
                             Text(
                               "3.4",
@@ -188,8 +188,8 @@ class _SecondGridState extends ConsumerState<SecondGrid> {
                                   // bottomLeft: Radius.circular(10),
                                   bottomRight: Radius.circular(10),
                                   topLeft: Radius.circular(10))),
-                          height: 37,
-                          width: 36,
+                          height: 37.h,
+                          width: 36.w,
                           child: GestureDetector(
                               onTap: () {
                                 Navigator.push(

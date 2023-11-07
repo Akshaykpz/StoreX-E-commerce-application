@@ -21,7 +21,7 @@ class _AddressViewState extends ConsumerState<AddressView> {
         final phone = address['phone'];
         final district = address['district'];
         final pincode = address["pincode"];
-        return Container(
+        return SizedBox(
             // decoration: BoxDecoration(color: Colors.blue),
             height: 150,
             width: 370,
@@ -78,10 +78,10 @@ class _AddressViewState extends ConsumerState<AddressView> {
             ));
       },
       error: (error, stackTrace) {
-        return Text('data is not availble');
+        return const Text('data is not availble');
       },
       loading: () {
-        return Center(
+        return const Center(
           child: CircularProgressIndicator(),
         );
       },

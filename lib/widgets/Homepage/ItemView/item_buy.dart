@@ -1,11 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:giltezy_2ndproject/controller/provder_auth.dart';
+
 import 'package:giltezy_2ndproject/widgets/checkout/address_edit_button.dart';
 import 'package:giltezy_2ndproject/widgets/checkout/address_view.dart';
 import 'package:giltezy_2ndproject/widgets/checkout/razorpay_view.dart';
-import 'package:giltezy_2ndproject/widgets/homepage/ItemView/item_view.dart';
 
 class ItemBuypage extends ConsumerStatefulWidget {
   final String imageUrl;
@@ -71,13 +70,13 @@ class _ItemBuypageState extends ConsumerState<ItemBuypage> {
             ),
             const AddressView(),
             const Divider(thickness: 2),
-            Container(
-              child: const Text(""),
+            const SizedBox(
+              child: Text(""),
             )
           ],
         ),
       ),
-      bottomSheet: Padding(
+      bottomSheet: const Padding(
         padding: EdgeInsets.symmetric(vertical: 25),
         child: CheckOut(),
       ),

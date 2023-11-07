@@ -52,11 +52,8 @@ class _EditProfilesState extends State<EditProfiles> {
           setState(() {
             _imageUrl = imageUrl;
           });
-          print('Image uploaded successfully: $imageUrl');
         }
-      } catch (error) {
-        print('Error uploading image: $error');
-      }
+      } catch (error) {}
     }
   }
 
@@ -160,7 +157,7 @@ class _EditProfilesState extends State<EditProfiles> {
               text: 'phone',
               icons: const Icon(Icons.phone),
             ),
-            SizedBox(
+            const SizedBox(
               height: 14,
             ),
             SizedBox(
@@ -168,7 +165,6 @@ class _EditProfilesState extends State<EditProfiles> {
                 width: 350,
                 child: ElevatedButton(
                   onPressed: () async {
-                    print(_imageUrl);
                     if (_formkey.currentState!.validate() && image != null) {
                       await adduserProfile(
                           imagurl: _imageUrl.toString(),

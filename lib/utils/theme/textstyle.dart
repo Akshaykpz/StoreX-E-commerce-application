@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 const TextStyle khheading = TextStyle(
-  color: Colors.white,
+  color: Colors.white70,
   fontSize: 40,
   fontFamily: 'Roboto',
   fontWeight: FontWeight.w500,
@@ -23,7 +23,7 @@ const TextStyle kwbottom = TextStyle(
   color: Colors.white,
   fontSize: 18,
   fontFamily: 'Roboto',
-  fontWeight: FontWeight.w600,
+  fontWeight: FontWeight.w400,
 );
 const TextStyle kxbutton = TextStyle(
   color: Colors.blue,

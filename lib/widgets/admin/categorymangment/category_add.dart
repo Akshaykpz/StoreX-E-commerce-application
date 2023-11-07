@@ -5,9 +5,6 @@ import 'package:giltezy_2ndproject/service/upload_image.dart';
 import 'package:giltezy_2ndproject/widgets/admin/productmanagment/image_picker.dart';
 import 'package:giltezy_2ndproject/widgets/admin/productmanagment/product_filed.dart';
 
-import 'package:top_snackbar_flutter/custom_snack_bar.dart';
-import 'package:top_snackbar_flutter/top_snack_bar.dart';
-
 // ignore: must_be_immutable
 class CategoryAdd extends StatefulWidget {
   const CategoryAdd({super.key});
@@ -45,6 +42,7 @@ class _CategoryAddState extends State<CategoryAdd> {
                       categoryimage: url.toString(),
                     );
 
+                    // ignore: use_build_context_synchronously
                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                       content: Text('error'),
                       backgroundColor: Colors.green,
@@ -53,17 +51,7 @@ class _CategoryAddState extends State<CategoryAdd> {
 
                     // ignore: use_build_context_synchronously
                     Navigator.pop(context);
-                  } catch (e) {
-                    print("Error: $e");
-
-                    // showTopSnackBar(
-                    //   // ignore: use_build_context_synchronously
-                    //   Overlay.of(context),
-                    //   const CustomSnackBar.error(
-                    //     message: "Something went wrong....",
-                    //   ),
-                    // );
-                  }
+                  } catch (e) {}
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.green,

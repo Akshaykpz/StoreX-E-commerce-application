@@ -13,7 +13,8 @@ class Squretile extends StatelessWidget {
         padding: const EdgeInsets.all(7),
         decoration: BoxDecoration(
             border: Border.all(color: Colors.white, width: 2),
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(5),
+
             // color: Colors.white,
             boxShadow: const [
               BoxShadow(

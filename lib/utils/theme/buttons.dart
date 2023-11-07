@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/utils/theme/textstyle.dart';
+import 'package:page_transition/page_transition.dart';
 
 class MyButtons extends StatelessWidget {
   final String buttonText;
@@ -14,8 +15,9 @@ class MyButtons extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(
-            builder: (context) => destinationRoute,
+          PageTransition(
+            type: PageTransitionType.fade,
+            child: destinationRoute,
           ),
         );
       },

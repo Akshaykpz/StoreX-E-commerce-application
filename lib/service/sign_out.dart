@@ -2,17 +2,29 @@ import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
 import 'package:giltezy_2ndproject/widgets/login/login_page.dart';
 import 'package:page_transition/page_transition.dart';
 
 Future<void> _handleSignOut(BuildContext context) async {
   try {
-    Navigator.of(context).pop(); // Close the CoolAlert
-
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return const Center(
+            child: CircularProgressIndicator(
+          color: Colors.white,
+        ));
+      },
+    );
+    await Future.delayed(const Duration(seconds: 1));
     await FirebaseAuth.instance.signOut().then((value) {
       Navigator.pushAndRemoveUntil(
         context,
-        PageTransition(type: PageTransitionType.fade, child: const MyLogin()),
+        PageTransition(
+          type: PageTransitionType.fade,
+          child: const MyLogin(),
+        ),
         (route) => false,
       );
     });
@@ -27,7 +39,7 @@ Future<void> showSignOutDialog(BuildContext context) async {
       builder: (context) {
         return AlertDialog(
             shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             title: const Text('Logout'),
             content: const Text("Are you sure you want to Logout?"),
             actions: [

@@ -9,11 +9,12 @@ class SearchViewPage extends ConsumerStatefulWidget {
   const SearchViewPage({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _SearchViewPageState createState() => _SearchViewPageState();
 }
 
 class _SearchViewPageState extends ConsumerState<SearchViewPage> {
-  TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
   String _searchQuery = '';
   List<QueryDocumentSnapshot> _searchResults = [];
 

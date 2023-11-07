@@ -11,7 +11,7 @@ class MyUserManagment extends StatelessWidget {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(children: [
-            Padding(padding: EdgeInsets.all(7)),
+            const Padding(padding: EdgeInsets.all(7)),
             Card(
               elevation: 5,
               shape: const RoundedRectangleBorder(

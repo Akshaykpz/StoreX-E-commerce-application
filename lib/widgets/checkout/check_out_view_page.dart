@@ -114,7 +114,7 @@ class _DataState extends ConsumerState<CheckOutPage> {
                                         fontSize: 16,
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 6,
                                     )
                                   ],
@@ -144,7 +144,7 @@ class _DataState extends ConsumerState<CheckOutPage> {
           )
         ],
       ),
-      body: Column(
+      body: const Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Expanded(
@@ -156,11 +156,11 @@ class _DataState extends ConsumerState<CheckOutPage> {
                 child: Column(
                   children: [
                     CheckOutItems(),
-                    const SizedBox(
+                    SizedBox(
                       height: 12,
                     ),
-                    const Divider(thickness: 1),
-                    const Row(
+                    Divider(thickness: 1),
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
@@ -173,8 +173,8 @@ class _DataState extends ConsumerState<CheckOutPage> {
                         AddressEditButton(),
                       ],
                     ),
-                    const AddressView(),
-                    const Divider(thickness: 1),
+                    AddressView(),
+                    Divider(thickness: 1),
                   ],
                 ),
               ),

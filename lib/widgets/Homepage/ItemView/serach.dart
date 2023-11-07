@@ -12,7 +12,7 @@ void navigateToProductSearchScreen(BuildContext context) {
   Navigator.push(
     context,
     MaterialPageRoute(
-      builder: (context) => SearchViewPage(),
+      builder: (context) => const SearchViewPage(),
     ),
   );
 }

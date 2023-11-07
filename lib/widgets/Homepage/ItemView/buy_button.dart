@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-import 'package:giltezy_2ndproject/widgets/checkout/check_out_view_page.dart';
 import 'package:giltezy_2ndproject/widgets/homepage/ItemView/item_buy.dart';
 import 'package:pushable_button/pushable_button.dart';
 

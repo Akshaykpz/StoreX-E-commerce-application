@@ -70,9 +70,7 @@ class ItemAdd {
           print('error something add cart ');
         }
       }
-    } else {
-      print('User is not authenticated.');
-    }
+    } else {}
   }
 
   Future<void> updatCount(String id, int itemCount) async {

@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class FavorateButton extends StatelessWidget {
+  // ignore: prefer_typing_uninitialized_variables
   final ontap;
   bool isButtonTap;
-  FavorateButton({Key? key, required this.ontap, required this.isButtonTap});
+  FavorateButton({super.key, required this.ontap, required this.isButtonTap});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class FavorateButton extends StatelessWidget {
             BoxShadow(
               blurRadius: 15,
               color: isButtonTap ? Colors.white : Colors.white30,
-              offset: isButtonTap ? Offset(6, 6) : Offset(-6, -6),
+              offset: isButtonTap ? const Offset(6, 6) : const Offset(-6, -6),
               spreadRadius: 1,
             ),
           ],
