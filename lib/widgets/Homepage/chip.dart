@@ -10,7 +10,7 @@ class Chipadd extends StatefulWidget {
 }
 
 class _ChipaddState extends State<Chipadd> {
-  bool _isSelected = false;
+  final bool _isSelected = false;
 
   @override
   Widget build(BuildContext context) {

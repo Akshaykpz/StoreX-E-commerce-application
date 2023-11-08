@@ -33,7 +33,6 @@ class _WishListState extends ConsumerState<WishList> {
                       wishlist[index].data() as Map<String, dynamic>;
                   final referenc =
                       wishlistProvider['product_referce'] as DocumentReference;
-                  print({" wishlist referce $referenc"});
 
                   final matchproduct = prouctlis.firstWhere((element) {
                     return element.reference == referenc;

@@ -12,6 +12,7 @@ class CartButton extends StatelessWidget {
   final String? stock;
   final String productDescription;
   final DocumentReference reference;
+  // ignore: use_key_in_widget_constructors
   const CartButton(
       {Key? key,
       required this.imageUrl,

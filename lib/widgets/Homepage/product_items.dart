@@ -7,7 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:giltezy_2ndproject/controller/provder_auth.dart';
 import 'package:giltezy_2ndproject/service/add_wishlist.dart';
-import 'package:giltezy_2ndproject/service/proudcts.dart';
+
 import 'package:giltezy_2ndproject/service/wishlist_data.dart';
 
 import 'package:giltezy_2ndproject/utils/theme/colors.dart';

@@ -6,7 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:giltezy_2ndproject/controller/provder_auth.dart';
 
 class CheckOutItems extends ConsumerStatefulWidget {
-  CheckOutItems({
+  const CheckOutItems({
     super.key,
   });
 

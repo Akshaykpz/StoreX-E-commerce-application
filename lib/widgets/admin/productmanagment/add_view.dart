@@ -24,6 +24,7 @@ class _MyProductViewState extends ConsumerState<MyProductView> {
     return SafeArea(
         child: Scaffold(
       body: CustomScrollView(
+        controller: scrollController,
         slivers: [
           proudctdata.when(
             data: (data) {

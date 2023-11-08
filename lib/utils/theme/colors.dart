@@ -8,6 +8,7 @@ List<Color> rowColors = [
   Colors.purple.shade100,
   Colors.teal.shade100
 ];
+// ignore: non_constant_identifier_names
 List<Color> IconsColors = [
   Colors.blue.shade200,
   Colors.green.shade200,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:giltezy_2ndproject/service/delete_data.dart';
-import 'package:giltezy_2ndproject/widgets/admin/productmanagment/product_managment.dart';
+
 import 'package:giltezy_2ndproject/widgets/admin/productmanagment/update_prouduct.dart';
 
 class Productedit extends StatefulWidget {

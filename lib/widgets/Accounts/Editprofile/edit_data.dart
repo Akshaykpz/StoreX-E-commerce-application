@@ -53,6 +53,7 @@ class _EditProfilesState extends State<EditProfiles> {
             _imageUrl = imageUrl;
           });
         }
+        // ignore: empty_catches
       } catch (error) {}
     }
   }

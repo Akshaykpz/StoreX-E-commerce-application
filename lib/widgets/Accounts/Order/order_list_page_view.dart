@@ -53,7 +53,7 @@ class _MyOrderState extends ConsumerState<MyOrder> {
                                   horizontal: 15, vertical: 10),
                               leading: Image.network(productImage),
                               title: const Text(
-                                'Arriving Monday',
+                                'Order placed',
                                 style: TextStyle(
                                     fontWeight: FontWeight.w700,
                                     color: Colors.green),

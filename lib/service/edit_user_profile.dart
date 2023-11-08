@@ -11,6 +11,7 @@ Future adduserProfile(
     'user_email': email,
     'user_num': phone,
     'user_image': imagurl,
+    // ignore: avoid_print
   }).then((value) => print('user_profile added suceess'));
 }
 
@@ -18,11 +19,12 @@ final useryStream =
     FirebaseFirestore.instance.collection('userprofile').snapshots();
 
 void updateBlockStatus(String userId, bool isBlocked) {
-  FirebaseFirestore.instance.collection('userprofile').doc(userId).update({
-    'isBlocked': isBlocked,
-  }).then((value) {
-    print('User block status updated successfully.');
-  }).catchError((error) {
-    print('Failed to update user block status: $error');
-  });
+  FirebaseFirestore.instance
+      .collection('userprofile')
+      .doc(userId)
+      .update({
+        'isBlocked': isBlocked,
+      })
+      .then((value) {})
+      .catchError((error) {});
 }

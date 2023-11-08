@@ -67,15 +67,10 @@ class _UserListState extends ConsumerState<UserList> {
                                 fontWeight: FontWeight.w700,
                                 fontSize: 15),
                           ),
-                          // const Text(
-                          //   "blocked",
-                          //   style: TextStyle(
-                          //       color: Colors.red, fontWeight: FontWeight.w800),
-                          // ),
                         ],
                       ),
                       subtitle: Text(useremail,
-                          style: TextStyle(color: Colors.white)),
+                          style: const TextStyle(color: Colors.white)),
                       trailing: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           backgroundColor:
@@ -96,10 +91,10 @@ class _UserListState extends ConsumerState<UserList> {
         );
       },
       error: (error, stackTrace) {
-        return Text(" is errror");
+        return const Text(" is errror");
       },
       loading: () {
-        return CircularProgressIndicator();
+        return const Center(child: CircularProgressIndicator());
       },
     );
   }

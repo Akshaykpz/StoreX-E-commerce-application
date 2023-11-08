@@ -26,7 +26,7 @@ class UploadImage {
       if (snapshot.state == firebase_storage.TaskState.success) {
         final imageUrl = await snapshot.ref.getDownloadURL();
         url = imageUrl;
-        print(url);
+
         log("Download URL: $imageUrl");
       } else {
         log("Image upload task is not in success state.");

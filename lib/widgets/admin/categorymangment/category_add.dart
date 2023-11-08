@@ -44,13 +44,14 @@ class _CategoryAddState extends State<CategoryAdd> {
 
                     // ignore: use_build_context_synchronously
                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                      content: Text('error'),
+                      content: Text('category added suceessfully'),
                       backgroundColor: Colors.green,
                     ));
-                    await Future.delayed(const Duration(microseconds: 100));
+                    await Future.delayed(const Duration(seconds: 1));
 
                     // ignore: use_build_context_synchronously
                     Navigator.pop(context);
+                    // ignore: empty_catches
                   } catch (e) {}
                 },
                 style: ElevatedButton.styleFrom(

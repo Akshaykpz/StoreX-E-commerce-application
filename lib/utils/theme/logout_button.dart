@@ -23,12 +23,16 @@ class _MyPageViewState extends State<MyPageView> {
 
   Widget _imageView(String image) {
     return Container(
-      width: 300,
-      height: 166.0,
+      width: 330,
+      height: 169.0,
       decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(3),
         image: DecorationImage(
+          opacity: 12,
           fit: BoxFit.cover,
-          image: AssetImage(image),
+          image: AssetImage(
+            image,
+          ),
         ),
       ),
     );

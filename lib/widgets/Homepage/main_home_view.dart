@@ -4,11 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 import 'package:giltezy_2ndproject/utils/theme/logout_button.dart';
-import 'package:giltezy_2ndproject/widgets/Homepage/ItemView/serach.dart';
-import 'package:giltezy_2ndproject/widgets/Homepage/chip_list.dart';
+
 import 'package:giltezy_2ndproject/widgets/Homepage/product_items.dart';
-import 'package:giltezy_2ndproject/widgets/categories/category_view.dart';
-import 'package:giltezy_2ndproject/widgets/splash_screen.dart/logo_view.dart';
+
 import 'package:giltezy_2ndproject/widgets/homepage/ItemView/serach_view.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -72,7 +70,7 @@ class _FavoritesPageState extends State<HomePage> {
                               context,
                               PageTransition(
                                 type: PageTransitionType.leftToRight,
-                                child: SearchViewPage(),
+                                child: const SearchViewPage(),
                               ));
                         },
                         icon: const Icon(
@@ -88,7 +86,7 @@ class _FavoritesPageState extends State<HomePage> {
           elevation: 0,
           backgroundColor: Colors.deepPurple[50],
         ),
-        SliverFillRemaining(
+        const SliverFillRemaining(
           child: Column(
             // crossAxisAlignment: CrossAxisAlignment.center,
 
@@ -96,35 +94,35 @@ class _FavoritesPageState extends State<HomePage> {
             children: [
               // ,
 
-              const SizedBox(
-                height: 30,
-              ),
-              const ItemsGrid(),
+              // const SizedBox(
+              //   height: 30,
+              // ),
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 7),
                     child: Text(
                       'Popular',
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
                     ),
                   ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          PageTransition(
-                            type: PageTransitionType.fade,
-                            child: const CategoryItems(),
-                          ));
-                    },
-                    child: const Text('More..'),
-                  ),
+                  // TextButton(
+                  //   onPressed: () {
+                  //     Navigator.push(
+                  //         context,
+                  //         PageTransition(
+                  //           type: PageTransitionType.fade,
+                  //           child: const CategoryItems(),
+                  //         ));
+                  //   },
+                  //   child: const Text('More..'),
+                  // ),
                 ],
               ),
-              const Expanded(child: SecondGrid())
+              Expanded(child: SecondGrid()),
             ],
           ),
         )

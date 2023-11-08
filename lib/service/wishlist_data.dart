@@ -17,6 +17,11 @@ class ItemAdd {
           .then((querySnapshot) => querySnapshot.docs.isNotEmpty);
 
       if (itemExists) {
+        EasyLoading.dismiss().then((value) {
+          EasyLoading.showToast('item is already exist',
+              maskType: EasyLoadingMaskType.clear,
+              toastPosition: EasyLoadingToastPosition.top);
+        });
         // Show an alert or snackbar to inform the user that the item is already in the wishlist
         print('Item is already in the wishlist.');
       } else {
@@ -29,13 +34,10 @@ class ItemAdd {
             'product_referce': referenceId,
           });
           print('Item added to wishlist successfully.');
-        } catch (e) {
-          print('Error adding item to wishlist: $e');
-        }
+          // ignore: empty_catches
+        } catch (e) {}
       }
-    } else {
-      print('User is not authenticated.');
-    }
+    } else {}
   }
 
   Future<void> addCart(
@@ -65,10 +67,8 @@ class ItemAdd {
               .doc(cartuser.email)
               .collection('items')
               .add({'product_reference': reference, 'itemCount': 1});
-          print('items added sucessfull cart');
-        } catch (e) {
-          print('error something add cart ');
-        }
+          // ignore: empty_catches
+        } catch (e) {}
       }
     } else {}
   }
@@ -82,8 +82,7 @@ class ItemAdd {
           .collection('items')
           .doc(id)
           .update({'itemCount': itemCount});
-    } catch (e) {
-      print('log error $e');
-    }
+      // ignore: empty_catches
+    } catch (e) {}
   }
 }

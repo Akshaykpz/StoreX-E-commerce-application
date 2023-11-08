@@ -68,12 +68,11 @@ class _ProductMangmentState extends State<ProductMangment> {
                                   imageurls: url!,
                                   stock: stockController.text)
                               .whenComplete(() async {
-                            showTopSnackBar(
-                              Overlay.of(context),
-                              const CustomSnackBar.success(
-                                message: "category added sucessfully...",
-                              ),
-                            );
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(const SnackBar(
+                              content: Text('product added suceessfully'),
+                              backgroundColor: Colors.green,
+                            ));
 
                             await Future.delayed(const Duration(seconds: 1));
 

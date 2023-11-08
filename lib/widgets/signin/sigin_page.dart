@@ -10,7 +10,6 @@ import '../../utils/theme/icons.dart';
 import '../../utils/theme/textstyle.dart';
 import '../login/buttons.dart';
 import '../login/textfiled.dart';
-import 'background_image.dart';
 
 class MySigin extends StatefulWidget {
   const MySigin({super.key});

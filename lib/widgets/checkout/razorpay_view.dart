@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:giltezy_2ndproject/service/check_out.dart';
@@ -15,7 +16,7 @@ class CheckOut extends StatefulWidget {
 }
 
 class _CheckOutState extends State<CheckOut> {
-  var _razorpay = Razorpay();
+  final _razorpay = Razorpay();
 
   @override
   void dispose() {
@@ -62,7 +63,9 @@ class _CheckOutState extends State<CheckOut> {
               try {
                 _razorpay.open(options);
               } catch (e) {
-                print(e.toString());
+                if (kDebugMode) {
+                  print(e.toString());
+                }
               }
             },
             child: const Text('Proceed to Pay',

@@ -77,30 +77,20 @@ class _ItemOnClickState extends ConsumerState<ItemViews> {
         ),
         onSelectItem: (index) async {
           if (index == 0) {
-            ShowSnackbar()
-                .showLoadingSnackbar(context, 'cart items added sucessfully');
+            ShowSnackbar();
+            // .showLoadingSnackbar(context, 'cart items added sucessfully');
             ItemAdd().addCart(widget.reference).whenComplete(() {
               EasyLoading.dismiss();
             });
           } else if (index == 1) {
-            ShowSnackbar().showLoadingSnackbar(
-                context, 'wishlist items added sucessfully');
+            ShowSnackbar();
+            // .showLoadingSnackbar(
+            // context, 'wishlist items added sucessfully');
             ItemAdd().addWishlistItem(widget.reference).whenComplete(() {
               EasyLoading.dismiss();
             });
           }
         },
-        // onSelectItem: (index) async {
-        //   if (index == 0) {
-        //     return product.addToCart(widget.docId).whenComplete(() {});
-        //   } else if (index == 1) {
-        //     EasyLoading.show(
-        //         indicator: loading(), maskType: EasyLoadingMaskType.clear);
-        //     return product.addToWishList(widget.docId).whenComplete(() {
-        //       EasyLoading.dismiss();
-        //     });
-        //   }
-        // },
         sheetChild: SizedBox(
           height: 300.h,
           width: double.infinity,
@@ -223,10 +213,8 @@ class _ItemOnClickState extends ConsumerState<ItemViews> {
           ),
         ),
         items: const [
-          BottomBarWithSheetItem(
-            icon: Icons.shopping_cart,
-          ),
-          BottomBarWithSheetItem(icon: Icons.favorite),
+          BottomBarWithSheetItem(icon: Icons.shopping_cart, label: 'cart'),
+          BottomBarWithSheetItem(icon: Icons.favorite, label: 'favorite'),
         ],
       ),
       body: SafeArea(
@@ -250,24 +238,4 @@ class _ItemOnClickState extends ConsumerState<ItemViews> {
       ),
     );
   }
-}
-
-void _showLoadingSnackbar(BuildContext context, String text) {
-  EasyLoading.show(
-    status: 'loading...',
-    dismissOnTap: false,
-  );
-  ScaffoldMessenger.of(context)
-      .showSnackBar(
-        SnackBar(
-          content: Text(text),
-          backgroundColor: Colors.black,
-          behavior: SnackBarBehavior.floating,
-          duration: const Duration(seconds: 1),
-        ),
-      )
-      .closed
-      .then((reason) {
-    EasyLoading.dismiss();
-  });
 }

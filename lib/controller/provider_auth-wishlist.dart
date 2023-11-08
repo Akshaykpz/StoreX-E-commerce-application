@@ -1,14 +1,8 @@
+// ignore_for_file: file_names
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-// final authenticationProvider = Provider<Authentication>((ref) {
-//   return Authentication();
-// });
-
-// final authWishlistProvider = StreamProvider<User?>((ref) {
-//   return ref.read(authenticationProvider).authchange;
-// });
 
 final wishlistContentsProvider =
     StreamProvider<List<DocumentSnapshot<Object?>>>((ref) {

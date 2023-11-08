@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:giltezy_2ndproject/widgets/Homepage/chip.dart'; // Import other necessary dependencies
+import 'package:giltezy_2ndproject/widgets/Homepage/chip.dart';
+// Import other necessary dependencies
 
 class ItemsGrid extends StatefulWidget {
-  const ItemsGrid({super.key});
+  const ItemsGrid({
+    super.key,
+  });
 
   @override
   State<ItemsGrid> createState() => _ItemsGridState();

@@ -23,6 +23,6 @@ Future<String?> findDocumentIdByCategory(String category) async {
   } catch (error) {
     log('Error in findDocumentIdByCategory: $error');
   }
-  print(id);
+
   return id;
 }
