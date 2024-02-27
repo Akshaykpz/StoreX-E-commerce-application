@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:66421642132:android:d4c03b483253b874e23581",
         "android_client_info": {
-          "package_name": "com.example.giltezy_2ndproject"
+          "package_name": "apps.example.giltezy_2ndproject"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "66421642132-el2ivbvt56gvk53ou0bolnkrritdtbma.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.giltezy_2ndproject",
+            "package_name": "apps.example.giltezy_2ndproject",
             "certificate_hash": "97bd0da2c4a0bde37448250c6b52c52ae2bbd49b"
           }
         },
@@ -41,7 +41,7 @@
           ]
         }
       }
-    }
+    } 
   ],
   "configuration_version": "1"
 }

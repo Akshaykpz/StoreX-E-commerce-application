@@ -37,8 +37,8 @@ class MyApp extends ConsumerWidget {
             data: (data) {
               return const AuthPage();
             },
-            error: (error, stackTrace) => const CircularProgressIndicator(),
-            loading: () => const CircularProgressIndicator(),
+            error: (error, stackTrace) => const Text(" is error"),
+            loading: () => Center(child: const CircularProgressIndicator()),
           )),
     );
   }

@@ -23,7 +23,6 @@ class ItemAdd {
               toastPosition: EasyLoadingToastPosition.top);
         });
         // Show an alert or snackbar to inform the user that the item is already in the wishlist
-        print('Item is already in the wishlist.');
       } else {
         try {
           await FirebaseFirestore.instance
@@ -33,7 +32,7 @@ class ItemAdd {
               .add({
             'product_referce': referenceId,
           });
-          print('Item added to wishlist successfully.');
+
           // ignore: empty_catches
         } catch (e) {}
       }
@@ -59,7 +58,6 @@ class ItemAdd {
               maskType: EasyLoadingMaskType.clear,
               toastPosition: EasyLoadingToastPosition.top);
         });
-        print('cart alredaya added');
       } else {
         try {
           await FirebaseFirestore.instance
