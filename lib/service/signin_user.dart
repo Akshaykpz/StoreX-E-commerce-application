@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:giltezy_2ndproject/service/edit_user_profile.dart';
 import 'package:giltezy_2ndproject/widgets/login/login_page.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -36,15 +37,17 @@ Future<void> handleSignUp({
     await FirebaseAuth.instance
         .createUserWithEmailAndPassword(email: email, password: password)
         .then(
-          (value) => Navigator.push(
-            context,
-            PageTransition(
-              type: PageTransitionType.leftToRight,
-              child: const MyLogin(),
-            ),
-          ),
-        );
-
+      (value) {
+        adduser(email: email, password: password);
+      },
+    );
+    Navigator.push(
+      context,
+      PageTransition(
+        type: PageTransitionType.leftToRight,
+        child: const MyLogin(),
+      ),
+    );
     // Sign-up successful, navigate to the home page or a verification page
   } on FirebaseAuthException catch (e) {
     if (e.code == 'weak-password') {

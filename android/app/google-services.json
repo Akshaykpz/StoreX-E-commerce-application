@@ -1,47 +1,54 @@
 {
   "project_info": {
-    "project_number": "66421642132",
-    "project_id": "giltezy",
-    "storage_bucket": "giltezy.appspot.com"
+    "project_number": "964894653817",
+    "project_id": "storex-74954",
+    "storage_bucket": "storex-74954.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:66421642132:android:d4c03b483253b874e23581",
+        "mobilesdk_app_id": "1:964894653817:android:a8413382b236dae7f503a8",
         "android_client_info": {
-          "package_name": "apps.example.giltezy_2ndproject"
+          "package_name": "com.example.store_x"
         }
       },
       "oauth_client": [
         {
-          "client_id": "66421642132-el2ivbvt56gvk53ou0bolnkrritdtbma.apps.googleusercontent.com",
+          "client_id": "964894653817-ldl9r0856judcoabsp684rbcbr7kqnj6.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "apps.example.giltezy_2ndproject",
-            "certificate_hash": "97bd0da2c4a0bde37448250c6b52c52ae2bbd49b"
+            "package_name": "com.example.store_x",
+            "certificate_hash": "b6f7a79f97479f6cb6a966d83bcf0b9573958bbc"
           }
         },
         {
-          "client_id": "66421642132-pc9qulm5u7ntdijv7u0v6suul5j3jnbc.apps.googleusercontent.com",
+          "client_id": "964894653817-73p7un8c05ijhd8k5ro6rj5jeuj2dv7i.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDgEvBj7A2r0ZfOWSMSRBwVNfN4S_zL-ds"
+          "current_key": "AIzaSyAOWzyJtsoF1mM5g-c0ObRLWSMKYCFRXi4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "66421642132-pc9qulm5u7ntdijv7u0v6suul5j3jnbc.apps.googleusercontent.com",
+              "client_id": "964894653817-73p7un8c05ijhd8k5ro6rj5jeuj2dv7i.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "964894653817-10gmkbipjrlbu36dbg693hks4c3rkk5q.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.giltezy2ndproject"
+              }
             }
           ]
         }
       }
-    } 
+    }
   ],
   "configuration_version": "1"
 }

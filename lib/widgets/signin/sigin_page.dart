@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:giltezy_2ndproject/service/edit_user_profile.dart';
 import 'package:giltezy_2ndproject/utils/theme/decoration.dart';
 import 'package:giltezy_2ndproject/utils/theme/squre_tile.dart';
 import 'package:lottie/lottie.dart';
@@ -11,14 +13,14 @@ import '../../utils/theme/textstyle.dart';
 import '../login/buttons.dart';
 import '../login/textfiled.dart';
 
-class MySigin extends StatefulWidget {
+class MySigin extends ConsumerStatefulWidget {
   const MySigin({super.key});
 
   @override
-  State<MySigin> createState() => _MySiginState();
+  ConsumerState<MySigin> createState() => _MySiginState();
 }
 
-class _MySiginState extends State<MySigin> {
+class _MySiginState extends ConsumerState<MySigin> {
   // ...
   final _formKey = GlobalKey<FormState>();
   final _emailSigninController = TextEditingController();

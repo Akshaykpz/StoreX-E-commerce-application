@@ -1,9 +1,12 @@
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:giltezy_2ndproject/controller/users_auth.dart';
 import 'package:giltezy_2ndproject/service/sign_out.dart';
 import 'package:giltezy_2ndproject/service/button.dart';
+import 'package:giltezy_2ndproject/utils/theme/firebase_const.dart';
 import 'package:giltezy_2ndproject/widgets/accounts/editprofile/edit_data.dart';
 import 'package:giltezy_2ndproject/widgets/accounts/order/order_list_page_view.dart';
 import 'package:giltezy_2ndproject/widgets/accounts/shippingAddress/shipping_address.dart';
@@ -23,18 +26,26 @@ class _AccountsState extends ConsumerState<Accounts> {
   bool isAdmin = false;
   @override
   void initState() {
-    _isAdminCheck();
+    _isAdminCheck(context);
     super.initState();
   }
 
-  _isAdminCheck() {
-    FirebaseAuth auth0 = FirebaseAuth.instance;
-    User? auth = auth0.currentUser;
+  void _isAdminCheck(BuildContext context) async {
+    try {
+      User? user = auth.currentUser;
 
-    if (auth!.email == 'admin@example.com') {
-      setState(() {
-        isAdmin = true;
-      });
+      if (user != null) {
+        //  admin's email address
+        log('${user.uid.toString()} user');
+        if (user.email == "achu@gmail.com") {
+          setState(() {
+            isAdmin = true;
+          });
+        }
+      }
+    } catch (e) {
+      // Handle any errors here
+      log("Error checking admin status: $e");
     }
   }
 
@@ -94,7 +105,7 @@ class _AccountsState extends ConsumerState<Accounts> {
                         child: Container(
                           padding: const EdgeInsets.only(top: 10.0),
                           child: Text(
-                            username,
+                            username ?? 'amal',
                             style: const TextStyle(
                               fontFamily: 'SF Pro',
                               fontWeight: FontWeight.w700,

@@ -28,3 +28,12 @@ void updateBlockStatus(String userId, bool isBlocked) {
       .then((value) {})
       .catchError((error) {});
 }
+
+Future adduser({required String email, required String password}) async {
+  await firebasedata.collection('userprofile').doc().set({
+    'user_email': email,
+
+    'user_password': password,
+    // ignore: avoid_print
+  }).then((value) => print('user_profile added suceess'));
+}
